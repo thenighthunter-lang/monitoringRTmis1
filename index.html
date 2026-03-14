@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>РТ МИС - Полезные ссылки</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            transition: background 1s ease;
+            background: #030014;
+        }
+
+        /* Тема Ночь (по умолчанию) */
+        body.night-theme {
+            background: #030014;
+        }
+
+        /* Тема День (более светлая) */
+        body.day-theme {
+            background: #1a0b2e;
+        }
+
+        body.day-theme .stars {
+            opacity: 0.3;
+        }
+
+        body.day-theme .nebula-layer {
+            background: 
+                radial-gradient(ellipse at 30% 40%, #c4a0e6 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 70%, #b0c4ff 0%, transparent 45%),
+                radial-gradient(ellipse at 20% 80%, #ffb3c6 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 20%, #c2a5ff 0%, transparent 55%),
+                radial-gradient(circle at 90% 30%, #ffc2a0 0%, transparent 35%);
+            opacity: 0.6;
+        }
+
+        body.day-theme .galaxy {
+            background: radial-gradient(circle at 30% 40%, #ffd966, #ffb347, #ff8c42);
+            opacity: 0.3;
+        }
+
+        body.day-theme .cosmic-card {
+            background: rgba(80, 40, 120, 0.4);
+            border-color: rgba(255, 200, 100, 0.4);
+        }
+
+        body.day-theme .page-btn {
+            background: rgba(100, 60, 140, 0.6);
+        }
+
+        body.day-theme .pagination::before {
+            background: linear-gradient(45deg, #ffaa33, #ff8833, #ff6633, #ffaa33);
+        }
+
+        body.day-theme .sun-core {
+            box-shadow: 0 0 100px #ffdd55, 0 0 200px #ffaa33, 0 0 300px #ff8822;
+        }
+
+        /* ---------- Дизайн космоса ---------- */
+        .universe {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            transition: all 1s ease;
+        }
+
+        .stars {
+            position: absolute;
+            inset: 0;
+            background: transparent;
+            background-image: 
+                radial-gradient(1px 1px at 5px 15px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 95px 280px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 152px 430px, #ffe9c0, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 280px 125px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 350px 680px, #fff0d0, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 420px 920px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 510px 230px, #b5d0ff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 630px 780px, #ffebc0, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 740px 340px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 820px 570px, #f0e6ff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 940px 150px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 1050px 820px, #ffe0a0, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 1150px 430px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 1280px 650px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 1350px 290px, #ffeac0, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 1440px 880px, #d6c4ff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 1550px 150px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 1680px 540px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 1750px 760px, #ffecb0, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 1850px 380px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 1920px 600px, #b8b0ff, rgba(0,0,0,0));
+            background-repeat: no-repeat;
+            opacity: 0.9;
+            animation: twinkleStars 8s infinite alternate;
+            transition: opacity 1s ease;
+        }
+
+        @keyframes twinkleStars {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .stars-big {
+            position: absolute;
+            inset: 0;
+            background: transparent;
+            background-image: 
+                radial-gradient(4px 4px at 650px 250px, #fff9e6, rgba(0,0,0,0)),
+                radial-gradient(5px 5px at 1250px 800px, #fff5d0, rgba(0,0,0,0)),
+                radial-gradient(4px 4px at 450px 1200px, #ffefc0, rgba(0,0,0,0)),
+                radial-gradient(6px 6px at 1650px 450px, #ffeac0, rgba(0,0,0,0)),
+                radial-gradient(4px 4px at 850px 1450px, #ffffff, rgba(0,0,0,0));
+            background-repeat: no-repeat;
+            opacity: 0.6;
+            animation: twinkleBig 5s infinite alternate;
+        }
+
+        @keyframes twinkleBig {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.9; transform: scale(1.1); }
+        }
+
+        .nebula-layer {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 30% 40%, #4a1f6e 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 70%, #1d4a7a 0%, transparent 45%),
+                radial-gradient(ellipse at 20% 80%, #6d2b5c 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 20%, #2f4b8a 0%, transparent 55%),
+                radial-gradient(circle at 90% 30%, #803a5e 0%, transparent 35%);
+            opacity: 0.4;
+            filter: blur(40px);
+            animation: nebulaMove 30s infinite alternate;
+            transition: all 1s ease;
+        }
+
+        @keyframes nebulaMove {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.3; }
+            100% { transform: scale(1.2) translate(-2%, -1%); opacity: 0.5; }
+        }
+
+        .galaxy {
+            position: absolute;
+            width: min(600px, 50vw);
+            height: min(600px, 50vw);
+            background: radial-gradient(circle at 30% 40%, #ff7e5f, #b06ab3, #4568dc);
+            bottom: min(-100px, -10vh);
+            right: min(-100px, -10vw);
+            border-radius: 50%;
+            filter: blur(min(100px, 8vw));
+            opacity: 0.2;
+            animation: galaxySpin 40s infinite alternate;
+            transition: all 1s ease;
+        }
+
+        @keyframes galaxySpin {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(10deg) scale(1.2); }
+        }
+
+        /* ---------- МЕТЕОРИТЫ ---------- */
+        .meteor {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #ffaa00, #ff5500, #ffaa00);
+            border-radius: 50%;
+            filter: blur(2px);
+            box-shadow: 0 0 20px #ffaa33, 0 0 40px #ff5500;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            animation: meteorFall 3s linear forwards;
+        }
+
+        .meteor::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #ffaa33, transparent);
+            filter: blur(4px);
+            border-radius: 50%;
+        }
+
+        @keyframes meteorFall {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) rotate(45deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(min(500px, 50vw), min(500px, 50vh)) rotate(45deg);
+            }
+        }
+
+        body.day-theme .meteor {
+            background: linear-gradient(45deg, #ffd966, #ffb347, #ffd966);
+            box-shadow: 0 0 30px #ffd966, 0 0 60px #ffb347;
+        }
+
+        /* ---------- МОСКОВСКОЕ ВРЕМЯ ---------- */
+        .moscow-time {
+            position: fixed;
+            top: clamp(10px, 2vh, 20px);
+            left: clamp(10px, 2vw, 20px);
+            z-index: 200;
+            background: rgba(20, 10, 40, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 200, 100, 0.3);
+            border-radius: 30px;
+            padding: clamp(0.3rem, 1vh, 0.5rem) clamp(0.8rem, 2vw, 1.2rem);
+            display: flex;
+            align-items: center;
+            gap: clamp(0.3rem, 1vw, 0.8rem);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 15px rgba(255, 200, 100, 0.2);
+            animation: timeFloat 3s infinite alternate;
+        }
+
+        @keyframes timeFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
+        .moscow-time::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffaa00, #b06ab3, #4568dc, #ffaa00);
+            border-radius: 32px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(5px);
+            animation: timeBorderGlow 3s infinite alternate;
+        }
+
+        @keyframes timeBorderGlow {
+            0% { opacity: 0.3; filter: blur(3px); }
+            100% { opacity: 0.7; filter: blur(8px); }
+        }
+
+        .time-icon {
+            color: #ffd966;
+            font-size: clamp(0.8rem, 3vw, 1.2rem);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .time-display {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .time-city {
+            font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffd966;
+            opacity: 0.8;
+        }
+
+        .time-value {
+            font-size: clamp(0.9rem, 4vw, 1.3rem);
+            font-weight: 600;
+            color: white;
+            line-height: 1.2;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .time-date {
+            font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+            color: #cbb9ff;
+            margin-top: 0.2rem;
+        }
+
+        /* ---------- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ ---------- */
+        .theme-toggle {
+            position: fixed;
+            top: clamp(10px, 2vh, 20px);
+            left: clamp(150px, 25vw, 200px);
+            z-index: 200;
+            background: rgba(20, 10, 40, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 200, 100, 0.3);
+            border-radius: 60px;
+            padding: 0.3rem;
+            display: flex;
+            gap: 0.3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 15px rgba(255, 200, 100, 0.2);
+            animation: toggleFloat 3s infinite alternate;
+        }
+
+        @keyframes toggleFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffaa00, #b06ab3, #4568dc, #ffaa00);
+            border-radius: 62px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(5px);
+            animation: toggleBorderGlow 3s infinite alternate;
+        }
+
+        @keyframes toggleBorderGlow {
+            0% { opacity: 0.3; filter: blur(3px); }
+            100% { opacity: 0.7; filter: blur(8px); }
+        }
+
+        .theme-btn {
+            background: transparent;
+            border: none;
+            width: clamp(30px, 6vw, 40px);
+            height: clamp(30px, 6vw, 40px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #ffd966;
+            position: relative;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.2);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px currentColor;
+        }
+
+        .theme-btn.active {
+            background: rgba(255, 200, 100, 0.2);
+            border: 2px solid #ffaa33;
+            box-shadow: 0 0 30px #ffaa33;
+        }
+
+        .theme-btn.day-btn {
+            color: #ffaa33;
+            text-shadow: 0 0 20px #ffaa33;
+        }
+
+        .theme-btn.night-btn {
+            color: #c0c0ff;
+            text-shadow: 0 0 20px #8f6eff;
+        }
+
+        .theme-btn.day-btn.active {
+            border-color: #ffaa33;
+            box-shadow: 0 0 30px #ffaa33;
+        }
+
+        .theme-btn.night-btn.active {
+            border-color: #8f6eff;
+            box-shadow: 0 0 30px #8f6eff;
+        }
+
+        /* Подсказка для кнопок темы */
+        .theme-btn[data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 10, 40, 0.95);
+            backdrop-filter: blur(4px);
+            color: #e5d0ff;
+            font-size: 0.8rem;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 200, 100, 0.4);
+            white-space: nowrap;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(255, 170, 50, 0.5);
+            pointer-events: none;
+            animation: tooltipAppear 0.2s ease;
+        }
+
+        /* Солнце */
+        .sun {
+            position: fixed;
+            top: min(-30px, -5vh);
+            right: min(-30px, -5vw);
+            width: clamp(120px, 25vw, 200px);
+            height: clamp(120px, 25vw, 200px);
+            z-index: 15;
+            pointer-events: none;
+            animation: sunPulse 8s infinite alternate ease-in-out;
+            transition: all 1s ease;
+        }
+
+        .sun-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff7b0, #ffdd55, #ffaa00);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 80px #ffaa33,
+                0 0 150px #ff8822,
+                0 0 250px #ff5500;
+            filter: blur(2px);
+            animation: sunGlow 4s infinite alternate;
+            transition: all 1s ease;
+        }
+
+        .sun-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            background: radial-gradient(circle, rgba(255, 200, 100, 0.3) 0%, rgba(255, 100, 0, 0) 70%);
+            border-radius: 50%;
+            animation: sunRays 6s infinite linear;
+        }
+
+        .sun-rays::before,
+        .sun-rays::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 20%;
+            background: linear-gradient(90deg, transparent, rgba(255, 180, 50, 0.3), rgba(255, 140, 0, 0.5), rgba(255, 180, 50, 0.3), transparent);
+            border-radius: 50%;
+            filter: blur(10px);
+        }
+
+        .sun-rays::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .sun-rays::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .sun-flare {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 200, 100, 0.2), transparent 70%);
+            border-radius: 50%;
+            animation: sunFlare 7s infinite alternate;
+        }
+
+        @keyframes sunGlow {
+            0% { box-shadow: 0 0 80px #ffaa33, 0 0 150px #ff8822, 0 0 250px #ff5500; }
+            100% { box-shadow: 0 0 120px #ffcc66, 0 0 200px #ffaa33, 0 0 300px #ff7700; }
+        }
+
+        @keyframes sunPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        @keyframes sunRays {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes sunFlare {
+            0% { opacity: 0.4; }
+            100% { opacity: 0.8; }
+        }
+
+        /* Луна */
+        .moon {
+            position: fixed;
+            top: min(-30px, -5vh);
+            right: min(-30px, -5vw);
+            width: clamp(120px, 22vw, 180px);
+            height: clamp(120px, 22vw, 180px);
+            z-index: 15;
+            pointer-events: none;
+            animation: moonFloat 10s infinite alternate ease-in-out;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        body.night-theme .moon {
+            opacity: 1;
+        }
+
+        body.night-theme .sun {
+            opacity: 0;
+        }
+
+        body.day-theme .sun {
+            opacity: 1;
+        }
+
+        body.day-theme .moon {
+            opacity: 0;
+        }
+
+        .moon-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55%;
+            height: 55%;
+            background: radial-gradient(circle at 35% 35%, #f0f0ff, #c0c0e0, #9090c0);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 80px #a0a0ff,
+                0 0 150px #8080ff,
+                inset -20% -20% 30% rgba(0,0,0,0.3);
+            filter: blur(1px);
+            animation: moonGlow 4s infinite alternate;
+        }
+
+        .moon-craters {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55%;
+            height: 55%;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: 
+                inset 15% 15% 20% rgba(0,0,0,0.2),
+                inset -5% -5% 10% rgba(255,255,255,0.1),
+                10% 10% 15% rgba(0,0,0,0.1);
+        }
+
+        .moon-crater {
+            position: absolute;
+            background: rgba(100, 100, 130, 0.4);
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+
+        .moon-crater:nth-child(1) {
+            width: 25%;
+            height: 25%;
+            top: 20%;
+            left: 15%;
+            background: rgba(80, 80, 110, 0.5);
+            box-shadow: inset -3px -3px 5px rgba(255,255,255,0.2);
+        }
+
+        .moon-crater:nth-child(2) {
+            width: 18%;
+            height: 18%;
+            top: 45%;
+            left: 55%;
+            background: rgba(90, 90, 120, 0.5);
+        }
+
+        .moon-crater:nth-child(3) {
+            width: 22%;
+            height: 22%;
+            top: 60%;
+            left: 25%;
+            background: rgba(70, 70, 100, 0.5);
+        }
+
+        .moon-crater:nth-child(4) {
+            width: 15%;
+            height: 15%;
+            top: 15%;
+            left: 65%;
+            background: rgba(85, 85, 115, 0.5);
+        }
+
+        .moon-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(150, 150, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: moonGlowPulse 5s infinite alternate;
+        }
+
+        @keyframes moonFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-5px, -5px) scale(1.02); }
+        }
+
+        @keyframes moonGlow {
+            0% { box-shadow: 0 0 80px #a0a0ff, 0 0 150px #8080ff; }
+            100% { box-shadow: 0 0 100px #b0b0ff, 0 0 200px #9090ff; }
+        }
+
+        @keyframes moonGlowPulse {
+            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* ---------- ОСНОВНОЙ КОНТЕЙНЕР ---------- */
+        .container {
+            position: relative;
+            z-index: 20;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 clamp(0.5rem, 2vw, 2rem);
+        }
+
+        /* шапка */
+        .header {
+            text-align: center;
+            margin-bottom: clamp(1rem, 5vh, 2.5rem);
+            position: relative;
+        }
+
+        .avatar {
+            width: clamp(80px, 15vw, 120px);
+            height: clamp(80px, 15vw, 120px);
+            margin: 0 auto clamp(0.5rem, 3vh, 1.5rem);
+            background: linear-gradient(135deg, #2d1f4a, #130b28);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            border: 3px solid rgba(200, 170, 255, 0.6);
+            box-shadow: 0 0 60px #8f6eff;
+            transition: all 1s ease;
+        }
+
+        body.day-theme .avatar {
+            background: linear-gradient(135deg, #c49b3f, #b3742e);
+            border-color: rgba(255, 200, 100, 0.8);
+            box-shadow: 0 0 60px #ffaa33;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 400;
+            background: linear-gradient(135deg, #ffffff, #e5d0ff, #c2aeff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px #9f7eff;
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+            transition: all 1s ease;
+        }
+
+        body.day-theme h1 {
+            background: linear-gradient(135deg, #fff5e6, #ffd966, #ffb347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 0 0 30px #ffaa33;
+        }
+
+        .subtitle {
+            color: #b09ad0;
+            font-size: clamp(0.8rem, 3vw, 1.2rem);
+            letter-spacing: clamp(2px, 2vw, 8px);
+            text-transform: uppercase;
+            word-spacing: clamp(4px, 2vw, 12px);
+            border-bottom: 1px solid rgba(200, 170, 255, 0.3);
+            padding-bottom: clamp(0.5rem, 3vh, 1.5rem);
+            display: inline-block;
+            transition: all 1s ease;
+        }
+
+        body.day-theme .subtitle {
+            color: #ffd966;
+            border-bottom-color: rgba(255, 200, 100, 0.4);
+        }
+
+        /* ---------- СТРАНИЦЫ ---------- */
+        .pages-container {
+            position: relative;
+            min-height: min(500px, 70vh);
+            margin: clamp(0.5rem, 3vh, 1rem) 0 clamp(1rem, 5vh, 2rem);
+        }
+
+        .page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+            animation: pageAppear 0.6s ease-out;
+        }
+
+        @keyframes pageAppear {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* таблица ссылок */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+            gap: clamp(0.5rem, 2vh, 1.2rem);
+        }
+
+        /* карточка ссылки */
+        .cosmic-card {
+            background: rgba(8, 4, 22, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(180, 140, 255, 0.25);
+            border-radius: min(40px, 8vw);
+            padding: clamp(0.5rem, 2vh, 1rem) clamp(0.8rem, 3vw, 1.5rem);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cosmic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+            pointer-events: none;
+        }
+
+        .cosmic-card:hover::before {
+            left: 100%;
+        }
+
+        .card-icon {
+            font-size: clamp(1.5rem, 6vw, 2.2rem);
+            margin-right: clamp(0.5rem, 2vw, 1.2rem);
+            min-width: clamp(30px, 8vw, 45px);
+            text-align: center;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .card-description {
+            font-size: clamp(0.6rem, 2vw, 0.8rem);
+            opacity: 0.7;
+            color: #cbb9ff;
+        }
+
+        .card-arrow {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            margin-left: clamp(0.3rem, 2vw, 0.8rem);
+            opacity: 0.4;
+            transition: 0.3s;
+            color: #dac5ff;
+        }
+
+        .cosmic-card:hover {
+            background: rgba(35, 18, 59, 0.8);
+            border-color: #c6a6ff;
+            box-shadow: 0 0 35px #b085ff, 0 8px 20px black;
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .cosmic-card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(6px);
+            color: #ffe39c;
+        }
+
+        body.day-theme .cosmic-card:hover {
+            background: rgba(139, 90, 43, 0.8);
+            border-color: #ffaa33;
+            box-shadow: 0 0 35px #ffaa33, 0 8px 20px black;
+        }
+
+        /* ---------- МУЗЫКАЛЬНЫЙ ПЛЕЕР ---------- */
+        .music-player {
+            position: fixed;
+            bottom: clamp(10px, 2vh, 20px);
+            right: clamp(10px, 2vw, 20px);
+            z-index: 100;
+            background: rgba(20, 10, 40, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 200, 100, 0.3);
+            border-radius: 16px;
+            padding: clamp(0.5rem, 2vh, 1rem);
+            width: min(320px, 90vw);
+            max-width: 320px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(147, 112, 219, 0.3);
+            animation: playerFloat 3s infinite alternate;
+        }
+
+        @keyframes playerFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
+        .music-player::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffaa00, #b06ab3, #4568dc, #ffaa00);
+            border-radius: 18px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(5px);
+            animation: playerBorderGlow 3s infinite alternate;
+        }
+
+        @keyframes playerBorderGlow {
+            0% { opacity: 0.3; filter: blur(3px); }
+            100% { opacity: 0.7; filter: blur(8px); }
+        }
+
+        .player-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #e5d0ff;
+        }
+
+        .player-title {
+            font-size: clamp(0.6rem, 2vw, 0.8rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffd966;
+            opacity: 0.9;
+        }
+
+        .player-controls {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .player-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 200, 100, 0.3);
+            color: #ffd966;
+            width: clamp(28px, 6vw, 32px);
+            height: clamp(28px, 6vw, 32px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .player-btn:hover {
+            background: rgba(80, 40, 120, 0.9);
+            border-color: #ffaa33;
+            box-shadow: 0 0 20px #ffaa33;
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .player-btn.active {
+            background: rgba(255, 200, 100, 0.2);
+            border-color: #ffaa33;
+            color: #ffaa33;
+        }
+
+        .yandex-player-container {
+            width: 100%;
+            height: 120px;
+            margin: 0.5rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .yandex-player-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .player-station-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            color: #b09ad0;
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
+        }
+
+        .station-name {
+            color: white;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 120px;
+        }
+
+        .station-icon {
+            color: #ffd966;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .player-volume {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-left: auto;
+        }
+
+        .volume-slider {
+            width: 50px;
+            height: 4px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            background: #ffaa33;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px #ffaa33;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 10px;
+            height: 10px;
+            background: #ffaa33;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px #ffaa33;
+            border: none;
+        }
+
+        .volume-icon {
+            color: #ffd966;
+            font-size: 0.8rem;
+        }
+
+        /* ---------- КНОПКА ОТКЛЮЧЕНИЯ ЗВУКА ---------- */
+        .sound-toggle {
+            position: fixed;
+            bottom: clamp(10px, 2vh, 20px);
+            left: clamp(10px, 2vw, 20px);
+            z-index: 100;
+            background: rgba(20, 10, 40, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 200, 100, 0.3);
+            color: #ffd966;
+            width: clamp(40px, 8vw, 50px);
+            height: clamp(40px, 8vw, 50px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 15px rgba(255, 200, 100, 0.2);
+            animation: soundButtonFloat 3s infinite alternate;
+        }
+
+        .sound-toggle:hover {
+            transform: scale(1.15) translateY(-3px);
+            border-color: #ffaa33;
+            box-shadow: 0 0 30px #ffaa33, 0 8px 15px black;
+            background: rgba(80, 40, 120, 0.9);
+        }
+
+        .sound-toggle.muted {
+            background: rgba(40, 20, 60, 0.7);
+            border-color: rgba(150, 150, 150, 0.3);
+            color: #999;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .sound-toggle.muted:hover {
+            border-color: #ff8888;
+            box-shadow: 0 0 30px #ff8888;
+        }
+
+        @keyframes soundButtonFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
+        .sound-toggle::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffaa00, #ff5500, #ffaa00);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(5px);
+            animation: soundBorderGlow 2s infinite alternate;
+        }
+
+        .sound-toggle.muted::before {
+            background: linear-gradient(45deg, #666, #333, #666);
+        }
+
+        @keyframes soundBorderGlow {
+            0% { opacity: 0.2; filter: blur(3px); }
+            100% { opacity: 0.6; filter: blur(8px); }
+        }
+
+        .sound-wave {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 12px;
+            height: 12px;
+            background: #4caf50;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: soundWavePulse 1.5s infinite;
+        }
+
+        .sound-toggle.muted .sound-wave {
+            background: #f44336;
+            animation: none;
+        }
+
+        @keyframes soundWavePulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .sound-toggle[data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 10, 40, 0.95);
+            backdrop-filter: blur(4px);
+            color: #e5d0ff;
+            font-size: 0.8rem;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 200, 100, 0.4);
+            white-space: nowrap;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(255, 170, 50, 0.5);
+            pointer-events: none;
+            animation: tooltipAppear 0.2s ease;
+        }
+
+        @keyframes tooltipAppear {
+            0% { opacity: 0; transform: translateX(-50%) translateY(-5px); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* ---------- ПАГИНАЦИЯ ---------- */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(0.3rem, 2vw, 1.2rem);
+            margin: clamp(1rem, 5vh, 3rem) 0 clamp(1rem, 3vh, 2rem);
+            flex-wrap: wrap;
+            position: relative;
+            padding: clamp(0.5rem, 2vh, 1rem) clamp(1rem, 4vw, 2rem);
+            background: rgba(10, 5, 20, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 60px;
+            border: 1px solid rgba(180, 140, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(147, 112, 219, 0.3);
+            width: fit-content;
+            max-width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pagination::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffaa00, #b06ab3, #4568dc, #ffaa00);
+            border-radius: 62px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(5px);
+            animation: borderGlow 3s infinite alternate;
+        }
+
+        @keyframes borderGlow {
+            0% { opacity: 0.3; filter: blur(3px); }
+            100% { opacity: 0.7; filter: blur(8px); }
+        }
+
+        .page-btn {
+            background: rgba(20, 10, 40, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(180, 140, 255, 0.4);
+            color: #dac5ff;
+            width: clamp(40px, 8vw, 50px);
+            height: clamp(40px, 8vw, 50px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 15px rgba(147, 112, 219, 0.2);
+            position: relative;
+            overflow: visible;
+        }
+
+        .page-btn[data-tooltip]:hover::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 10, 40, 0.95);
+            backdrop-filter: blur(4px);
+            color: #e5d0ff;
+            font-size: clamp(0.6rem, 2vw, 0.8rem);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 200, 100, 0.4);
+            white-space: nowrap;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(255, 170, 50, 0.5);
+            pointer-events: none;
+            animation: tooltipAppearBottom 0.2s ease;
+            font-weight: normal;
+            text-transform: none;
+        }
+
+        @keyframes tooltipAppearBottom {
+            0% { opacity: 0; transform: translateX(-50%) translateY(5px); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .page-btn:active:not(:disabled) {
+            transform: scale(0.95) translateY(2px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 0 20px #ffaa33;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background: rgba(80, 40, 130, 0.9);
+            border-color: #ffaa33;
+            box-shadow: 0 0 30px #ffaa33, 0 8px 15px black;
+            transform: scale(1.15) translateY(-3px);
+            color: white;
+        }
+
+        .page-btn.active-page {
+            background: linear-gradient(135deg, #8a4fcf, #b46acf);
+            border-color: #ffd966;
+            color: white;
+            box-shadow: 0 0 30px #ffaa33, 0 0 20px #b47aff;
+            font-weight: bold;
+            transform: scale(1.1);
+            animation: activePulse 2s infinite alternate;
+        }
+
+        body.day-theme .page-btn.active-page {
+            background: linear-gradient(135deg, #ffaa33, #ff8c42);
+            border-color: #fff5e6;
+            box-shadow: 0 0 30px #ffaa33, 0 0 20px #ffaa33;
+        }
+
+        @keyframes activePulse {
+            0% { box-shadow: 0 0 30px #ffaa33, 0 0 20px #b47aff; }
+            100% { box-shadow: 0 0 40px #ffbb4d, 0 0 30px #c285ff; }
+        }
+
+        .page-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            filter: grayscale(0.5);
+            transform: scale(0.95);
+        }
+
+        .nav-btn {
+            width: auto;
+            padding: 0 clamp(0.5rem, 3vw, 2rem);
+            border-radius: 40px;
+            font-size: clamp(0.7rem, 2.5vw, 1rem);
+            background: rgba(30, 15, 50, 0.8);
+            border-color: rgba(255, 200, 100, 0.4);
+            letter-spacing: 1px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(80, 40, 120, 0.9);
+            border-color: #ffaa33;
+            box-shadow: 0 0 30px #ffaa33, 0 8px 15px black;
+        }
+
+        .footer {
+            text-align: center;
+            color: #6e5a93;
+            margin-top: clamp(1rem, 5vh, 2rem);
+            padding-top: clamp(0.5rem, 3vh, 2rem);
+            border-top: 1px solid rgba(160, 130, 220, 0.3);
+            font-size: clamp(0.7rem, 2.5vw, 1rem);
+            letter-spacing: 2px;
+            transition: all 1s ease;
+        }
+
+        body.day-theme .footer {
+            color: #b07d44;
+            border-top-color: rgba(255, 170, 51, 0.3);
+        }
+
+        /* Адаптация для очень маленьких экранов */
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            
+            .music-player {
+                padding: 0.5rem;
+            }
+            
+            .station-name {
+                max-width: 80px;
+            }
+            
+            .page-btn[data-tooltip]:hover::before {
+                bottom: -35px;
+                font-size: 0.6rem;
+                padding: 0.2rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="night-theme">
+    <div class="universe">
+        <div class="stars"></div>
+        <div class="stars-big"></div>
+        <div class="nebula-layer"></div>
+        <div class="galaxy"></div>
+    </div>
+
+    <!-- МОСКОВСКОЕ ВРЕМЯ -->
+    <div class="moscow-time" id="moscowTime">
+        <span class="time-icon">⏰</span>
+        <div class="time-display">
+            <span class="time-city">МСК</span>
+            <span class="time-value" id="timeValue">00:00:00</span>
+            <span class="time-date" id="dateValue">01.01.2026</span>
+        </div>
+    </div>
+
+    <!-- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ -->
+    <div class="theme-toggle">
+        <button class="theme-btn day-btn" id="dayThemeBtn" data-tooltip="День (светлая тема)">☀️</button>
+        <button class="theme-btn night-btn active" id="nightThemeBtn" data-tooltip="Ночь (темная тема)">🌙</button>
+    </div>
+
+    <!-- СОЛНЦЕ -->
+    <div class="sun">
+        <div class="sun-core"></div>
+        <div class="sun-rays"></div>
+        <div class="sun-flare"></div>
+    </div>
+
+    <!-- ЛУНА -->
+    <div class="moon">
+        <div class="moon-core">
+            <div class="moon-craters">
+                <div class="moon-crater"></div>
+                <div class="moon-crater"></div>
+                <div class="moon-crater"></div>
+                <div class="moon-crater"></div>
+            </div>
+        </div>
+        <div class="moon-glow"></div>
+    </div>
+
+    <!-- КНОПКА ОТКЛЮЧЕНИЯ ЗВУКА -->
+    <div class="sound-toggle" id="soundToggle" data-tooltip="отключить звук">
+        🔊
+        <span class="sound-wave"></span>
+    </div>
+
+    <!-- МУЗЫКАЛЬНЫЙ ПЛЕЕР -->
+    <div class="music-player" id="musicPlayer">
+        <div class="player-header">
+            <span class="player-title">яндекс музыка</span>
+            <div class="player-controls">
+                <button class="player-btn" id="prevTrackBtn" title="предыдущий трек">⏮️</button>
+                <button class="player-btn" id="nextTrackBtn" title="следующий трек">⏭️</button>
+            </div>
+        </div>
+        
+        <div class="yandex-player-container" id="yandexPlayerContainer">
+            <!-- Сюда будет вставляться iframe Яндекс.Музыки -->
+        </div>
+        
+        <div class="player-station-info">
+            <span class="station-icon">🎵</span>
+            <span class="station-name" id="currentTrackInfo">Космический эмбиент</span>
+            <div class="player-volume">
+                <span class="volume-icon">🔊</span>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="0.3">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="avatar">🌙</div>
+            <h1>РТ МИС</h1>
+            <div class="subtitle">✦ Полезные ссылки ✦</div>
+        </div>
+
+        <!-- Контейнер для страниц -->
+        <div class="pages-container">
+            <!-- Страница 1 -->
+            <div class="page active" id="page1">
+                <div class="links-grid">
+                    <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" class="cosmic-card" target="_blank">
+                        <span class="card-icon">📱</span>
+                        <div class="card-content">
+                            <span class="card-title">Ночные дежурства</span>
+                            <span class="card-description">ДБА, ОЭИР</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="https://confluence.is-mis.ru/calendar/calendarPage.action?spaceKey=RMISOEIR&calendarId=c3cdb4f6-7805-4d8d-baeb-07e75f0c19fd" class="cosmic-card" target="_blank">
+                        <span class="card-icon">📷</span>
+                        <div class="card-content">
+                            <span class="card-title">Дежурство Витрина</span>
+                            <span class="card-description">Ночной дежурный витрины</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=337625078" class="cosmic-card" target="_blank">
+                        <span class="card-icon">🐙</span>
+                        <div class="card-content">
+                            <span class="card-title">Дежурный РМ</span>
+</div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506" class="cosmic-card" target="_blank">
+                        <span class="card-icon">▶️</span>
+                        <div class="card-content">
+                            <span class="card-title">Ночные дежурные</span>
+                            <span class="card-description">график дежурных</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    
+                    </a>
+                </div>
+            </div>
+
+            <!-- Страница 2 -->
+            <div class="page" id="page2">
+                <div class="links-grid">
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">🎵</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">🐦</span>
+                        <div class="card-content">
+                            <span class="card-title">X Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">💬</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">📧</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">🎧</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Страница 3 -->
+            <div class="page" id="page3">
+                <div class="links-grid">
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">📡</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">🪐</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">🔭</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">🌕</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">☄️</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Страница 4 -->
+            <div class="page" id="page4">
+                <div class="links-grid">
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">📚</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">🎓</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">🌍</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">🛸</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                    <a href="#" class="cosmic-card" target="_blank">
+                        <span class="card-icon">⚡</span>
+                        <div class="card-content">
+                            <span class="card-title">Ссылка</span>
+                            <span class="card-description">Ссылка</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Страница 5 - Сайты столбцом в больших окнах -->
+            <div class="page" id="page5">
+                <div style="display: flex; flex-direction: column; gap: clamp(0.5rem, 2vh, 1.5rem); width: 100%;">
+                    
+                    <!-- Сайт 1 - Сброс пароля Госуслуги -->
+                    <div class="cosmic-card" style="flex-direction: column; padding: clamp(0.5rem, 2vh, 1.5rem); width: 100%; cursor: default;">
+                        <div style="display: flex; align-items: center; width: 100%; margin-bottom: clamp(0.3rem, 1vh, 1rem);">
+                            <span class="card-icon" style="font-size: clamp(1.5rem, 5vw, 2.5rem);">🔐</span>
+                            <div class="card-content">
+                                <span class="card-title" style="font-size: clamp(1rem, 3vw, 1.5rem);">Сброс пароля (Госуслуги СКУФ)</span>
+                                <span class="card-description" style="font-size: clamp(0.7rem, 2vw, 1rem);">внутренний сервис</span>
+                            </div>
+                        </div>
+                        <iframe 
+                            src="https://skuf.gosuslugi.ru/arsys/forms/skuf-ar/CTM:PasswordReset/Default+User+View/?cacheid=37a52253&format=html" 
+                            style="width: 100%; height: min(400px, 50vh); border: none; border-radius: 16px; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.5);"
+                            sandbox="allow-same-origin allow-scripts allow-forms allow-popups">
+                        </iframe>
+                        <div style="margin-top: clamp(0.3rem, 1vh, 1rem); font-size: clamp(0.7rem, 2vw, 0.9rem); color: #cbb9ff; text-align: right;">
+                            ⚡ Если не загружается — 
+                            <a href="https://skuf.gosuslugi.ru/arsys/forms/skuf-ar/CTM:PasswordReset/Default+User+View/?cacheid=37a52253&format=html" target="_blank" style="color: #ffaa33; text-decoration: none; border-bottom: 1px solid #ffaa33;">открыть в новой вкладке →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Сайт 2 - Random.org генератор -->
+                    <div class="cosmic-card" style="flex-direction: column; padding: clamp(0.5rem, 2vh, 1.5rem); width: 100%; cursor: default;">
+                        <div style="display: flex; align-items: center; width: 100%; margin-bottom: clamp(0.3rem, 1vh, 1rem);">
+                            <span class="card-icon" style="font-size: clamp(1.5rem, 5vw, 2.5rem);">🎲</span>
+                            <div class="card-content">
+                                <span class="card-title" style="font-size: clamp(1rem, 3vw, 1.5rem);">Генератор паролей</span>
+                                <span class="card-description" style="font-size: clamp(0.7rem, 2vw, 1rem);">Random.org - 5 случайных паролей</span>
+                            </div>
+                        </div>
+                        <iframe 
+                            src="https://www.random.org/passwords/?num=5&len=8&format=html&rnd=new" 
+                            style="width: 100%; height: min(400px, 50vh); border: none; border-radius: 16px; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.5);"
+                            sandbox="allow-same-origin allow-scripts allow-popups">
+                        </iframe>
+                        <div style="margin-top: clamp(0.3rem, 1vh, 1rem); font-size: clamp(0.7rem, 2vw, 0.9rem); color: #cbb9ff; text-align: right;">
+                            <a href="https://www.random.org/passwords/?num=5&len=8&format=html&rnd=new" target="_blank" style="color: #ffaa33; text-decoration: none; border-bottom: 1px solid #ffaa33;">открыть генератор в новой вкладке →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Сайт 3 - Пароль РТ -->
+                    <div class="cosmic-card" style="flex-direction: column; padding: clamp(0.5rem, 2vh, 1.5rem); width: 100%; cursor: default;">
+                        <div style="display: flex; align-items: center; width: 100%; margin-bottom: clamp(0.3rem, 1vh, 1rem);">
+                            <span class="card-icon" style="font-size: clamp(1.5rem, 5vw, 2.5rem);">🛡️</span>
+                            <div class="card-content">
+                                <span class="card-title" style="font-size: clamp(1rem, 3vw, 1.5rem);">Пароль РТ</span>
+                                <span class="card-description" style="font-size: clamp(0.7rem, 2vw, 1rem);">менеджер паролей Ростелеком</span>
+                            </div>
+                        </div>
+                        <iframe 
+                            src="https://pass.soc.rt.ru/#/" 
+                            style="width: 100%; height: min(400px, 50vh); border: none; border-radius: 16px; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.5);"
+                            sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals">
+                        </iframe>
+                        <div style="margin-top: clamp(0.3rem, 1vh, 1rem); font-size: clamp(0.7rem, 2vw, 0.9rem); color: #cbb9ff; text-align: right;">
+                            <a href="https://pass.soc.rt.ru/#/" target="_blank" style="color: #ffaa33; text-decoration: none; border-bottom: 1px solid #ffaa33;">открыть менеджер в новой вкладке →</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- КРАСИВАЯ ПАГИНАЦИЯ -->
+        <div class="pagination">
+            <button class="page-btn nav-btn" id="prevPage" disabled data-tooltip="предыдущая страница">← назад</button>
+            
+            <button class="page-btn active-page" data-page="1" data-tooltip="Дежурство">1</button>
+            <button class="page-btn" data-page="2" data-tooltip="Работа">2</button>
+            <button class="page-btn" data-page="3" data-tooltip="Работа">3</button>
+            <button class="page-btn" data-page="4" data-tooltip="Работа">4</button>
+            <button class="page-btn" data-page="5" data-tooltip="Работа">5</button>
+            
+            <button class="page-btn nav-btn" id="nextPage" data-tooltip="следующая страница">вперед →</button>
+        </div>
+
+        <div class="footer">
+            <span>⚡ Создано для Мониторинга ⚡</span>
+        </div>
+    </div>
+
+    <script>
+        // Пагинация
+        const pages = document.querySelectorAll('.page');
+        const pageBtns = document.querySelectorAll('.page-btn[data-page]');
+        const prevBtn = document.getElementById('prevPage');
+        const nextBtn = document.getElementById('nextPage');
+        const soundToggle = document.getElementById('soundToggle');
+        
+        let currentPage = 1;
+        const totalPages = 5;
+        
+        // Состояние звука
+        let soundEnabled = true;
+
+        // Переключение темы День/Ночь
+        const dayThemeBtn = document.getElementById('dayThemeBtn');
+        const nightThemeBtn = document.getElementById('nightThemeBtn');
+        const body = document.body;
+
+        dayThemeBtn.addEventListener('click', () => {
+            body.classList.remove('night-theme');
+            body.classList.add('day-theme');
+            dayThemeBtn.classList.add('active');
+            nightThemeBtn.classList.remove('active');
+            
+            // Меняем эмодзи в аватаре
+            document.querySelector('.avatar').textContent = '☀️';
+            
+            // Воспроизводим новый глухой звук
+            playMuffledSound();
+        });
+
+        nightThemeBtn.addEventListener('click', () => {
+            body.classList.remove('day-theme');
+            body.classList.add('night-theme');
+            nightThemeBtn.classList.add('active');
+            dayThemeBtn.classList.remove('active');
+            
+            // Меняем эмодзи в аватаре
+            document.querySelector('.avatar').textContent = '🌙';
+            
+            // Воспроизводим новый глухой звук
+            playMuffledSound();
+        });
+
+        // Создаем аудио контекст для генерации звуков
+        let audioContext = null;
+        
+        // Функция для воспроизведения глухого звука
+        function playMuffledSound() {
+            if (!soundEnabled) return;
+            
+            try {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                
+                // Создаем более глухой звук
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                const filter = audioContext.createBiquadFilter();
+                
+                // Настройки для глухого звука
+                oscillator.type = 'sawtooth'; // Более резкий, но фильтр сделает его глухим
+                oscillator.frequency.setValueAtTime(150, audioContext.currentTime); // Низкая частота
+                
+                // Низкочастотный фильтр для глухого звука
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(300, audioContext.currentTime); // Обрезаем высокие частоты
+                filter.Q.setValueAtTime(2, audioContext.currentTime); // Немного резонанса
+                
+                // Настраиваем громкость
+                gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
+                
+                // Подключаем: oscillator -> filter -> gain -> destination
+                oscillator.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                // Добавляем второй слой для объема
+                setTimeout(() => {
+                    if (audioContext && audioContext.state === 'running' && soundEnabled) {
+                        const oscillator2 = audioContext.createOscillator();
+                        const gainNode2 = audioContext.createGain();
+                        const filter2 = audioContext.createBiquadFilter();
+                        
+                        oscillator2.type = 'triangle';
+                        oscillator2.frequency.setValueAtTime(100, audioContext.currentTime);
+                        
+                        filter2.type = 'lowpass';
+                        filter2.frequency.setValueAtTime(200, audioContext.currentTime);
+                        
+                        gainNode2.gain.setValueAtTime(0.1, audioContext.currentTime);
+                        gainNode2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.25);
+                        
+                        oscillator2.connect(filter2);
+                        filter2.connect(gainNode2);
+                        gainNode2.connect(audioContext.destination);
+                        
+                        oscillator2.start();
+                        oscillator2.stop(audioContext.currentTime + 0.25);
+                    }
+                }, 50);
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.2);
+                
+            } catch (e) {
+                console.log('Звук не поддерживается в этом браузере');
+            }
+        }
+
+        // Функция для создания метеорита
+        function createMeteor() {
+            const meteor = document.createElement('div');
+            meteor.className = 'meteor';
+            
+            // Случайная начальная позиция (сверху за экраном)
+            const startX = Math.random() * 100; // % от ширины экрана
+            meteor.style.left = startX + '%';
+            meteor.style.top = '-20px';
+            
+            // Случайная длительность падения (2-4 секунды)
+            const duration = 2 + Math.random() * 2;
+            meteor.style.animation = `meteorFall ${duration}s linear forwards`;
+            
+            // Случайный размер
+            const size = 2 + Math.random() * 4;
+            meteor.style.width = size + 'px';
+            meteor.style.height = size + 'px';
+            
+            document.querySelector('.universe').appendChild(meteor);
+            
+            // Удаляем метеорит после анимации
+            setTimeout(() => {
+                meteor.remove();
+            }, duration * 1000);
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            
+            if (soundEnabled) {
+                soundToggle.classList.remove('muted');
+                soundToggle.innerHTML = '🔊 <span class="sound-wave"></span>';
+                soundToggle.setAttribute('data-tooltip', 'отключить звук');
+                playMuffledSound();
+            } else {
+                soundToggle.classList.add('muted');
+                soundToggle.innerHTML = '🔇 <span class="sound-wave"></span>';
+                soundToggle.setAttribute('data-tooltip', 'включить звук');
+                
+                if (audioContext && audioContext.state === 'running') {
+                    audioContext.suspend();
+                }
+            }
+        }
+
+        function showPage(pageNumber) {
+            playMuffledSound();
+            
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            const activePage = document.getElementById(`page${pageNumber}`);
+            if (activePage) {
+                activePage.classList.add('active');
+            }
+            
+            pageBtns.forEach(btn => {
+                btn.classList.remove('active-page');
+                if (parseInt(btn.dataset.page) === pageNumber) {
+                    btn.classList.add('active-page');
+                }
+            });
+            
+            prevBtn.disabled = (pageNumber === 1);
+            nextBtn.disabled = (pageNumber === totalPages);
+            
+            currentPage = pageNumber;
+        }
+
+        pageBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const pageNum = parseInt(this.dataset.page);
+                showPage(pageNum);
+            });
+        });
+
+        prevBtn.addEventListener('click', function() {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        });
+
+        nextBtn.addEventListener('click', function() {
+            if (currentPage < totalPages) {
+                showPage(currentPage + 1);
+            }
+        });
+
+        soundToggle.addEventListener('click', toggleSound);
+
+        document.querySelectorAll('.page-btn, .theme-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                if (audioContext && audioContext.state === 'suspended' && soundEnabled) {
+                    audioContext.resume();
+                }
+            }, { once: true });
+        });
+
+        showPage(1);
+
+        // Функция обновления московского времени
+        function updateMoscowTime() {
+            const now = new Date();
+            
+            // Получаем текущий часовой пояс пользователя
+            const userTimezoneOffset = now.getTimezoneOffset();
+            
+            // Москва UTC+3 (смещение в минутах: -180)
+            const moscowOffset = -180;
+            
+            // Разница между московским и местным временем
+            const diffMinutes = moscowOffset + userTimezoneOffset;
+            
+            // Создаем новую дату с московским временем
+            const moscowTime = new Date(now.getTime() + diffMinutes * 60 * 1000);
+            
+            // Форматируем время
+            const hours = moscowTime.getUTCHours().toString().padStart(2, '0');
+            const minutes = moscowTime.getUTCMinutes().toString().padStart(2, '0');
+            const seconds = moscowTime.getUTCSeconds().toString().padStart(2, '0');
+            
+            // Форматируем дату
+            const day = moscowTime.getUTCDate().toString().padStart(2, '0');
+            const month = (moscowTime.getUTCMonth() + 1).toString().padStart(2, '0');
+            const year = moscowTime.getUTCFullYear();
+            
+            document.getElementById('timeValue').textContent = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('dateValue').textContent = `${day}.${month}.${year}`;
+        }
+
+        // Обновляем время каждую секунду
+        setInterval(updateMoscowTime, 1000);
+        updateMoscowTime(); // сразу показываем время
+        
+        // Запускаем метеориты раз в 15 секунд
+        setInterval(createMeteor, 15000);
+        // Создаем первый метеорит через 5 секунд после загрузки
+        setTimeout(createMeteor, 5000);
+    </script>
+    
+    <!-- Плеер Яндекс.Музыки -->
+    <script>
+        // Плейлисты Яндекс.Музыки с космической музыкой
+        const yandexPlaylists = [
+            {
+                name: "Музыка звезд",
+                url: "https://music.yandex.ru/iframe/#playlist/yamusic-bestsongs/788938",
+                trackInfo: "Космический микс"
+            },
+            {
+                name: "Space Ambient",
+                url: "https://music.yandex.ru/iframe/#album/7561640",
+                trackInfo: "Ambient Space - Jon Hansson"
+            },
+            {
+                name: "Space Noise",
+                url: "https://music.yandex.ru/iframe/#track/110168167",
+                trackInfo: "Space Noise - Evolia"
+            },
+            {
+                name: "Космический эмбиент",
+                url: "https://music.yandex.ru/iframe/#playlist/yamusic-bestsongs/788938",
+                trackInfo: "Космическая музыка"
+            }
+        ];
+        
+        let currentPlaylistIndex = 0;
+        const container = document.getElementById('yandexPlayerContainer');
+        const trackInfoEl = document.getElementById('currentTrackInfo');
+        
+        function loadPlaylist(index) {
+            const playlist = yandexPlaylists[index];
+            container.innerHTML = '';
+            
+            const iframe = document.createElement('iframe');
+            let embedUrl = playlist.url;
+            if (!embedUrl.includes('iframe')) {
+                embedUrl = embedUrl.replace('music.yandex.ru', 'music.yandex.ru/iframe');
+            }
+            
+            iframe.src = embedUrl;
+            iframe.width = "100%";
+            iframe.height = "100%";
+            iframe.frameBorder = "0";
+            iframe.allow = "autoplay *; fullscreen *;";
+            iframe.style.border = "none";
+            iframe.style.borderRadius = "8px";
+            
+            container.appendChild(iframe);
+            trackInfoEl.textContent = playlist.trackInfo;
+            currentPlaylistIndex = index;
+        }
+        
+        document.getElementById('nextTrackBtn').addEventListener('click', function() {
+            currentPlaylistIndex = (currentPlaylistIndex + 1) % yandexPlaylists.length;
+            loadPlaylist(currentPlaylistIndex);
+        });
+        
+        document.getElementById('prevTrackBtn').addEventListener('click', function() {
+            currentPlaylistIndex = (currentPlaylistIndex - 1 + yandexPlaylists.length) % yandexPlaylists.length;
+            loadPlaylist(currentPlaylistIndex);
+        });
+        
+        const volumeSlider = document.getElementById('volumeSlider');
+        volumeSlider.addEventListener('input', function(e) {
+            const volume = e.target.value;
+            console.log('Громкость:', volume);
+        });
+        
+        loadPlaylist(0);
+    </script>
+</body>
+</html>
