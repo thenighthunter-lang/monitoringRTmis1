@@ -1553,7 +1553,7 @@
     <div class="container">
         <div class="header">
             <div class="avatar">🌙</div>
-            <h1>РТ МИС</h1>
+            <h1>Дежурная Смена</h1>
             <div class="subtitle">✦ Полезные ссылки ✦</div>
         </div>
 
@@ -1563,14 +1563,14 @@
             <div class="page active" id="page1">
                 <!-- Три сворачиваемые таблицы в ряд -->
                 <div class="tables-row">
-                    <!-- Таблица ОЭИР -->
+                    <!-- Таблица ДБА -->
                     <div class="table-column">
                         <div class="collapsible-section" id="oeirSection">
-                            <div class="section-header" id="oeirHeader">
-                                <h3>✦ ОЭИР ✦</h3>
+                            <div class="section-header collapsed" id="oeirHeader">
+                                <h3>✦ ДБА ✦</h3>
                                 <span class="collapse-icon">▼</span>
                             </div>
-                            <div class="section-content" id="oeirContent">
+                            <div class="section-content collapsed" id="oeirContent">
                                 <table class="info-table">
                                     <thead>
                                         <tr>
@@ -1611,14 +1611,14 @@
                         </div>
                     </div>
 
-                    <!-- Таблица ДБА -->
+                    <!-- Таблица ОЭИР -->
                     <div class="table-column">
                         <div class="collapsible-section" id="dbaSection">
-                            <div class="section-header" id="dbaHeader">
-                                <h3>✦ ДБА ✦</h3>
+                            <div class="section-header collapsed" id="dbaHeader">
+                                <h3>✦ ОЭИР ✦</h3>
                                 <span class="collapse-icon">▼</span>
                             </div>
-                            <div class="section-content" id="dbaContent">
+                            <div class="section-content collapsed" id="dbaContent">
                                 <table class="info-table">
                                     <thead>
                                         <tr>
@@ -1652,11 +1652,11 @@
                     <!-- Таблица ОЭИР Витрина -->
                     <div class="table-column">
                         <div class="collapsible-section" id="vitrinaSection">
-                            <div class="section-header" id="vitrinaHeader">
+                            <div class="section-header collapsed" id="vitrinaHeader">
                                 <h3>✦ ОЭИР Витрина ✦</h3>
                                 <span class="collapse-icon">▼</span>
                             </div>
-                            <div class="section-content" id="vitrinaContent">
+                            <div class="section-content collapsed" id="vitrinaContent">
                                 <table class="info-table">
                                     <thead>
                                         <tr>
@@ -1693,11 +1693,21 @@
                     <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" class="cosmic-card" target="_blank">
                         <span class="card-icon">📱</span>
                         <div class="card-content">
-                            <span class="card-title">Ночные дежурства</span>
-                            <span class="card-description">ДБА, ОЭИР</span>
+                            <span class="card-title">Дежурные</span>
+                            <span class="card-description">ДБА, ОЭИР, 1,5ДБА</span>
                         </div>
                         <span class="card-arrow">→</span>
                     </a>
+
+<a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" class="cosmic-card" target="_blank">
+                        <span class="card-icon">📱</span>
+                        <div class="card-content">
+                            <span class="card-title">Дежурные</span>
+                            <span class="card-description">ДБА, ОЭИР, 1,5ДБА</span>
+                        </div>
+                        <span class="card-arrow">→</span>
+                    </a>
+
                     <a href="https://confluence.is-mis.ru/calendar/calendarPage.action?spaceKey=RMISOEIR&calendarId=c3cdb4f6-7805-4d8d-baeb-07e75f0c19fd" class="cosmic-card" target="_blank">
                         <span class="card-icon">📷</span>
                         <div class="card-content">
@@ -1942,8 +1952,12 @@
         </div>
 
         <div class="footer">
-            <span>⚡ Создано для Мониторинга ⚡</span>
+            <span>⚡ Создано для Дежурной смены ⚡</span>
+           <br>
+            <span>⚡ Просьба задонатить разработчикам по 100 руб, Спасиба ⚡</span>
+           </br>
         </div>
+       
     </div>
 
     <script>
@@ -2362,10 +2376,10 @@
             const dbaIcon = dbaHeader.querySelector('.collapse-icon');
             const vitrinaIcon = vitrinaHeader.querySelector('.collapse-icon');
             
-            // Состояние по умолчанию - развернуто
-            let oeirCollapsed = false;
-            let dbaCollapsed = false;
-            let vitrinaCollapsed = false;
+            // Состояние по умолчанию - свернуто
+            let oeirCollapsed = true;
+            let dbaCollapsed = true;
+            let vitrinaCollapsed = true;
             
             oeirHeader.addEventListener('click', function() {
                 oeirCollapsed = !oeirCollapsed;
