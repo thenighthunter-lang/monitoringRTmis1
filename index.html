@@ -228,7 +228,7 @@
         .theme-toggle {
             position: fixed;
             top: clamp(10px, 2vh, 20px);
-            left: clamp(10px, 2vw, 20px);
+            right: clamp(10px, 2vw, 20px);
             z-index: 200;
             background: rgba(20, 10, 40, 0.7);
             backdrop-filter: blur(8px);
@@ -898,6 +898,21 @@
             min-width: 420px;
         }
 
+        /* Центрированная таблица */
+        .centered-table {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: clamp(2rem, 5vh, 3rem) 0;
+        }
+
+        .centered-table .collapsible-section {
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         body.day-theme .collapsible-section {
             background: rgba(80, 40, 120, 0.3);
             border-color: rgba(255, 200, 100, 0.4);
@@ -1429,10 +1444,10 @@
         <div class="galaxy"></div>
     </div>
 
-    <!-- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ (на том же месте) -->
+    <!-- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ (справа) -->
     <div class="theme-toggle">
-        <button class="theme-btn day-btn" id="dayThemeBtn" data-tooltip="День (светлая тема)">☀️</button>
-        <button class="theme-btn night-btn active" id="nightThemeBtn" data-tooltip="Ночь (темная тема)">🌙</button>
+        <button class="theme-btn day-btn" id="dayThemeBtn" data-tooltip="День">☀️</button>
+        <button class="theme-btn night-btn active" id="nightThemeBtn" data-tooltip="Ночь">🌙</button>
     </div>
 
     <!-- СОЛНЦЕ -->
@@ -1650,6 +1665,46 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Таблица СМ по центру -->
+                <div class="centered-table">
+                    <div class="collapsible-section" id="smSection">
+                        <div class="section-header collapsed" id="smHeader">
+                            <h3>✦ СМ ✦</h3>
+                            <span class="collapse-icon">▼</span>
+                        </div>
+                        <div class="section-content collapsed" id="smContent">
+                            <div class="subsection">
+                                <table class="info-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ФИО</th>
+                                            <th>Телефон</th>
+                                            <th>График</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Смирнов Сергей</td>
+                                            <td>8 999 789-01-23</td>
+                                            <td>09:00 - 18:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Кузнецов Дмитрий</td>
+                                            <td>8 999 890-12-34</td>
+                                            <td>10:00 - 19:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Васильев Андрей</td>
+                                            <td>8 999 901-23-45</td>
+                                            <td>08:00 - 17:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -2301,14 +2356,18 @@
         function initCollapsibleSections() {
             const dbaHeader = document.getElementById('dbaHeader');
             const oeirHeader = document.getElementById('oeirHeader');
+            const smHeader = document.getElementById('smHeader');
             const dbaContent = document.getElementById('dbaContent');
             const oeirContent = document.getElementById('oeirContent');
+            const smContent = document.getElementById('smContent');
             const dbaIcon = dbaHeader.querySelector('.collapse-icon');
             const oeirIcon = oeirHeader.querySelector('.collapse-icon');
+            const smIcon = smHeader.querySelector('.collapse-icon');
             
             // Состояние по умолчанию - свернуто
             let dbaCollapsed = true;
             let oeirCollapsed = true;
+            let smCollapsed = true;
             
             dbaHeader.addEventListener('click', function() {
                 dbaCollapsed = !dbaCollapsed;
@@ -2333,6 +2392,19 @@
                     oeirContent.classList.remove('collapsed');
                     oeirHeader.classList.remove('collapsed');
                     oeirIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            smHeader.addEventListener('click', function() {
+                smCollapsed = !smCollapsed;
+                if (smCollapsed) {
+                    smContent.classList.add('collapsed');
+                    smHeader.classList.add('collapsed');
+                    smIcon.style.transform = 'rotate(-90deg)';
+                } else {
+                    smContent.classList.remove('collapsed');
+                    smHeader.classList.remove('collapsed');
+                    smIcon.style.transform = 'rotate(0deg)';
                 }
             });
         }
