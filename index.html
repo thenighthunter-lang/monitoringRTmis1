@@ -1101,7 +1101,7 @@
         .info-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 500px;
+            min-width: 600px;
         }
 
         .info-table th {
@@ -1122,7 +1122,50 @@
             font-size: clamp(1rem, 2.2vw, 1.15rem);
             line-height: 1.5;
             word-break: break-word;
-            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .phone-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .phone-numbers {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .copy-btn {
+            background: rgba(255, 200, 100, 0.2);
+            border: 1px solid #ffd966;
+            color: #ffd966;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover {
+            background: #ffaa33;
+            border-color: white;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ffaa33;
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+            border-color: white;
+            color: white;
         }
 
         .info-table tr:last-child td {
@@ -1141,6 +1184,39 @@
 
         .info-table tbody tr:hover td {
             background: rgba(180, 140, 255, 0.1);
+        }
+
+        .info-table tbody tr:hover .copy-btn {
+            background: rgba(255, 200, 100, 0.3);
+        }
+
+        /* Уведомление о копировании */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(20, 10, 40, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid #ffaa33;
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            color: white;
+            font-size: 1rem;
+            z-index: 2000;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px #ffaa33;
+        }
+
+        .copy-notification.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .copy-notification span {
+            color: #ffaa33;
+            font-weight: 600;
         }
 
         /* Две колонки для таблиц */
@@ -1166,7 +1242,7 @@
 
         .centered-table .collapsible-section {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -1192,6 +1268,17 @@
         body.day-theme .subsection-title {
             color: #ffaa33;
             border-bottom-color: rgba(255, 170, 51, 0.3);
+        }
+
+        body.day-theme .copy-btn {
+            background: rgba(255, 170, 51, 0.2);
+            border-color: #ffaa33;
+            color: #ffaa33;
+        }
+
+        body.day-theme .copy-btn:hover {
+            background: #ffaa33;
+            color: #1a0b2e;
         }
 
         /* ---------- МУЗЫКАЛЬНЫЙ ПЛЕЕР ---------- */
@@ -1723,6 +1810,11 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
+
+            .phone-cell {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -1846,6 +1938,11 @@
         </div>
     </div>
 
+    <!-- Уведомление о копировании -->
+    <div class="copy-notification" id="copyNotification">
+        Номер <span id="copiedNumber"></span> скопирован!
+    </div>
+
     <div class="container">
         <div class="header">
             <div class="avatar">🌙</div>
@@ -1881,27 +1978,58 @@
                                         <tbody>
                                             <tr>
                                                 <td>Кулигин Павел</td>
-                                                <td>8 950 586-14-34</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">8 950 586-14-34</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 950 586-14-34', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>09:00 - 18:00</td>
                                             </tr>
                                             <tr>
                                                 <td>Волчихин Данила</td>
-                                                <td>8 903 903-63-63<br>8 906 906-63-63</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">
+                                                            8 903 903-63-63<br>
+                                                            8 906 906-63-63
+                                                        </div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 903 903-63-63 или 8 906 906-63-63', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>06:00 - 15:00</td>
                                             </tr>
                                             <tr>
                                                 <td>Шилов Алексей</td>
-                                                <td>8 950 466-80-35<br>8 905 864-56-35</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">
+                                                            8 950 466-80-35<br>
+                                                            8 905 864-56-35
+                                                        </div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 950 466-80-35 или 8 905 864-56-35', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>05:30 - 14:30</td>
                                             </tr>
                                             <tr>
                                                 <td>Сакенко Олег</td>
-                                                <td>8 913 614-49-96</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">8 913 614-49-96</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 913 614-49-96', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>10:00 - 19:00</td>
                                             </tr>
                                             <tr>
                                                 <td>Ефремов Дмитрий</td>
-                                                <td>8 923 738-78-39</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">8 923 738-78-39</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 923 738-78-39', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>06:00 - 15:00</td>
                                             </tr>
                                         </tbody>
@@ -1922,17 +2050,32 @@
                                         <tbody>
                                             <tr>
                                                 <td>Веселков Андрей</td>
-                                                <td>8 909 104-63-77</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">8 909 104-63-77</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 909 104-63-77', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>05:30 - 14:30</td>
                                             </tr>
                                             <tr>
                                                 <td>Попов Юрий</td>
-                                                <td>8 951 705-47-81</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">8 951 705-47-81</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 951 705-47-81', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>07:00 - 16:00</td>
                                             </tr>
                                             <tr>
                                                 <td>Митюшин Роман</td>
-                                                <td>8 963 015-82-27</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">8 963 015-82-27</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 963 015-82-27', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>07:00 - 16:00</td>
                                             </tr>
                                         </tbody>
@@ -1963,19 +2106,104 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Иванов Иван</td>
-                                                <td>8 999 123-45-67</td>
-                                                <td>09:00 - 18:00</td>
+                                                <td>Астафьев Андрей</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">89030225078</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('89030225078', this)">📋</button>
+                                                    </div>
+                                                </td>
+                                                <td>07:00 - 16:00</td>
                                             </tr>
                                             <tr>
-                                                <td>Петров Петр</td>
-                                                <td>8 999 234-56-78</td>
-                                                <td>10:00 - 19:00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Сидоров Сидор</td>
-                                                <td>8 999 345-67-89</td>
+                                                <td>Вильданов Александр</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">89220461325</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('89220461325', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>08:00 - 17:00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Власенко Матвей</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">89226400123</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('89226400123', this)">📋</button>
+                                                    </div>
+                                                </td>
+                                                <td>07:00 - 16:00</td>
+                                            </tr>
+                                                 <tr>
+                                                <td>Зверев Владислав</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">89194992682</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('89194992682', this)">📋</button>
+                                                    </div>
+                                                </td>
+                                                <td>07:00 - 16:00</td>
+                                            </tr>
+                                                 <tr>
+                                                <td>Литвин Василий</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">89963773310</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('89963773310', this)">📋</button>
+                                                    </div>
+                                                </td>
+                                                <td>05:00 - 14:00</td>
+                                            </tr>
+                                                 <tr>
+                                                <td>Невидимов Иван</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">89514516369</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('89514516369', this)">📋</button>
+                                                    </div>
+                                                </td>
+                                                <td>07:00 - 16:00</td>
+                                            </tr>
+                                                  <tr>
+                                                <td>Сапожников Кирилл</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">89247181699</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('89247181699', this)">📋</button>
+                                                    </div>
+                                                </td>
+                                                <td>05:00 - 14:00</td>
+                                            </tr>
+                                                 <tr>
+                                                <td>Чемерик Дмитрий</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">89024727716</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('89024727716', this)">📋</button>
+                                                    </div>
+                                                </td>
+                                                <td>07:00 - 16:00</td>
+                                            </tr>
+                                                <tr>
+                                                <td>Шевырин Михаил</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">89026409856</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('89026409856', this)">📋</button>
+                                                    </div>
+                                                </td>
+                                                <td>07:00 - 16:00</td>
+                                            </tr>
+                                               <tr>
+                                                <td>Юденков Алексей</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">89134806213</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('89134806213', this)">📋</button>
+                                                    </div>
+                                                </td>
+                                                <td>05:00 - 14:00</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1995,17 +2223,32 @@
                                         <tbody>
                                             <tr>
                                                 <td>Алексеев Алексей</td>
-                                                <td>8 999 456-78-90</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">8 999 456-78-90</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 999 456-78-90', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>09:00 - 18:00</td>
                                             </tr>
                                             <tr>
                                                 <td>Михайлов Михаил</td>
-                                                <td>8 999 567-89-01</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">8 999 567-89-01</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 999 567-89-01', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>11:00 - 20:00</td>
                                             </tr>
                                             <tr>
                                                 <td>Николаев Николай</td>
-                                                <td>8 999 678-90-12</td>
+                                                <td>
+                                                    <div class="phone-cell">
+                                                        <div class="phone-numbers">8 999 678-90-12</div>
+                                                        <button class="copy-btn" onclick="copyToClipboard('8 999 678-90-12', this)">📋</button>
+                                                    </div>
+                                                </td>
                                                 <td>07:00 - 16:00</td>
                                             </tr>
                                         </tbody>
@@ -2036,17 +2279,32 @@
                                     <tbody>
                                         <tr>
                                             <td>Смирнов Сергей</td>
-                                            <td>8 999 789-01-23</td>
+                                            <td>
+                                                <div class="phone-cell">
+                                                    <div class="phone-numbers">8 999 789-01-23</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('8 999 789-01-23', this)">📋</button>
+                                                </div>
+                                            </td>
                                             <td>09:00 - 18:00</td>
                                         </tr>
                                         <tr>
                                             <td>Кузнецов Дмитрий</td>
-                                            <td>8 999 890-12-34</td>
+                                            <td>
+                                                <div class="phone-cell">
+                                                    <div class="phone-numbers">8 999 890-12-34</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('8 999 890-12-34', this)">📋</button>
+                                                </div>
+                                            </td>
                                             <td>10:00 - 19:00</td>
                                         </tr>
                                         <tr>
                                             <td>Васильев Андрей</td>
-                                            <td>8 999 901-23-45</td>
+                                            <td>
+                                                <div class="phone-cell">
+                                                    <div class="phone-numbers">8 999 901-23-45</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('8 999 901-23-45', this)">📋</button>
+                                                </div>
+                                            </td>
                                             <td>08:00 - 17:00</td>
                                         </tr>
                                     </tbody>
@@ -2329,6 +2587,34 @@
     </div>
 
     <script>
+        // Функция копирования в буфер обмена
+        function copyToClipboard(text, button) {
+            // Создаем временный элемент
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            // Показываем уведомление
+            const notification = document.getElementById('copyNotification');
+            const numberSpan = document.getElementById('copiedNumber');
+            numberSpan.textContent = text;
+            notification.classList.add('show');
+            
+            // Добавляем эффект на кнопку
+            button.classList.add('copied');
+            button.textContent = '✓';
+            
+            // Убираем уведомление и эффект через 2 секунды
+            setTimeout(() => {
+                notification.classList.remove('show');
+                button.classList.remove('copied');
+                button.textContent = '📋';
+            }, 2000);
+        }
+
         // Функция для создания МКС
         function createISS() {
             const iss = document.createElement('div');
