@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>РТ МИС - Полезные ссылки</title>
+    <!-- Иконка вкладки с красивыми буквами RT -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='10' y='70' font-size='70' font-family='Arial, sans-serif' font-weight='bold' fill='%23ffaa33' stroke='%238f6eff' stroke-width='2'>RT</text></svg>">
     <style>
         * {
             margin: 0;
@@ -647,7 +649,7 @@
         .container {
             position: relative;
             z-index: 20;
-            max-width: 1200px;
+            max-width: 1400px;
             width: 100%;
             margin: 0 auto;
             padding: 0 clamp(0.5rem, 2vw, 2rem);
@@ -836,6 +838,148 @@
             box-shadow: 0 0 35px #ffaa33, 0 8px 20px black;
         }
 
+        /* Сворачиваемые таблицы */
+        .collapsible-section {
+            background: rgba(8, 4, 22, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(180, 140, 255, 0.25);
+            border-radius: min(20px, 4vw);
+            margin-bottom: clamp(1rem, 3vh, 1.5rem);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: fit-content;
+        }
+
+        .collapsible-section:hover {
+            border-color: #c6a6ff;
+            box-shadow: 0 0 20px #b085ff;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: clamp(0.8rem, 2vh, 1.2rem) clamp(1rem, 3vw, 1.5rem);
+            cursor: pointer;
+            background: rgba(20, 10, 40, 0.4);
+            border-bottom: 1px solid rgba(180, 140, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .section-header:hover {
+            background: rgba(80, 40, 120, 0.3);
+        }
+
+        .section-header h3 {
+            color: #ffd966;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(255, 200, 100, 0.3);
+        }
+
+        .collapse-icon {
+            color: #ffd966;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            transition: transform 0.3s ease;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-header.collapsed .collapse-icon {
+            transform: rotate(-90deg);
+        }
+
+        .section-content {
+            padding: clamp(1rem, 2vh, 1.5rem);
+            transition: all 0.3s ease;
+            overflow-x: auto;
+        }
+
+        .section-content.collapsed {
+            display: none;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 400px;
+        }
+
+        .info-table th {
+            color: #cbb9ff;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-weight: 500;
+            padding: clamp(0.6rem, 1.5vh, 1rem) clamp(0.8rem, 2vw, 1.5rem);
+            text-align: left;
+            border-bottom: 1px solid rgba(180, 140, 255, 0.3);
+            background: rgba(20, 10, 40, 0.3);
+            white-space: nowrap;
+        }
+
+        .info-table td {
+            padding: clamp(0.6rem, 1.5vh, 1rem) clamp(0.8rem, 2vw, 1.5rem);
+            border-bottom: 1px solid rgba(180, 140, 255, 0.1);
+            color: white;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .info-table td:first-child,
+        .info-table th:first-child {
+            padding-left: 0;
+        }
+
+        .info-table td:last-child,
+        .info-table th:last-child {
+            padding-right: 0;
+        }
+
+        .info-table tbody tr:hover td {
+            background: rgba(180, 140, 255, 0.1);
+        }
+
+        /* Три колонки для таблиц */
+        .tables-row {
+            display: flex;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            margin-bottom: clamp(2rem, 5vh, 3rem);
+            flex-wrap: wrap;
+        }
+
+        .table-column {
+            flex: 1 1 350px;
+            min-width: 320px;
+        }
+
+        body.day-theme .collapsible-section {
+            background: rgba(80, 40, 120, 0.3);
+            border-color: rgba(255, 200, 100, 0.4);
+        }
+
+        body.day-theme .section-header {
+            background: rgba(100, 60, 140, 0.4);
+        }
+
+        body.day-theme .section-header h3 {
+            color: #ffaa33;
+        }
+
+        body.day-theme .info-table th {
+            background: rgba(100, 60, 140, 0.3);
+            color: #ffd966;
+        }
+
         /* ---------- МУЗЫКАЛЬНЫЙ ПЛЕЕР ---------- */
         .music-player {
             position: fixed;
@@ -852,6 +996,9 @@
             max-width: 320px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(147, 112, 219, 0.3);
             animation: playerFloat 3s infinite alternate;
+            cursor: move;
+            user-select: none;
+            touch-action: none;
         }
 
         @keyframes playerFloat {
@@ -936,6 +1083,7 @@
             border-radius: 12px;
             overflow: hidden;
             background: rgba(0, 0, 0, 0.3);
+            pointer-events: auto;
         }
 
         .yandex-player-container iframe {
@@ -1317,6 +1465,14 @@
                 font-size: 0.6rem;
                 padding: 0.2rem 0.5rem;
             }
+            
+            .info-table {
+                min-width: 300px;
+            }
+            
+            .table-column {
+                min-width: 280px;
+            }
         }
     </style>
 </head>
@@ -1373,7 +1529,7 @@
     <!-- МУЗЫКАЛЬНЫЙ ПЛЕЕР -->
     <div class="music-player" id="musicPlayer">
         <div class="player-header">
-            <span class="player-title">яндекс музыка</span>
+            <span class="player-title">космическая музыка</span>
             <div class="player-controls">
                 <button class="player-btn" id="prevTrackBtn" title="предыдущий трек">⏮️</button>
                 <button class="player-btn" id="nextTrackBtn" title="следующий трек">⏭️</button>
@@ -1405,6 +1561,134 @@
         <div class="pages-container">
             <!-- Страница 1 -->
             <div class="page active" id="page1">
+                <!-- Три сворачиваемые таблицы в ряд -->
+                <div class="tables-row">
+                    <!-- Таблица ОЭИР -->
+                    <div class="table-column">
+                        <div class="collapsible-section" id="oeirSection">
+                            <div class="section-header" id="oeirHeader">
+                                <h3>✦ ОЭИР ✦</h3>
+                                <span class="collapse-icon">▼</span>
+                            </div>
+                            <div class="section-content" id="oeirContent">
+                                <table class="info-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ФИО</th>
+                                            <th>Телефон</th>
+                                            <th>График</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Кулигин Павел</td>
+                                            <td>+7 950 586-14-34</td>
+                                            <td>09:00 - 18:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Волчихин Данила</td>
+                                            <td>+7 903 903-63-63<br>+7 906 906-63-63</td>
+                                            <td>06:00 - 15:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Шилов Алексей</td>
+                                            <td>+7 950 466-80-35<br>+7 905 864-56-35</td>
+                                            <td>05:30 - 14:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Сакенко Олег</td>
+                                            <td>+7 913 614-49-96</td>
+                                            <td>10:00 - 19:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ефремов Дмитрий</td>
+                                            <td>+7 923 738-78-39</td>
+                                            <td>06:00 - 15:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Таблица ДБА -->
+                    <div class="table-column">
+                        <div class="collapsible-section" id="dbaSection">
+                            <div class="section-header" id="dbaHeader">
+                                <h3>✦ ДБА ✦</h3>
+                                <span class="collapse-icon">▼</span>
+                            </div>
+                            <div class="section-content" id="dbaContent">
+                                <table class="info-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ФИО</th>
+                                            <th>Телефон</th>
+                                            <th>График</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Иванов Иван</td>
+                                            <td>+7 999 123-45-67</td>
+                                            <td>09:00 - 18:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Петров Петр</td>
+                                            <td>+7 999 234-56-78</td>
+                                            <td>10:00 - 19:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Сидоров Сидор</td>
+                                            <td>+7 999 345-67-89</td>
+                                            <td>08:00 - 17:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Таблица ОЭИР Витрина -->
+                    <div class="table-column">
+                        <div class="collapsible-section" id="vitrinaSection">
+                            <div class="section-header" id="vitrinaHeader">
+                                <h3>✦ ОЭИР Витрина ✦</h3>
+                                <span class="collapse-icon">▼</span>
+                            </div>
+                            <div class="section-content" id="vitrinaContent">
+                                <table class="info-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ФИО</th>
+                                            <th>Телефон</th>
+                                            <th>График</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Алексеев Алексей</td>
+                                            <td>+7 999 456-78-90</td>
+                                            <td>09:00 - 18:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Михайлов Михаил</td>
+                                            <td>+7 999 567-89-01</td>
+                                            <td>11:00 - 20:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Николаев Николай</td>
+                                            <td>+7 999 678-90-12</td>
+                                            <td>07:00 - 16:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Существующие ссылки -->
                 <div class="links-grid">
                     <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" class="cosmic-card" target="_blank">
                         <span class="card-icon">📱</span>
@@ -1426,18 +1710,16 @@
                         <span class="card-icon">🐙</span>
                         <div class="card-content">
                             <span class="card-title">Дежурный РМ</span>
-</div>
+                        </div>
                         <span class="card-arrow">→</span>
                     </a>
-                    <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506" class="cosmic-card" target="_blank">
+                    <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506" class="cosmic-card" target="_blank">
                         <span class="card-icon">▶️</span>
                         <div class="card-content">
                             <span class="card-title">Ночные дежурные</span>
                             <span class="card-description">график дежурных</span>
                         </div>
                         <span class="card-arrow">→</span>
-                    </a>
-                    
                     </a>
                 </div>
             </div>
@@ -1923,14 +2205,14 @@
         setTimeout(createMeteor, 5000);
     </script>
     
-    <!-- Плеер Яндекс.Музыки -->
+    <!-- Плеер Яндекс.Музыки с космической музыкой -->
     <script>
         // Плейлисты Яндекс.Музыки с космической музыкой
         const yandexPlaylists = [
             {
-                name: "Музыка звезд",
+                name: "Космический эмбиент",
                 url: "https://music.yandex.ru/iframe/#playlist/yamusic-bestsongs/788938",
-                trackInfo: "Космический микс"
+                trackInfo: "Музыка звезд - космический микс"
             },
             {
                 name: "Space Ambient",
@@ -1938,14 +2220,14 @@
                 trackInfo: "Ambient Space - Jon Hansson"
             },
             {
-                name: "Space Noise",
-                url: "https://music.yandex.ru/iframe/#track/110168167",
-                trackInfo: "Space Noise - Evolia"
+                name: "Космическая музыка",
+                url: "https://music.yandex.ru/iframe/#playlist/music-news/2039",
+                trackInfo: "Инструментальная космическая музыка"
             },
             {
-                name: "Космический эмбиент",
-                url: "https://music.yandex.ru/iframe/#playlist/yamusic-bestsongs/788938",
-                trackInfo: "Космическая музыка"
+                name: "Саундтреки космоса",
+                url: "https://music.yandex.ru/iframe/#playlist/music-news/2301",
+                trackInfo: "Эпические саундтреки"
             }
         ];
         
@@ -1958,12 +2240,7 @@
             container.innerHTML = '';
             
             const iframe = document.createElement('iframe');
-            let embedUrl = playlist.url;
-            if (!embedUrl.includes('iframe')) {
-                embedUrl = embedUrl.replace('music.yandex.ru', 'music.yandex.ru/iframe');
-            }
-            
-            iframe.src = embedUrl;
+            iframe.src = playlist.url;
             iframe.width = "100%";
             iframe.height = "100%";
             iframe.frameBorder = "0";
@@ -1993,6 +2270,145 @@
         });
         
         loadPlaylist(0);
+
+        // Перетаскивание плеера
+        const player = document.getElementById('musicPlayer');
+        let offsetX, offsetY, mouseX, mouseY;
+        let isDragging = false;
+
+        player.addEventListener('mousedown', startDrag);
+        player.addEventListener('touchstart', startDrag);
+
+        function startDrag(e) {
+            e.preventDefault();
+            
+            // Получаем координаты начала перетаскивания
+            if (e.type === 'mousedown') {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            } else if (e.type === 'touchstart') {
+                mouseX = e.touches[0].clientX;
+                mouseY = e.touches[0].clientY;
+            }
+            
+            // Получаем текущую позицию плеера
+            const rect = player.getBoundingClientRect();
+            offsetX = mouseX - rect.left;
+            offsetY = mouseY - rect.top;
+            
+            isDragging = true;
+            
+            // Отключаем анимацию при перетаскивании
+            player.style.animation = 'none';
+            
+            document.addEventListener('mousemove', onDrag);
+            document.addEventListener('touchmove', onDrag);
+            document.addEventListener('mouseup', stopDrag);
+            document.addEventListener('touchend', stopDrag);
+        }
+
+        function onDrag(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            
+            // Получаем текущие координаты мыши/пальца
+            if (e.type === 'mousemove') {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            } else if (e.type === 'touchmove') {
+                mouseX = e.touches[0].clientX;
+                mouseY = e.touches[0].clientY;
+            }
+            
+            // Вычисляем новую позицию
+            const newX = mouseX - offsetX;
+            const newY = mouseY - offsetY;
+            
+            // Ограничиваем, чтобы плеер не уходил за края экрана
+            const maxX = window.innerWidth - player.offsetWidth;
+            const maxY = window.innerHeight - player.offsetHeight;
+            
+            const limitedX = Math.max(0, Math.min(newX, maxX));
+            const limitedY = Math.max(0, Math.min(newY, maxY));
+            
+            // Применяем новую позицию
+            player.style.left = limitedX + 'px';
+            player.style.top = limitedY + 'px';
+            player.style.right = 'auto';
+            player.style.bottom = 'auto';
+        }
+
+        function stopDrag() {
+            isDragging = false;
+            
+            // Включаем анимацию обратно
+            player.style.animation = 'playerFloat 3s infinite alternate';
+            
+            document.removeEventListener('mousemove', onDrag);
+            document.removeEventListener('touchmove', onDrag);
+            document.removeEventListener('mouseup', stopDrag);
+            document.removeEventListener('touchend', stopDrag);
+        }
+
+        // Функционал сворачивания таблиц
+        function initCollapsibleSections() {
+            const oeirHeader = document.getElementById('oeirHeader');
+            const dbaHeader = document.getElementById('dbaHeader');
+            const vitrinaHeader = document.getElementById('vitrinaHeader');
+            const oeirContent = document.getElementById('oeirContent');
+            const dbaContent = document.getElementById('dbaContent');
+            const vitrinaContent = document.getElementById('vitrinaContent');
+            const oeirIcon = oeirHeader.querySelector('.collapse-icon');
+            const dbaIcon = dbaHeader.querySelector('.collapse-icon');
+            const vitrinaIcon = vitrinaHeader.querySelector('.collapse-icon');
+            
+            // Состояние по умолчанию - развернуто
+            let oeirCollapsed = false;
+            let dbaCollapsed = false;
+            let vitrinaCollapsed = false;
+            
+            oeirHeader.addEventListener('click', function() {
+                oeirCollapsed = !oeirCollapsed;
+                if (oeirCollapsed) {
+                    oeirContent.classList.add('collapsed');
+                    oeirHeader.classList.add('collapsed');
+                    oeirIcon.style.transform = 'rotate(-90deg)';
+                } else {
+                    oeirContent.classList.remove('collapsed');
+                    oeirHeader.classList.remove('collapsed');
+                    oeirIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            dbaHeader.addEventListener('click', function() {
+                dbaCollapsed = !dbaCollapsed;
+                if (dbaCollapsed) {
+                    dbaContent.classList.add('collapsed');
+                    dbaHeader.classList.add('collapsed');
+                    dbaIcon.style.transform = 'rotate(-90deg)';
+                } else {
+                    dbaContent.classList.remove('collapsed');
+                    dbaHeader.classList.remove('collapsed');
+                    dbaIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            vitrinaHeader.addEventListener('click', function() {
+                vitrinaCollapsed = !vitrinaCollapsed;
+                if (vitrinaCollapsed) {
+                    vitrinaContent.classList.add('collapsed');
+                    vitrinaHeader.classList.add('collapsed');
+                    vitrinaIcon.style.transform = 'rotate(-90deg)';
+                } else {
+                    vitrinaContent.classList.remove('collapsed');
+                    vitrinaHeader.classList.remove('collapsed');
+                    vitrinaIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+        
+        // Инициализируем сворачивание после загрузки страницы
+        initCollapsibleSections();
     </script>
 </body>
 </html>
