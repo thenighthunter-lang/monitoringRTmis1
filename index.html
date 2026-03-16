@@ -913,6 +913,50 @@
             margin-right: auto;
         }
 
+        /* Редактируемый блок важных заметок */
+        .important-notes {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto clamp(2rem, 5vh, 3rem) auto;
+        }
+
+        .important-notes .collapsible-section {
+            width: 100%;
+        }
+
+        .editable-content {
+            border: 1px solid #ffd966;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(20, 10, 40, 0.7);
+            color: white;
+            min-height: 150px;
+            font-size: 1rem;
+            line-height: 1.6;
+            outline: none;
+            transition: all 0.3s ease;
+            cursor: text;
+        }
+
+        .editable-content:hover {
+            border-color: #c6a6ff;
+            box-shadow: 0 0 20px #b085ff;
+        }
+
+        .editable-content:focus {
+            border-color: #ffaa33;
+            box-shadow: 0 0 30px #ffaa33;
+        }
+
+        body.day-theme .editable-content {
+            background: rgba(100, 60, 140, 0.3);
+            border-color: #ffaa33;
+        }
+
+        body.day-theme .editable-content:focus {
+            background: rgba(120, 80, 160, 0.4);
+        }
+
         body.day-theme .collapsible-section {
             background: rgba(80, 40, 120, 0.3);
             border-color: rgba(255, 200, 100, 0.4);
@@ -1710,6 +1754,21 @@
                     </div>
                 </div>
 
+                <!-- Сворачиваемый блок Важное -->
+                <div class="important-notes">
+                    <div class="collapsible-section" id="importantSection">
+                        <div class="section-header collapsed" id="importantHeader">
+                            <h3>✦ ВАЖНОЕ ✦</h3>
+                            <span class="collapse-icon">▼</span>
+                        </div>
+                        <div class="section-content collapsed" id="importantContent">
+                            <div class="editable-content" contenteditable="true">
+                                Здесь вы можете писать важные заметки, которые будут видны всем...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Существующие ссылки -->
                 <div class="links-grid">
                     <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" class="cosmic-card" target="_blank">
@@ -1908,13 +1967,13 @@
                             </div>
                         </div>
                         <iframe 
-                            src="https://skuf.gosuslugi.ru/arsys/forms/skuf-ar/CTM:PasswordReset/Default+User+View/?cacheid=37a52253&format=html" 
+                            src="https://www.gosuslugi.ru/10700/1/form/" 
                             style="width: 100%; height: min(400px, 50vh); border: none; border-radius: 16px; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.5);"
                             sandbox="allow-same-origin allow-scripts allow-forms allow-popups">
                         </iframe>
                         <div style="margin-top: clamp(0.3rem, 1vh, 1rem); font-size: clamp(0.7rem, 2vw, 0.9rem); color: #cbb9ff; text-align: right;">
                             ⚡ Если не загружается — 
-                            <a href="https://skuf.gosuslugi.ru/arsys/forms/skuf-ar/CTM:PasswordReset/Default+User+View/?cacheid=37a52253&format=html" target="_blank" style="color: #ffaa33; text-decoration: none; border-bottom: 1px solid #ffaa33;">открыть в новой вкладке →</a>
+                            <a href="https://www.gosuslugi.ru/10700/1/form/" target="_blank" style="color: #ffaa33; text-decoration: none; border-bottom: 1px solid #ffaa33;">открыть в новой вкладке →</a>
                         </div>
                     </div>
                     
@@ -2357,17 +2416,21 @@
             const dbaHeader = document.getElementById('dbaHeader');
             const oeirHeader = document.getElementById('oeirHeader');
             const smHeader = document.getElementById('smHeader');
+            const importantHeader = document.getElementById('importantHeader');
             const dbaContent = document.getElementById('dbaContent');
             const oeirContent = document.getElementById('oeirContent');
             const smContent = document.getElementById('smContent');
+            const importantContent = document.getElementById('importantContent');
             const dbaIcon = dbaHeader.querySelector('.collapse-icon');
             const oeirIcon = oeirHeader.querySelector('.collapse-icon');
             const smIcon = smHeader.querySelector('.collapse-icon');
+            const importantIcon = importantHeader.querySelector('.collapse-icon');
             
             // Состояние по умолчанию - свернуто
             let dbaCollapsed = true;
             let oeirCollapsed = true;
             let smCollapsed = true;
+            let importantCollapsed = true;
             
             dbaHeader.addEventListener('click', function() {
                 dbaCollapsed = !dbaCollapsed;
@@ -2405,6 +2468,19 @@
                     smContent.classList.remove('collapsed');
                     smHeader.classList.remove('collapsed');
                     smIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            importantHeader.addEventListener('click', function() {
+                importantCollapsed = !importantCollapsed;
+                if (importantCollapsed) {
+                    importantContent.classList.add('collapsed');
+                    importantHeader.classList.add('collapsed');
+                    importantIcon.style.transform = 'rotate(-90deg)';
+                } else {
+                    importantContent.classList.remove('collapsed');
+                    importantHeader.classList.remove('collapsed');
+                    importantIcon.style.transform = 'rotate(0deg)';
                 }
             });
         }
