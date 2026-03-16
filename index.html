@@ -224,95 +224,11 @@
             box-shadow: 0 0 30px #ffd966, 0 0 60px #ffb347;
         }
 
-        /* ---------- МОСКОВСКОЕ ВРЕМЯ ---------- */
-        .moscow-time {
-            position: fixed;
-            top: clamp(10px, 2vh, 20px);
-            left: clamp(10px, 2vw, 20px);
-            z-index: 200;
-            background: rgba(20, 10, 40, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 200, 100, 0.3);
-            border-radius: 30px;
-            padding: clamp(0.3rem, 1vh, 0.5rem) clamp(0.8rem, 2vw, 1.2rem);
-            display: flex;
-            align-items: center;
-            gap: clamp(0.3rem, 1vw, 0.8rem);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 15px rgba(255, 200, 100, 0.2);
-            animation: timeFloat 3s infinite alternate;
-        }
-
-        @keyframes timeFloat {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
-        }
-
-        .moscow-time::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffaa00, #b06ab3, #4568dc, #ffaa00);
-            border-radius: 32px;
-            z-index: -1;
-            opacity: 0.5;
-            filter: blur(5px);
-            animation: timeBorderGlow 3s infinite alternate;
-        }
-
-        @keyframes timeBorderGlow {
-            0% { opacity: 0.3; filter: blur(3px); }
-            100% { opacity: 0.7; filter: blur(8px); }
-        }
-
-        .time-icon {
-            color: #ffd966;
-            font-size: clamp(0.8rem, 3vw, 1.2rem);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .time-display {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .time-city {
-            font-size: clamp(0.5rem, 1.5vw, 0.7rem);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ffd966;
-            opacity: 0.8;
-        }
-
-        .time-value {
-            font-size: clamp(0.9rem, 4vw, 1.3rem);
-            font-weight: 600;
-            color: white;
-            line-height: 1.2;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .time-date {
-            font-size: clamp(0.5rem, 1.5vw, 0.7rem);
-            color: #cbb9ff;
-            margin-top: 0.2rem;
-        }
-
         /* ---------- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ ---------- */
         .theme-toggle {
             position: fixed;
             top: clamp(10px, 2vh, 20px);
-            left: clamp(150px, 25vw, 200px);
+            left: clamp(10px, 2vw, 20px);
             z-index: 200;
             background: rgba(20, 10, 40, 0.7);
             backdrop-filter: blur(8px);
@@ -873,7 +789,7 @@
 
         .section-header h3 {
             color: #ffd966;
-            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             font-weight: 500;
             letter-spacing: 2px;
             margin: 0;
@@ -882,10 +798,10 @@
 
         .collapse-icon {
             color: #ffd966;
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
             transition: transform 0.3s ease;
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -896,7 +812,7 @@
         }
 
         .section-content {
-            padding: clamp(1rem, 2vh, 1.5rem);
+            padding: clamp(1.2rem, 2.5vh, 1.8rem);
             transition: all 0.3s ease;
             overflow-x: auto;
         }
@@ -905,17 +821,36 @@
             display: none;
         }
 
+        /* Внутренние подразделы */
+        .subsection {
+            margin-bottom: 1.5rem;
+        }
+
+        .subsection:last-child {
+            margin-bottom: 0;
+        }
+
+        .subsection-title {
+            color: #ffd966;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid rgba(255, 200, 100, 0.3);
+            letter-spacing: 1px;
+        }
+
         .info-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 400px;
+            min-width: 500px;
         }
 
         .info-table th {
             color: #cbb9ff;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
             font-weight: 500;
-            padding: clamp(0.6rem, 1.5vh, 1rem) clamp(0.8rem, 2vw, 1.5rem);
+            padding: clamp(0.8rem, 1.8vh, 1.2rem) clamp(1rem, 2.5vw, 1.8rem);
             text-align: left;
             border-bottom: 1px solid rgba(180, 140, 255, 0.3);
             background: rgba(20, 10, 40, 0.3);
@@ -923,12 +858,13 @@
         }
 
         .info-table td {
-            padding: clamp(0.6rem, 1.5vh, 1rem) clamp(0.8rem, 2vw, 1.5rem);
+            padding: clamp(0.8rem, 1.8vh, 1.2rem) clamp(1rem, 2.5vw, 1.8rem);
             border-bottom: 1px solid rgba(180, 140, 255, 0.1);
             color: white;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            line-height: 1.4;
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            line-height: 1.5;
             word-break: break-word;
+            white-space: nowrap;
         }
 
         .info-table tr:last-child td {
@@ -949,17 +885,17 @@
             background: rgba(180, 140, 255, 0.1);
         }
 
-        /* Три колонки для таблиц */
+        /* Две колонки для таблиц */
         .tables-row {
             display: flex;
-            gap: clamp(1.5rem, 3vw, 2.5rem);
-            margin-bottom: clamp(2rem, 5vh, 3rem);
+            gap: clamp(2rem, 4vw, 3rem);
+            margin-bottom: clamp(2.5rem, 6vh, 3.5rem);
             flex-wrap: wrap;
         }
 
         .table-column {
-            flex: 1 1 350px;
-            min-width: 320px;
+            flex: 1 1 450px;
+            min-width: 420px;
         }
 
         body.day-theme .collapsible-section {
@@ -978,6 +914,11 @@
         body.day-theme .info-table th {
             background: rgba(100, 60, 140, 0.3);
             color: #ffd966;
+        }
+
+        body.day-theme .subsection-title {
+            color: #ffaa33;
+            border-bottom-color: rgba(255, 170, 51, 0.3);
         }
 
         /* ---------- МУЗЫКАЛЬНЫЙ ПЛЕЕР ---------- */
@@ -1467,11 +1408,15 @@
             }
             
             .info-table {
-                min-width: 300px;
+                min-width: 350px;
             }
             
             .table-column {
-                min-width: 280px;
+                min-width: 320px;
+            }
+            
+            .info-table td {
+                white-space: normal;
             }
         }
     </style>
@@ -1484,17 +1429,7 @@
         <div class="galaxy"></div>
     </div>
 
-    <!-- МОСКОВСКОЕ ВРЕМЯ -->
-    <div class="moscow-time" id="moscowTime">
-        <span class="time-icon">⏰</span>
-        <div class="time-display">
-            <span class="time-city">МСК</span>
-            <span class="time-value" id="timeValue">00:00:00</span>
-            <span class="time-date" id="dateValue">01.01.2026</span>
-        </div>
-    </div>
-
-    <!-- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ -->
+    <!-- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ (на том же месте) -->
     <div class="theme-toggle">
         <button class="theme-btn day-btn" id="dayThemeBtn" data-tooltip="День (светлая тема)">☀️</button>
         <button class="theme-btn night-btn active" id="nightThemeBtn" data-tooltip="Ночь (темная тема)">🌙</button>
@@ -1561,128 +1496,160 @@
         <div class="pages-container">
             <!-- Страница 1 -->
             <div class="page active" id="page1">
-                <!-- Три сворачиваемые таблицы в ряд -->
+                <!-- Две сворачиваемые таблицы в ряд -->
                 <div class="tables-row">
                     <!-- Таблица ДБА -->
                     <div class="table-column">
-                        <div class="collapsible-section" id="oeirSection">
-                            <div class="section-header collapsed" id="oeirHeader">
+                        <div class="collapsible-section" id="dbaSection">
+                            <div class="section-header collapsed" id="dbaHeader">
                                 <h3>✦ ДБА ✦</h3>
                                 <span class="collapse-icon">▼</span>
                             </div>
-                            <div class="section-content collapsed" id="oeirContent">
-                                <table class="info-table">
-                                    <thead>
-                                        <tr>
-                                            <th>ФИО</th>
-                                            <th>Телефон</th>
-                                            <th>График</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Кулигин Павел</td>
-                                            <td>89505861434</td>
-                                            <td>09:00 - 18:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Волчихин Данила</td>
-                                            <td>89039036363<br>89069066363</td>
-                                            <td>06:00 - 15:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Шилов Алексей</td>
-                                            <td>89504668035<br>89058645635</td>
-                                            <td>05:30 - 14:30</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Сакенко Олег</td>
-                                            <td>89136144996</td>
-                                            <td>10:00 - 19:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ефремов Дмитрий</td>
-                                            <td>89237387839</td>
-                                            <td>06:00 - 15:00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="section-content collapsed" id="dbaContent">
+                                <!-- Подраздел ДБА -->
+                                <div class="subsection">
+                                    <div class="subsection-title">✦ ДБА PG ✦</div>
+                                    <table class="info-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ФИО</th>
+                                                <th>Телефон</th>
+                                                <th>График</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Кулигин Павел</td>
+                                                <td>8 950 586-14-34</td>
+                                                <td>09:00 - 18:00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Волчихин Данила</td>
+                                                <td>8 903 903-63-63<br>8 906 906-63-63</td>
+                                                <td>06:00 - 15:00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Шилов Алексей</td>
+                                                <td>8 950 466-80-35<br>8 905 864-56-35</td>
+                                                <td>05:30 - 14:30</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Сакенко Олег</td>
+                                                <td>8 913 614-49-96</td>
+                                                <td>10:00 - 19:00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ефремов Дмитрий</td>
+                                                <td>8 923 738-78-39</td>
+                                                <td>06:00 - 15:00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <!-- Подраздел ДБА МС -->
+                                <div class="subsection">
+                                    <div class="subsection-title">✦ ДБА МС ✦</div>
+                                    <table class="info-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ФИО</th>
+                                                <th>Телефон</th>
+                                                <th>График</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Веселков Андрей</td>
+                                                <td>8 909 104-63-77</td>
+                                                <td>05:30 - 14:30</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Попов Юрий</td>
+                                                <td>8 951 705-47-81</td>
+                                                <td>07:00 - 16:00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Митюшин Роман</td>
+                                                <td>8 963 015-82-27</td>
+                                                <td>07:00 - 16:00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Таблица ОЭИР -->
                     <div class="table-column">
-                        <div class="collapsible-section" id="dbaSection">
-                            <div class="section-header collapsed" id="dbaHeader">
+                        <div class="collapsible-section" id="oeirSection">
+                            <div class="section-header collapsed" id="oeirHeader">
                                 <h3>✦ ОЭИР ✦</h3>
                                 <span class="collapse-icon">▼</span>
                             </div>
-                            <div class="section-content collapsed" id="dbaContent">
-                                <table class="info-table">
-                                    <thead>
-                                        <tr>
-                                            <th>ФИО</th>
-                                            <th>Телефон</th>
-                                            <th>График</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Иванов Иван</td>
-                                            <td>+7 999 123-45-67</td>
-                                            <td>09:00 - 18:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Петров Петр</td>
-                                            <td>+7 999 234-56-78</td>
-                                            <td>10:00 - 19:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Сидоров Сидор</td>
-                                            <td>+7 999 345-67-89</td>
-                                            <td>08:00 - 17:00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Таблица ОЭИР Витрина -->
-                    <div class="table-column">
-                        <div class="collapsible-section" id="vitrinaSection">
-                            <div class="section-header collapsed" id="vitrinaHeader">
-                                <h3>✦ ОЭИР Витрина ✦</h3>
-                                <span class="collapse-icon">▼</span>
-                            </div>
-                            <div class="section-content collapsed" id="vitrinaContent">
-                                <table class="info-table">
-                                    <thead>
-                                        <tr>
-                                            <th>ФИО</th>
-                                            <th>Телефон</th>
-                                            <th>График</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Алексеев Алексей</td>
-                                            <td>+7 999 456-78-90</td>
-                                            <td>09:00 - 18:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Михайлов Михаил</td>
-                                            <td>+7 999 567-89-01</td>
-                                            <td>11:00 - 20:00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Николаев Николай</td>
-                                            <td>+7 999 678-90-12</td>
-                                            <td>07:00 - 16:00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="section-content collapsed" id="oeirContent">
+                                <!-- Подраздел ОЭИР -->
+                                <div class="subsection">
+                                    <div class="subsection-title">✦ ОЭИР ✦</div>
+                                    <table class="info-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ФИО</th>
+                                                <th>Телефон</th>
+                                                <th>График</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Иванов Иван</td>
+                                                <td>8 999 123-45-67</td>
+                                                <td>09:00 - 18:00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Петров Петр</td>
+                                                <td>8 999 234-56-78</td>
+                                                <td>10:00 - 19:00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Сидоров Сидор</td>
+                                                <td>8 999 345-67-89</td>
+                                                <td>08:00 - 17:00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <!-- Подраздел ОЭИР Витрина -->
+                                <div class="subsection">
+                                    <div class="subsection-title">✦ ОЭИР Витрина ✦</div>
+                                    <table class="info-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ФИО</th>
+                                                <th>Телефон</th>
+                                                <th>График</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Алексеев Алексей</td>
+                                                <td>8 999 456-78-90</td>
+                                                <td>09:00 - 18:00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Михайлов Михаил</td>
+                                                <td>8 999 567-89-01</td>
+                                                <td>11:00 - 20:00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Николаев Николай</td>
+                                                <td>8 999 678-90-12</td>
+                                                <td>07:00 - 16:00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1699,7 +1666,7 @@
                         <span class="card-arrow">→</span>
                     </a>
 
-<a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" class="cosmic-card" target="_blank">
+                    <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" class="cosmic-card" target="_blank">
                         <span class="card-icon">📱</span>
                         <div class="card-content">
                             <span class="card-title">Дежурные</span>
@@ -2179,40 +2146,6 @@
 
         showPage(1);
 
-        // Функция обновления московского времени
-        function updateMoscowTime() {
-            const now = new Date();
-            
-            // Получаем текущий часовой пояс пользователя
-            const userTimezoneOffset = now.getTimezoneOffset();
-            
-            // Москва UTC+3 (смещение в минутах: -180)
-            const moscowOffset = -180;
-            
-            // Разница между московским и местным временем
-            const diffMinutes = moscowOffset + userTimezoneOffset;
-            
-            // Создаем новую дату с московским временем
-            const moscowTime = new Date(now.getTime() + diffMinutes * 60 * 1000);
-            
-            // Форматируем время
-            const hours = moscowTime.getUTCHours().toString().padStart(2, '0');
-            const minutes = moscowTime.getUTCMinutes().toString().padStart(2, '0');
-            const seconds = moscowTime.getUTCSeconds().toString().padStart(2, '0');
-            
-            // Форматируем дату
-            const day = moscowTime.getUTCDate().toString().padStart(2, '0');
-            const month = (moscowTime.getUTCMonth() + 1).toString().padStart(2, '0');
-            const year = moscowTime.getUTCFullYear();
-            
-            document.getElementById('timeValue').textContent = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('dateValue').textContent = `${day}.${month}.${year}`;
-        }
-
-        // Обновляем время каждую секунду
-        setInterval(updateMoscowTime, 1000);
-        updateMoscowTime(); // сразу показываем время
-        
         // Запускаем метеориты раз в 15 секунд
         setInterval(createMeteor, 15000);
         // Создаем первый метеорит через 5 секунд после загрузки
@@ -2366,33 +2299,16 @@
 
         // Функционал сворачивания таблиц
         function initCollapsibleSections() {
-            const oeirHeader = document.getElementById('oeirHeader');
             const dbaHeader = document.getElementById('dbaHeader');
-            const vitrinaHeader = document.getElementById('vitrinaHeader');
-            const oeirContent = document.getElementById('oeirContent');
+            const oeirHeader = document.getElementById('oeirHeader');
             const dbaContent = document.getElementById('dbaContent');
-            const vitrinaContent = document.getElementById('vitrinaContent');
-            const oeirIcon = oeirHeader.querySelector('.collapse-icon');
+            const oeirContent = document.getElementById('oeirContent');
             const dbaIcon = dbaHeader.querySelector('.collapse-icon');
-            const vitrinaIcon = vitrinaHeader.querySelector('.collapse-icon');
+            const oeirIcon = oeirHeader.querySelector('.collapse-icon');
             
             // Состояние по умолчанию - свернуто
-            let oeirCollapsed = true;
             let dbaCollapsed = true;
-            let vitrinaCollapsed = true;
-            
-            oeirHeader.addEventListener('click', function() {
-                oeirCollapsed = !oeirCollapsed;
-                if (oeirCollapsed) {
-                    oeirContent.classList.add('collapsed');
-                    oeirHeader.classList.add('collapsed');
-                    oeirIcon.style.transform = 'rotate(-90deg)';
-                } else {
-                    oeirContent.classList.remove('collapsed');
-                    oeirHeader.classList.remove('collapsed');
-                    oeirIcon.style.transform = 'rotate(0deg)';
-                }
-            });
+            let oeirCollapsed = true;
             
             dbaHeader.addEventListener('click', function() {
                 dbaCollapsed = !dbaCollapsed;
@@ -2407,16 +2323,16 @@
                 }
             });
             
-            vitrinaHeader.addEventListener('click', function() {
-                vitrinaCollapsed = !vitrinaCollapsed;
-                if (vitrinaCollapsed) {
-                    vitrinaContent.classList.add('collapsed');
-                    vitrinaHeader.classList.add('collapsed');
-                    vitrinaIcon.style.transform = 'rotate(-90deg)';
+            oeirHeader.addEventListener('click', function() {
+                oeirCollapsed = !oeirCollapsed;
+                if (oeirCollapsed) {
+                    oeirContent.classList.add('collapsed');
+                    oeirHeader.classList.add('collapsed');
+                    oeirIcon.style.transform = 'rotate(-90deg)';
                 } else {
-                    vitrinaContent.classList.remove('collapsed');
-                    vitrinaHeader.classList.remove('collapsed');
-                    vitrinaIcon.style.transform = 'rotate(0deg)';
+                    oeirContent.classList.remove('collapsed');
+                    oeirHeader.classList.remove('collapsed');
+                    oeirIcon.style.transform = 'rotate(0deg)';
                 }
             });
         }
