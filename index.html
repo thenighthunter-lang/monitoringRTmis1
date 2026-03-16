@@ -336,6 +336,70 @@
             animation: tooltipAppear 0.2s ease;
         }
 
+        /* ---------- КНОПКА ВАЖНОЕ СВЕРХУ СЛЕВА ---------- */
+        .important-button-top {
+            position: fixed;
+            top: clamp(10px, 2vh, 20px);
+            left: clamp(10px, 2vw, 20px);
+            z-index: 200;
+            background: linear-gradient(45deg, #ffaa33, #ff5500, #ffaa33, #ff5500);
+            background-size: 300% 300%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(255, 170, 51, 0.5);
+            transition: all 0.3s ease;
+            animation: gradientShift 3s ease infinite, importantPulse 2s infinite alternate;
+        }
+
+        .important-button-top:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px #ffaa33, 0 0 100px #ff5500;
+            border-color: #fff;
+            animation: gradientShift 1.5s ease infinite, importantPulse 1s infinite alternate;
+        }
+
+        .important-button-top:active {
+            transform: scale(0.95);
+        }
+
+        .important-button-top .icon {
+            font-size: 1.3rem;
+            color: white;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            animation: iconGlow 2s ease infinite;
+        }
+
+        .important-button-top .text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes importantPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+
+        @keyframes iconGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.9)); }
+            100% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); }
+        }
+
         /* Солнце */
         .sun {
             position: fixed;
@@ -559,6 +623,117 @@
         @keyframes moonGlowPulse {
             0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
             100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* ---------- ВСПЛЫВАЮЩЕЕ ОКНО ---------- */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .popup-window {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90vw;
+            height: 90vh;
+            max-width: 1400px;
+            max-height: 900px;
+            background: rgba(8, 4, 22, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 200, 100, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(255, 170, 51, 0.3);
+            z-index: 1001;
+            display: none;
+            opacity: 0;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .popup-window.active {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: rgba(20, 10, 40, 0.8);
+            border-bottom: 1px solid rgba(255, 200, 100, 0.3);
+            cursor: move;
+        }
+
+        .popup-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #ffd966;
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .popup-title span {
+            font-size: 1.5rem;
+        }
+
+        .popup-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .popup-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 200, 100, 0.3);
+            color: #ffd966;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-btn:hover {
+            background: rgba(80, 40, 120, 0.9);
+            border-color: #ffaa33;
+            box-shadow: 0 0 20px #ffaa33;
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .popup-content {
+            width: 100%;
+            height: calc(100% - 70px);
+            background: white;
+        }
+
+        .popup-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* ---------- ОСНОВНОЙ КОНТЕЙНЕР ---------- */
@@ -911,50 +1086,6 @@
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        /* Редактируемый блок важных заметок */
-        .important-notes {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto clamp(2rem, 5vh, 3rem) auto;
-        }
-
-        .important-notes .collapsible-section {
-            width: 100%;
-        }
-
-        .editable-content {
-            border: 1px solid #ffd966;
-            padding: 15px;
-            border-radius: 10px;
-            background: rgba(20, 10, 40, 0.7);
-            color: white;
-            min-height: 150px;
-            font-size: 1rem;
-            line-height: 1.6;
-            outline: none;
-            transition: all 0.3s ease;
-            cursor: text;
-        }
-
-        .editable-content:hover {
-            border-color: #c6a6ff;
-            box-shadow: 0 0 20px #b085ff;
-        }
-
-        .editable-content:focus {
-            border-color: #ffaa33;
-            box-shadow: 0 0 30px #ffaa33;
-        }
-
-        body.day-theme .editable-content {
-            background: rgba(100, 60, 140, 0.3);
-            border-color: #ffaa33;
-        }
-
-        body.day-theme .editable-content:focus {
-            background: rgba(120, 80, 160, 0.4);
         }
 
         body.day-theme .collapsible-section {
@@ -1477,6 +1608,19 @@
             .info-table td {
                 white-space: normal;
             }
+
+            .important-button-top {
+                padding: 0.4rem 1rem;
+            }
+
+            .important-button-top .text {
+                font-size: 0.9rem;
+            }
+
+            .popup-window {
+                width: 95vw;
+                height: 95vh;
+            }
         }
     </style>
 </head>
@@ -1486,6 +1630,12 @@
         <div class="stars-big"></div>
         <div class="nebula-layer"></div>
         <div class="galaxy"></div>
+    </div>
+
+    <!-- КНОПКА ВАЖНОЕ СВЕРХУ СЛЕВА -->
+    <div class="important-button-top" id="importantButton">
+        <span class="icon">📌</span>
+        <span class="text">Важное</span>
     </div>
 
     <!-- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ (справа) -->
@@ -1541,6 +1691,27 @@
                 <span class="volume-icon">🔊</span>
                 <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="0.3">
             </div>
+        </div>
+    </div>
+
+    <!-- ВСПЛЫВАЮЩЕЕ ОКНО -->
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup-window" id="popupWindow">
+        <div class="popup-header" id="popupHeader">
+            <div class="popup-title">
+                <span>📌</span>
+                <span>ВАЖНАЯ ИНФОРМАЦИЯ</span>
+            </div>
+            <div class="popup-controls">
+                <button class="popup-btn" id="minimizePopup" title="Свернуть">🗕</button>
+                <button class="popup-btn" id="closePopup" title="Закрыть">✕</button>
+            </div>
+        </div>
+        <div class="popup-content">
+            <iframe 
+                src="https://docs.google.com/spreadsheets/d/1dXTrCwA8eVBdmHGmX5H9qeIsWJaVE_zAmjlSgs9rH9Y/edit?pli=1&gid=138149952#gid=138149952" 
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
 
@@ -1749,21 +1920,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Сворачиваемый блок Важное -->
-                <div class="important-notes">
-                    <div class="collapsible-section" id="importantSection">
-                        <div class="section-header collapsed" id="importantHeader">
-                            <h3>✦ ВАЖНОЕ ✦</h3>
-                            <span class="collapse-icon">▼</span>
-                        </div>
-                        <div class="section-content collapsed" id="importantContent">
-                            <div class="editable-content" contenteditable="true">
-                                Здесь вы можете писать важные заметки, которые будут видны всем...
                             </div>
                         </div>
                     </div>
@@ -2264,6 +2420,139 @@
         setInterval(createMeteor, 15000);
         // Создаем первый метеорит через 5 секунд после загрузки
         setTimeout(createMeteor, 5000);
+
+        // Функционал сворачивания таблиц
+        function initCollapsibleSections() {
+            const dbaHeader = document.getElementById('dbaHeader');
+            const oeirHeader = document.getElementById('oeirHeader');
+            const smHeader = document.getElementById('smHeader');
+            const dbaContent = document.getElementById('dbaContent');
+            const oeirContent = document.getElementById('oeirContent');
+            const smContent = document.getElementById('smContent');
+            const dbaIcon = dbaHeader.querySelector('.collapse-icon');
+            const oeirIcon = oeirHeader.querySelector('.collapse-icon');
+            const smIcon = smHeader.querySelector('.collapse-icon');
+            
+            // Состояние по умолчанию - свернуто
+            let dbaCollapsed = true;
+            let oeirCollapsed = true;
+            let smCollapsed = true;
+            
+            dbaHeader.addEventListener('click', function() {
+                dbaCollapsed = !dbaCollapsed;
+                if (dbaCollapsed) {
+                    dbaContent.classList.add('collapsed');
+                    dbaHeader.classList.add('collapsed');
+                    dbaIcon.style.transform = 'rotate(-90deg)';
+                } else {
+                    dbaContent.classList.remove('collapsed');
+                    dbaHeader.classList.remove('collapsed');
+                    dbaIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            oeirHeader.addEventListener('click', function() {
+                oeirCollapsed = !oeirCollapsed;
+                if (oeirCollapsed) {
+                    oeirContent.classList.add('collapsed');
+                    oeirHeader.classList.add('collapsed');
+                    oeirIcon.style.transform = 'rotate(-90deg)';
+                } else {
+                    oeirContent.classList.remove('collapsed');
+                    oeirHeader.classList.remove('collapsed');
+                    oeirIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            smHeader.addEventListener('click', function() {
+                smCollapsed = !smCollapsed;
+                if (smCollapsed) {
+                    smContent.classList.add('collapsed');
+                    smHeader.classList.add('collapsed');
+                    smIcon.style.transform = 'rotate(-90deg)';
+                } else {
+                    smContent.classList.remove('collapsed');
+                    smHeader.classList.remove('collapsed');
+                    smIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+        
+        // Инициализируем сворачивание после загрузки страницы
+        initCollapsibleSections();
+
+        // Функционал всплывающего окна "Важное"
+        const importantButton = document.getElementById('importantButton');
+        const popupOverlay = document.getElementById('popupOverlay');
+        const popupWindow = document.getElementById('popupWindow');
+        const closePopup = document.getElementById('closePopup');
+        const minimizePopup = document.getElementById('minimizePopup');
+        const popupHeader = document.getElementById('popupHeader');
+
+        // Переменные для перетаскивания
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        // Открыть окно
+        importantButton.addEventListener('click', () => {
+            popupOverlay.classList.add('active');
+            popupWindow.classList.add('active');
+        });
+
+        // Закрыть окно
+        closePopup.addEventListener('click', () => {
+            popupOverlay.classList.remove('active');
+            popupWindow.classList.remove('active');
+        });
+
+        // Свернуть окно (скрыть, но оставить overlay)
+        minimizePopup.addEventListener('click', () => {
+            popupWindow.classList.remove('active');
+        });
+
+        // Клик по overlay закрывает окно
+        popupOverlay.addEventListener('click', () => {
+            popupOverlay.classList.remove('active');
+            popupWindow.classList.remove('active');
+        });
+
+        // Перетаскивание окна
+        popupHeader.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            const rect = popupWindow.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            popupWindow.style.transition = 'none';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            
+            const newX = e.clientX - offsetX;
+            const newY = e.clientY - offsetY;
+            
+            // Ограничиваем, чтобы окно не уходило за края
+            const maxX = window.innerWidth - popupWindow.offsetWidth;
+            const maxY = window.innerHeight - popupWindow.offsetHeight;
+            
+            const limitedX = Math.max(0, Math.min(newX, maxX));
+            const limitedY = Math.max(0, Math.min(newY, maxY));
+            
+            popupWindow.style.left = limitedX + 'px';
+            popupWindow.style.top = limitedY + 'px';
+            popupWindow.style.transform = 'none';
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            popupWindow.style.transition = 'all 0.3s ease';
+        });
+
+        // Предотвращаем закрытие при клике на само окно
+        popupWindow.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
     </script>
     
     <!-- Плеер Яндекс.Музыки с космической музыкой -->
@@ -2410,83 +2699,6 @@
             document.removeEventListener('mouseup', stopDrag);
             document.removeEventListener('touchend', stopDrag);
         }
-
-        // Функционал сворачивания таблиц
-        function initCollapsibleSections() {
-            const dbaHeader = document.getElementById('dbaHeader');
-            const oeirHeader = document.getElementById('oeirHeader');
-            const smHeader = document.getElementById('smHeader');
-            const importantHeader = document.getElementById('importantHeader');
-            const dbaContent = document.getElementById('dbaContent');
-            const oeirContent = document.getElementById('oeirContent');
-            const smContent = document.getElementById('smContent');
-            const importantContent = document.getElementById('importantContent');
-            const dbaIcon = dbaHeader.querySelector('.collapse-icon');
-            const oeirIcon = oeirHeader.querySelector('.collapse-icon');
-            const smIcon = smHeader.querySelector('.collapse-icon');
-            const importantIcon = importantHeader.querySelector('.collapse-icon');
-            
-            // Состояние по умолчанию - свернуто
-            let dbaCollapsed = true;
-            let oeirCollapsed = true;
-            let smCollapsed = true;
-            let importantCollapsed = true;
-            
-            dbaHeader.addEventListener('click', function() {
-                dbaCollapsed = !dbaCollapsed;
-                if (dbaCollapsed) {
-                    dbaContent.classList.add('collapsed');
-                    dbaHeader.classList.add('collapsed');
-                    dbaIcon.style.transform = 'rotate(-90deg)';
-                } else {
-                    dbaContent.classList.remove('collapsed');
-                    dbaHeader.classList.remove('collapsed');
-                    dbaIcon.style.transform = 'rotate(0deg)';
-                }
-            });
-            
-            oeirHeader.addEventListener('click', function() {
-                oeirCollapsed = !oeirCollapsed;
-                if (oeirCollapsed) {
-                    oeirContent.classList.add('collapsed');
-                    oeirHeader.classList.add('collapsed');
-                    oeirIcon.style.transform = 'rotate(-90deg)';
-                } else {
-                    oeirContent.classList.remove('collapsed');
-                    oeirHeader.classList.remove('collapsed');
-                    oeirIcon.style.transform = 'rotate(0deg)';
-                }
-            });
-
-            smHeader.addEventListener('click', function() {
-                smCollapsed = !smCollapsed;
-                if (smCollapsed) {
-                    smContent.classList.add('collapsed');
-                    smHeader.classList.add('collapsed');
-                    smIcon.style.transform = 'rotate(-90deg)';
-                } else {
-                    smContent.classList.remove('collapsed');
-                    smHeader.classList.remove('collapsed');
-                    smIcon.style.transform = 'rotate(0deg)';
-                }
-            });
-
-            importantHeader.addEventListener('click', function() {
-                importantCollapsed = !importantCollapsed;
-                if (importantCollapsed) {
-                    importantContent.classList.add('collapsed');
-                    importantHeader.classList.add('collapsed');
-                    importantIcon.style.transform = 'rotate(-90deg)';
-                } else {
-                    importantContent.classList.remove('collapsed');
-                    importantHeader.classList.remove('collapsed');
-                    importantIcon.style.transform = 'rotate(0deg)';
-                }
-            });
-        }
-        
-        // Инициализируем сворачивание после загрузки страницы
-        initCollapsibleSections();
     </script>
 </body>
 </html>
