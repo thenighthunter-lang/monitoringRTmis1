@@ -180,6 +180,69 @@
             100% { transform: rotate(10deg) scale(1.2); }
         }
 
+        /* ---------- МКС ---------- */
+        .iss {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            z-index: 5;
+            pointer-events: none;
+            opacity: 0;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+            animation: issFly 10s linear forwards;
+        }
+
+        .iss::before {
+            content: '🛰️';
+            position: absolute;
+            font-size: 40px;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            filter: drop-shadow(0 0 10px #ffaa33);
+        }
+
+        .iss::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ffaa33, #ffffff, #ffaa33, transparent);
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            filter: blur(2px);
+            border-radius: 50%;
+        }
+
+        @keyframes issFly {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px) translateY(20vh) scale(0.5);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(10vw) translateY(15vh) scale(0.7);
+            }
+            30% {
+                transform: translateX(30vw) translateY(10vh) scale(0.9);
+            }
+            50% {
+                transform: translateX(50vw) translateY(5vh) scale(1);
+            }
+            70% {
+                transform: translateX(70vw) translateY(10vh) scale(0.9);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(90vw) translateY(15vh) scale(0.7);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(110vw) translateY(20vh) scale(0.5);
+            }
+        }
+
         /* ---------- МЕТЕОРИТЫ ---------- */
         .meteor {
             position: absolute;
@@ -336,12 +399,17 @@
             animation: tooltipAppear 0.2s ease;
         }
 
-        /* ---------- КНОПКА ВАЖНОЕ СВЕРХУ СЛЕВА ---------- */
-        .important-button-top {
+        /* ---------- КНОПКИ СВЕРХУ СЛЕВА ---------- */
+        .top-buttons {
             position: fixed;
             top: clamp(10px, 2vh, 20px);
             left: clamp(10px, 2vw, 20px);
             z-index: 200;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .important-button {
             background: linear-gradient(45deg, #ffaa33, #ff5500, #ffaa33, #ff5500);
             background-size: 300% 300%;
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -353,28 +421,43 @@
             cursor: pointer;
             box-shadow: 0 0 30px rgba(255, 170, 51, 0.5);
             transition: all 0.3s ease;
-            animation: gradientShift 3s ease infinite, importantPulse 2s infinite alternate;
+            animation: gradientShift 3s ease infinite, pulse 2s infinite alternate;
         }
 
-        .important-button-top:hover {
+        .schedule-button {
+            background: linear-gradient(45deg, #4a90e2, #357abd, #4a90e2, #357abd);
+            background-size: 300% 300%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(74, 144, 226, 0.5);
+            transition: all 0.3s ease;
+            animation: gradientShift 3s ease infinite, pulse 2s infinite alternate;
+        }
+
+        .important-button:hover, .schedule-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 50px #ffaa33, 0 0 100px #ff5500;
+            box-shadow: 0 0 50px currentColor, 0 0 100px currentColor;
             border-color: #fff;
-            animation: gradientShift 1.5s ease infinite, importantPulse 1s infinite alternate;
+            animation: gradientShift 1.5s ease infinite, pulse 1s infinite alternate;
         }
 
-        .important-button-top:active {
+        .important-button:active, .schedule-button:active {
             transform: scale(0.95);
         }
 
-        .important-button-top .icon {
+        .important-button .icon, .schedule-button .icon {
             font-size: 1.3rem;
             color: white;
             filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
             animation: iconGlow 2s ease infinite;
         }
 
-        .important-button-top .text {
+        .important-button .text, .schedule-button .text {
             font-size: 1.1rem;
             font-weight: 600;
             color: white;
@@ -389,7 +472,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        @keyframes importantPulse {
+        @keyframes pulse {
             0% { transform: scale(1); }
             100% { transform: scale(1.02); }
         }
@@ -1083,7 +1166,7 @@
 
         .centered-table .collapsible-section {
             width: 100%;
-            max-width: 900px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -1130,6 +1213,20 @@
             cursor: move;
             user-select: none;
             touch-action: none;
+            transition: all 0.3s ease;
+        }
+
+        .music-player.collapsed {
+            transform: translateY(calc(100% - 40px));
+        }
+
+        .music-player.collapsed .yandex-player-container,
+        .music-player.collapsed .player-station-info {
+            display: none;
+        }
+
+        .music-player.collapsed .player-header {
+            margin-bottom: 0;
         }
 
         @keyframes playerFloat {
@@ -1609,17 +1706,22 @@
                 white-space: normal;
             }
 
-            .important-button-top {
+            .important-button, .schedule-button {
                 padding: 0.4rem 1rem;
             }
 
-            .important-button-top .text {
+            .important-button .text, .schedule-button .text {
                 font-size: 0.9rem;
             }
 
             .popup-window {
                 width: 95vw;
                 height: 95vh;
+            }
+
+            .top-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
     </style>
@@ -1632,10 +1734,16 @@
         <div class="galaxy"></div>
     </div>
 
-    <!-- КНОПКА ВАЖНОЕ СВЕРХУ СЛЕВА -->
-    <div class="important-button-top" id="importantButton">
-        <span class="icon">📌</span>
-        <span class="text">Важное</span>
+    <!-- КНОПКИ СВЕРХУ СЛЕВА -->
+    <div class="top-buttons">
+        <div class="important-button" id="importantButton">
+            <span class="icon">📌</span>
+            <span class="text">Важное</span>
+        </div>
+        <div class="schedule-button" id="scheduleButton">
+            <span class="icon">📅</span>
+            <span class="text">График</span>
+        </div>
     </div>
 
     <!-- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ (справа) -->
@@ -1675,6 +1783,7 @@
         <div class="player-header">
             <span class="player-title">космическая музыка</span>
             <div class="player-controls">
+                <button class="player-btn" id="togglePlayerBtn" title="свернуть/развернуть">🗕</button>
                 <button class="player-btn" id="prevTrackBtn" title="предыдущий трек">⏮️</button>
                 <button class="player-btn" id="nextTrackBtn" title="следующий трек">⏭️</button>
             </div>
@@ -1694,22 +1803,44 @@
         </div>
     </div>
 
-    <!-- ВСПЛЫВАЮЩЕЕ ОКНО -->
+    <!-- ВСПЛЫВАЮЩИЕ ОКНА -->
     <div class="popup-overlay" id="popupOverlay"></div>
-    <div class="popup-window" id="popupWindow">
-        <div class="popup-header" id="popupHeader">
+    
+    <!-- Окно Важное -->
+    <div class="popup-window" id="importantPopup">
+        <div class="popup-header" id="importantPopupHeader">
             <div class="popup-title">
                 <span>📌</span>
                 <span>ВАЖНАЯ ИНФОРМАЦИЯ</span>
             </div>
             <div class="popup-controls">
-                <button class="popup-btn" id="minimizePopup" title="Свернуть">🗕</button>
-                <button class="popup-btn" id="closePopup" title="Закрыть">✕</button>
+                <button class="popup-btn" id="minimizeImportantPopup" title="Свернуть">🗕</button>
+                <button class="popup-btn" id="closeImportantPopup" title="Закрыть">✕</button>
             </div>
         </div>
         <div class="popup-content">
             <iframe 
                 src="https://docs.google.com/spreadsheets/d/1dXTrCwA8eVBdmHGmX5H9qeIsWJaVE_zAmjlSgs9rH9Y/edit?pli=1&gid=138149952#gid=138149952" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Окно График -->
+    <div class="popup-window" id="schedulePopup">
+        <div class="popup-header" id="schedulePopupHeader">
+            <div class="popup-title">
+                <span>📅</span>
+                <span>ГРАФИК</span>
+            </div>
+            <div class="popup-controls">
+                <button class="popup-btn" id="minimizeSchedulePopup" title="Свернуть">🗕</button>
+                <button class="popup-btn" id="closeSchedulePopup" title="Закрыть">✕</button>
+            </div>
+        </div>
+        <div class="popup-content">
+            <iframe 
+                src="https://docs.google.com/spreadsheets/d/1q7wDVIIuT1DvKhebvDCzKMeiuuTVnrvdC9jBC8qjHiU/edit?pli=1&gid=1736109383#gid=1736109383" 
                 allowfullscreen>
             </iframe>
         </div>
@@ -1885,7 +2016,7 @@
                     </div>
                 </div>
 
-                <!-- Таблица СМ по центру -->
+                <!-- Таблица СМ по центру (уменьшенная) -->
                 <div class="centered-table">
                     <div class="collapsible-section" id="smSection">
                         <div class="section-header collapsed" id="smHeader">
@@ -2198,6 +2329,23 @@
     </div>
 
     <script>
+        // Функция для создания МКС
+        function createISS() {
+            const iss = document.createElement('div');
+            iss.className = 'iss';
+            
+            // Случайная высота пролета (от 5vh до 30vh)
+            const height = 5 + Math.random() * 25;
+            iss.style.top = height + 'vh';
+            
+            document.querySelector('.universe').appendChild(iss);
+            
+            // Удаляем МКС после анимации
+            setTimeout(() => {
+                iss.remove();
+            }, 10000); // 10 секунд = длительность анимации
+        }
+
         // Пагинация
         const pages = document.querySelectorAll('.page');
         const pageBtns = document.querySelectorAll('.page-btn[data-page]');
@@ -2421,6 +2569,11 @@
         // Создаем первый метеорит через 5 секунд после загрузки
         setTimeout(createMeteor, 5000);
 
+        // Запускаем МКС раз в 30 секунд
+        setInterval(createISS, 30000);
+        // Создаем первую МКС через 10 секунд после загрузки
+        setTimeout(createISS, 10000);
+
         // Функционал сворачивания таблиц
         function initCollapsibleSections() {
             const dbaHeader = document.getElementById('dbaHeader');
@@ -2481,78 +2634,227 @@
         // Инициализируем сворачивание после загрузки страницы
         initCollapsibleSections();
 
-        // Функционал всплывающего окна "Важное"
+        // Функционал всплывающих окон
         const importantButton = document.getElementById('importantButton');
+        const scheduleButton = document.getElementById('scheduleButton');
         const popupOverlay = document.getElementById('popupOverlay');
-        const popupWindow = document.getElementById('popupWindow');
-        const closePopup = document.getElementById('closePopup');
-        const minimizePopup = document.getElementById('minimizePopup');
-        const popupHeader = document.getElementById('popupHeader');
+        const importantPopup = document.getElementById('importantPopup');
+        const schedulePopup = document.getElementById('schedulePopup');
+        
+        // Элементы управления для важного окна
+        const closeImportantPopup = document.getElementById('closeImportantPopup');
+        const minimizeImportantPopup = document.getElementById('minimizeImportantPopup');
+        const importantPopupHeader = document.getElementById('importantPopupHeader');
+
+        // Элементы управления для окна графика
+        const closeSchedulePopup = document.getElementById('closeSchedulePopup');
+        const minimizeSchedulePopup = document.getElementById('minimizeSchedulePopup');
+        const schedulePopupHeader = document.getElementById('schedulePopupHeader');
 
         // Переменные для перетаскивания
         let isDragging = false;
         let offsetX, offsetY;
+        let currentPopup = null;
 
-        // Открыть окно
-        importantButton.addEventListener('click', () => {
+        // Функция открытия окна
+        function openPopup(popup) {
             popupOverlay.classList.add('active');
-            popupWindow.classList.add('active');
-        });
+            popup.classList.add('active');
+            currentPopup = popup;
+        }
 
-        // Закрыть окно
-        closePopup.addEventListener('click', () => {
+        // Функция закрытия окна
+        function closePopup(popup) {
             popupOverlay.classList.remove('active');
-            popupWindow.classList.remove('active');
+            popup.classList.remove('active');
+            currentPopup = null;
+        }
+
+        // Функция сворачивания окна
+        function minimizePopup(popup) {
+            popup.classList.remove('active');
+        }
+
+        // Открыть важное окно
+        importantButton.addEventListener('click', () => {
+            openPopup(importantPopup);
         });
 
-        // Свернуть окно (скрыть, но оставить overlay)
-        minimizePopup.addEventListener('click', () => {
-            popupWindow.classList.remove('active');
+        // Открыть окно графика
+        scheduleButton.addEventListener('click', () => {
+            openPopup(schedulePopup);
         });
 
-        // Клик по overlay закрывает окно
+        // Закрыть важное окно
+        closeImportantPopup.addEventListener('click', () => {
+            closePopup(importantPopup);
+        });
+
+        // Закрыть окно графика
+        closeSchedulePopup.addEventListener('click', () => {
+            closePopup(schedulePopup);
+        });
+
+        // Свернуть важное окно
+        minimizeImportantPopup.addEventListener('click', () => {
+            minimizePopup(importantPopup);
+        });
+
+        // Свернуть окно графика
+        minimizeSchedulePopup.addEventListener('click', () => {
+            minimizePopup(schedulePopup);
+        });
+
+        // Клик по overlay закрывает текущее окно
         popupOverlay.addEventListener('click', () => {
-            popupOverlay.classList.remove('active');
-            popupWindow.classList.remove('active');
+            if (currentPopup) {
+                closePopup(currentPopup);
+            }
         });
 
-        // Перетаскивание окна
-        popupHeader.addEventListener('mousedown', (e) => {
+        // Функция перетаскивания для важного окна
+        importantPopupHeader.addEventListener('mousedown', (e) => {
             isDragging = true;
-            const rect = popupWindow.getBoundingClientRect();
+            const rect = importantPopup.getBoundingClientRect();
             offsetX = e.clientX - rect.left;
             offsetY = e.clientY - rect.top;
-            popupWindow.style.transition = 'none';
+            importantPopup.style.transition = 'none';
+            currentPopup = importantPopup;
+        });
+
+        // Функция перетаскивания для окна графика
+        schedulePopupHeader.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            const rect = schedulePopup.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            schedulePopup.style.transition = 'none';
+            currentPopup = schedulePopup;
         });
 
         document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
+            if (!isDragging || !currentPopup) return;
             e.preventDefault();
             
             const newX = e.clientX - offsetX;
             const newY = e.clientY - offsetY;
             
             // Ограничиваем, чтобы окно не уходило за края
-            const maxX = window.innerWidth - popupWindow.offsetWidth;
-            const maxY = window.innerHeight - popupWindow.offsetHeight;
+            const maxX = window.innerWidth - currentPopup.offsetWidth;
+            const maxY = window.innerHeight - currentPopup.offsetHeight;
             
             const limitedX = Math.max(0, Math.min(newX, maxX));
             const limitedY = Math.max(0, Math.min(newY, maxY));
             
-            popupWindow.style.left = limitedX + 'px';
-            popupWindow.style.top = limitedY + 'px';
-            popupWindow.style.transform = 'none';
+            currentPopup.style.left = limitedX + 'px';
+            currentPopup.style.top = limitedY + 'px';
+            currentPopup.style.transform = 'none';
         });
 
         document.addEventListener('mouseup', () => {
             isDragging = false;
-            popupWindow.style.transition = 'all 0.3s ease';
+            if (currentPopup) {
+                currentPopup.style.transition = 'all 0.3s ease';
+            }
+            currentPopup = null;
         });
 
-        // Предотвращаем закрытие при клике на само окно
-        popupWindow.addEventListener('click', (e) => {
+        // Предотвращаем закрытие при клике на окна
+        importantPopup.addEventListener('click', (e) => {
             e.stopPropagation();
         });
+
+        schedulePopup.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Сворачивание/разворачивание плеера
+        const player = document.getElementById('musicPlayer');
+        const togglePlayerBtn = document.getElementById('togglePlayerBtn');
+        let playerCollapsed = false;
+
+        togglePlayerBtn.addEventListener('click', () => {
+            playerCollapsed = !playerCollapsed;
+            if (playerCollapsed) {
+                player.classList.add('collapsed');
+                togglePlayerBtn.innerHTML = '🗖';
+                togglePlayerBtn.title = 'развернуть';
+            } else {
+                player.classList.remove('collapsed');
+                togglePlayerBtn.innerHTML = '🗕';
+                togglePlayerBtn.title = 'свернуть';
+            }
+        });
+
+        // Перетаскивание плеера
+        let playerOffsetX, playerOffsetY, playerMouseX, playerMouseY;
+        let playerDragging = false;
+
+        player.addEventListener('mousedown', startPlayerDrag);
+        player.addEventListener('touchstart', startPlayerDrag);
+
+        function startPlayerDrag(e) {
+            if (e.target.classList.contains('player-btn')) return; // Не перетаскиваем при клике на кнопки
+            
+            e.preventDefault();
+            
+            if (e.type === 'mousedown') {
+                playerMouseX = e.clientX;
+                playerMouseY = e.clientY;
+            } else if (e.type === 'touchstart') {
+                playerMouseX = e.touches[0].clientX;
+                playerMouseY = e.touches[0].clientY;
+            }
+            
+            const rect = player.getBoundingClientRect();
+            playerOffsetX = playerMouseX - rect.left;
+            playerOffsetY = playerMouseY - rect.top;
+            
+            playerDragging = true;
+            player.style.animation = 'none';
+            
+            document.addEventListener('mousemove', onPlayerDrag);
+            document.addEventListener('touchmove', onPlayerDrag);
+            document.addEventListener('mouseup', stopPlayerDrag);
+            document.addEventListener('touchend', stopPlayerDrag);
+        }
+
+        function onPlayerDrag(e) {
+            if (!playerDragging) return;
+            e.preventDefault();
+            
+            if (e.type === 'mousemove') {
+                playerMouseX = e.clientX;
+                playerMouseY = e.clientY;
+            } else if (e.type === 'touchmove') {
+                playerMouseX = e.touches[0].clientX;
+                playerMouseY = e.touches[0].clientY;
+            }
+            
+            const newX = playerMouseX - playerOffsetX;
+            const newY = playerMouseY - playerOffsetY;
+            
+            const maxX = window.innerWidth - player.offsetWidth;
+            const maxY = window.innerHeight - player.offsetHeight;
+            
+            const limitedX = Math.max(0, Math.min(newX, maxX));
+            const limitedY = Math.max(0, Math.min(newY, maxY));
+            
+            player.style.left = limitedX + 'px';
+            player.style.top = limitedY + 'px';
+            player.style.right = 'auto';
+            player.style.bottom = 'auto';
+        }
+
+        function stopPlayerDrag() {
+            playerDragging = false;
+            player.style.animation = 'playerFloat 3s infinite alternate';
+            
+            document.removeEventListener('mousemove', onPlayerDrag);
+            document.removeEventListener('touchmove', onPlayerDrag);
+            document.removeEventListener('mouseup', stopPlayerDrag);
+            document.removeEventListener('touchend', stopPlayerDrag);
+        }
     </script>
     
     <!-- Плеер Яндекс.Музыки с космической музыкой -->
@@ -2620,85 +2922,6 @@
         });
         
         loadPlaylist(0);
-
-        // Перетаскивание плеера
-        const player = document.getElementById('musicPlayer');
-        let offsetX, offsetY, mouseX, mouseY;
-        let isDragging = false;
-
-        player.addEventListener('mousedown', startDrag);
-        player.addEventListener('touchstart', startDrag);
-
-        function startDrag(e) {
-            e.preventDefault();
-            
-            // Получаем координаты начала перетаскивания
-            if (e.type === 'mousedown') {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            } else if (e.type === 'touchstart') {
-                mouseX = e.touches[0].clientX;
-                mouseY = e.touches[0].clientY;
-            }
-            
-            // Получаем текущую позицию плеера
-            const rect = player.getBoundingClientRect();
-            offsetX = mouseX - rect.left;
-            offsetY = mouseY - rect.top;
-            
-            isDragging = true;
-            
-            // Отключаем анимацию при перетаскивании
-            player.style.animation = 'none';
-            
-            document.addEventListener('mousemove', onDrag);
-            document.addEventListener('touchmove', onDrag);
-            document.addEventListener('mouseup', stopDrag);
-            document.addEventListener('touchend', stopDrag);
-        }
-
-        function onDrag(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            
-            // Получаем текущие координаты мыши/пальца
-            if (e.type === 'mousemove') {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            } else if (e.type === 'touchmove') {
-                mouseX = e.touches[0].clientX;
-                mouseY = e.touches[0].clientY;
-            }
-            
-            // Вычисляем новую позицию
-            const newX = mouseX - offsetX;
-            const newY = mouseY - offsetY;
-            
-            // Ограничиваем, чтобы плеер не уходил за края экрана
-            const maxX = window.innerWidth - player.offsetWidth;
-            const maxY = window.innerHeight - player.offsetHeight;
-            
-            const limitedX = Math.max(0, Math.min(newX, maxX));
-            const limitedY = Math.max(0, Math.min(newY, maxY));
-            
-            // Применяем новую позицию
-            player.style.left = limitedX + 'px';
-            player.style.top = limitedY + 'px';
-            player.style.right = 'auto';
-            player.style.bottom = 'auto';
-        }
-
-        function stopDrag() {
-            isDragging = false;
-            
-            // Включаем анимацию обратно
-            player.style.animation = 'playerFloat 3s infinite alternate';
-            
-            document.removeEventListener('mousemove', onDrag);
-            document.removeEventListener('touchmove', onDrag);
-            document.removeEventListener('mouseup', stopDrag);
-            document.removeEventListener('touchend', stopDrag);
-        }
     </script>
 </body>
 </html>
