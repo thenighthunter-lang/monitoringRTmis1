@@ -1051,7 +1051,8 @@
             font-weight: 500;
             letter-spacing: 2px;
             margin: 0;
-            text-shadow: 0 0 10px rgba(255, 200, 100, 0.3);
+            text-align: center;
+            width: 100%;
         }
 
         .collapse-icon {
@@ -1096,6 +1097,7 @@
             padding-bottom: 0.3rem;
             border-bottom: 1px solid rgba(255, 200, 100, 0.3);
             letter-spacing: 1px;
+            text-align: center;
         }
 
         .info-table {
@@ -1109,7 +1111,7 @@
             font-size: clamp(1rem, 2.2vw, 1.2rem);
             font-weight: 500;
             padding: clamp(0.8rem, 1.8vh, 1.2rem) clamp(1rem, 2.5vw, 1.8rem);
-            text-align: left;
+            text-align: center;
             border-bottom: 1px solid rgba(180, 140, 255, 0.3);
             background: rgba(20, 10, 40, 0.3);
             white-space: nowrap;
@@ -1123,11 +1125,13 @@
             line-height: 1.5;
             word-break: break-word;
             vertical-align: middle;
+            text-align: center;
         }
 
         .phone-cell {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             flex-wrap: wrap;
         }
@@ -1225,6 +1229,7 @@
             gap: clamp(2rem, 4vw, 3rem);
             margin-bottom: clamp(2.5rem, 6vh, 3.5rem);
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .table-column {
@@ -1278,6 +1283,7 @@
             max-width: 500px;
             width: 100%;
             justify-content: center;
+            text-align: center;
         }
 
         .sm-regions-button:hover {
@@ -1830,6 +1836,17 @@
             border-top-color: rgba(255, 170, 51, 0.3);
         }
 
+        /* Пустая страница */
+        .empty-page {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 2rem;
+            text-align: center;
+        }
+
         /* Адаптация для очень маленьких экранов */
         @media (max-width: 480px) {
             body {
@@ -1882,7 +1899,7 @@
 
             .phone-cell {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
             }
 
             .sm-regions-button {
@@ -2577,160 +2594,24 @@
                 </div>
             </div>
 
-            <!-- Страница 3 -->
+            <!-- Страница 3 - Пустая -->
             <div class="page" id="page3">
-                <div class="links-grid">
-                    <a href="#" class="cosmic-card" target="_blank">
-                        <span class="card-icon">📡</span>
-                        <div class="card-content">
-                            <span class="card-title">Ссылка</span>
-                            <span class="card-description">Ссылка</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                    <a href="#" class="cosmic-card" target="_blank">
-                        <span class="card-icon">🪐</span>
-                        <div class="card-content">
-                            <span class="card-title">Ссылка</span>
-                            <span class="card-description">Ссылка</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                    <a href="#" class="cosmic-card" target="_blank">
-                        <span class="card-icon">🔭</span>
-                        <div class="card-content">
-                            <span class="card-title">Ссылка</span>
-                            <span class="card-description">Ссылка</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                    <a href="#" class="cosmic-card" target="_blank">
-                        <span class="card-icon">🌕</span>
-                        <div class="card-content">
-                            <span class="card-title">Ссылка</span>
-                            <span class="card-description">Ссылка</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                    <a href="#" class="cosmic-card" target="_blank">
-                        <span class="card-icon">☄️</span>
-                        <div class="card-content">
-                            <span class="card-title">Ссылка</span>
-                            <span class="card-description">Ссылка</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
+                <div class="empty-page">
+                    <div>🚀</div>
                 </div>
             </div>
 
-            <!-- Страница 4 -->
+            <!-- Страница 4 - Пустая -->
             <div class="page" id="page4">
-                <div class="links-grid">
-                    <a href="#" class="cosmic-card" target="_blank">
-                        <span class="card-icon">📚</span>
-                        <div class="card-content">
-                            <span class="card-title">Ссылка</span>
-                            <span class="card-description">Ссылка</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                    <a href="#" class="cosmic-card" target="_blank">
-                        <span class="card-icon">🎓</span>
-                        <div class="card-content">
-                            <span class="card-title">Ссылка</span>
-                            <span class="card-description">Ссылка</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                    <a href="#" class="cosmic-card" target="_blank">
-                        <span class="card-icon">🌍</span>
-                        <div class="card-content">
-                            <span class="card-title">Ссылка</span>
-                            <span class="card-description">Ссылка</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                    <a href="#" class="cosmic-card" target="_blank">
-                        <span class="card-icon">🛸</span>
-                        <div class="card-content">
-                            <span class="card-title">Ссылка</span>
-                            <span class="card-description">Ссылка</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                    <a href="#" class="cosmic-card" target="_blank">
-                        <span class="card-icon">⚡</span>
-                        <div class="card-content">
-                            <span class="card-title">Ссылка</span>
-                            <span class="card-description">Ссылка</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
+                <div class="empty-page">
+                    <div>🌌</div>
                 </div>
             </div>
 
-            <!-- Страница 5 - Сайты столбцом в больших окнах -->
+            <!-- Страница 5 - Пустая -->
             <div class="page" id="page5">
-                <div style="display: flex; flex-direction: column; gap: clamp(0.5rem, 2vh, 1.5rem); width: 100%;">
-                    
-                    <!-- Сайт 1 - Сброс пароля Госуслуги -->
-                    <div class="cosmic-card" style="flex-direction: column; padding: clamp(0.5rem, 2vh, 1.5rem); width: 100%; cursor: default;">
-                        <div style="display: flex; align-items: center; width: 100%; margin-bottom: clamp(0.3rem, 1vh, 1rem);">
-                            <span class="card-icon" style="font-size: clamp(1.5rem, 5vw, 2.5rem);">🔐</span>
-                            <div class="card-content">
-                                <span class="card-title" style="font-size: clamp(1rem, 3vw, 1.5rem);">Сброс пароля (Госуслуги СКУФ)</span>
-                                <span class="card-description" style="font-size: clamp(0.7rem, 2vw, 1rem);">внутренний сервис</span>
-                            </div>
-                        </div>
-                        <iframe 
-                            src="https://rundeck.is-mis.ru" 
-                            style="width: 100%; height: min(400px, 50vh); border: none; border-radius: 16px; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.5);"
-                            sandbox="allow-same-origin allow-scripts allow-forms allow-popups">
-                        </iframe>
-                        <div style="margin-top: clamp(0.3rem, 1vh, 1rem); font-size: clamp(0.7rem, 2vw, 0.9rem); color: #cbb9ff; text-align: right;">
-                            ⚡ Если не загружается — 
-                            <a href="https://rundeck.is-mis.ru" target="_blank" style="color: #ffaa33; text-decoration: none; border-bottom: 1px solid #ffaa33;">открыть в новой вкладке →</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Сайт 2 - Random.org генератор -->
-                    <div class="cosmic-card" style="flex-direction: column; padding: clamp(0.5rem, 2vh, 1.5rem); width: 100%; cursor: default;">
-                        <div style="display: flex; align-items: center; width: 100%; margin-bottom: clamp(0.3rem, 1vh, 1rem);">
-                            <span class="card-icon" style="font-size: clamp(1.5rem, 5vw, 2.5rem);">🎲</span>
-                            <div class="card-content">
-                                <span class="card-title" style="font-size: clamp(1rem, 3vw, 1.5rem);">Генератор паролей</span>
-                                <span class="card-description" style="font-size: clamp(0.7rem, 2vw, 1rem);">Random.org - 5 случайных паролей</span>
-                            </div>
-                        </div>
-                        <iframe 
-                            src="https://www.random.org/passwords/?num=5&len=8&format=html&rnd=new" 
-                            style="width: 100%; height: min(400px, 50vh); border: none; border-radius: 16px; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.5);"
-                            sandbox="allow-same-origin allow-scripts allow-popups">
-                        </iframe>
-                        <div style="margin-top: clamp(0.3rem, 1vh, 1rem); font-size: clamp(0.7rem, 2vw, 0.9rem); color: #cbb9ff; text-align: right;">
-                            <a href="https://www.random.org/passwords/?num=5&len=8&format=html&rnd=new" target="_blank" style="color: #ffaa33; text-decoration: none; border-bottom: 1px solid #ffaa33;">открыть генератор в новой вкладке →</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Сайт 3 - Пароль РТ -->
-                    <div class="cosmic-card" style="flex-direction: column; padding: clamp(0.5rem, 2vh, 1.5rem); width: 100%; cursor: default;">
-                        <div style="display: flex; align-items: center; width: 100%; margin-bottom: clamp(0.3rem, 1vh, 1rem);">
-                            <span class="card-icon" style="font-size: clamp(1.5rem, 5vw, 2.5rem);">🛡️</span>
-                            <div class="card-content">
-                                <span class="card-title" style="font-size: clamp(1rem, 3vw, 1.5rem);">Пароль РТ</span>
-                                <span class="card-description" style="font-size: clamp(0.7rem, 2vw, 1rem);">менеджер паролей Ростелеком</span>
-                            </div>
-                        </div>
-                        <iframe 
-                            src="https://pass.soc.rt.ru/#/" 
-                            style="width: 100%; height: min(400px, 50vh); border: none; border-radius: 16px; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.5);"
-                            sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals">
-                        </iframe>
-                        <div style="margin-top: clamp(0.3rem, 1vh, 1rem); font-size: clamp(0.7rem, 2vw, 0.9rem); color: #cbb9ff; text-align: right;">
-                            <a href="https://pass.soc.rt.ru/#/" target="_blank" style="color: #ffaa33; text-decoration: none; border-bottom: 1px solid #ffaa33;">открыть менеджер в новой вкладке →</a>
-                        </div>
-                    </div>
-                    
+                <div class="empty-page">
+                    <div>✨</div>
                 </div>
             </div>
         </div>
@@ -2740,10 +2621,10 @@
             <button class="page-btn nav-btn" id="prevPage" disabled data-tooltip="предыдущая страница">← назад</button>
             
             <button class="page-btn active-page" data-page="1" data-tooltip="Главная страница">1</button>
-            <button class="page-btn" data-page="2" data-tooltip="Дежурство">2</button>
-            <button class="page-btn" data-page="3" data-tooltip="Работа">3</button>
-            <button class="page-btn" data-page="4" data-tooltip="Работа">4</button>
-            <button class="page-btn" data-page="5" data-tooltip="Работа">5</button>
+            <button class="page-btn" data-page="2" data-tooltip="Полезные ссылки">2</button>
+            <button class="page-btn" data-page="3" data-tooltip="Пустая страница">3</button>
+            <button class="page-btn" data-page="4" data-tooltip="Пустая страница">4</button>
+            <button class="page-btn" data-page="5" data-tooltip="Пустая страница">5</button>
             
             <button class="page-btn nav-btn" id="nextPage" data-tooltip="следующая страница">вперед →</button>
         </div>
