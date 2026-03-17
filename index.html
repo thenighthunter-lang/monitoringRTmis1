@@ -1236,15 +1236,84 @@
         .centered-table {
             width: 100%;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             margin: clamp(2rem, 5vh, 3rem) 0;
         }
 
         .centered-table .collapsible-section {
             width: 100%;
-            max-width: 700px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* Новая кнопка под таблицей СМ */
+        .sm-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .sm-regions-button {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad, #9b59b6);
+            background-size: 200% 200%;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 60px;
+            padding: 1rem 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(155, 89, 182, 0.5), 0 0 60px rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: gradientShift 4s ease infinite, buttonPulse 2s infinite alternate;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+            max-width: 500px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .sm-regions-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 50px #9b59b6, 0 0 80px #ffaa33;
+            border-color: #ffaa33;
+        }
+
+        .sm-regions-button:active {
+            transform: translateY(2px) scale(0.98);
+        }
+
+        .sm-regions-button .icon {
+            font-size: 1.8rem;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+            animation: iconSpin 5s infinite linear;
+        }
+
+        @keyframes iconSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes buttonPulse {
+            0% { box-shadow: 0 0 30px rgba(155, 89, 182, 0.5), 0 0 60px rgba(255, 215, 0, 0.2); }
+            100% { box-shadow: 0 0 50px #9b59b6, 0 0 80px #ffaa33; }
+        }
+
+        body.day-theme .sm-regions-button {
+            background: linear-gradient(135deg, #ffaa33, #ff8c42, #ffaa33);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(255, 170, 51, 0.5);
+        }
+
+        body.day-theme .sm-regions-button:hover {
+            box-shadow: 0 0 60px #ffaa33, 0 0 90px #ffaa33;
         }
 
         body.day-theme .collapsible-section {
@@ -1815,6 +1884,11 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .sm-regions-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -2269,7 +2343,7 @@
                     </div>
                 </div>
 
-                <!-- Таблица СМ по центру (уменьшенная) -->
+                <!-- Таблица СМ по центру -->
                 <div class="centered-table">
                     <div class="collapsible-section" id="smSection">
                         <div class="section-header collapsed" id="smHeader">
@@ -2283,7 +2357,7 @@
                                         <tr>
                                             <th>ФИО</th>
                                             <th>Телефон</th>
-                                            <th>График</th>
+                                            <th>Регион</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -2308,19 +2382,148 @@
                                             <td>Владимир, Оренбург</td>
                                         </tr>
                                         <tr>
-                                            <td>Васильев Андрей</td>
+                                            <td>Карпов Антон</td>
                                             <td>
-                                                <div class="phone-cell">
-                                                    <div class="phone-numbers">8 999 901-23-45</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('8 999 901-23-45', this)">📋</button>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89056557113</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89056557113', this)">📋</button>
                                                 </div>
                                             </td>
-                                            <td>08:00 - 17:00</td>
+                                            <td>Вологода, ЯНАО</td>
+                                        </tr>
+                                            <tr>
+                                            <td>Трефилова Ольга</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89138517790</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89138517790', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>ЕАО, Красноярск, Саха</td>
+                                        </tr>
+                                             <tr>
+                                            <td>Олейник Илья</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89994765880</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89994765880', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>Иркутск, Хакасия</td>
+                                        </tr>
+                                             <tr>
+                                            <td>Большаков Иоанн</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89215505040</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89215505040', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>КБР, Дагестан</td>
+                                        </tr>
+                                            <tr>
+                                            <td>Волчик Виктор</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89995283589</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89995283589', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>Карелия, Москва, Пенза</td>
+                                        </tr>
+                                             <tr>
+                                            <td>Лубнин Андрей</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89097759422</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89097759422', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>Коми, НиНо</td>
+                                        </tr>
+                                             <tr>
+                                            <td>Карпечин Павел</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89121752698</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89121752698', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>Крым, Калуга</td>
+                                        </tr>
+                                             <tr>
+                                            <td>Волков Илья</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89217622389</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89217622389', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>Киров, ФМБА</td>
+                                        </tr>
+                                            <tr>
+                                            <td>Шкляев Дмитрий</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89520679933</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89520679933', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>Свердловск, Курган</td>
+                                        </tr>
+                                             <tr>
+                                            <td>Астанкулова Марина</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89520679933</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89520679933', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>Омск, Удмуртия</td>
+                                        </tr>
+                                            <tr>
+                                            <td>Михайлов Дмитрий</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89523311790</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89523311790', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>Пермь, Алтай</td>
+                                        </tr>
+                                            <tr>
+                                            <td>Дегтярь Константин</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89232409634</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89232409634', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>Башкирия</td>
+                                        </tr>
+                                            <tr>
+                                            <td>Кожевина Евгения</td>
+                                            <td>
+                                                <div class="phone-cell"->
+                                                    <div class="phone-numbers">89118371989</div>
+                                                    <button class="copy-btn" onclick="copyToClipboard('89118371989', this)">📋</button>
+                                                </div>
+                                            </td>
+                                            <td>Мордовия</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    
+                    <!-- Кнопка под таблицей СМ -->
+                    <div class="sm-button-container">
+                        <a href="https://confluence.rtmis.ru/pages/viewpage.action?pageId=252876542" target="_blank" class="sm-regions-button">
+                            <span class="icon">🌍</span>
+                            <span>Назначенные сотрудники по регионам</span>
+                            <span class="icon">→</span>
+                        </a>
                     </div>
                 </div>
             </div>
