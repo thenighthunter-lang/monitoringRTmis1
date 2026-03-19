@@ -1,3265 +1,1242 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>РТ МИС - Полезные ссылки</title>
-    <!-- Иконка вкладки с красивыми буквами RT -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='10' y='70' font-size='70' font-family='Arial, sans-serif' font-weight='bold' fill='%23ffaa33' stroke='%238f6eff' stroke-width='2'>RT</text></svg>">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            padding: 2rem 1.5rem;
-            transition: background 1s ease;
-            background: #030014;
-        }
-
-        /* Тема Ночь (по умолчанию) */
-        body.night-theme {
-            background: #030014;
-        }
-
-        /* Тема День (более светлая) */
-        body.day-theme {
-            background: #1a0b2e;
-        }
-
-        body.day-theme .stars {
-            opacity: 0.3;
-        }
-
-        body.day-theme .nebula-layer {
-            background: 
-                radial-gradient(ellipse at 30% 40%, #c4a0e6 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 70%, #b0c4ff 0%, transparent 45%),
-                radial-gradient(ellipse at 20% 80%, #ffb3c6 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 20%, #c2a5ff 0%, transparent 55%),
-                radial-gradient(circle at 90% 30%, #ffc2a0 0%, transparent 35%);
-            opacity: 0.6;
-        }
-
-        body.day-theme .galaxy {
-            background: radial-gradient(circle at 30% 40%, #ffd966, #ffb347, #ff8c42);
-            opacity: 0.3;
-        }
-
-        body.day-theme .cosmic-card {
-            background: rgba(80, 40, 120, 0.4);
-            border-color: rgba(255, 200, 100, 0.4);
-        }
-
-        body.day-theme .page-btn {
-            background: rgba(100, 60, 140, 0.6);
-        }
-
-        body.day-theme .pagination::before {
-            background: linear-gradient(45deg, #ffaa33, #ff8833, #ff6633, #ffaa33);
-        }
-
-        body.day-theme .sun-core {
-            box-shadow: 0 0 100px #ffdd55, 0 0 200px #ffaa33, 0 0 300px #ff8822;
-        }
-
-        /* ---------- Дизайн космоса ---------- */
-        .universe {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-            transition: all 1s ease;
-        }
-
-        .stars {
-            position: absolute;
-            inset: 0;
-            background: transparent;
-            background-image: 
-                radial-gradient(1px 1px at 5px 15px, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 95px 280px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 152px 430px, #ffe9c0, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 280px 125px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 350px 680px, #fff0d0, rgba(0,0,0,0)),
-                radial-gradient(3px 3px at 420px 920px, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 510px 230px, #b5d0ff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 630px 780px, #ffebc0, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 740px 340px, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 820px 570px, #f0e6ff, rgba(0,0,0,0)),
-                radial-gradient(3px 3px at 940px 150px, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 1050px 820px, #ffe0a0, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 1150px 430px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 1280px 650px, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(3px 3px at 1350px 290px, #ffeac0, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 1440px 880px, #d6c4ff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 1550px 150px, #fff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 1680px 540px, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 1750px 760px, #ffecb0, rgba(0,0,0,0)),
-                radial-gradient(3px 3px at 1850px 380px, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 1920px 600px, #b8b0ff, rgba(0,0,0,0));
-            background-repeat: no-repeat;
-            opacity: 0.9;
-            animation: twinkleStars 8s infinite alternate;
-            transition: opacity 1s ease;
-        }
-
-        @keyframes twinkleStars {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        .stars-big {
-            position: absolute;
-            inset: 0;
-            background: transparent;
-            background-image: 
-                radial-gradient(4px 4px at 650px 250px, #fff9e6, rgba(0,0,0,0)),
-                radial-gradient(5px 5px at 1250px 800px, #fff5d0, rgba(0,0,0,0)),
-                radial-gradient(4px 4px at 450px 1200px, #ffefc0, rgba(0,0,0,0)),
-                radial-gradient(6px 6px at 1650px 450px, #ffeac0, rgba(0,0,0,0)),
-                radial-gradient(4px 4px at 850px 1450px, #ffffff, rgba(0,0,0,0));
-            background-repeat: no-repeat;
-            opacity: 0.6;
-            animation: twinkleBig 5s infinite alternate;
-        }
-
-        @keyframes twinkleBig {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 0.9; transform: scale(1.1); }
-        }
-
-        .nebula-layer {
-            position: absolute;
-            inset: 0;
-            background: 
-                radial-gradient(ellipse at 30% 40%, #4a1f6e 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 70%, #1d4a7a 0%, transparent 45%),
-                radial-gradient(ellipse at 20% 80%, #6d2b5c 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 20%, #2f4b8a 0%, transparent 55%),
-                radial-gradient(circle at 90% 30%, #803a5e 0%, transparent 35%);
-            opacity: 0.4;
-            filter: blur(40px);
-            animation: nebulaMove 30s infinite alternate;
-            transition: all 1s ease;
-        }
-
-        @keyframes nebulaMove {
-            0% { transform: scale(1) translate(0, 0); opacity: 0.3; }
-            100% { transform: scale(1.2) translate(-2%, -1%); opacity: 0.5; }
-        }
-
-        .galaxy {
-            position: absolute;
-            width: min(600px, 50vw);
-            height: min(600px, 50vw);
-            background: radial-gradient(circle at 30% 40%, #ff7e5f, #b06ab3, #4568dc);
-            bottom: min(-100px, -10vh);
-            right: min(-100px, -10vw);
-            border-radius: 50%;
-            filter: blur(min(100px, 8vw));
-            opacity: 0.2;
-            animation: galaxySpin 40s infinite alternate;
-            transition: all 1s ease;
-        }
-
-        @keyframes galaxySpin {
-            0% { transform: rotate(0deg) scale(1); }
-            100% { transform: rotate(10deg) scale(1.2); }
-        }
-
-        /* ---------- МКС ---------- */
-        .iss {
-            position: absolute;
-            width: 60px;
-            height: 30px;
-            z-index: 5;
-            pointer-events: none;
-            opacity: 0;
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
-            animation: issFly 10s linear forwards;
-        }
-
-        .iss::before {
-            content: '🛰️';
-            position: absolute;
-            font-size: 40px;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            filter: drop-shadow(0 0 10px #ffaa33);
-        }
-
-        .iss::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #ffaa33, #ffffff, #ffaa33, transparent);
-            left: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            filter: blur(2px);
-            border-radius: 50%;
-        }
-
-        @keyframes issFly {
-            0% {
-                opacity: 0;
-                transform: translateX(-100px) translateY(20vh) scale(0.5);
-            }
-            10% {
-                opacity: 1;
-                transform: translateX(10vw) translateY(15vh) scale(0.7);
-            }
-            30% {
-                transform: translateX(30vw) translateY(10vh) scale(0.9);
-            }
-            50% {
-                transform: translateX(50vw) translateY(5vh) scale(1);
-            }
-            70% {
-                transform: translateX(70vw) translateY(10vh) scale(0.9);
-            }
-            90% {
-                opacity: 1;
-                transform: translateX(90vw) translateY(15vh) scale(0.7);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(110vw) translateY(20vh) scale(0.5);
-            }
-        }
-
-        /* ---------- МЕТЕОРИТЫ ---------- */
-        .meteor {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: linear-gradient(45deg, #ffaa00, #ff5500, #ffaa00);
-            border-radius: 50%;
-            filter: blur(2px);
-            box-shadow: 0 0 20px #ffaa33, 0 0 40px #ff5500;
-            z-index: 10;
-            opacity: 0;
-            pointer-events: none;
-            animation: meteorFall 3s linear forwards;
-        }
-
-        .meteor::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, #ffaa33, transparent);
-            filter: blur(4px);
-            border-radius: 50%;
-        }
-
-        @keyframes meteorFall {
-            0% {
-                opacity: 1;
-                transform: translate(0, 0) rotate(45deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(min(500px, 50vw), min(500px, 50vh)) rotate(45deg);
-            }
-        }
-
-        body.day-theme .meteor {
-            background: linear-gradient(45deg, #ffd966, #ffb347, #ffd966);
-            box-shadow: 0 0 30px #ffd966, 0 0 60px #ffb347;
-        }
-
-        /* ---------- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ ---------- */
-        .theme-toggle {
-            position: fixed;
-            top: clamp(10px, 2vh, 20px);
-            right: clamp(10px, 2vw, 20px);
-            z-index: 200;
-            background: rgba(20, 10, 40, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 200, 100, 0.3);
-            border-radius: 60px;
-            padding: 0.3rem;
-            display: flex;
-            gap: 0.3rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 15px rgba(255, 200, 100, 0.2);
-            animation: toggleFloat 3s infinite alternate;
-        }
-
-        @keyframes toggleFloat {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
-        }
-
-        .theme-toggle::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffaa00, #b06ab3, #4568dc, #ffaa00);
-            border-radius: 62px;
-            z-index: -1;
-            opacity: 0.5;
-            filter: blur(5px);
-            animation: toggleBorderGlow 3s infinite alternate;
-        }
-
-        @keyframes toggleBorderGlow {
-            0% { opacity: 0.3; filter: blur(3px); }
-            100% { opacity: 0.7; filter: blur(8px); }
-        }
-
-        .theme-btn {
-            background: transparent;
-            border: none;
-            width: clamp(30px, 6vw, 40px);
-            height: clamp(30px, 6vw, 40px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #ffd966;
-            position: relative;
-        }
-
-        .theme-btn:hover {
-            transform: scale(1.2);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 30px currentColor;
-        }
-
-        .theme-btn.active {
-            background: rgba(255, 200, 100, 0.2);
-            border: 2px solid #ffaa33;
-            box-shadow: 0 0 30px #ffaa33;
-        }
-
-        .theme-btn.day-btn {
-            color: #ffaa33;
-            text-shadow: 0 0 20px #ffaa33;
-        }
-
-        .theme-btn.night-btn {
-            color: #c0c0ff;
-            text-shadow: 0 0 20px #8f6eff;
-        }
-
-        .theme-btn.day-btn.active {
-            border-color: #ffaa33;
-            box-shadow: 0 0 30px #ffaa33;
-        }
-
-        .theme-btn.night-btn.active {
-            border-color: #8f6eff;
-            box-shadow: 0 0 30px #8f6eff;
-        }
-
-        /* Подсказка для кнопок темы */
-        .theme-btn[data-tooltip]:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(20, 10, 40, 0.95);
-            backdrop-filter: blur(4px);
-            color: #e5d0ff;
-            font-size: 0.8rem;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 200, 100, 0.4);
-            white-space: nowrap;
-            z-index: 1000;
-            box-shadow: 0 0 20px rgba(255, 170, 50, 0.5);
-            pointer-events: none;
-            animation: tooltipAppear 0.2s ease;
-        }
-
-        /* ---------- КНОПКИ СВЕРХУ СЛЕВА ---------- */
-        .top-buttons {
-            position: fixed;
-            top: clamp(10px, 2vh, 20px);
-            left: clamp(10px, 2vw, 20px);
-            z-index: 200;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .important-button {
-            background: linear-gradient(45deg, #ffaa33, #ff5500, #ffaa33, #ff5500);
-            background-size: 300% 300%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            padding: 0.6rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            cursor: pointer;
-            box-shadow: 0 0 30px rgba(255, 170, 51, 0.5);
-            transition: all 0.3s ease;
-            animation: gradientShift 3s ease infinite, pulse 2s infinite alternate;
-        }
-
-        .schedule-button {
-            background: linear-gradient(45deg, #4a90e2, #357abd, #4a90e2, #357abd);
-            background-size: 300% 300%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            padding: 0.6rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            cursor: pointer;
-            box-shadow: 0 0 30px rgba(74, 144, 226, 0.5);
-            transition: all 0.3s ease;
-            animation: gradientShift 3s ease infinite, pulse 2s infinite alternate;
-        }
-
-        .important-button:hover, .schedule-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 50px currentColor, 0 0 100px currentColor;
-            border-color: #fff;
-            animation: gradientShift 1.5s ease infinite, pulse 1s infinite alternate;
-        }
-
-        .important-button:active, .schedule-button:active {
-            transform: scale(0.95);
-        }
-
-        .important-button .icon, .schedule-button .icon {
-            font-size: 1.3rem;
-            color: white;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-            animation: iconGlow 2s ease infinite;
-        }
-
-        .important-button .text, .schedule-button .text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.02); }
-        }
-
-        @keyframes iconGlow {
-            0% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); }
-            50% { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.9)); }
-            100% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); }
-        }
-
-        /* Солнце */
-        .sun {
-            position: fixed;
-            top: min(-30px, -5vh);
-            right: min(-30px, -5vw);
-            width: clamp(120px, 25vw, 200px);
-            height: clamp(120px, 25vw, 200px);
-            z-index: 15;
-            pointer-events: none;
-            animation: sunPulse 8s infinite alternate ease-in-out;
-            transition: all 1s ease;
-        }
-
-        .sun-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50%;
-            height: 50%;
-            background: radial-gradient(circle at 30% 30%, #fff7b0, #ffdd55, #ffaa00);
-            border-radius: 50%;
-            box-shadow: 
-                0 0 80px #ffaa33,
-                0 0 150px #ff8822,
-                0 0 250px #ff5500;
-            filter: blur(2px);
-            animation: sunGlow 4s infinite alternate;
-            transition: all 1s ease;
-        }
-
-        .sun-rays {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            height: 90%;
-            background: radial-gradient(circle, rgba(255, 200, 100, 0.3) 0%, rgba(255, 100, 0, 0) 70%);
-            border-radius: 50%;
-            animation: sunRays 6s infinite linear;
-        }
-
-        .sun-rays::before,
-        .sun-rays::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 120%;
-            height: 20%;
-            background: linear-gradient(90deg, transparent, rgba(255, 180, 50, 0.3), rgba(255, 140, 0, 0.5), rgba(255, 180, 50, 0.3), transparent);
-            border-radius: 50%;
-            filter: blur(10px);
-        }
-
-        .sun-rays::before {
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-
-        .sun-rays::after {
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
-
-        .sun-flare {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 30%, rgba(255, 200, 100, 0.2), transparent 70%);
-            border-radius: 50%;
-            animation: sunFlare 7s infinite alternate;
-        }
-
-        @keyframes sunGlow {
-            0% { box-shadow: 0 0 80px #ffaa33, 0 0 150px #ff8822, 0 0 250px #ff5500; }
-            100% { box-shadow: 0 0 120px #ffcc66, 0 0 200px #ffaa33, 0 0 300px #ff7700; }
-        }
-
-        @keyframes sunPulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-
-        @keyframes sunRays {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        @keyframes sunFlare {
-            0% { opacity: 0.4; }
-            100% { opacity: 0.8; }
-        }
-
-        /* Луна */
-        .moon {
-            position: fixed;
-            top: min(-30px, -5vh);
-            right: min(-30px, -5vw);
-            width: clamp(120px, 22vw, 180px);
-            height: clamp(120px, 22vw, 180px);
-            z-index: 15;
-            pointer-events: none;
-            animation: moonFloat 10s infinite alternate ease-in-out;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        body.night-theme .moon {
-            opacity: 1;
-        }
-
-        body.night-theme .sun {
-            opacity: 0;
-        }
-
-        body.day-theme .sun {
-            opacity: 1;
-        }
-
-        body.day-theme .moon {
-            opacity: 0;
-        }
-
-        .moon-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 55%;
-            height: 55%;
-            background: radial-gradient(circle at 35% 35%, #f0f0ff, #c0c0e0, #9090c0);
-            border-radius: 50%;
-            box-shadow: 
-                0 0 80px #a0a0ff,
-                0 0 150px #8080ff,
-                inset -20% -20% 30% rgba(0,0,0,0.3);
-            filter: blur(1px);
-            animation: moonGlow 4s infinite alternate;
-        }
-
-        .moon-craters {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 55%;
-            height: 55%;
-            border-radius: 50%;
-            background: transparent;
-            box-shadow: 
-                inset 15% 15% 20% rgba(0,0,0,0.2),
-                inset -5% -5% 10% rgba(255,255,255,0.1),
-                10% 10% 15% rgba(0,0,0,0.1);
-        }
-
-        .moon-crater {
-            position: absolute;
-            background: rgba(100, 100, 130, 0.4);
-            border-radius: 50%;
-            filter: blur(2px);
-        }
-
-        .moon-crater:nth-child(1) {
-            width: 25%;
-            height: 25%;
-            top: 20%;
-            left: 15%;
-            background: rgba(80, 80, 110, 0.5);
-            box-shadow: inset -3px -3px 5px rgba(255,255,255,0.2);
-        }
-
-        .moon-crater:nth-child(2) {
-            width: 18%;
-            height: 18%;
-            top: 45%;
-            left: 55%;
-            background: rgba(90, 90, 120, 0.5);
-        }
-
-        .moon-crater:nth-child(3) {
-            width: 22%;
-            height: 22%;
-            top: 60%;
-            left: 25%;
-            background: rgba(70, 70, 100, 0.5);
-        }
-
-        .moon-crater:nth-child(4) {
-            width: 15%;
-            height: 15%;
-            top: 15%;
-            left: 65%;
-            background: rgba(85, 85, 115, 0.5);
-        }
-
-        .moon-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(150, 150, 255, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: moonGlowPulse 5s infinite alternate;
-        }
-
-        @keyframes moonFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-5px, -5px) scale(1.02); }
-        }
-
-        @keyframes moonGlow {
-            0% { box-shadow: 0 0 80px #a0a0ff, 0 0 150px #8080ff; }
-            100% { box-shadow: 0 0 100px #b0b0ff, 0 0 200px #9090ff; }
-        }
-
-        @keyframes moonGlowPulse {
-            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        /* ---------- ВСПЛЫВАЮЩЕЕ ОКНО ---------- */
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .popup-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .popup-window {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            width: 90vw;
-            height: 90vh;
-            max-width: 1400px;
-            max-height: 900px;
-            background: rgba(8, 4, 22, 0.95);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 200, 100, 0.3);
-            border-radius: 20px;
-            box-shadow: 0 0 50px rgba(255, 170, 51, 0.3);
-            z-index: 1001;
-            display: none;
-            opacity: 0;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .popup-window.active {
-            display: block;
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .popup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: rgba(20, 10, 40, 0.8);
-            border-bottom: 1px solid rgba(255, 200, 100, 0.3);
-            cursor: move;
-        }
-
-        .popup-title {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: #ffd966;
-            font-size: 1.3rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-        }
-
-        .popup-title span {
-            font-size: 1.5rem;
-        }
-
-        .popup-controls {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .popup-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 200, 100, 0.3);
-            color: #ffd966;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .popup-btn:hover {
-            background: rgba(80, 40, 120, 0.9);
-            border-color: #ffaa33;
-            box-shadow: 0 0 20px #ffaa33;
-            transform: scale(1.1);
-            color: white;
-        }
-
-        .popup-content {
-            width: 100%;
-            height: calc(100% - 70px);
-            background: white;
-        }
-
-        .popup-content iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* ---------- ОСНОВНОЙ КОНТЕЙНЕР ---------- */
-        .container {
-            position: relative;
-            z-index: 20;
-            max-width: 1400px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 clamp(0.5rem, 2vw, 2rem);
-        }
-
-        /* шапка */
-        .header {
-            text-align: center;
-            margin-bottom: clamp(1rem, 5vh, 2.5rem);
-            position: relative;
-        }
-
-        .avatar {
-            width: clamp(80px, 15vw, 120px);
-            height: clamp(80px, 15vw, 120px);
-            margin: 0 auto clamp(0.5rem, 3vh, 1.5rem);
-            background: linear-gradient(135deg, #2d1f4a, #130b28);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            border: 3px solid rgba(200, 170, 255, 0.6);
-            box-shadow: 0 0 60px #8f6eff;
-            transition: all 1s ease;
-        }
-
-        body.day-theme .avatar {
-            background: linear-gradient(135deg, #c49b3f, #b3742e);
-            border-color: rgba(255, 200, 100, 0.8);
-            box-shadow: 0 0 60px #ffaa33;
-        }
-
-        h1 {
-            font-size: clamp(2rem, 8vw, 3.5rem);
-            font-weight: 400;
-            background: linear-gradient(135deg, #ffffff, #e5d0ff, #c2aeff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 30px #9f7eff;
-            letter-spacing: 4px;
-            margin-bottom: 0.5rem;
-            transition: all 1s ease;
-        }
-
-        body.day-theme h1 {
-            background: linear-gradient(135deg, #fff5e6, #ffd966, #ffb347);
-            -webkit-background-clip: text;
-            background-clip: text;
-            text-shadow: 0 0 30px #ffaa33;
-        }
-
-        .subtitle {
-            color: #b09ad0;
-            font-size: clamp(0.8rem, 3vw, 1.2rem);
-            letter-spacing: clamp(2px, 2vw, 8px);
-            text-transform: uppercase;
-            word-spacing: clamp(4px, 2vw, 12px);
-            border-bottom: 1px solid rgba(200, 170, 255, 0.3);
-            padding-bottom: clamp(0.5rem, 3vh, 1.5rem);
-            display: inline-block;
-            transition: all 1s ease;
-        }
-
-        body.day-theme .subtitle {
-            color: #ffd966;
-            border-bottom-color: rgba(255, 200, 100, 0.4);
-        }
-
-        /* ---------- СТРАНИЦЫ ---------- */
-        .pages-container {
-            position: relative;
-            min-height: min(500px, 70vh);
-            margin: clamp(0.5rem, 3vh, 1rem) 0 clamp(1rem, 5vh, 2rem);
-        }
-
-        .page {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .page.active {
-            display: block;
-            opacity: 1;
-            animation: pageAppear 0.6s ease-out;
-        }
-
-        @keyframes pageAppear {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* таблица ссылок */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-            gap: clamp(0.5rem, 2vh, 1.2rem);
-        }
-
-        /* карточка ссылки */
-        .cosmic-card {
-            background: rgba(8, 4, 22, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(180, 140, 255, 0.25);
-            border-radius: min(40px, 8vw);
-            padding: clamp(0.5rem, 2vh, 1rem) clamp(0.8rem, 3vw, 1.5rem);
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cosmic-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
-            pointer-events: none;
-        }
-
-        .cosmic-card:hover::before {
-            left: 100%;
-        }
-
-        .card-icon {
-            font-size: clamp(1.5rem, 6vw, 2.2rem);
-            margin-right: clamp(0.5rem, 2vw, 1.2rem);
-            min-width: clamp(30px, 8vw, 45px);
-            text-align: center;
-            filter: drop-shadow(0 0 8px currentColor);
-        }
-
-        .card-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-title {
-            font-size: clamp(0.9rem, 3vw, 1.2rem);
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-        }
-
-        .card-description {
-            font-size: clamp(0.6rem, 2vw, 0.8rem);
-            opacity: 0.7;
-            color: #cbb9ff;
-        }
-
-        .card-arrow {
-            font-size: clamp(1rem, 4vw, 1.5rem);
-            margin-left: clamp(0.3rem, 2vw, 0.8rem);
-            opacity: 0.4;
-            transition: 0.3s;
-            color: #dac5ff;
-        }
-
-        .cosmic-card:hover {
-            background: rgba(35, 18, 59, 0.8);
-            border-color: #c6a6ff;
-            box-shadow: 0 0 35px #b085ff, 0 8px 20px black;
-            transform: translateY(-4px) scale(1.02);
-        }
-
-        .cosmic-card:hover .card-arrow {
-            opacity: 1;
-            transform: translateX(6px);
-            color: #ffe39c;
-        }
-
-        body.day-theme .cosmic-card:hover {
-            background: rgba(139, 90, 43, 0.8);
-            border-color: #ffaa33;
-            box-shadow: 0 0 35px #ffaa33, 0 8px 20px black;
-        }
-
-        /* Сворачиваемые таблицы */
-        .collapsible-section {
-            background: rgba(8, 4, 22, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(180, 140, 255, 0.25);
-            border-radius: min(20px, 4vw);
-            margin-bottom: clamp(1rem, 3vh, 1.5rem);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            height: fit-content;
-        }
-
-        .collapsible-section:hover {
-            border-color: #c6a6ff;
-            box-shadow: 0 0 20px #b085ff;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: clamp(0.8rem, 2vh, 1.2rem) clamp(1rem, 3vw, 1.5rem);
-            cursor: pointer;
-            background: rgba(20, 10, 40, 0.4);
-            border-bottom: 1px solid rgba(180, 140, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .section-header:hover {
-            background: rgba(80, 40, 120, 0.3);
-        }
-
-        .section-header h3 {
-            color: #ffd966;
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            font-weight: 500;
-            letter-spacing: 2px;
-            margin: 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        .collapse-icon {
-            color: #ffd966;
-            font-size: clamp(1.3rem, 3vw, 1.6rem);
-            transition: transform 0.3s ease;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .section-header.collapsed .collapse-icon {
-            transform: rotate(-90deg);
-        }
-
-        .section-content {
-            padding: clamp(1.2rem, 2.5vh, 1.8rem);
-            transition: all 0.3s ease;
-            overflow-x: auto;
-        }
-
-        .section-content.collapsed {
-            display: none;
-        }
-
-        /* Внутренние подразделы */
-        .subsection {
-            margin-bottom: 1.5rem;
-        }
-
-        .subsection:last-child {
-            margin-bottom: 0;
-        }
-
-        .subsection-title {
-            color: #ffd966;
-            font-size: clamp(1rem, 2.2vw, 1.2rem);
-            font-weight: 500;
-            margin-bottom: 0.8rem;
-            padding-bottom: 0.3rem;
-            border-bottom: 1px solid rgba(255, 200, 100, 0.3);
-            letter-spacing: 1px;
-            text-align: center;
-        }
-
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
-        }
-
-        .info-table th {
-            color: #cbb9ff;
-            font-size: clamp(1rem, 2.2vw, 1.2rem);
-            font-weight: 500;
-            padding: clamp(0.8rem, 1.8vh, 1.2rem) clamp(1rem, 2.5vw, 1.8rem);
-            text-align: center;
-            border-bottom: 1px solid rgba(180, 140, 255, 0.3);
-            background: rgba(20, 10, 40, 0.3);
-            white-space: nowrap;
-        }
-
-        .info-table td {
-            padding: clamp(0.8rem, 1.8vh, 1.2rem) clamp(1rem, 2.5vw, 1.8rem);
-            border-bottom: 1px solid rgba(180, 140, 255, 0.1);
-            color: white;
-            font-size: clamp(1rem, 2.2vw, 1.15rem);
-            line-height: 1.5;
-            word-break: break-word;
-            vertical-align: middle;
-            text-align: center;
-        }
-
-        .phone-cell {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .phone-numbers {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-        }
-
-        .copy-btn {
-            background: rgba(255, 200, 100, 0.2);
-            border: 1px solid #ffd966;
-            color: #ffd966;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .copy-btn:hover {
-            background: #ffaa33;
-            border-color: white;
-            color: white;
-            transform: scale(1.1);
-            box-shadow: 0 0 20px #ffaa33;
-        }
-
-        .copy-btn.copied {
-            background: #4caf50;
-            border-color: white;
-            color: white;
-        }
-
-        .info-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .info-table td:first-child,
-        .info-table th:first-child {
-            padding-left: 0;
-        }
-
-        .info-table td:last-child,
-        .info-table th:last-child {
-            padding-right: 0;
-        }
-
-        .info-table tbody tr:hover td {
-            background: rgba(180, 140, 255, 0.1);
-        }
-
-        .info-table tbody tr:hover .copy-btn {
-            background: rgba(255, 200, 100, 0.3);
-        }
-
-        /* Уведомление о копировании */
-        .copy-notification {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: rgba(20, 10, 40, 0.9);
-            backdrop-filter: blur(10px);
-            border: 2px solid #ffaa33;
-            border-radius: 50px;
-            padding: 0.8rem 2rem;
-            color: white;
-            font-size: 1rem;
-            z-index: 2000;
-            opacity: 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 30px #ffaa33;
-        }
-
-        .copy-notification.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        .copy-notification span {
-            color: #ffaa33;
-            font-weight: 600;
-        }
-
-        /* Две колонки для таблиц */
-        .tables-row {
-            display: flex;
-            gap: clamp(2rem, 4vw, 3rem);
-            margin-bottom: clamp(2.5rem, 6vh, 3.5rem);
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .table-column {
-            flex: 1 1 450px;
-            min-width: 420px;
-        }
-
-        /* Центрированная таблица */
-        .centered-table {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: clamp(2rem, 5vh, 3rem) 0;
-        }
-
-        .centered-table .collapsible-section {
-            width: 100%;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Новая кнопка под таблицей СМ */
-        .sm-button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 1.5rem;
-            width: 100%;
-        }
-
-        .sm-regions-button {
-            background: linear-gradient(135deg, #9b59b6, #8e44ad, #9b59b6);
-            background-size: 200% 200%;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 60px;
-            padding: 1rem 2.5rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            cursor: pointer;
-            box-shadow: 0 0 30px rgba(155, 89, 182, 0.5), 0 0 60px rgba(255, 215, 0, 0.2);
-            transition: all 0.3s ease;
-            animation: gradientShift 4s ease infinite, buttonPulse 2s infinite alternate;
-            text-decoration: none;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            backdrop-filter: blur(5px);
-            max-width: 500px;
-            width: 100%;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .sm-regions-button:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 0 50px #9b59b6, 0 0 80px #ffaa33;
-            border-color: #ffaa33;
-        }
-
-        .sm-regions-button:active {
-            transform: translateY(2px) scale(0.98);
-        }
-
-        .sm-regions-button .icon {
-            font-size: 1.8rem;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
-            animation: iconSpin 5s infinite linear;
-        }
-
-        @keyframes iconSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes buttonPulse {
-            0% { box-shadow: 0 0 30px rgba(155, 89, 182, 0.5), 0 0 60px rgba(255, 215, 0, 0.2); }
-            100% { box-shadow: 0 0 50px #9b59b6, 0 0 80px #ffaa33; }
-        }
-
-        body.day-theme .sm-regions-button {
-            background: linear-gradient(135deg, #ffaa33, #ff8c42, #ffaa33);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 30px rgba(255, 170, 51, 0.5);
-        }
-
-        body.day-theme .sm-regions-button:hover {
-            box-shadow: 0 0 60px #ffaa33, 0 0 90px #ffaa33;
-        }
-
-        body.day-theme .collapsible-section {
-            background: rgba(80, 40, 120, 0.3);
-            border-color: rgba(255, 200, 100, 0.4);
-        }
-
-        body.day-theme .section-header {
-            background: rgba(100, 60, 140, 0.4);
-        }
-
-        body.day-theme .section-header h3 {
-            color: #ffaa33;
-        }
-
-        body.day-theme .info-table th {
-            background: rgba(100, 60, 140, 0.3);
-            color: #ffd966;
-        }
-
-        body.day-theme .subsection-title {
-            color: #ffaa33;
-            border-bottom-color: rgba(255, 170, 51, 0.3);
-        }
-
-        body.day-theme .copy-btn {
-            background: rgba(255, 170, 51, 0.2);
-            border-color: #ffaa33;
-            color: #ffaa33;
-        }
-
-        body.day-theme .copy-btn:hover {
-            background: #ffaa33;
-            color: #1a0b2e;
-        }
-
-        /* ---------- МУЗЫКАЛЬНЫЙ ПЛЕЕР ---------- */
-        .music-player {
-            position: fixed;
-            bottom: clamp(10px, 2vh, 20px);
-            right: clamp(10px, 2vw, 20px);
-            z-index: 100;
-            background: rgba(20, 10, 40, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 200, 100, 0.3);
-            border-radius: 16px;
-            padding: clamp(0.5rem, 2vh, 1rem);
-            width: min(320px, 90vw);
-            max-width: 320px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(147, 112, 219, 0.3);
-            animation: playerFloat 3s infinite alternate;
-            cursor: move;
-            user-select: none;
-            touch-action: none;
-            transition: all 0.3s ease;
-        }
-
-        .music-player.collapsed {
-            transform: translateY(calc(100% - 40px));
-        }
-
-        .music-player.collapsed .yandex-player-container,
-        .music-player.collapsed .player-station-info {
-            display: none;
-        }
-
-        .music-player.collapsed .player-header {
-            margin-bottom: 0;
-        }
-
-        @keyframes playerFloat {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
-        }
-
-        .music-player::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffaa00, #b06ab3, #4568dc, #ffaa00);
-            border-radius: 18px;
-            z-index: -1;
-            opacity: 0.5;
-            filter: blur(5px);
-            animation: playerBorderGlow 3s infinite alternate;
-        }
-
-        @keyframes playerBorderGlow {
-            0% { opacity: 0.3; filter: blur(3px); }
-            100% { opacity: 0.7; filter: blur(8px); }
-        }
-
-        .player-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            color: #e5d0ff;
-        }
-
-        .player-title {
-            font-size: clamp(0.6rem, 2vw, 0.8rem);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ffd966;
-            opacity: 0.9;
-        }
-
-        .player-controls {
-            display: flex;
-            gap: 0.3rem;
-        }
-
-        .player-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 200, 100, 0.3);
-            color: #ffd966;
-            width: clamp(28px, 6vw, 32px);
-            height: clamp(28px, 6vw, 32px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(0.8rem, 2.5vw, 1rem);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .player-btn:hover {
-            background: rgba(80, 40, 120, 0.9);
-            border-color: #ffaa33;
-            box-shadow: 0 0 20px #ffaa33;
-            transform: scale(1.1);
-            color: white;
-        }
-
-        .player-btn.active {
-            background: rgba(255, 200, 100, 0.2);
-            border-color: #ffaa33;
-            color: #ffaa33;
-        }
-
-        .yandex-player-container {
-            width: 100%;
-            height: 120px;
-            margin: 0.5rem 0;
-            border-radius: 12px;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.3);
-            pointer-events: auto;
-        }
-
-        .yandex-player-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .player-station-info {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-            color: #b09ad0;
-            font-size: clamp(0.7rem, 2vw, 0.85rem);
-        }
-
-        .station-name {
-            color: white;
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 120px;
-        }
-
-        .station-icon {
-            color: #ffd966;
-            animation: spin 4s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .player-volume {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            margin-left: auto;
-        }
-
-        .volume-slider {
-            width: 50px;
-            height: 4px;
-            -webkit-appearance: none;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            outline: none;
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 10px;
-            height: 10px;
-            background: #ffaa33;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 10px #ffaa33;
-        }
-
-        .volume-slider::-moz-range-thumb {
-            width: 10px;
-            height: 10px;
-            background: #ffaa33;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 10px #ffaa33;
-            border: none;
-        }
-
-        .volume-icon {
-            color: #ffd966;
-            font-size: 0.8rem;
-        }
-
-        /* ---------- КНОПКА ОТКЛЮЧЕНИЯ ЗВУКА ---------- */
-        .sound-toggle {
-            position: fixed;
-            bottom: clamp(10px, 2vh, 20px);
-            left: clamp(10px, 2vw, 20px);
-            z-index: 100;
-            background: rgba(20, 10, 40, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 200, 100, 0.3);
-            color: #ffd966;
-            width: clamp(40px, 8vw, 50px);
-            height: clamp(40px, 8vw, 50px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 15px rgba(255, 200, 100, 0.2);
-            animation: soundButtonFloat 3s infinite alternate;
-        }
-
-        .sound-toggle:hover {
-            transform: scale(1.15) translateY(-3px);
-            border-color: #ffaa33;
-            box-shadow: 0 0 30px #ffaa33, 0 8px 15px black;
-            background: rgba(80, 40, 120, 0.9);
-        }
-
-        .sound-toggle.muted {
-            background: rgba(40, 20, 60, 0.7);
-            border-color: rgba(150, 150, 150, 0.3);
-            color: #999;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        .sound-toggle.muted:hover {
-            border-color: #ff8888;
-            box-shadow: 0 0 30px #ff8888;
-        }
-
-        @keyframes soundButtonFloat {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
-        }
-
-        .sound-toggle::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffaa00, #ff5500, #ffaa00);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.3;
-            filter: blur(5px);
-            animation: soundBorderGlow 2s infinite alternate;
-        }
-
-        .sound-toggle.muted::before {
-            background: linear-gradient(45deg, #666, #333, #666);
-        }
-
-        @keyframes soundBorderGlow {
-            0% { opacity: 0.2; filter: blur(3px); }
-            100% { opacity: 0.6; filter: blur(8px); }
-        }
-
-        .sound-wave {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 12px;
-            height: 12px;
-            background: #4caf50;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: soundWavePulse 1.5s infinite;
-        }
-
-        .sound-toggle.muted .sound-wave {
-            background: #f44336;
-            animation: none;
-        }
-
-        @keyframes soundWavePulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .sound-toggle[data-tooltip]:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(20, 10, 40, 0.95);
-            backdrop-filter: blur(4px);
-            color: #e5d0ff;
-            font-size: 0.8rem;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 200, 100, 0.4);
-            white-space: nowrap;
-            z-index: 1000;
-            box-shadow: 0 0 20px rgba(255, 170, 50, 0.5);
-            pointer-events: none;
-            animation: tooltipAppear 0.2s ease;
-        }
-
-        @keyframes tooltipAppear {
-            0% { opacity: 0; transform: translateX(-50%) translateY(-5px); }
-            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-
-        /* ---------- ПАГИНАЦИЯ ---------- */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: clamp(0.3rem, 2vw, 1.2rem);
-            margin: clamp(1rem, 5vh, 3rem) 0 clamp(1rem, 3vh, 2rem);
-            flex-wrap: wrap;
-            position: relative;
-            padding: clamp(0.5rem, 2vh, 1rem) clamp(1rem, 4vw, 2rem);
-            background: rgba(10, 5, 20, 0.3);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 60px;
-            border: 1px solid rgba(180, 140, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(147, 112, 219, 0.3);
-            width: fit-content;
-            max-width: 95%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .pagination::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffaa00, #b06ab3, #4568dc, #ffaa00);
-            border-radius: 62px;
-            z-index: -1;
-            opacity: 0.5;
-            filter: blur(5px);
-            animation: borderGlow 3s infinite alternate;
-        }
-
-        @keyframes borderGlow {
-            0% { opacity: 0.3; filter: blur(3px); }
-            100% { opacity: 0.7; filter: blur(8px); }
-        }
-
-        .page-btn {
-            background: rgba(20, 10, 40, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(180, 140, 255, 0.4);
-            color: #dac5ff;
-            width: clamp(40px, 8vw, 50px);
-            height: clamp(40px, 8vw, 50px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 15px rgba(147, 112, 219, 0.2);
-            position: relative;
-            overflow: visible;
-        }
-
-        .page-btn[data-tooltip]:hover::before {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(20, 10, 40, 0.95);
-            backdrop-filter: blur(4px);
-            color: #e5d0ff;
-            font-size: clamp(0.6rem, 2vw, 0.8rem);
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 200, 100, 0.4);
-            white-space: nowrap;
-            z-index: 1000;
-            box-shadow: 0 0 20px rgba(255, 170, 50, 0.5);
-            pointer-events: none;
-            animation: tooltipAppearBottom 0.2s ease;
-            font-weight: normal;
-            text-transform: none;
-        }
-
-        @keyframes tooltipAppearBottom {
-            0% { opacity: 0; transform: translateX(-50%) translateY(5px); }
-            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-
-        .page-btn:active:not(:disabled) {
-            transform: scale(0.95) translateY(2px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 0 20px #ffaa33;
-        }
-
-        .page-btn:hover:not(:disabled) {
-            background: rgba(80, 40, 130, 0.9);
-            border-color: #ffaa33;
-            box-shadow: 0 0 30px #ffaa33, 0 8px 15px black;
-            transform: scale(1.15) translateY(-3px);
-            color: white;
-        }
-
-        .page-btn.active-page {
-            background: linear-gradient(135deg, #8a4fcf, #b46acf);
-            border-color: #ffd966;
-            color: white;
-            box-shadow: 0 0 30px #ffaa33, 0 0 20px #b47aff;
-            font-weight: bold;
-            transform: scale(1.1);
-            animation: activePulse 2s infinite alternate;
-        }
-
-        body.day-theme .page-btn.active-page {
-            background: linear-gradient(135deg, #ffaa33, #ff8c42);
-            border-color: #fff5e6;
-            box-shadow: 0 0 30px #ffaa33, 0 0 20px #ffaa33;
-        }
-
-        @keyframes activePulse {
-            0% { box-shadow: 0 0 30px #ffaa33, 0 0 20px #b47aff; }
-            100% { box-shadow: 0 0 40px #ffbb4d, 0 0 30px #c285ff; }
-        }
-
-        .page-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            filter: grayscale(0.5);
-            transform: scale(0.95);
-        }
-
-        .nav-btn {
-            width: auto;
-            padding: 0 clamp(0.5rem, 3vw, 2rem);
-            border-radius: 40px;
-            font-size: clamp(0.7rem, 2.5vw, 1rem);
-            background: rgba(30, 15, 50, 0.8);
-            border-color: rgba(255, 200, 100, 0.4);
-            letter-spacing: 1px;
-            font-weight: 400;
-            text-transform: uppercase;
-        }
-
-        .nav-btn:hover:not(:disabled) {
-            background: rgba(80, 40, 120, 0.9);
-            border-color: #ffaa33;
-            box-shadow: 0 0 30px #ffaa33, 0 8px 15px black;
-        }
-
-        .footer {
-            text-align: center;
-            color: #6e5a93;
-            margin-top: clamp(1rem, 5vh, 2rem);
-            padding-top: clamp(0.5rem, 3vh, 2rem);
-            border-top: 1px solid rgba(160, 130, 220, 0.3);
-            font-size: clamp(0.7rem, 2.5vw, 1rem);
-            letter-spacing: 2px;
-            transition: all 1s ease;
-        }
-
-        body.day-theme .footer {
-            color: #b07d44;
-            border-top-color: rgba(255, 170, 51, 0.3);
-        }
-
-        /* Пустая страница */
-        .empty-page {
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 2rem;
-            text-align: center;
-        }
-
-        /* Адаптация для очень маленьких экранов */
-        @media (max-width: 480px) {
-            body {
-                padding: 1rem 0.5rem;
-            }
-            
-            .music-player {
-                padding: 0.5rem;
-            }
-            
-            .station-name {
-                max-width: 80px;
-            }
-            
-            .page-btn[data-tooltip]:hover::before {
-                bottom: -35px;
-                font-size: 0.6rem;
-                padding: 0.2rem 0.5rem;
-            }
-            
-            .info-table {
-                min-width: 350px;
-            }
-            
-            .table-column {
-                min-width: 320px;
-            }
-            
-            .info-table td {
-                white-space: normal;
-            }
-
-            .important-button, .schedule-button {
-                padding: 0.4rem 1rem;
-            }
-
-            .important-button .text, .schedule-button .text {
-                font-size: 0.9rem;
-            }
-
-            .popup-window {
-                width: 95vw;
-                height: 95vh;
-            }
-
-            .top-buttons {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .phone-cell {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .sm-regions-button {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-<body class="night-theme">
-    <div class="universe">
-        <div class="stars"></div>
-        <div class="stars-big"></div>
-        <div class="nebula-layer"></div>
-        <div class="galaxy"></div>
-    </div>
-
-    <!-- КНОПКИ СВЕРХУ СЛЕВА -->
-    <div class="top-buttons">
-        <div class="important-button" id="importantButton">
-            <span class="icon">📌</span>
-            <span class="text">Важное</span>
-        </div>
-        <div class="schedule-button" id="scheduleButton">
-            <span class="icon">📅</span>
-            <span class="text">График</span>
-        </div>
-    </div>
-
-    <!-- ПЕРЕКЛЮЧАТЕЛЬ ДЕНЬ/НОЧЬ (справа) -->
-    <div class="theme-toggle">
-        <button class="theme-btn day-btn" id="dayThemeBtn" data-tooltip="День">☀️</button>
-        <button class="theme-btn night-btn active" id="nightThemeBtn" data-tooltip="Ночь">🌙</button>
-    </div>
-
-    <!-- СОЛНЦЕ -->
-    <div class="sun">
-        <div class="sun-core"></div>
-        <div class="sun-rays"></div>
-        <div class="sun-flare"></div>
-    </div>
-
-    <!-- ЛУНА -->
-    <div class="moon">
-        <div class="moon-core">
-            <div class="moon-craters">
-                <div class="moon-crater"></div>
-                <div class="moon-crater"></div>
-                <div class="moon-crater"></div>
-                <div class="moon-crater"></div>
-            </div>
-        </div>
-        <div class="moon-glow"></div>
-    </div>
-
-    <!-- КНОПКА ОТКЛЮЧЕНИЯ ЗВУКА -->
-    <div class="sound-toggle" id="soundToggle" data-tooltip="отключить звук">
-        🔊
-        <span class="sound-wave"></span>
-    </div>
-
-    <!-- МУЗЫКАЛЬНЫЙ ПЛЕЕР -->
-    <div class="music-player" id="musicPlayer">
-        <div class="player-header">
-            <span class="player-title">космическая музыка</span>
-            <div class="player-controls">
-                <button class="player-btn" id="togglePlayerBtn" title="свернуть/развернуть">🗕</button>
-                <button class="player-btn" id="prevTrackBtn" title="предыдущий трек">⏮️</button>
-                <button class="player-btn" id="nextTrackBtn" title="следующий трек">⏭️</button>
-            </div>
-        </div>
-        
-        <div class="yandex-player-container" id="yandexPlayerContainer">
-            <!-- Сюда будет вставляться iframe Яндекс.Музыки -->
-        </div>
-        
-        <div class="player-station-info">
-            <span class="station-icon">🎵</span>
-            <span class="station-name" id="currentTrackInfo">Космический эмбиент</span>
-            <div class="player-volume">
-                <span class="volume-icon">🔊</span>
-                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="0.3">
-            </div>
-        </div>
-    </div>
-
-    <!-- ВСПЛЫВАЮЩИЕ ОКНА -->
-    <div class="popup-overlay" id="popupOverlay"></div>
+import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.table.*;
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.*;
+import java.net.URI;
+import java.util.Random;
+
+public class RTMISApp extends JFrame {
+    // Основные компоненты
+    private JPanel mainPanel;
+    private JPanel universePanel;
+    private JPanel pagesContainer;
+    private JPanel paginationPanel;
+    private JLabel avatarLabel;
+    private JLabel titleLabel;
+    private JLabel subtitleLabel;
+    private JLabel footerLabel;
     
-    <!-- Окно Важное -->
-    <div class="popup-window" id="importantPopup">
-        <div class="popup-header" id="importantPopupHeader">
-            <div class="popup-title">
-                <span>📌</span>
-                <span>ВАЖНАЯ ИНФОРМАЦИЯ</span>
-            </div>
-            <div class="popup-controls">
-                <button class="popup-btn" id="minimizeImportantPopup" title="Свернуть">🗕</button>
-                <button class="popup-btn" id="closeImportantPopup" title="Закрыть">✕</button>
-            </div>
-        </div>
-        <div class="popup-content">
-            <iframe 
-                src="https://docs.google.com/spreadsheets/d/1dXTrCwA8eVBdmHGmX5H9qeIsWJaVE_zAmjlSgs9rH9Y/edit?pli=1&gid=138149952#gid=138149952" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
+    // Компоненты для страниц
+    private CardLayout cardLayout;
+    private JPanel cardsPanel;
+    
+    // Кнопки пагинации
+    private JButton prevButton;
+    private JButton nextButton;
+    private JButton[] pageButtons;
+    private int currentPage = 1;
+    private final int totalPages = 5;
+    
+    // Переключатель темы
+    private boolean isDayTheme = false;
+    private JButton dayThemeButton;
+    private JButton nightThemeButton;
+    
+    // Кнопка звука
+    private JButton soundToggleButton;
+    private boolean soundEnabled = true;
+    
+    // Метеориты и МКС
+    private Timer meteorTimer;
+    private Timer issTimer;
+    
+    // Таблицы
+    private JTable dbaTable;
+    private JTable dbaMsTable;
+    private JTable oeirTable;
+    private JTable oeirVitrinaTable;
+    private JTable smTable;
+    
+    // Сворачиваемые секции
+    private JPanel dbaSection;
+    private JPanel oeirSection;
+    private JPanel smSection;
+    private boolean dbaCollapsed = true;
+    private boolean oeirCollapsed = true;
+    private boolean smCollapsed = true;
+    
+    // Всплывающие окна
+    private JDialog importantDialog;
+    private JDialog scheduleDialog;
+    private JPanel popupOverlay;
+    
+    // Музыкальный плеер
+    private JDialog musicPlayerDialog;
+    private boolean playerCollapsed = false;
+    
+    // Уведомление о копировании
+    private JDialog copyNotification;
+    private Timer copyNotificationTimer;
 
-    <!-- Окно График -->
-    <div class="popup-window" id="schedulePopup">
-        <div class="popup-header" id="schedulePopupHeader">
-            <div class="popup-title">
-                <span>📅</span>
-                <span>ГРАФИК</span>
-            </div>
-            <div class="popup-controls">
-                <button class="popup-btn" id="minimizeSchedulePopup" title="Свернуть">🗕</button>
-                <button class="popup-btn" id="closeSchedulePopup" title="Закрыть">✕</button>
-            </div>
-        </div>
-        <div class="popup-content">
-            <iframe 
-                src="https://docs.google.com/spreadsheets/d/1q7wDVIIuT1DvKhebvDCzKMeiuuTVnrvdC9jBC8qjHiU/edit?pli=1&gid=1736109383#gid=1736109383" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
+    public RTMISApp() {
+        setTitle("РТ МИС - Полезные ссылки");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(1200, 800);
+        setLocationRelativeTo(null);
+        setUndecorated(true);
+        
+        initUI();
+        setupAnimations();
+    }
 
-    <!-- Уведомление о копировании -->
-    <div class="copy-notification" id="copyNotification">
-        Номер <span id="copiedNumber"></span> скопирован!
-    </div>
+    private void initUI() {
+        // Главная панель с фоновым изображением
+        mainPanel = new JPanel(new BorderLayout()) {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                drawUniverseBackground(g2d);
+            }
+        };
+        mainPanel.setBackground(new Color(3, 0, 20));
+        
+        // Верхние кнопки
+        JPanel topButtonsPanel = createTopButtons();
+        mainPanel.add(topButtonsPanel, BorderLayout.NORTH);
+        
+        // Переключатель темы
+        JPanel themePanel = createThemeToggle();
+        mainPanel.add(themePanel, BorderLayout.EAST);
+        
+        // Центральный контент
+        JPanel centerPanel = createCenterPanel();
+        mainPanel.add(centerPanel, BorderLayout.CENTER);
+        
+        // Нижняя панель с пагинацией и футером
+        JPanel bottomPanel = createBottomPanel();
+        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        
+        // Кнопка звука и плеер
+        addSoundAndPlayer();
+        
+        add(mainPanel);
+    }
 
-    <div class="container">
-        <div class="header">
-            <div class="avatar">🌙</div>
-            <h1>Дежурная Смена</h1>
-            <div class="subtitle">✦ Полезные ссылки ✦</div>
-        </div>
-
-        <!-- Контейнер для страниц -->
-        <div class="pages-container">
-            <!-- Страница 1 - Таблицы ДБА, ОЭИР, СМ -->
-            <div class="page active" id="page1">
-                <!-- Две сворачиваемые таблицы в ряд -->
-                <div class="tables-row">
-                    <!-- Таблица ДБА -->
-                    <div class="table-column">
-                        <div class="collapsible-section" id="dbaSection">
-                            <div class="section-header collapsed" id="dbaHeader">
-                                <h3>✦ ДБА ✦</h3>
-                                <span class="collapse-icon">▼</span>
-                            </div>
-                            <div class="section-content collapsed" id="dbaContent">
-                                <!-- Подраздел ДБА -->
-                                <div class="subsection">
-                                    <div class="subsection-title">✦ ДБА PG ✦</div>
-                                    <table class="info-table">
-                                        <thead>
-                                            <tr>
-                                                <th>ФИО</th>
-                                                <th>Телефон</th>
-                                                <th>График</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Кулигин Павел</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">8 950 586-14-34</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('8 950 586-14-34', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>09:00 - 18:00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Волчихин Данила</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">
-                                                            8 903 903-63-63<br>
-                                                            8 906 906-63-63
-                                                        </div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('8 903 903-63-63 или 8 906 906-63-63', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>06:00 - 15:00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Шилов Алексей</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">
-                                                            8 950 466-80-35<br>
-                                                            8 905 864-56-35
-                                                        </div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('8 950 466-80-35 или 8 905 864-56-35', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>05:30 - 14:30</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Сакенко Олег</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">8 913 614-49-96</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('8 913 614-49-96', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>10:00 - 19:00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ефремов Дмитрий</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">8 923 738-78-39</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('8 923 738-78-39', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>06:00 - 15:00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                <!-- Подраздел ДБА МС -->
-                                <div class="subsection">
-                                    <div class="subsection-title">✦ ДБА МС ✦</div>
-                                    <table class="info-table">
-                                        <thead>
-                                            <tr>
-                                                <th>ФИО</th>
-                                                <th>Телефон</th>
-                                                <th>График</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Веселков Андрей</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">8 909 104-63-77</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('8 909 104-63-77', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>05:30 - 14:30</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Попов Юрий</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">8 951 705-47-81</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('8 951 705-47-81', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>07:00 - 16:00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Митюшин Роман</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">8 963 015-82-27</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('8 963 015-82-27', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>07:00 - 16:00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Таблица ОЭИР -->
-                    <div class="table-column">
-                        <div class="collapsible-section" id="oeirSection">
-                            <div class="section-header collapsed" id="oeirHeader">
-                                <h3>✦ ОЭИР ✦</h3>
-                                <span class="collapse-icon">▼</span>
-                            </div>
-                            <div class="section-content collapsed" id="oeirContent">
-                                <!-- Подраздел ОЭИР -->
-                                <div class="subsection">
-                                    <div class="subsection-title">✦ ОЭИР ✦</div>
-                                    <table class="info-table">
-                                        <thead>
-                                            <tr>
-                                                <th>ФИО</th>
-                                                <th>Телефон</th>
-                                                <th>График</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Астафьев Андрей</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89030225078</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89030225078', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>07:00 - 16:00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Вильданов Александр</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89220461325</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89220461325', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>08:00 - 17:00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Власенко Матвей</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89226400123</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89226400123', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>07:00 - 16:00</td>
-                                            </tr>
-                                                 <tr>
-                                                <td>Зверев Владислав</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89194992682</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89194992682', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>07:00 - 16:00</td>
-                                            </tr>
-                                                 <tr>
-                                                <td>Литвин Василий</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89963773310</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89963773310', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>05:00 - 14:00</td>
-                                            </tr>
-                                                 <tr>
-                                                <td>Невидимов Иван</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89514516369</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89514516369', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>07:00 - 16:00</td>
-                                            </tr>
-                                                  <tr>
-                                                <td>Сапожников Кирилл</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89247181699</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89247181699', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>05:00 - 14:00</td>
-                                            </tr>
-                                                 <tr>
-                                                <td>Чемерик Дмитрий</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89024727716</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89024727716', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>07:00 - 16:00</td>
-                                            </tr>
-                                                <tr>
-                                                <td>Шевырин Михаил</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89026409856</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89026409856', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>07:00 - 16:00</td>
-                                            </tr>
-                                               <tr>
-                                                <td>Юденков Алексей</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89134806213</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89134806213', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>05:00 - 14:00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                <!-- Подраздел ОЭИР Витрина -->
-                                <div class="subsection">
-                                    <div class="subsection-title">✦ ОЭИР Витрина ✦</div>
-                                    <table class="info-table">
-                                        <thead>
-                                            <tr>
-                                                <th>ФИО</th>
-                                                <th>Телефон</th>
-                                                <th>График</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Евстигнеев Дмитрий</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89066512345</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89066512345', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>09:00 - 18:00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Курбатов Роман</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89206329639</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89206329639', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>08:00 - 17:00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Юрин Юрий</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89225554871</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89225554871', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>08:00 - 17:00</td>
-                                            </tr>
-                                                 <tr>
-                                                <td>Куриков Артем</td>
-                                                <td>
-                                                    <div class="phone-cell">
-                                                        <div class="phone-numbers">89200425796</div>
-                                                        <button class="copy-btn" onclick="copyToClipboard('89200425796', this)">📋</button>
-                                                    </div>
-                                                </td>
-                                                <td>08:00 - 17:00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Таблица СМ по центру -->
-                <div class="centered-table">
-                    <div class="collapsible-section" id="smSection">
-                        <div class="section-header collapsed" id="smHeader">
-                            <h3>✦ СМ ✦</h3>
-                            <span class="collapse-icon">▼</span>
-                        </div>
-                        <div class="section-content collapsed" id="smContent">
-                            <div class="subsection">
-                                <table class="info-table">
-                                    <thead>
-                                        <tr>
-                                            <th>ФИО</th>
-                                            <th>Телефон</th>
-                                            <th>Регион</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Бушуева Александра</td>
-                                            <td>
-                                                <div class="phone-cell">
-                                                    <div class="phone-numbers">89045544130</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89045544130', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Астрахань, Марий Эл, Рязань</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Матвеев Алексей</td>
-                                            <td>
-                                                <div class="phone-cell">
-                                                    <div class="phone-numbers">89956882318</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89956882318', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Владимир, Оренбург</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Карпов Антон</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89056557113</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89056557113', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Вологода, ЯНАО</td>
-                                        </tr>
-                                            <tr>
-                                            <td>Трефилова Ольга</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89138517790</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89138517790', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>ЕАО, Красноярск, Саха</td>
-                                        </tr>
-                                             <tr>
-                                            <td>Олейник Илья</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89994765880</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89994765880', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Иркутск, Хакасия</td>
-                                        </tr>
-                                             <tr>
-                                            <td>Большаков Иоанн</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89215505040</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89215505040', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>КБР, Дагестан</td>
-                                        </tr>
-                                            <tr>
-                                            <td>Волчик Виктор</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89995283589</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89995283589', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Карелия, Москва, Пенза</td>
-                                        </tr>
-                                             <tr>
-                                            <td>Лубнин Андрей</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89097759422</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89097759422', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Коми, НиНо</td>
-                                        </tr>
-                                             <tr>
-                                            <td>Карпечин Павел</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89121752698</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89121752698', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Крым, Калуга</td>
-                                        </tr>
-                                             <tr>
-                                            <td>Волков Илья</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89217622389</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89217622389', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Киров, ФМБА</td>
-                                        </tr>
-                                            <tr>
-                                            <td>Шкляев Дмитрий</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89520679933</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89520679933', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Свердловск, Курган</td>
-                                        </tr>
-                                             <tr>
-                                            <td>Астанкулова Марина</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89520679933</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89520679933', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Омск, Удмуртия</td>
-                                        </tr>
-                                            <tr>
-                                            <td>Михайлов Дмитрий</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89523311790</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89523311790', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Пермь, Алтай</td>
-                                        </tr>
-                                            <tr>
-                                            <td>Дегтярь Константин</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89232409634</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89232409634', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Башкирия</td>
-                                        </tr>
-                                            <tr>
-                                            <td>Кожевина Евгения</td>
-                                            <td>
-                                                <div class="phone-cell"->
-                                                    <div class="phone-numbers">89118371989</div>
-                                                    <button class="copy-btn" onclick="copyToClipboard('89118371989', this)">📋</button>
-                                                </div>
-                                            </td>
-                                            <td>Мордовия</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Кнопка под таблицей СМ -->
-                    <div class="sm-button-container">
-                        <a href="https://confluence.rtmis.ru/pages/viewpage.action?pageId=252876542" target="_blank" class="sm-regions-button">
-                            <span class="icon">🌍</span>
-                            <span>Назначенные сотрудники по регионам</span>
-                            <span class="icon">→</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Страница 2 - Полезные ссылки -->
-            <div class="page" id="page2">
-                <div class="links-grid">
-                    <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" class="cosmic-card" target="_blank">
-                        <span class="card-icon">💻</span>
-                        <div class="card-content">
-                            <span class="card-title">Дежурные</span>
-                            <span class="card-description">ДБА, ОЭИР, 1,5ДБА</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-
-                    <a href="https://confluence.rtmis.ru/calendar/spacecalendar.action?spaceKey=RMISOEIR" class="cosmic-card" target="_blank">
-                        <span class="card-icon">📱</span>
-                        <div class="card-content">
-                            <span class="card-title">Календарь дежурных</span>
-                            <span class="card-description">ДБА, ОЭИР, 1,5ДБА</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-
-                    <a href="https://confluence.is-mis.ru/calendar/calendarPage.action?spaceKey=RMISOEIR&calendarId=c3cdb4f6-7805-4d8d-baeb-07e75f0c19fd" class="cosmic-card" target="_blank">
-                        <span class="card-icon">⏱️</span>
-                        <div class="card-content">
-                            <span class="card-title">Дежурство Витрина</span>
-                            <span class="card-description">Ночной дежурный витрины</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                    
-                    <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=337625078" class="cosmic-card" target="_blank">
-                        <span class="card-icon">🐙</span>
-                        <div class="card-content">
-                            <span class="card-title">Дежурный РМ</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                    
-                    <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506" class="cosmic-card" target="_blank">
-                        <span class="card-icon">▶️</span>
-                        <div class="card-content">
-                            <span class="card-title">Ночные дежурные</span>
-                            <span class="card-description">график дежурных</span>
-                        </div>
-                        <span class="card-arrow">→</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Страница 3 - Пустая -->
-            <div class="page" id="page3">
-                <div class="empty-page">
-                    <div>🚀</div>
-                </div>
-            </div>
-
-            <!-- Страница 4 - Пустая -->
-            <div class="page" id="page4">
-                <div class="empty-page">
-                    <div>🌌</div>
-                </div>
-            </div>
-
-            <!-- Страница 5 - Пустая -->
-            <div class="page" id="page5">
-                <div class="empty-page">
-                    <div>✨</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- КРАСИВАЯ ПАГИНАЦИЯ -->
-        <div class="pagination">
-            <button class="page-btn nav-btn" id="prevPage" disabled data-tooltip="предыдущая страница">← назад</button>
-            
-            <button class="page-btn active-page" data-page="1" data-tooltip="Главная страница">1</button>
-            <button class="page-btn" data-page="2" data-tooltip="Полезные ссылки">2</button>
-            <button class="page-btn" data-page="3" data-tooltip="Пустая страница">3</button>
-            <button class="page-btn" data-page="4" data-tooltip="Пустая страница">4</button>
-            <button class="page-btn" data-page="5" data-tooltip="Пустая страница">5</button>
-            
-            <button class="page-btn nav-btn" id="nextPage" data-tooltip="следующая страница">вперед →</button>
-        </div>
-
-        <div class="footer">
-            <span>⚡ Создано для Дежурной смены ⚡</span>
-           <br>
-            <span>⚡ Просьба задонатить разработчикам по 100 руб, Спасиба ⚡</span>
-           </br>
-        </div>
-       
-    </div>
-
-    <script>
-        // Функция копирования в буфер обмена
-        function copyToClipboard(text, button) {
-            // Создаем временный элемент
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            // Показываем уведомление
-            const notification = document.getElementById('copyNotification');
-            const numberSpan = document.getElementById('copiedNumber');
-            numberSpan.textContent = text;
-            notification.classList.add('show');
-            
-            // Добавляем эффект на кнопку
-            button.classList.add('copied');
-            button.textContent = '✓';
-            
-            // Убираем уведомление и эффект через 2 секунды
-            setTimeout(() => {
-                notification.classList.remove('show');
-                button.classList.remove('copied');
-                button.textContent = '📋';
-            }, 2000);
+    private void drawUniverseBackground(Graphics2D g2d) {
+        int width = getWidth();
+        int height = getHeight();
+        
+        // Звезды
+        g2d.setColor(Color.WHITE);
+        Random rand = new Random();
+        for (int i = 0; i < 200; i++) {
+            int x = rand.nextInt(width);
+            int y = rand.nextInt(height);
+            int size = rand.nextInt(3) + 1;
+            g2d.fillOval(x, y, size, size);
         }
-
-        // Функция для создания МКС
-        function createISS() {
-            const iss = document.createElement('div');
-            iss.className = 'iss';
-            
-            // Случайная высота пролета (от 5vh до 30vh)
-            const height = 5 + Math.random() * 25;
-            iss.style.top = height + 'vh';
-            
-            document.querySelector('.universe').appendChild(iss);
-            
-            // Удаляем МКС после анимации
-            setTimeout(() => {
-                iss.remove();
-            }, 10000); // 10 секунд = длительность анимации
+        
+        // Туманности
+        if (isDayTheme) {
+            g2d.setColor(new Color(255, 200, 100, 30));
+        } else {
+            g2d.setColor(new Color(147, 112, 219, 40));
         }
-
-        // Пагинация
-        const pages = document.querySelectorAll('.page');
-        const pageBtns = document.querySelectorAll('.page-btn[data-page]');
-        const prevBtn = document.getElementById('prevPage');
-        const nextBtn = document.getElementById('nextPage');
-        const soundToggle = document.getElementById('soundToggle');
+        g2d.fillOval(width - 300, -100, 400, 400);
         
-        let currentPage = 1;
-        const totalPages = 5;
+        // Солнце или Луна
+        if (isDayTheme) {
+            drawSun(g2d, width - 100, 50);
+        } else {
+            drawMoon(g2d, width - 100, 50);
+        }
+    }
+
+    private void drawSun(Graphics2D g2d, int x, int y) {
+        g2d.setColor(new Color(255, 200, 100));
+        g2d.fillOval(x, y, 100, 100);
+        g2d.setColor(new Color(255, 150, 50, 100));
+        for (int i = 0; i < 8; i++) {
+            double angle = i * Math.PI / 4;
+            int x2 = x + 50 + (int)(Math.cos(angle) * 70);
+            int y2 = y + 50 + (int)(Math.sin(angle) * 70);
+            g2d.drawLine(x + 50, y + 50, x2, y2);
+        }
+    }
+
+    private void drawMoon(Graphics2D g2d, int x, int y) {
+        g2d.setColor(new Color(200, 200, 255));
+        g2d.fillOval(x, y, 80, 80);
+        g2d.setColor(new Color(150, 150, 200));
+        g2d.fillOval(x + 20, y + 20, 20, 20);
+        g2d.fillOval(x + 40, y + 40, 15, 15);
+    }
+
+    private JPanel createTopButtons() {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.setOpaque(false);
         
-        // Состояние звука
-        let soundEnabled = true;
+        JButton importantButton = createStyledButton("📌 Важное", new Color(255, 170, 51));
+        importantButton.addActionListener(e -> showImportantDialog());
+        
+        JButton scheduleButton = createStyledButton("📅 График", new Color(74, 144, 226));
+        scheduleButton.addActionListener(e -> showScheduleDialog());
+        
+        panel.add(importantButton);
+        panel.add(scheduleButton);
+        
+        return panel;
+    }
 
-        // Переключение темы День/Ночь
-        const dayThemeBtn = document.getElementById('dayThemeBtn');
-        const nightThemeBtn = document.getElementById('nightThemeBtn');
-        const body = document.body;
-
-        dayThemeBtn.addEventListener('click', () => {
-            body.classList.remove('night-theme');
-            body.classList.add('day-theme');
-            dayThemeBtn.classList.add('active');
-            nightThemeBtn.classList.remove('active');
+    private JButton createStyledButton(String text, Color color) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        button.setForeground(Color.WHITE);
+        button.setBackground(color);
+        button.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(255, 255, 255, 100), 2),
+            BorderFactory.createEmptyBorder(10, 20, 10, 20)
+        ));
+        button.setFocusPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(color.brighter());
+                button.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+            }
             
-            // Меняем эмодзи в аватаре
-            document.querySelector('.avatar').textContent = '☀️';
-            
-            // Воспроизводим новый глухой звук
-            playMuffledSound();
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(color);
+                button.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255, 100), 2));
+            }
         });
-
-        nightThemeBtn.addEventListener('click', () => {
-            body.classList.remove('day-theme');
-            body.classList.add('night-theme');
-            nightThemeBtn.classList.add('active');
-            dayThemeBtn.classList.remove('active');
-            
-            // Меняем эмодзи в аватаре
-            document.querySelector('.avatar').textContent = '🌙';
-            
-            // Воспроизводим новый глухой звук
-            playMuffledSound();
-        });
-
-        // Создаем аудио контекст для генерации звуков
-        let audioContext = null;
         
-        // Функция для воспроизведения глухого звука
-        function playMuffledSound() {
-            if (!soundEnabled) return;
+        return button;
+    }
+
+    private JPanel createThemeToggle() {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        panel.setOpaque(false);
+        
+        dayThemeButton = new JButton("☀️");
+        nightThemeButton = new JButton("🌙");
+        
+        styleThemeButton(dayThemeButton);
+        styleThemeButton(nightThemeButton);
+        
+        nightThemeButton.setBackground(new Color(255, 200, 100, 50));
+        nightThemeButton.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100), 2));
+        
+        dayThemeButton.addActionListener(e -> switchToDayTheme());
+        nightThemeButton.addActionListener(e -> switchToNightTheme());
+        
+        panel.add(dayThemeButton);
+        panel.add(nightThemeButton);
+        
+        return panel;
+    }
+
+    private void styleThemeButton(JButton button) {
+        button.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+        button.setForeground(Color.WHITE);
+        button.setBackground(new Color(20, 10, 40, 150));
+        button.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100, 100), 1));
+        button.setFocusPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        button.setPreferredSize(new Dimension(50, 50));
+    }
+
+    private void switchToDayTheme() {
+        isDayTheme = true;
+        mainPanel.setBackground(new Color(26, 11, 46));
+        dayThemeButton.setBackground(new Color(255, 200, 100, 50));
+        dayThemeButton.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100), 2));
+        nightThemeButton.setBackground(new Color(20, 10, 40, 150));
+        nightThemeButton.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100, 100), 1));
+        avatarLabel.setText("☀️");
+        mainPanel.repaint();
+    }
+
+    private void switchToNightTheme() {
+        isDayTheme = false;
+        mainPanel.setBackground(new Color(3, 0, 20));
+        nightThemeButton.setBackground(new Color(255, 200, 100, 50));
+        nightThemeButton.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100), 2));
+        dayThemeButton.setBackground(new Color(20, 10, 40, 150));
+        dayThemeButton.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100, 100), 1));
+        avatarLabel.setText("🌙");
+        mainPanel.repaint();
+    }
+
+    private JPanel createCenterPanel() {
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setOpaque(false);
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        
+        // Заголовок
+        JPanel headerPanel = new JPanel();
+        headerPanel.setOpaque(false);
+        headerPanel.setLayout(new BoxLayout(headerPanel, BoxLayout.Y_AXIS));
+        
+        avatarLabel = new JLabel("🌙");
+        avatarLabel.setFont(new Font("Segoe UI", Font.PLAIN, 64));
+        avatarLabel.setForeground(Color.WHITE);
+        avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        titleLabel = new JLabel("Дежурная Смена");
+        titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 36));
+        titleLabel.setForeground(new Color(255, 255, 255));
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        subtitleLabel = new JLabel("✦ Полезные ссылки ✦");
+        subtitleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        subtitleLabel.setForeground(new Color(176, 154, 208));
+        subtitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        subtitleLabel.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(200, 170, 255, 77)));
+        
+        headerPanel.add(avatarLabel);
+        headerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        headerPanel.add(titleLabel);
+        headerPanel.add(Box.createRigidArea(new Dimension(0, 5)));
+        headerPanel.add(subtitleLabel);
+        
+        panel.add(headerPanel, BorderLayout.NORTH);
+        
+        // Карточки со страницами
+        cardLayout = new CardLayout();
+        cardsPanel = new JPanel(cardLayout);
+        cardsPanel.setOpaque(false);
+        
+        // Создаем страницы
+        cardsPanel.add(createPage1(), "page1");
+        cardsPanel.add(createPage2(), "page2");
+        cardsPanel.add(createEmptyPage("🚀"), "page3");
+        cardsPanel.add(createEmptyPage("🌌"), "page4");
+        cardsPanel.add(createEmptyPage("✨"), "page5");
+        
+        panel.add(cardsPanel, BorderLayout.CENTER);
+        
+        return panel;
+    }
+
+    private JPanel createPage1() {
+        JPanel panel = new JPanel();
+        panel.setOpaque(false);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        
+        // Ряд с двумя таблицами
+        JPanel tablesRow = new JPanel(new GridLayout(1, 2, 20, 0));
+        tablesRow.setOpaque(false);
+        
+        tablesRow.add(createDBASection());
+        tablesRow.add(createOEIRSection());
+        
+        panel.add(tablesRow);
+        panel.add(Box.createRigidArea(new Dimension(0, 20)));
+        
+        // Таблица СМ по центру
+        JPanel smPanel = new JPanel();
+        smPanel.setOpaque(false);
+        smPanel.setLayout(new BoxLayout(smPanel, BoxLayout.Y_AXIS));
+        
+        smPanel.add(createSMSection());
+        smPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        smPanel.add(createSMButton());
+        
+        panel.add(smPanel);
+        
+        return panel;
+    }
+
+    private JPanel createPage2() {
+        JPanel panel = new JPanel(new GridLayout(0, 3, 20, 20));
+        panel.setOpaque(false);
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        
+        String[][] links = {
+            {"💻", "Дежурные", "ДБА, ОЭИР, 1,5ДБА", "https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463"},
+            {"📱", "Календарь дежурных", "ДБА, ОЭИР, 1,5ДБА", "https://confluence.rtmis.ru/calendar/spacecalendar.action?spaceKey=RMISOEIR"},
+            {"⏱️", "Дежурство Витрина", "Ночной дежурный витрины", "https://confluence.is-mis.ru/calendar/calendarPage.action?spaceKey=RMISOEIR&calendarId=c3cdb4f6-7805-4d8d-baeb-07e75f0c19fd"},
+            {"🐙", "Дежурный РМ", "", "https://confluence.is-mis.ru/pages/viewpage.action?pageId=337625078"},
+            {"▶️", "Ночные дежурные", "график дежурных", "https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506"}
+        };
+        
+        for (String[] link : links) {
+            panel.add(createLinkCard(link[0], link[1], link[2], link[3]));
+        }
+        
+        return panel;
+    }
+
+    private JPanel createEmptyPage(String emoji) {
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setOpaque(false);
+        
+        JLabel label = new JLabel(emoji);
+        label.setFont(new Font("Segoe UI", Font.PLAIN, 72));
+        label.setForeground(new Color(255, 255, 255, 100));
+        
+        panel.add(label);
+        
+        return panel;
+    }
+
+    private JPanel createLinkCard(String icon, String title, String description, String url) {
+        JPanel card = new JPanel(new BorderLayout(10, 5));
+        card.setOpaque(true);
+        card.setBackground(new Color(8, 4, 22, 150));
+        card.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(180, 140, 255, 64), 1),
+            BorderFactory.createEmptyBorder(15, 15, 15, 15)
+        ));
+        card.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        JLabel iconLabel = new JLabel(icon);
+        iconLabel.setFont(new Font("Segoe UI", Font.PLAIN, 32));
+        
+        JPanel textPanel = new JPanel();
+        textPanel.setOpaque(false);
+        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+        
+        JLabel titleLabel = new JLabel(title);
+        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        titleLabel.setForeground(Color.WHITE);
+        
+        JLabel descLabel = new JLabel(description);
+        descLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        descLabel.setForeground(new Color(203, 185, 255));
+        
+        textPanel.add(titleLabel);
+        textPanel.add(descLabel);
+        
+        JLabel arrowLabel = new JLabel("→");
+        arrowLabel.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+        arrowLabel.setForeground(new Color(218, 197, 255));
+        
+        card.add(iconLabel, BorderLayout.WEST);
+        card.add(textPanel, BorderLayout.CENTER);
+        card.add(arrowLabel, BorderLayout.EAST);
+        
+        card.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                card.setBackground(new Color(35, 18, 59, 200));
+                card.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createLineBorder(new Color(198, 166, 255), 1),
+                    BorderFactory.createEmptyBorder(15, 15, 15, 15)
+                ));
+                arrowLabel.setForeground(new Color(255, 227, 156));
+            }
             
+            @Override
+            public void mouseExited(MouseEvent e) {
+                card.setBackground(new Color(8, 4, 22, 150));
+                card.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createLineBorder(new Color(180, 140, 255, 64), 1),
+                    BorderFactory.createEmptyBorder(15, 15, 15, 15)
+                ));
+                arrowLabel.setForeground(new Color(218, 197, 255));
+            }
+            
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI(url));
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(RTMISApp.this, "Не удалось открыть ссылку: " + ex.getMessage());
+                }
+            }
+        });
+        
+        return card;
+    }
+
+    private JPanel createDBASection() {
+        JPanel section = new JPanel();
+        section.setOpaque(false);
+        section.setLayout(new BoxLayout(section, BoxLayout.Y_AXIS));
+        
+        // Заголовок
+        JPanel header = createSectionHeader("✦ ДБА ✦");
+        
+        // Контент
+        JPanel content = new JPanel();
+        content.setOpaque(false);
+        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+        
+        // Таблица ДБА PG
+        content.add(createSubsectionTitle("✦ ДБА PG ✦"));
+        
+        String[][] dbaData = {
+            {"Кулигин Павел", "8 950 586-14-34", "09:00 - 18:00"},
+            {"Волчихин Данила", "8 903 903-63-63", "06:00 - 15:00"},
+            {"Шилов Алексей", "8 950 466-80-35", "05:30 - 14:30"},
+            {"Сакенко Олег", "8 913 614-49-96", "10:00 - 19:00"},
+            {"Ефремов Дмитрий", "8 923 738-78-39", "06:00 - 15:00"}
+        };
+        
+        content.add(createInfoTable(
+            new String[]{"ФИО", "Телефон", "График"},
+            dbaData
+        ));
+        
+        // Таблица ДБА МС
+        content.add(createSubsectionTitle("✦ ДБА МС ✦"));
+        
+        String[][] dbaMsData = {
+            {"Веселков Андрей", "8 909 104-63-77", "05:30 - 14:30"},
+            {"Попов Юрий", "8 951 705-47-81", "07:00 - 16:00"},
+            {"Митюшин Роман", "8 963 015-82-27", "07:00 - 16:00"}
+        };
+        
+        content.add(createInfoTable(
+            new String[]{"ФИО", "Телефон", "График"},
+            dbaMsData
+        ));
+        
+        section.add(header);
+        section.add(content);
+        
+        return section;
+    }
+
+    private JPanel createOEIRSection() {
+        JPanel section = new JPanel();
+        section.setOpaque(false);
+        section.setLayout(new BoxLayout(section, BoxLayout.Y_AXIS));
+        
+        // Заголовок
+        JPanel header = createSectionHeader("✦ ОЭИР ✦");
+        
+        // Контент
+        JPanel content = new JPanel();
+        content.setOpaque(false);
+        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+        
+        // Таблица ОЭИР
+        content.add(createSubsectionTitle("✦ ОЭИР ✦"));
+        
+        String[][] oeirData = {
+            {"Астафьев Андрей", "89030225078", "07:00 - 16:00"},
+            {"Вильданов Александр", "89220461325", "08:00 - 17:00"},
+            {"Власенко Матвей", "89226400123", "07:00 - 16:00"},
+            {"Зверев Владислав", "89194992682", "07:00 - 16:00"},
+            {"Литвин Василий", "89963773310", "05:00 - 14:00"},
+            {"Невидимов Иван", "89514516369", "07:00 - 16:00"},
+            {"Сапожников Кирилл", "89247181699", "05:00 - 14:00"},
+            {"Чемерик Дмитрий", "89024727716", "07:00 - 16:00"},
+            {"Шевырин Михаил", "89026409856", "07:00 - 16:00"},
+            {"Юденков Алексей", "89134806213", "05:00 - 14:00"}
+        };
+        
+        content.add(createInfoTable(
+            new String[]{"ФИО", "Телефон", "График"},
+            oeirData
+        ));
+        
+        // Таблица ОЭИР Витрина
+        content.add(createSubsectionTitle("✦ ОЭИР Витрина ✦"));
+        
+        String[][] oeirVitrinaData = {
+            {"Евстигнеев Дмитрий", "89066512345", "09:00 - 18:00"},
+            {"Курбатов Роман", "89206329639", "08:00 - 17:00"},
+            {"Юрин Юрий", "89225554871", "08:00 - 17:00"},
+            {"Куриков Артем", "89200425796", "08:00 - 17:00"}
+        };
+        
+        content.add(createInfoTable(
+            new String[]{"ФИО", "Телефон", "График"},
+            oeirVitrinaData
+        ));
+        
+        section.add(header);
+        section.add(content);
+        
+        return section;
+    }
+
+    private JPanel createSMSection() {
+        JPanel section = new JPanel();
+        section.setOpaque(false);
+        section.setLayout(new BoxLayout(section, BoxLayout.Y_AXIS));
+        
+        // Заголовок
+        JPanel header = createSectionHeader("✦ СМ ✦");
+        
+        // Контент
+        JPanel content = new JPanel();
+        content.setOpaque(false);
+        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+        
+        String[][] smData = {
+            {"Бушуева Александра", "89045544130", "Астрахань, Марий Эл, Рязань"},
+            {"Матвеев Алексей", "89956882318", "Владимир, Оренбург"},
+            {"Карпов Антон", "89056557113", "Вологода, ЯНАО"},
+            {"Трефилова Ольга", "89138517790", "ЕАО, Красноярск, Саха"},
+            {"Олейник Илья", "89994765880", "Иркутск, Хакасия"},
+            {"Большаков Иоанн", "89215505040", "КБР, Дагестан"},
+            {"Волчик Виктор", "89995283589", "Карелия, Москва, Пенза"},
+            {"Лубнин Андрей", "89097759422", "Коми, НиНо"},
+            {"Карпечин Павел", "89121752698", "Крым, Калуга"},
+            {"Волков Илья", "89217622389", "Киров, ФМБА"},
+            {"Шкляев Дмитрий", "89520679933", "Свердловск, Курган"},
+            {"Астанкулова Марина", "89520679933", "Омск, Удмуртия"},
+            {"Михайлов Дмитрий", "89523311790", "Пермь, Алтай"},
+            {"Дегтярь Константин", "89232409634", "Башкирия"},
+            {"Кожевина Евгения", "89118371989", "Мордовия"}
+        };
+        
+        content.add(createInfoTable(
+            new String[]{"ФИО", "Телефон", "Регион"},
+            smData
+        ));
+        
+        section.add(header);
+        section.add(content);
+        
+        return section;
+    }
+
+    private JPanel createSMButton() {
+        JButton button = new JButton("🌍 Назначенные сотрудники по регионам →");
+        button.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        button.setForeground(Color.WHITE);
+        button.setBackground(new Color(155, 89, 182));
+        button.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(255, 215, 0, 100), 2),
+            BorderFactory.createEmptyBorder(15, 30, 15, 30)
+        ));
+        button.setFocusPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        button.addActionListener(e -> {
             try {
-                if (!audioContext) {
-                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                }
-                
-                if (audioContext.state === 'suspended') {
-                    audioContext.resume();
-                }
-                
-                // Создаем более глухой звук
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                const filter = audioContext.createBiquadFilter();
-                
-                // Настройки для глухого звука
-                oscillator.type = 'sawtooth'; // Более резкий, но фильтр сделает его глухим
-                oscillator.frequency.setValueAtTime(150, audioContext.currentTime); // Низкая частота
-                
-                // Низкочастотный фильтр для глухого звука
-                filter.type = 'lowpass';
-                filter.frequency.setValueAtTime(300, audioContext.currentTime); // Обрезаем высокие частоты
-                filter.Q.setValueAtTime(2, audioContext.currentTime); // Немного резонанса
-                
-                // Настраиваем громкость
-                gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
-                
-                // Подключаем: oscillator -> filter -> gain -> destination
-                oscillator.connect(filter);
-                filter.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                // Добавляем второй слой для объема
-                setTimeout(() => {
-                    if (audioContext && audioContext.state === 'running' && soundEnabled) {
-                        const oscillator2 = audioContext.createOscillator();
-                        const gainNode2 = audioContext.createGain();
-                        const filter2 = audioContext.createBiquadFilter();
-                        
-                        oscillator2.type = 'triangle';
-                        oscillator2.frequency.setValueAtTime(100, audioContext.currentTime);
-                        
-                        filter2.type = 'lowpass';
-                        filter2.frequency.setValueAtTime(200, audioContext.currentTime);
-                        
-                        gainNode2.gain.setValueAtTime(0.1, audioContext.currentTime);
-                        gainNode2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.25);
-                        
-                        oscillator2.connect(filter2);
-                        filter2.connect(gainNode2);
-                        gainNode2.connect(audioContext.destination);
-                        
-                        oscillator2.start();
-                        oscillator2.stop(audioContext.currentTime + 0.25);
-                    }
-                }, 50);
-                
-                oscillator.start();
-                oscillator.stop(audioContext.currentTime + 0.2);
-                
-            } catch (e) {
-                console.log('Звук не поддерживается в этом браузере');
+                Desktop.getDesktop().browse(new URI("https://confluence.rtmis.ru/pages/viewpage.action?pageId=252876542"));
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Не удалось открыть ссылку");
             }
-        }
-
-        // Функция для создания метеорита
-        function createMeteor() {
-            const meteor = document.createElement('div');
-            meteor.className = 'meteor';
-            
-            // Случайная начальная позиция (сверху за экраном)
-            const startX = Math.random() * 100; // % от ширины экрана
-            meteor.style.left = startX + '%';
-            meteor.style.top = '-20px';
-            
-            // Случайная длительность падения (2-4 секунды)
-            const duration = 2 + Math.random() * 2;
-            meteor.style.animation = `meteorFall ${duration}s linear forwards`;
-            
-            // Случайный размер
-            const size = 2 + Math.random() * 4;
-            meteor.style.width = size + 'px';
-            meteor.style.height = size + 'px';
-            
-            document.querySelector('.universe').appendChild(meteor);
-            
-            // Удаляем метеорит после анимации
-            setTimeout(() => {
-                meteor.remove();
-            }, duration * 1000);
-        }
-
-        function toggleSound() {
-            soundEnabled = !soundEnabled;
-            
-            if (soundEnabled) {
-                soundToggle.classList.remove('muted');
-                soundToggle.innerHTML = '🔊 <span class="sound-wave"></span>';
-                soundToggle.setAttribute('data-tooltip', 'отключить звук');
-                playMuffledSound();
-            } else {
-                soundToggle.classList.add('muted');
-                soundToggle.innerHTML = '🔇 <span class="sound-wave"></span>';
-                soundToggle.setAttribute('data-tooltip', 'включить звук');
-                
-                if (audioContext && audioContext.state === 'running') {
-                    audioContext.suspend();
-                }
-            }
-        }
-
-        function showPage(pageNumber) {
-            playMuffledSound();
-            
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            const activePage = document.getElementById(`page${pageNumber}`);
-            if (activePage) {
-                activePage.classList.add('active');
-            }
-            
-            pageBtns.forEach(btn => {
-                btn.classList.remove('active-page');
-                if (parseInt(btn.dataset.page) === pageNumber) {
-                    btn.classList.add('active-page');
-                }
-            });
-            
-            prevBtn.disabled = (pageNumber === 1);
-            nextBtn.disabled = (pageNumber === totalPages);
-            
-            currentPage = pageNumber;
-        }
-
-        pageBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const pageNum = parseInt(this.dataset.page);
-                showPage(pageNum);
-            });
         });
+        
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(new Color(155, 89, 182).brighter());
+            }
+            
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(new Color(155, 89, 182));
+            }
+        });
+        
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panel.setOpaque(false);
+        panel.add(button);
+        
+        return panel;
+    }
 
-        prevBtn.addEventListener('click', function() {
+    private JPanel createSectionHeader(String title) {
+        JPanel header = new JPanel(new BorderLayout());
+        header.setOpaque(true);
+        header.setBackground(new Color(20, 10, 40, 100));
+        header.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(180, 140, 255, 50)),
+            BorderFactory.createEmptyBorder(15, 15, 15, 15)
+        ));
+        
+        JLabel titleLabel = new JLabel(title);
+        titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        titleLabel.setForeground(new Color(255, 217, 102));
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        JLabel collapseIcon = new JLabel("▼");
+        collapseIcon.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        collapseIcon.setForeground(new Color(255, 217, 102));
+        
+        header.add(titleLabel, BorderLayout.CENTER);
+        header.add(collapseIcon, BorderLayout.EAST);
+        
+        return header;
+    }
+
+    private JLabel createSubsectionTitle(String title) {
+        JLabel label = new JLabel(title);
+        label.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        label.setForeground(new Color(255, 217, 102));
+        label.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(255, 200, 100, 77)),
+            BorderFactory.createEmptyBorder(10, 5, 5, 5)
+        ));
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        return label;
+    }
+
+    private JPanel createInfoTable(String[] columns, String[][] data) {
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setOpaque(false);
+        
+        DefaultTableModel model = new DefaultTableModel(columns, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        
+        for (String[] row : data) {
+            model.addRow(row);
+        }
+        
+        JTable table = new JTable(model);
+        table.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        table.setRowHeight(30);
+        table.setBackground(new Color(8, 4, 22, 200));
+        table.setForeground(Color.WHITE);
+        table.setGridColor(new Color(180, 140, 255, 50));
+        table.setSelectionBackground(new Color(147, 112, 219));
+        table.setShowVerticalLines(false);
+        
+        JTableHeader header = table.getTableHeader();
+        header.setFont(new Font("Segoe UI", Font.BOLD, 13));
+        header.setBackground(new Color(20, 10, 40));
+        header.setForeground(new Color(203, 185, 255));
+        header.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(180, 140, 255, 100)));
+        
+        // Добавляем кнопки копирования для колонки телефона
+        TableColumn phoneColumn = table.getColumnModel().getColumn(1);
+        phoneColumn.setCellRenderer(new PhoneCellRenderer());
+        phoneColumn.setCellEditor(new PhoneCellEditor());
+        
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setOpaque(false);
+        scrollPane.getViewport().setOpaque(false);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        panel.add(scrollPane, BorderLayout.CENTER);
+        
+        return panel;
+    }
+
+    class PhoneCellRenderer extends DefaultTableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
+            panel.setOpaque(false);
+            
+            JLabel label = new JLabel(value.toString());
+            label.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            label.setForeground(Color.WHITE);
+            
+            JButton copyButton = new JButton("📋");
+            copyButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            copyButton.setForeground(new Color(255, 217, 102));
+            copyButton.setBackground(new Color(255, 200, 100, 50));
+            copyButton.setBorder(BorderFactory.createLineBorder(new Color(255, 217, 102), 1));
+            copyButton.setFocusPainted(false);
+            copyButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            copyButton.setPreferredSize(new Dimension(30, 25));
+            
+            copyButton.addActionListener(e -> copyToClipboard(value.toString()));
+            
+            panel.add(label);
+            panel.add(copyButton);
+            
+            return panel;
+        }
+    }
+
+    class PhoneCellEditor extends AbstractCellEditor implements TableCellEditor {
+        private JPanel panel;
+        private String currentValue;
+        
+        public PhoneCellEditor() {
+            panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
+            panel.setOpaque(false);
+        }
+        
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value,
+                boolean isSelected, int row, int column) {
+            panel.removeAll();
+            currentValue = value.toString();
+            
+            JLabel label = new JLabel(currentValue);
+            label.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            label.setForeground(Color.WHITE);
+            
+            JButton copyButton = new JButton("📋");
+            copyButton.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            copyButton.setForeground(new Color(255, 217, 102));
+            copyButton.setBackground(new Color(255, 200, 100, 50));
+            copyButton.setBorder(BorderFactory.createLineBorder(new Color(255, 217, 102), 1));
+            copyButton.setFocusPainted(false);
+            copyButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            copyButton.setPreferredSize(new Dimension(30, 25));
+            
+            copyButton.addActionListener(e -> {
+                copyToClipboard(currentValue);
+                stopCellEditing();
+            });
+            
+            panel.add(label);
+            panel.add(copyButton);
+            
+            return panel;
+        }
+        
+        @Override
+        public Object getCellEditorValue() {
+            return currentValue;
+        }
+    }
+
+    private void copyToClipboard(String text) {
+        StringSelection selection = new StringSelection(text);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
+        
+        showCopyNotification(text);
+    }
+
+    private void showCopyNotification(String text) {
+        if (copyNotification == null) {
+            copyNotification = new JDialog(this);
+            copyNotification.setUndecorated(true);
+            copyNotification.setSize(300, 50);
+            copyNotification.setLocationRelativeTo(this);
+            
+            JPanel panel = new JPanel();
+            panel.setBackground(new Color(20, 10, 40, 230));
+            panel.setBorder(BorderFactory.createLineBorder(new Color(255, 170, 51), 2));
+            
+            JLabel label = new JLabel("Номер скопирован!");
+            label.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            label.setForeground(Color.WHITE);
+            
+            panel.add(label);
+            copyNotification.add(panel);
+        }
+        
+        copyNotification.setVisible(true);
+        
+        if (copyNotificationTimer != null) {
+            copyNotificationTimer.stop();
+        }
+        
+        copyNotificationTimer = new Timer(2000, e -> {
+            copyNotification.setVisible(false);
+        });
+        copyNotificationTimer.setRepeats(false);
+        copyNotificationTimer.start();
+    }
+
+    private JPanel createBottomPanel() {
+        JPanel panel = new JPanel();
+        panel.setOpaque(false);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        
+        // Пагинация
+        paginationPanel = createPagination();
+        panel.add(paginationPanel);
+        
+        // Футер
+        JPanel footerPanel = new JPanel();
+        footerPanel.setOpaque(false);
+        footerPanel.setLayout(new BoxLayout(footerPanel, BoxLayout.Y_AXIS));
+        
+        footerLabel = new JLabel("⚡ Создано для Дежурной смены ⚡");
+        footerLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        footerLabel.setForeground(new Color(110, 90, 147));
+        footerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        JLabel footerLabel2 = new JLabel("⚡ Просьба задонатить разработчикам по 100 руб, Спасиба ⚡");
+        footerLabel2.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        footerLabel2.setForeground(new Color(110, 90, 147));
+        footerLabel2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        footerPanel.add(footerLabel);
+        footerPanel.add(footerLabel2);
+        
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
+        panel.add(footerPanel);
+        
+        return panel;
+    }
+
+    private JPanel createPagination() {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        panel.setOpaque(true);
+        panel.setBackground(new Color(10, 5, 20, 100));
+        panel.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(180, 140, 255, 50), 1),
+            BorderFactory.createEmptyBorder(5, 20, 5, 20)
+        ));
+        
+        prevButton = createPageButton("← назад", true);
+        prevButton.addActionListener(e -> {
             if (currentPage > 1) {
                 showPage(currentPage - 1);
             }
         });
-
-        nextBtn.addEventListener('click', function() {
+        
+        panel.add(prevButton);
+        
+        pageButtons = new JButton[totalPages];
+        for (int i = 0; i < totalPages; i++) {
+            final int pageNum = i + 1;
+            pageButtons[i] = createPageButton(String.valueOf(pageNum), false);
+            pageButtons[i].addActionListener(e -> showPage(pageNum));
+            panel.add(pageButtons[i]);
+        }
+        
+        nextButton = createPageButton("вперед →", true);
+        nextButton.addActionListener(e -> {
             if (currentPage < totalPages) {
                 showPage(currentPage + 1);
             }
         });
-
-        soundToggle.addEventListener('click', toggleSound);
-
-        document.querySelectorAll('.page-btn, .theme-btn').forEach(btn => {
-            btn.addEventListener('mouseenter', function() {
-                if (audioContext && audioContext.state === 'suspended' && soundEnabled) {
-                    audioContext.resume();
-                }
-            }, { once: true });
-        });
-
+        
+        panel.add(nextButton);
+        
         showPage(1);
-
-        // Запускаем метеориты раз в 15 секунд
-        setInterval(createMeteor, 15000);
-        // Создаем первый метеорит через 5 секунд после загрузки
-        setTimeout(createMeteor, 5000);
-
-        // Запускаем МКС раз в 30 секунд
-        setInterval(createISS, 30000);
-        // Создаем первую МКС через 10 секунд после загрузки
-        setTimeout(createISS, 10000);
-
-        // Функционал сворачивания таблиц
-        function initCollapsibleSections() {
-            const dbaHeader = document.getElementById('dbaHeader');
-            const oeirHeader = document.getElementById('oeirHeader');
-            const smHeader = document.getElementById('smHeader');
-            const dbaContent = document.getElementById('dbaContent');
-            const oeirContent = document.getElementById('oeirContent');
-            const smContent = document.getElementById('smContent');
-            const dbaIcon = dbaHeader.querySelector('.collapse-icon');
-            const oeirIcon = oeirHeader.querySelector('.collapse-icon');
-            const smIcon = smHeader.querySelector('.collapse-icon');
-            
-            // Состояние по умолчанию - свернуто
-            let dbaCollapsed = true;
-            let oeirCollapsed = true;
-            let smCollapsed = true;
-            
-            dbaHeader.addEventListener('click', function() {
-                dbaCollapsed = !dbaCollapsed;
-                if (dbaCollapsed) {
-                    dbaContent.classList.add('collapsed');
-                    dbaHeader.classList.add('collapsed');
-                    dbaIcon.style.transform = 'rotate(-90deg)';
-                } else {
-                    dbaContent.classList.remove('collapsed');
-                    dbaHeader.classList.remove('collapsed');
-                    dbaIcon.style.transform = 'rotate(0deg)';
-                }
-            });
-            
-            oeirHeader.addEventListener('click', function() {
-                oeirCollapsed = !oeirCollapsed;
-                if (oeirCollapsed) {
-                    oeirContent.classList.add('collapsed');
-                    oeirHeader.classList.add('collapsed');
-                    oeirIcon.style.transform = 'rotate(-90deg)';
-                } else {
-                    oeirContent.classList.remove('collapsed');
-                    oeirHeader.classList.remove('collapsed');
-                    oeirIcon.style.transform = 'rotate(0deg)';
-                }
-            });
-
-            smHeader.addEventListener('click', function() {
-                smCollapsed = !smCollapsed;
-                if (smCollapsed) {
-                    smContent.classList.add('collapsed');
-                    smHeader.classList.add('collapsed');
-                    smIcon.style.transform = 'rotate(-90deg)';
-                } else {
-                    smContent.classList.remove('collapsed');
-                    smHeader.classList.remove('collapsed');
-                    smIcon.style.transform = 'rotate(0deg)';
-                }
-            });
-        }
         
-        // Инициализируем сворачивание после загрузки страницы
-        initCollapsibleSections();
+        return panel;
+    }
 
-        // Функционал всплывающих окон
-        const importantButton = document.getElementById('importantButton');
-        const scheduleButton = document.getElementById('scheduleButton');
-        const popupOverlay = document.getElementById('popupOverlay');
-        const importantPopup = document.getElementById('importantPopup');
-        const schedulePopup = document.getElementById('schedulePopup');
+    private JButton createPageButton(String text, boolean isNav) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Segoe UI", Font.PLAIN, isNav ? 14 : 16));
+        button.setForeground(new Color(218, 197, 255));
+        button.setBackground(new Color(20, 10, 40, 180));
+        button.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(180, 140, 255, 100), 1),
+            BorderFactory.createEmptyBorder(8, isNav ? 20 : 12, 8, isNav ? 20 : 12)
+        ));
+        button.setFocusPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
-        // Элементы управления для важного окна
-        const closeImportantPopup = document.getElementById('closeImportantPopup');
-        const minimizeImportantPopup = document.getElementById('minimizeImportantPopup');
-        const importantPopupHeader = document.getElementById('importantPopupHeader');
-
-        // Элементы управления для окна графика
-        const closeSchedulePopup = document.getElementById('closeSchedulePopup');
-        const minimizeSchedulePopup = document.getElementById('minimizeSchedulePopup');
-        const schedulePopupHeader = document.getElementById('schedulePopupHeader');
-
-        // Переменные для перетаскивания
-        let isDragging = false;
-        let offsetX, offsetY;
-        let currentPopup = null;
-
-        // Функция открытия окна
-        function openPopup(popup) {
-            popupOverlay.classList.add('active');
-            popup.classList.add('active');
-            currentPopup = popup;
-        }
-
-        // Функция закрытия окна
-        function closePopup(popup) {
-            popupOverlay.classList.remove('active');
-            popup.classList.remove('active');
-            currentPopup = null;
-        }
-
-        // Функция сворачивания окна
-        function minimizePopup(popup) {
-            popup.classList.remove('active');
-        }
-
-        // Открыть важное окно
-        importantButton.addEventListener('click', () => {
-            openPopup(importantPopup);
-        });
-
-        // Открыть окно графика
-        scheduleButton.addEventListener('click', () => {
-            openPopup(schedulePopup);
-        });
-
-        // Закрыть важное окно
-        closeImportantPopup.addEventListener('click', () => {
-            closePopup(importantPopup);
-        });
-
-        // Закрыть окно графика
-        closeSchedulePopup.addEventListener('click', () => {
-            closePopup(schedulePopup);
-        });
-
-        // Свернуть важное окно
-        minimizeImportantPopup.addEventListener('click', () => {
-            minimizePopup(importantPopup);
-        });
-
-        // Свернуть окно графика
-        minimizeSchedulePopup.addEventListener('click', () => {
-            minimizePopup(schedulePopup);
-        });
-
-        // Клик по overlay закрывает текущее окно
-        popupOverlay.addEventListener('click', () => {
-            if (currentPopup) {
-                closePopup(currentPopup);
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(new Color(80, 40, 130, 230));
+                button.setBorder(BorderFactory.createLineBorder(new Color(255, 170, 51), 1));
+            }
+            
+            @Override
+            public void mouseExited(MouseEvent e) {
+                if (!button.isEnabled() || (pageButtons != null && button == pageButtons[currentPage - 1])) {
+                    return;
+                }
+                button.setBackground(new Color(20, 10, 40, 180));
+                button.setBorder(BorderFactory.createLineBorder(new Color(180, 140, 255, 100), 1));
             }
         });
+        
+        return button;
+    }
 
-        // Функция перетаскивания для важного окна
-        importantPopupHeader.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            const rect = importantPopup.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
-            importantPopup.style.transition = 'none';
-            currentPopup = importantPopup;
-        });
-
-        // Функция перетаскивания для окна графика
-        schedulePopupHeader.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            const rect = schedulePopup.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
-            schedulePopup.style.transition = 'none';
-            currentPopup = schedulePopup;
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging || !currentPopup) return;
-            e.preventDefault();
-            
-            const newX = e.clientX - offsetX;
-            const newY = e.clientY - offsetY;
-            
-            // Ограничиваем, чтобы окно не уходило за края
-            const maxX = window.innerWidth - currentPopup.offsetWidth;
-            const maxY = window.innerHeight - currentPopup.offsetHeight;
-            
-            const limitedX = Math.max(0, Math.min(newX, maxX));
-            const limitedY = Math.max(0, Math.min(newY, maxY));
-            
-            currentPopup.style.left = limitedX + 'px';
-            currentPopup.style.top = limitedY + 'px';
-            currentPopup.style.transform = 'none';
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            if (currentPopup) {
-                currentPopup.style.transition = 'all 0.3s ease';
-            }
-            currentPopup = null;
-        });
-
-        // Предотвращаем закрытие при клике на окна
-        importantPopup.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-
-        schedulePopup.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-
-        // Сворачивание/разворачивание плеера
-        const player = document.getElementById('musicPlayer');
-        const togglePlayerBtn = document.getElementById('togglePlayerBtn');
-        let playerCollapsed = false;
-
-        togglePlayerBtn.addEventListener('click', () => {
-            playerCollapsed = !playerCollapsed;
-            if (playerCollapsed) {
-                player.classList.add('collapsed');
-                togglePlayerBtn.innerHTML = '🗖';
-                togglePlayerBtn.title = 'развернуть';
+    private void showPage(int pageNumber) {
+        cardLayout.show(cardsPanel, "page" + pageNumber);
+        currentPage = pageNumber;
+        
+        // Обновляем стиль кнопок
+        for (int i = 0; i < pageButtons.length; i++) {
+            if (i + 1 == pageNumber) {
+                pageButtons[i].setBackground(new Color(138, 79, 207));
+                pageButtons[i].setForeground(Color.WHITE);
+                pageButtons[i].setBorder(BorderFactory.createLineBorder(new Color(255, 217, 102), 1));
             } else {
-                player.classList.remove('collapsed');
-                togglePlayerBtn.innerHTML = '🗕';
-                togglePlayerBtn.title = 'свернуть';
+                pageButtons[i].setBackground(new Color(20, 10, 40, 180));
+                pageButtons[i].setForeground(new Color(218, 197, 255));
+                pageButtons[i].setBorder(BorderFactory.createLineBorder(new Color(180, 140, 255, 100), 1));
             }
-        });
-
-        // Перетаскивание плеера
-        let playerOffsetX, playerOffsetY, playerMouseX, playerMouseY;
-        let playerDragging = false;
-
-        player.addEventListener('mousedown', startPlayerDrag);
-        player.addEventListener('touchstart', startPlayerDrag);
-
-        function startPlayerDrag(e) {
-            if (e.target.classList.contains('player-btn')) return; // Не перетаскиваем при клике на кнопки
-            
-            e.preventDefault();
-            
-            if (e.type === 'mousedown') {
-                playerMouseX = e.clientX;
-                playerMouseY = e.clientY;
-            } else if (e.type === 'touchstart') {
-                playerMouseX = e.touches[0].clientX;
-                playerMouseY = e.touches[0].clientY;
-            }
-            
-            const rect = player.getBoundingClientRect();
-            playerOffsetX = playerMouseX - rect.left;
-            playerOffsetY = playerMouseY - rect.top;
-            
-            playerDragging = true;
-            player.style.animation = 'none';
-            
-            document.addEventListener('mousemove', onPlayerDrag);
-            document.addEventListener('touchmove', onPlayerDrag);
-            document.addEventListener('mouseup', stopPlayerDrag);
-            document.addEventListener('touchend', stopPlayerDrag);
-        }
-
-        function onPlayerDrag(e) {
-            if (!playerDragging) return;
-            e.preventDefault();
-            
-            if (e.type === 'mousemove') {
-                playerMouseX = e.clientX;
-                playerMouseY = e.clientY;
-            } else if (e.type === 'touchmove') {
-                playerMouseX = e.touches[0].clientX;
-                playerMouseY = e.touches[0].clientY;
-            }
-            
-            const newX = playerMouseX - playerOffsetX;
-            const newY = playerMouseY - playerOffsetY;
-            
-            const maxX = window.innerWidth - player.offsetWidth;
-            const maxY = window.innerHeight - player.offsetHeight;
-            
-            const limitedX = Math.max(0, Math.min(newX, maxX));
-            const limitedY = Math.max(0, Math.min(newY, maxY));
-            
-            player.style.left = limitedX + 'px';
-            player.style.top = limitedY + 'px';
-            player.style.right = 'auto';
-            player.style.bottom = 'auto';
-        }
-
-        function stopPlayerDrag() {
-            playerDragging = false;
-            player.style.animation = 'playerFloat 3s infinite alternate';
-            
-            document.removeEventListener('mousemove', onPlayerDrag);
-            document.removeEventListener('touchmove', onPlayerDrag);
-            document.removeEventListener('mouseup', stopPlayerDrag);
-            document.removeEventListener('touchend', stopPlayerDrag);
-        }
-    </script>
-    
-    <!-- Плеер Яндекс.Музыки с космической музыкой -->
-    <script>
-        // Плейлисты Яндекс.Музыки с космической музыкой
-        const yandexPlaylists = [
-            {
-                name: "Космический эмбиент",
-                url: "https://music.yandex.ru/iframe/#playlist/yamusic-bestsongs/788938",
-                trackInfo: "Музыка звезд - космический микс"
-            },
-            {
-                name: "Space Ambient",
-                url: "https://music.yandex.ru/iframe/#album/7561640",
-                trackInfo: "Ambient Space - Jon Hansson"
-            },
-            {
-                name: "Космическая музыка",
-                url: "https://music.yandex.ru/iframe/#playlist/music-news/2039",
-                trackInfo: "Инструментальная космическая музыка"
-            },
-            {
-                name: "Саундтреки космоса",
-                url: "https://music.yandex.ru/iframe/#playlist/music-news/2301",
-                trackInfo: "Эпические саундтреки"
-            }
-        ];
-        
-        let currentPlaylistIndex = 0;
-        const container = document.getElementById('yandexPlayerContainer');
-        const trackInfoEl = document.getElementById('currentTrackInfo');
-        
-        function loadPlaylist(index) {
-            const playlist = yandexPlaylists[index];
-            container.innerHTML = '';
-            
-            const iframe = document.createElement('iframe');
-            iframe.src = playlist.url;
-            iframe.width = "100%";
-            iframe.height = "100%";
-            iframe.frameBorder = "0";
-            iframe.allow = "autoplay *; fullscreen *;";
-            iframe.style.border = "none";
-            iframe.style.borderRadius = "8px";
-            
-            container.appendChild(iframe);
-            trackInfoEl.textContent = playlist.trackInfo;
-            currentPlaylistIndex = index;
         }
         
-        document.getElementById('nextTrackBtn').addEventListener('click', function() {
-            currentPlaylistIndex = (currentPlaylistIndex + 1) % yandexPlaylists.length;
-            loadPlaylist(currentPlaylistIndex);
+        prevButton.setEnabled(pageNumber > 1);
+        nextButton.setEnabled(pageNumber < totalPages);
+    }
+
+    private void addSoundAndPlayer() {
+        // Кнопка звука
+        soundToggleButton = new JButton("🔊");
+        soundToggleButton.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+        soundToggleButton.setForeground(new Color(255, 217, 102));
+        soundToggleButton.setBackground(new Color(20, 10, 40, 180));
+        soundToggleButton.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100, 100), 1));
+        soundToggleButton.setFocusPainted(false);
+        soundToggleButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        soundToggleButton.setBounds(20, getHeight() - 70, 50, 50);
+        
+        soundToggleButton.addActionListener(e -> toggleSound());
+        
+        mainPanel.add(soundToggleButton);
+        
+        // Музыкальный плеер
+        createMusicPlayer();
+    }
+
+    private void createMusicPlayer() {
+        musicPlayerDialog = new JDialog(this);
+        musicPlayerDialog.setUndecorated(true);
+        musicPlayerDialog.setSize(320, 200);
+        musicPlayerDialog.setLocation(getWidth() - 340, getHeight() - 220);
+        
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(20, 10, 40, 200));
+        panel.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(255, 200, 100, 100), 1),
+            BorderFactory.createEmptyBorder(10, 10, 10, 10)
+        ));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        
+        // Заголовок плеера
+        JPanel headerPanel = new JPanel(new BorderLayout());
+        headerPanel.setOpaque(false);
+        
+        JLabel titleLabel = new JLabel("космическая музыка");
+        titleLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        titleLabel.setForeground(new Color(255, 217, 102));
+        
+        JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 0));
+        controlPanel.setOpaque(false);
+        
+        JButton toggleBtn = createPlayerButton("🗕");
+        JButton prevBtn = createPlayerButton("⏮️");
+        JButton nextBtn = createPlayerButton("⏭️");
+        
+        controlPanel.add(toggleBtn);
+        controlPanel.add(prevBtn);
+        controlPanel.add(nextBtn);
+        
+        headerPanel.add(titleLabel, BorderLayout.WEST);
+        headerPanel.add(controlPanel, BorderLayout.EAST);
+        
+        panel.add(headerPanel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        // Место для плеера Яндекс.Музыки
+        JLabel playerPlaceholder = new JLabel("🎵 Яндекс.Музыка", SwingConstants.CENTER);
+        playerPlaceholder.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        playerPlaceholder.setForeground(new Color(176, 154, 208));
+        playerPlaceholder.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100, 50), 1));
+        playerPlaceholder.setPreferredSize(new Dimension(280, 80));
+        playerPlaceholder.setMaximumSize(new Dimension(280, 80));
+        
+        panel.add(playerPlaceholder);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        // Информация о треке
+        JPanel infoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+        infoPanel.setOpaque(false);
+        
+        JLabel stationIcon = new JLabel("🎵");
+        stationIcon.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        stationIcon.setForeground(new Color(255, 217, 102));
+        
+        JLabel trackInfo = new JLabel("Космический эмбиент");
+        trackInfo.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        trackInfo.setForeground(Color.WHITE);
+        
+        infoPanel.add(stationIcon);
+        infoPanel.add(trackInfo);
+        
+        panel.add(infoPanel);
+        
+        musicPlayerDialog.add(panel);
+        musicPlayerDialog.setVisible(true);
+    }
+
+    private JButton createPlayerButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        button.setForeground(new Color(255, 217, 102));
+        button.setBackground(new Color(255, 255, 255, 25));
+        button.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100, 100), 1));
+        button.setFocusPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        button.setPreferredSize(new Dimension(32, 32));
+        
+        return button;
+    }
+
+    private void toggleSound() {
+        soundEnabled = !soundEnabled;
+        
+        if (soundEnabled) {
+            soundToggleButton.setText("🔊");
+            soundToggleButton.setForeground(new Color(255, 217, 102));
+        } else {
+            soundToggleButton.setText("🔇");
+            soundToggleButton.setForeground(Color.GRAY);
+        }
+    }
+
+    private void showImportantDialog() {
+        if (importantDialog == null) {
+            importantDialog = new JDialog(this);
+            importantDialog.setTitle("Важная информация");
+            importantDialog.setSize(800, 600);
+            importantDialog.setLocationRelativeTo(this);
+            
+            JPanel panel = new JPanel(new BorderLayout());
+            panel.setBackground(new Color(8, 4, 22));
+            panel.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100, 100), 2));
+            
+            JLabel titleLabel = new JLabel("📌 ВАЖНАЯ ИНФОРМАЦИЯ", SwingConstants.CENTER);
+            titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
+            titleLabel.setForeground(new Color(255, 217, 102));
+            titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            
+            JEditorPane editorPane = new JEditorPane();
+            editorPane.setContentType("text/html");
+            editorPane.setText("<html><body style='color: white; background-color: #080416; font-family: Segoe UI; padding: 20px;'>" +
+                              "<h2 style='color: #ffd966;'>Ссылка на Google Sheets:</h2>" +
+                              "<p><a href='#' style='color: #ffaa33;'>https://docs.google.com/spreadsheets/d/1dXTrCwA8eVBdmHGmX5H9qeIsWJaVE_zAmjlSgs9rH9Y/edit</a></p>" +
+                              "</body></html>");
+            editorPane.setEditable(false);
+            editorPane.setBackground(new Color(8, 4, 22));
+            
+            JScrollPane scrollPane = new JScrollPane(editorPane);
+            scrollPane.setBorder(BorderFactory.createEmptyBorder());
+            
+            panel.add(titleLabel, BorderLayout.NORTH);
+            panel.add(scrollPane, BorderLayout.CENTER);
+            
+            importantDialog.add(panel);
+        }
+        
+        importantDialog.setVisible(true);
+    }
+
+    private void showScheduleDialog() {
+        if (scheduleDialog == null) {
+            scheduleDialog = new JDialog(this);
+            scheduleDialog.setTitle("График");
+            scheduleDialog.setSize(800, 600);
+            scheduleDialog.setLocationRelativeTo(this);
+            
+            JPanel panel = new JPanel(new BorderLayout());
+            panel.setBackground(new Color(8, 4, 22));
+            panel.setBorder(BorderFactory.createLineBorder(new Color(255, 200, 100, 100), 2));
+            
+            JLabel titleLabel = new JLabel("📅 ГРАФИК", SwingConstants.CENTER);
+            titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
+            titleLabel.setForeground(new Color(255, 217, 102));
+            titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            
+            JEditorPane editorPane = new JEditorPane();
+            editorPane.setContentType("text/html");
+            editorPane.setText("<html><body style='color: white; background-color: #080416; font-family: Segoe UI; padding: 20px;'>" +
+                              "<h2 style='color: #ffd966;'>Ссылка на Google Sheets:</h2>" +
+                              "<p><a href='#' style='color: #ffaa33;'>https://docs.google.com/spreadsheets/d/1q7wDVIIuT1DvKhebvDCzKMeiuuTVnrvdC9jBC8qjHiU/edit</a></p>" +
+                              "</body></html>");
+            editorPane.setEditable(false);
+            editorPane.setBackground(new Color(8, 4, 22));
+            
+            JScrollPane scrollPane = new JScrollPane(editorPane);
+            scrollPane.setBorder(BorderFactory.createEmptyBorder());
+            
+            panel.add(titleLabel, BorderLayout.NORTH);
+            panel.add(scrollPane, BorderLayout.CENTER);
+            
+            scheduleDialog.add(panel);
+        }
+        
+        scheduleDialog.setVisible(true);
+    }
+
+    private void setupAnimations() {
+        // Таймер для метеоритов (каждые 15 секунд)
+        meteorTimer = new Timer(15000, e -> createMeteor());
+        meteorTimer.start();
+        
+        // Таймер для МКС (каждые 30 секунд)
+        issTimer = new Timer(30000, e -> createISS());
+        issTimer.start();
+        
+        // Создаем первый метеорит через 5 секунд
+        Timer initialMeteor = new Timer(5000, e -> createMeteor());
+        initialMeteor.setRepeats(false);
+        initialMeteor.start();
+        
+        // Создаем первую МКС через 10 секунд
+        Timer initialISS = new Timer(10000, e -> createISS());
+        initialISS.setRepeats(false);
+        initialISS.start();
+    }
+
+    private void createMeteor() {
+        // Создаем анимацию метеорита
+        JLabel meteor = new JLabel("✦");
+        meteor.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+        meteor.setForeground(new Color(255, 170, 0));
+        meteor.setBounds(new Random().nextInt(getWidth()), -20, 20, 20);
+        
+        mainPanel.add(meteor);
+        mainPanel.setComponentZOrder(meteor, 0);
+        
+        Timer meteorAnimation = new Timer(20, null);
+        meteorAnimation.addActionListener(new ActionListener() {
+            int x = meteor.getX();
+            int y = meteor.getY();
+            int dx = 5;
+            int dy = 7;
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                x += dx;
+                y += dy;
+                meteor.setLocation(x, y);
+                
+                if (y > getHeight()) {
+                    meteorAnimation.stop();
+                    mainPanel.remove(meteor);
+                    mainPanel.repaint();
+                }
+            }
         });
         
-        document.getElementById('prevTrackBtn').addEventListener('click', function() {
-            currentPlaylistIndex = (currentPlaylistIndex - 1 + yandexPlaylists.length) % yandexPlaylists.length;
-            loadPlaylist(currentPlaylistIndex);
+        meteorAnimation.start();
+    }
+
+    private void createISS() {
+        // Создаем анимацию МКС
+        JLabel iss = new JLabel("🛰️");
+        iss.setFont(new Font("Segoe UI", Font.PLAIN, 32));
+        iss.setForeground(new Color(200, 200, 255));
+        iss.setBounds(-50, new Random().nextInt(getHeight() / 2), 40, 40);
+        
+        mainPanel.add(iss);
+        mainPanel.setComponentZOrder(iss, 0);
+        
+        Timer issAnimation = new Timer(20, null);
+        issAnimation.addActionListener(new ActionListener() {
+            int x = iss.getX();
+            int y = iss.getY();
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                x += 3;
+                iss.setLocation(x, y);
+                
+                if (x > getWidth()) {
+                    issAnimation.stop();
+                    mainPanel.remove(iss);
+                    mainPanel.repaint();
+                }
+            }
         });
         
-        const volumeSlider = document.getElementById('volumeSlider');
-        volumeSlider.addEventListener('input', function(e) {
-            const volume = e.target.value;
-            console.log('Громкость:', volume);
+        issAnimation.start();
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            new RTMISApp().setVisible(true);
         });
-        
-        loadPlaylist(0);
-    </script>
-</body>
-</html>
+    }
+}
