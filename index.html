@@ -592,6 +592,31 @@
             margin-bottom: 8px;
         }
 
+        /* Выделенные заголовки */
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 16px 0 12px 0;
+            padding: 8px 16px;
+            border-radius: 30px;
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        body.light-theme .section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
         /* Таблица в стиле VK */
         .vk-table {
             width: 100%;
@@ -805,26 +830,6 @@
             justify-content: space-between;
         }
 
-        .vk-widget-add-btn {
-            background: rgba(102, 126, 234, 0.2);
-            border: none;
-            color: #66b0ff;
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 1rem;
-        }
-
-        .vk-widget-add-btn:hover {
-            background: rgba(102, 126, 234, 0.4);
-            transform: scale(1.1);
-        }
-
         /* Виджет времени */
         .time-widget {
             text-align: center;
@@ -910,31 +915,6 @@
             background: #ff9800;
             margin-left: auto;
             box-shadow: 0 0 10px #ff9800;
-        }
-
-        .online-user-item .delete-btn {
-            background: transparent;
-            border: none;
-            color: #888;
-            width: 24px;
-            height: 24px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: all 0.2s;
-        }
-
-        .online-user-item:hover .delete-btn {
-            opacity: 1;
-        }
-
-        .online-user-item .delete-btn:hover {
-            background: rgba(255, 80, 80, 0.2);
-            color: #ff5050;
         }
 
         @keyframes pulse {
@@ -1029,31 +1009,6 @@
         .night-short-item .night-info p {
             font-size: 12px;
             color: #888;
-        }
-
-        .night-short-item .night-delete {
-            background: transparent;
-            border: none;
-            color: #888;
-            width: 24px;
-            height: 24px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: all 0.2s;
-        }
-
-        .night-short-item:hover .night-delete {
-            opacity: 1;
-        }
-
-        .night-short-item .night-delete:hover {
-            background: rgba(255, 80, 80, 0.2);
-            color: #ff5050;
         }
 
         .night-empty {
@@ -1449,7 +1404,7 @@
 
             <div class="vk-menu-item active" data-page="1">
                 <i class="fas fa-newspaper"></i>
-                <span>Новости</span>
+                <span>Контакты</span>
             </div>
             <div class="vk-menu-item" data-page="2">
                 <i class="fas fa-users"></i>
@@ -1525,39 +1480,43 @@
                     <div class="vk-post-content">
                         <div class="vk-post-title">Состав смены</div>
                         
-                        <!-- ДБА PG -->
-                        <div class="vk-subsection">
-                            <div class="vk-subsection-title">✦ ДБА PG ✦</div>
-                            <div class="collapsible-content" id="dbaPgContent">
-                                <table class="vk-table">
-                                    <thead>
-                                        <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
-                                    </thead>
-                                    <tbody id="dbaPgTableBody"></tbody>
-                                </table>
+                        <!-- ДБА PG с выделенным заголовком -->
+                        <div style="margin: 20px 0 10px 0;">
+                            <div class="section-title">
+                                <i class="fas fa-database"></i> ДБА PG
                             </div>
-                            <button class="vk-show-more-btn" onclick="toggleCollapsible('dbaPgContent', this)">
-                                <span>Показать еще...</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
                         </div>
+                        <div class="collapsible-content" id="dbaPgContent">
+                            <table class="vk-table">
+                                <thead>
+                                    <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
+                                </thead>
+                                <tbody id="dbaPgTableBody"></tbody>
+                            </table>
+                        </div>
+                        <button class="vk-show-more-btn" onclick="toggleCollapsible('dbaPgContent', this)">
+                            <span>Показать еще...</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
 
-                        <!-- ДБА МС -->
-                        <div class="vk-subsection">
-                            <div class="vk-subsection-title">✦ ДБА МС ✦</div>
-                            <div class="collapsible-content" id="dbaMsContent">
-                                <table class="vk-table">
-                                    <thead>
-                                        <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
-                                    </thead>
-                                    <tbody id="dbaMsTableBody"></tbody>
-                                </table>
+                        <!-- ДБА МС с выделенным заголовком -->
+                        <div style="margin: 30px 0 10px 0;">
+                            <div class="section-title">
+                                <i class="fas fa-users"></i> ДБА МС
                             </div>
-                            <button class="vk-show-more-btn" onclick="toggleCollapsible('dbaMsContent', this)">
-                                <span>Показать еще...</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
                         </div>
+                        <div class="collapsible-content" id="dbaMsContent">
+                            <table class="vk-table">
+                                <thead>
+                                    <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
+                                </thead>
+                                <tbody id="dbaMsTableBody"></tbody>
+                            </table>
+                        </div>
+                        <button class="vk-show-more-btn" onclick="toggleCollapsible('dbaMsContent', this)">
+                            <span>Показать еще...</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                     <div class="vk-post-actions">
                         <div class="vk-post-action"><i class="far fa-heart"></i> 24</div>
@@ -1579,39 +1538,43 @@
                     <div class="vk-post-content">
                         <div class="vk-post-title">Состав смены</div>
                         
-                        <!-- ОЭИР -->
-                        <div class="vk-subsection">
-                            <div class="vk-subsection-title">✦ ОЭИР ✦</div>
-                            <div class="collapsible-content" id="oeirMainContent">
-                                <table class="vk-table">
-                                    <thead>
-                                        <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
-                                    </thead>
-                                    <tbody id="oeirTableBody"></tbody>
-                                </table>
+                        <!-- ОЭИР с выделенным заголовком -->
+                        <div style="margin: 20px 0 10px 0;">
+                            <div class="section-title">
+                                <i class="fas fa-microchip"></i> ОЭИР
                             </div>
-                            <button class="vk-show-more-btn" onclick="toggleCollapsible('oeirMainContent', this)">
-                                <span>Показать еще...</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
                         </div>
+                        <div class="collapsible-content" id="oeirMainContent">
+                            <table class="vk-table">
+                                <thead>
+                                    <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
+                                </thead>
+                                <tbody id="oeirTableBody"></tbody>
+                            </table>
+                        </div>
+                        <button class="vk-show-more-btn" onclick="toggleCollapsible('oeirMainContent', this)">
+                            <span>Показать еще...</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
 
-                        <!-- ОЭИР Витрина -->
-                        <div class="vk-subsection">
-                            <div class="vk-subsection-title">✦ ОЭИР Витрина ✦</div>
-                            <div class="collapsible-content" id="oeirVitrinaContent">
-                                <table class="vk-table">
-                                    <thead>
-                                        <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
-                                    </thead>
-                                    <tbody id="oeirVitrinaTableBody"></tbody>
-                                </table>
+                        <!-- ОЭИР Витрина с выделенным заголовком -->
+                        <div style="margin: 30px 0 10px 0;">
+                            <div class="section-title">
+                                <i class="fas fa-window-restore"></i> ОЭИР Витрина
                             </div>
-                            <button class="vk-show-more-btn" onclick="toggleCollapsible('oeirVitrinaContent', this)">
-                                <span>Показать еще...</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
                         </div>
+                        <div class="collapsible-content" id="oeirVitrinaContent">
+                            <table class="vk-table">
+                                <thead>
+                                    <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
+                                </thead>
+                                <tbody id="oeirVitrinaTableBody"></tbody>
+                            </table>
+                        </div>
+                        <button class="vk-show-more-btn" onclick="toggleCollapsible('oeirVitrinaContent', this)">
+                            <span>Показать еще...</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                     <div class="vk-post-actions">
                         <div class="vk-post-action"><i class="far fa-heart"></i> 18</div>
@@ -1620,18 +1583,25 @@
                     </div>
                 </div>
 
-                <!-- Пост СМ -->
+                <!-- Пост СМ (Сервис Менеджер) -->
                 <div class="vk-post">
                     <div class="vk-post-header">
                         <div class="vk-post-avatar">👑</div>
                         <div class="vk-post-author">
-                            <h4>СМ (Старшие смены)</h4>
-                            <p>Руководство</p>
+                            <h4>Сервис Менеджер</h4>
+                            <p>Руководство сменами</p>
                         </div>
                         <div class="vk-post-date">19 мар в 12:15</div>
                     </div>
                     <div class="vk-post-content">
                         <div class="vk-post-title">Распределение по регионам</div>
+                        
+                        <!-- СМ с выделенным заголовком -->
+                        <div style="margin: 20px 0 10px 0;">
+                            <div class="section-title">
+                                <i class="fas fa-crown"></i> Сервис Менеджер
+                            </div>
+                        </div>
                         <div class="collapsible-content" id="smContent">
                             <table class="vk-table">
                                 <thead>
@@ -1772,9 +1742,6 @@
                             <h4>Ночные дежурные</h4>
                             <p>Список сотрудников на ночных сменах</p>
                         </div>
-                        <div class="vk-post-date">
-                            <button class="vk-widget-add-btn" id="addNightShiftBtnMain" title="Добавить ночного дежурного" style="position: static;">+</button>
-                        </div>
                     </div>
                     <div class="vk-post-content">
                         <div class="vk-post-title">Список ночных дежурных</div>
@@ -1842,7 +1809,6 @@
             <div class="vk-widget" id="nightShortWidget">
                 <div class="vk-widget-title">
                     <span>🌙 Ночные дежурные</span>
-                    <button class="vk-widget-add-btn" id="addNightShiftBtn" title="Добавить">+</button>
                 </div>
                 <div id="nightShortList"></div>
             </div>
@@ -1935,8 +1901,8 @@
     <script>
         // Данные для таблиц
         const dbaPgData = [
-            ["Кулигин Павел", "8 950 586-14-34", "09:00-18:00"],
-            ["Волчихин Данила", "8 903 903-63-63", "21:00-03:00"],
+            ["Кулигин Павел", "8 950 586-14-34", "22:00-05:00"],
+            ["Волчихин Данила", "8 903 903-63-63", "06:00-15:00"],
             ["Шилов Алексей", "8 950 466-80-35", "05:30-14:30"],
             ["Сакенко Олег", "8 913 614-49-96", "10:00-19:00"],
             ["Ефремов Дмитрий", "8 923 738-78-39", "06:00-15:00"]
@@ -2218,7 +2184,6 @@
                     <td>${staff.phone}</td>
                     <td>
                         <button class="vk-copy-btn" onclick="copyText('${staff.phone}', this)"><i class="far fa-copy"></i></button>
-                        <button class="vk-copy-btn" onclick="deleteNightShift(${index})" style="margin-left: 5px;" title="Удалить"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
             `).join('');
@@ -2244,21 +2209,11 @@
                             <h5>${staff.name}</h5>
                             <p>${staff.dept} · ${staff.phone}</p>
                         </div>
-                        <button class="night-delete" onclick="deleteNightShift(${index})" title="Удалить">
-                            <i class="fas fa-times"></i>
-                        </button>
                     </div>
                 `;
             });
             
             nightShortList.innerHTML = html;
-        }
-
-        // Функция удаления ночного дежурного
-        function deleteNightShift(index) {
-            nightShiftsData.splice(index, 1);
-            updateNightTable();
-            updateNightShortWidget();
         }
 
         // Функция добавления ночного дежурного
@@ -2538,11 +2493,9 @@
         schedulePopup.addEventListener('click', (e) => e.stopPropagation());
 
         // Инициализация модального окна для ночных дежурных
-        document.getElementById('addNightShiftBtn').addEventListener('click', openNightModal);
-        document.getElementById('addNightShiftBtnMain').addEventListener('click', openNightModal);
+        document.getElementById('saveNightShiftBtn').addEventListener('click', addNightShift);
         document.getElementById('closeNightModalBtn').addEventListener('click', closeNightModal);
         document.getElementById('nightModalOverlay').addEventListener('click', closeNightModal);
-        document.getElementById('saveNightShiftBtn').addEventListener('click', addNightShift);
 
         // Инициализация
         showPage(1);
