@@ -158,6 +158,24 @@
             color: white;
         }
 
+        /* Исправление для светлой темы - кнопки в разделе "Графики Дежурных" */
+        body.light-theme .links-grid a div {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: white !important;
+        }
+        
+        body.light-theme .links-grid a div i {
+            color: white !important;
+        }
+        
+        body.light-theme .links-grid a div h4 {
+            color: white !important;
+        }
+        
+        body.light-theme .links-grid a div p {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
         /* Темная тема */
         body.dark-theme {
             background: #0a0a0a;
@@ -693,6 +711,56 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
+        }
+
+        /* Кнопка "Показать еще" для виджета */
+        .widget-show-more-btn {
+            background: transparent;
+            border: none;
+            color: #66b0ff;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 8px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+            margin-top: 8px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        body.light-theme .widget-show-more-btn {
+            color: #0077ff;
+        }
+
+        .widget-show-more-btn:hover {
+            color: #88c0ff;
+        }
+
+        body.light-theme .widget-show-more-btn:hover {
+            color: #005bb5;
+        }
+
+        .widget-show-more-btn i {
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .widget-show-more-btn.expanded i {
+            transform: rotate(180deg);
+        }
+
+        /* Сворачиваемый виджет */
+        .widget-collapsible-content {
+            max-height: 200px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .widget-collapsible-content.expanded {
+            max-height: 2000px;
         }
 
         /* Кнопка "Показать еще" */
@@ -1318,6 +1386,66 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Стили для мобильного блокировщика */
+        .mobile-blocker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .mobile-blocker-content {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .mobile-blocker-content i {
+            font-size: 80px;
+            color: #ffaa00;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .mobile-blocker-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mobile-blocker-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .mobile-blocker-content .warning-icon {
+            color: #ffaa00;
+            font-size: 24px;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
         /* Адаптация */
         @media (max-width: 1024px) {
             .vk-right-sidebar {
@@ -1345,14 +1473,14 @@
         }
     </style>
 </head>
-<body class="">
+<body class="dark-theme">
     <!-- Переключатель тем - справа сверху -->
     <div class="theme-switcher">
         <button class="theme-btn" id="lightThemeBtn" title="Светлая тема"><i class="fas fa-sun"></i></button>
-        <button class="theme-btn" id="darkThemeBtn" title="Темная тема"><i class="fas fa-moon"></i></button>
+        <button class="theme-btn active" id="darkThemeBtn" title="Темная тема"><i class="fas fa-moon"></i></button>
     </div>
 
-    <div class="vk-container">
+    <div class="vk-container" id="mainContent">
         <!-- Левый сайдбар -->
         <div class="vk-sidebar">
             <div class="vk-logo">
@@ -1600,57 +1728,57 @@
                     <div class="vk-post-content">
                         <div class="links-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
                             <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" target="_blank">
-                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #2a2a2a; border-radius: 12px;">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;">
                                         <i class="fas fa-laptop" style="color:white;"></i>
                                     </div>
                                     <div>
-                                        <h4 style="font-size: 14px; font-weight: 600;">Дежурные</h4>
-                                        <p style="font-size: 12px; color: #888;">ДБА, ОЭИР, 1,5ДБА</p>
+                                        <h4 style="font-size: 14px; font-weight: 600; color: white;">Дежурные</h4>
+                                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">ДБА, ОЭИР, 1,5ДБА</p>
                                     </div>
                                 </div>
                             </a>
                             <a href="https://confluence.rtmis.ru/calendar/spacecalendar.action?spaceKey=RMISOEIR" target="_blank">
-                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #2a2a2a; border-radius: 12px;">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;">
                                         <i class="fas fa-calendar" style="color:white;"></i>
                                     </div>
                                     <div>
-                                        <h4 style="font-size: 14px; font-weight: 600;">Календарь</h4>
-                                        <p style="font-size: 12px; color: #888;">График дежурных</p>
+                                        <h4 style="font-size: 14px; font-weight: 600; color: white;">Календарь</h4>
+                                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">График дежурных</p>
                                     </div>
                                 </div>
                             </a>
                             <a href="https://confluence.is-mis.ru/calendar/calendarPage.action?spaceKey=RMISOEIR&calendarId=c3cdb4f6-7805-4d8d-baeb-07e75f0c19fd" target="_blank">
-                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #2a2a2a; border-radius: 12px;">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;">
                                         <i class="fas fa-clock" style="color:white;"></i>
                                     </div>
                                     <div>
-                                        <h4 style="font-size: 14px; font-weight: 600;">Витрина</h4>
-                                        <p style="font-size: 12px; color: #888;">Ночной дежурный</p>
+                                        <h4 style="font-size: 14px; font-weight: 600; color: white;">Витрина</h4>
+                                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">Ночной дежурный</p>
                                     </div>
                                 </div>
                             </a>
                             <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=337625078" target="_blank">
-                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #2a2a2a; border-radius: 12px;">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;">
                                         <i class="fas fa-server" style="color:white;"></i>
                                     </div>
                                     <div>
-                                        <h4 style="font-size: 14px; font-weight: 600;">РМ</h4>
-                                        <p style="font-size: 12px; color: #888;">Дежурный РМ</p>
+                                        <h4 style="font-size: 14px; font-weight: 600; color: white;">РМ</h4>
+                                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">Дежурный РМ</p>
                                     </div>
                                 </div>
                             </a>
                             <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506" target="_blank">
-                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #2a2a2a; border-radius: 12px;">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;">
                                         <i class="fas fa-moon" style="color:white;"></i>
                                     </div>
                                     <div>
-                                        <h4 style="font-size: 14px; font-weight: 600;">Ночные</h4>
-                                        <p style="font-size: 12px; color: #888;">График дежурных</p>
+                                        <h4 style="font-size: 14px; font-weight: 600; color: white;">Ночные</h4>
+                                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">График дежурных</p>
                                     </div>
                                 </div>
                             </a>
@@ -1777,7 +1905,13 @@
             <!-- Виджет "Сейчас на смене" -->
             <div class="vk-widget" id="onlineWidget">
                 <div class="vk-widget-title">Сейчас на смене</div>
-                <div id="onlineList"></div>
+                <div class="widget-collapsible-content" id="onlineCollapsible">
+                    <div id="onlineList"></div>
+                </div>
+                <button class="widget-show-more-btn" onclick="toggleWidgetCollapsible('onlineCollapsible', this)">
+                    <span>Показать еще...</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
             </div>
 
             <!-- Виджет "Ночные дежурные" -->
@@ -1801,6 +1935,20 @@
                 <div class="vk-widget-title">Ближайшие смены (7ч)</div>
                 <div id="upcomingList"></div>
             </div>
+        </div>
+    </div>
+
+    <!-- Мобильный блокировщик (изначально скрыт) -->
+    <div id="mobileBlocker" class="mobile-blocker" style="display: none;">
+        <div class="mobile-blocker-content">
+            <i class="fas fa-mobile-alt"></i>
+            <h2>Только для ПК</h2>
+            <p>Данный сервис оптимизирован для работы на стационарных компьютерах и ноутбуках.</p>
+            <p>Пожалуйста, зайдите с рабочего ПК для корректного отображения всех функций.</p>
+            <div class="warning-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <p style="font-size: 14px; opacity: 0.7;">Спасибо за понимание! 🙏</p>
         </div>
     </div>
 
@@ -1853,6 +2001,35 @@
     </div>
 
     <script>
+        // Детектор мобильных устройств
+        function isMobileDevice() {
+            // Проверка по ширине экрана
+            if (window.innerWidth <= 768) {
+                return true;
+            }
+            
+            // Проверка по user agent
+            const ua = navigator.userAgent.toLowerCase();
+            const mobileKeywords = [
+                'android', 'webos', 'iphone', 'ipad', 'ipod', 'blackberry', 
+                'windows phone', 'opera mini', 'iemobile', 'mobile'
+            ];
+            
+            for (let keyword of mobileKeywords) {
+                if (ua.indexOf(keyword) !== -1) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+
+        // Показываем мобильный блокировщик, если нужно
+        if (isMobileDevice()) {
+            document.getElementById('mobileBlocker').style.display = 'flex';
+            document.getElementById('mainContent').style.display = 'none';
+        }
+
         // Данные для таблиц
         const dbaPgData = [
             ["Кулигин Павел", "8 950 586-14-34", "09:00-18:00"],
@@ -2357,6 +2534,18 @@
         updateMoscowTime();
         setInterval(updateMoscowTime, 1000);
 
+        // Функция для сворачивания/разворачивания виджета
+        function toggleWidgetCollapsible(contentId, btn) {
+            const content = document.getElementById(contentId);
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                btn.querySelector('span').textContent = 'Показать еще...';
+            } else {
+                content.classList.add('expanded');
+                btn.querySelector('span').textContent = 'Скрыть';
+            }
+        }
+
         // Копирование
         function copyText(text, btn) {
             navigator.clipboard.writeText(text).then(() => {
@@ -2566,6 +2755,12 @@
         updateNightTables();
         updateNightShortWidget();
         updateSickWidget();
+        
+        // Инициализируем виджет как свернутый
+        setTimeout(() => {
+            const onlineCollapsible = document.getElementById('onlineCollapsible');
+            onlineCollapsible.classList.add('collapsed');
+        }, 100);
     </script>
 </body>
 </html>
