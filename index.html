@@ -637,6 +637,50 @@
             padding: 10px 12px;
         }
 
+        /* Кнопки выбора */
+        .night-select-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 1rem;
+            margin: 0 2px;
+        }
+
+        .night-select-btn.green {
+            color: #4caf50;
+        }
+
+        .night-select-btn.green:hover {
+            background: rgba(76, 175, 80, 0.2);
+            transform: scale(1.1);
+        }
+
+        .night-select-btn.red {
+            color: #f44336;
+        }
+
+        .night-select-btn.red:hover {
+            background: rgba(244, 67, 54, 0.2);
+            transform: scale(1.1);
+        }
+
+        .night-select-btn.yellow {
+            color: #ffaa00;
+        }
+
+        .night-select-btn.yellow:hover {
+            background: rgba(255, 170, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        .night-select-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
         /* Кнопка копирования */
         .vk-copy-btn {
             background: transparent;
@@ -891,11 +935,16 @@
         .online-user-item .user-info h5 {
             font-size: 14px;
             font-weight: 500;
+            margin-bottom: 2px;
         }
 
         .online-user-item .user-info p {
             font-size: 12px;
             color: #888;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
         }
 
         .online-user-item .online-dot {
@@ -1004,11 +1053,16 @@
         .night-short-item .night-info h5 {
             font-size: 14px;
             font-weight: 500;
+            margin-bottom: 2px;
         }
 
         .night-short-item .night-info p {
             font-size: 12px;
             color: #888;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
         }
 
         .night-empty {
@@ -1018,152 +1072,56 @@
             font-style: italic;
         }
 
-        /* Модальное окно для добавления ночного дежурного */
-        .night-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .night-modal-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .night-modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            width: 400px;
-            background: #1e1e1e;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            z-index: 2001;
-            display: none;
-            opacity: 0;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            border: 2px solid rgba(102, 126, 234, 0.3);
-        }
-
-        .night-modal.active {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-        }
-
-        body.light-theme .night-modal {
-            background: white;
-        }
-
-        .night-modal-header {
-            padding: 16px 20px;
-            background: linear-gradient(135deg, #5f2b8c 0%, #8e44ad 100%);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .night-modal-title {
+        /* Стили для виджета больничных и отпусков */
+        .sick-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.2rem;
-            font-weight: 600;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
         }
 
-        .night-modal-close {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 32px;
-            height: 32px;
+        .sick-item:last-child {
+            border-bottom: none;
+        }
+
+        .sick-item .sick-avatar {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
+            background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 1rem;
-        }
-
-        .night-modal-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        .night-modal-body {
-            padding: 20px;
-        }
-
-        .night-modal-input-group {
-            margin-bottom: 16px;
-        }
-
-        .night-modal-label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        .night-modal-input {
-            width: 100%;
-            padding: 10px 12px;
-            background: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: 8px;
             color: white;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
+            font-size: 16px;
+            font-weight: 600;
         }
 
-        body.light-theme .night-modal-input {
-            background: #f5f7fa;
-            border-color: #e1e3e6;
-            color: #2c3e50;
-        }
-
-        .night-modal-input:focus {
-            outline: none;
-            border-color: #8e44ad;
-        }
-
-        .night-modal-phone-input {
-            display: flex;
-            gap: 8px;
-        }
-
-        .night-modal-phone-input .night-modal-input {
+        .sick-item .sick-info {
             flex: 1;
         }
 
-        .night-modal-add-btn {
-            background: linear-gradient(135deg, #5f2b8c 0%, #8e44ad 100%);
-            border: none;
-            color: white;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            width: 100%;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+        .sick-item .sick-info h5 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
         }
 
-        .night-modal-add-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(94, 43, 140, 0.5);
+        .sick-item .sick-info p {
+            font-size: 12px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .sick-empty {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-style: italic;
         }
 
         .vk-widget-item {
@@ -1740,23 +1698,40 @@
                         <div class="vk-post-avatar">🌙</div>
                         <div class="vk-post-author">
                             <h4>Ночные дежурные</h4>
-                            <p>Список сотрудников на ночных сменах</p>
+                            <p>Выберите сотрудников для ночных дежурств</p>
                         </div>
                     </div>
                     <div class="vk-post-content">
-                        <div class="vk-post-title">Список ночных дежурных</div>
+                        <div class="vk-post-title">ДБА (ночные дежурные)</div>
                         <div class="table-wrapper">
                             <table class="vk-table">
                                 <thead>
                                     <tr>
                                         <th>ФИО</th>
-                                        <th>Направление</th>
                                         <th>Телефон</th>
-                                        <th></th>
+                                        <th>График</th>
+                                        <th>Действия</th>
                                     </tr>
                                 </thead>
-                                <tbody id="nightTableBody"></tbody>
+                                <tbody id="dbaNightTableBody"></tbody>
                             </table>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <div class="vk-post-title">ОЭИР (ночные дежурные)</div>
+                            <div class="table-wrapper">
+                                <table class="vk-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ФИО</th>
+                                            <th>Телефон</th>
+                                            <th>График</th>
+                                            <th>Действия</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="oeirNightTableBody"></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1805,7 +1780,7 @@
                 <div id="onlineList"></div>
             </div>
 
-            <!-- НОВЫЙ ВИДЖЕТ: Ночные дежурные (краткий) -->
+            <!-- Виджет "Ночные дежурные" -->
             <div class="vk-widget" id="nightShortWidget">
                 <div class="vk-widget-title">
                     <span>🌙 Ночные дежурные</span>
@@ -1813,40 +1788,19 @@
                 <div id="nightShortList"></div>
             </div>
 
+            <!-- НОВЫЙ ВИДЖЕТ: Больничные и отпуска -->
+            <div class="vk-widget" id="sickWidget">
+                <div class="vk-widget-title">
+                    <span>🏥 Больничные и отпуска</span>
+                </div>
+                <div id="sickList"></div>
+            </div>
+
             <!-- Виджет "Ближайшие смены (7 часов)" -->
             <div class="vk-widget" id="upcomingWidget">
                 <div class="vk-widget-title">Ближайшие смены (7ч)</div>
                 <div id="upcomingList"></div>
             </div>
-        </div>
-    </div>
-
-    <!-- Модальное окно для добавления ночного дежурного -->
-    <div class="night-modal-overlay" id="nightModalOverlay"></div>
-    <div class="night-modal" id="nightModal">
-        <div class="night-modal-header">
-            <div class="night-modal-title">
-                <i class="fas fa-moon"></i>
-                <span>Добавить ночного дежурного</span>
-            </div>
-            <button class="night-modal-close" id="closeNightModalBtn">✕</button>
-        </div>
-        <div class="night-modal-body">
-            <div class="night-modal-input-group">
-                <label class="night-modal-label">ФИО сотрудника</label>
-                <input type="text" class="night-modal-input" id="nightNameInput" placeholder="Иванов Иван Иванович">
-            </div>
-            <div class="night-modal-input-group">
-                <label class="night-modal-label">Направление</label>
-                <input type="text" class="night-modal-input" id="nightDeptInput" placeholder="ДБА / ОЭИР / СМ">
-            </div>
-            <div class="night-modal-input-group">
-                <label class="night-modal-label">Телефон</label>
-                <div class="night-modal-phone-input">
-                    <input type="text" class="night-modal-input" id="nightPhoneInput" placeholder="8 999 123-45-67">
-                </div>
-            </div>
-            <button class="night-modal-add-btn" id="saveNightShiftBtn">Добавить</button>
         </div>
     </div>
 
@@ -1952,14 +1906,55 @@
             ["Кожевина Евгения", "89118371989", "Мордовия"]
         ];
 
-        // Данные для ночных дежурных
-        let nightShiftsData = [
-            { name: "Кулигин Павел", phone: "8 950 586-14-34", dept: "ДБА (ночной)" },
-            { name: "Петров Александр", phone: "8 916 555-12-34", dept: "ОЭИР (ночной)" },
-            { name: "Сидоров Михаил", phone: "8 925 777-88-99", dept: "СМ (ночной)" }
-        ];
+        // Ключи для localStorage
+        const STORAGE_KEYS = {
+            NIGHT_SHIFTS: 'rtmis_night_shifts',
+            SICK_STAFF: 'rtmis_sick_staff'
+        };
 
-        // Заполнение таблиц
+        // Загрузка данных из localStorage
+        function loadFromStorage() {
+            // Загружаем ночные дежурные
+            const savedNight = localStorage.getItem(STORAGE_KEYS.NIGHT_SHIFTS);
+            if (savedNight) {
+                try {
+                    selectedNightShifts = JSON.parse(savedNight);
+                } catch (e) {
+                    console.error('Ошибка загрузки ночных дежурных:', e);
+                    selectedNightShifts = [];
+                }
+            } else {
+                selectedNightShifts = [];
+            }
+            
+            // Загружаем больничные
+            const savedSick = localStorage.getItem(STORAGE_KEYS.SICK_STAFF);
+            if (savedSick) {
+                try {
+                    sickStaff = JSON.parse(savedSick);
+                } catch (e) {
+                    console.error('Ошибка загрузки больничных:', e);
+                    sickStaff = [];
+                }
+            } else {
+                sickStaff = [];
+            }
+        }
+
+        // Сохранение данных в localStorage
+        function saveToStorage() {
+            localStorage.setItem(STORAGE_KEYS.NIGHT_SHIFTS, JSON.stringify(selectedNightShifts));
+            localStorage.setItem(STORAGE_KEYS.SICK_STAFF, JSON.stringify(sickStaff));
+        }
+
+        // Данные для выбранных ночных дежурных и больничных (будут загружены из localStorage)
+        let selectedNightShifts = [];
+        let sickStaff = [];
+
+        // Загружаем сохраненные данные
+        loadFromStorage();
+
+        // Заполнение основных таблиц
         function fillTable(elementId, data) {
             const tbody = document.getElementById(elementId);
             if (!tbody) return;
@@ -1992,6 +1987,141 @@
         fillTable('oeirTableBody', oeirData);
         fillTable('oeirVitrinaTableBody', vitrinaData);
         fillTable('smTableBody', smData);
+
+        // Функция для проверки, выбран ли сотрудник
+        function isStaffSelected(name, phone) {
+            return selectedNightShifts.some(s => s.name === name && s.phone === phone);
+        }
+        
+        // Функция для проверки, на больничном ли сотрудник
+        function isStaffSick(name, phone) {
+            return sickStaff.some(s => s.name === name && s.phone === phone);
+        }
+
+        // Функция для добавления/удаления из выбранных
+        function toggleNightStaff(staff, add) {
+            if (add) {
+                if (!isStaffSelected(staff.name, staff.phone)) {
+                    selectedNightShifts.push(staff);
+                }
+            } else {
+                selectedNightShifts = selectedNightShifts.filter(s => !(s.name === staff.name && s.phone === staff.phone));
+            }
+            saveToStorage(); // Сохраняем в localStorage
+            updateNightTables();
+            updateNightShortWidget();
+            updateOnlineWidget(); // Обновляем виджет онлайн, чтобы убрать выбранных
+        }
+        
+        // Функция для добавления/удаления из больничных
+        function toggleSickStaff(staff, add) {
+            if (add) {
+                if (!isStaffSick(staff.name, staff.phone)) {
+                    sickStaff.push(staff);
+                }
+            } else {
+                sickStaff = sickStaff.filter(s => !(s.name === staff.name && s.phone === staff.phone));
+            }
+            saveToStorage(); // Сохраняем в localStorage
+            updateNightTables();
+            updateSickWidget();
+            updateOnlineWidget(); // Обновляем виджет онлайн, чтобы убрать больных
+        }
+
+        // Заполнение таблиц ночных дежурных
+        function fillNightTable(elementId, data, dept) {
+            const tbody = document.getElementById(elementId);
+            if (!tbody) return;
+            
+            tbody.innerHTML = data.map(row => {
+                const isSelected = isStaffSelected(row[0], row[1]);
+                const isSick = isStaffSick(row[0], row[1]);
+                return `
+                    <tr>
+                        <td>${row[0]}</td>
+                        <td>${row[1]}</td>
+                        <td>${row[2]}</td>
+                        <td>
+                            <button class="night-select-btn green" onclick="toggleNightStaff({name: '${row[0]}', phone: '${row[1]}', dept: '${dept}'}, true)" ${isSelected ? 'disabled' : ''} title="Добавить в ночные">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="night-select-btn red" onclick="toggleNightStaff({name: '${row[0]}', phone: '${row[1]}', dept: '${dept}'}, false)" ${!isSelected ? 'disabled' : ''} title="Убрать из ночных">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="night-select-btn yellow" onclick="toggleSickStaff({name: '${row[0]}', phone: '${row[1]}', dept: '${dept}'}, !${isSick})" title="${isSick ? 'Убрать с больничного' : 'Отправить на больничный'}">
+                                <i class="fas fa-${isSick ? 'times' : 'plus'}"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Обновление всех таблиц ночных дежурных
+        function updateNightTables() {
+            fillNightTable('dbaNightTableBody', [...dbaPgData, ...dbaMsData], 'ДБА');
+            fillNightTable('oeirNightTableBody', oeirData, 'ОЭИР');
+        }
+
+        // Функция обновления краткого виджета ночных дежурных
+        function updateNightShortWidget() {
+            const nightShortList = document.getElementById('nightShortList');
+            if (!nightShortList) return;
+            
+            if (selectedNightShifts.length === 0) {
+                nightShortList.innerHTML = '<div class="night-empty">Нет выбранных ночных дежурных</div>';
+                return;
+            }
+            
+            let html = '';
+            selectedNightShifts.forEach((staff, index) => {
+                const initials = staff.name.split(' ').map(n => n[0]).join('');
+                html += `
+                    <div class="night-short-item">
+                        <div class="night-avatar">${initials}</div>
+                        <div class="night-info">
+                            <h5>${staff.name}</h5>
+                            <p>
+                                ${staff.dept} · ${staff.phone}
+                                <button class="vk-copy-btn" onclick="copyText('${staff.phone}', this)"><i class="far fa-copy"></i></button>
+                            </p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            nightShortList.innerHTML = html;
+        }
+        
+        // Функция обновления виджета больничных и отпусков
+        function updateSickWidget() {
+            const sickList = document.getElementById('sickList');
+            if (!sickList) return;
+            
+            if (sickStaff.length === 0) {
+                sickList.innerHTML = '<div class="sick-empty">Нет сотрудников на больничном или в отпуске</div>';
+                return;
+            }
+            
+            let html = '';
+            sickStaff.forEach((staff, index) => {
+                const initials = staff.name.split(' ').map(n => n[0]).join('');
+                html += `
+                    <div class="sick-item">
+                        <div class="sick-avatar">${initials}</div>
+                        <div class="sick-info">
+                            <h5>${staff.name}</h5>
+                            <p>
+                                ${staff.dept} · ${staff.phone}
+                                <button class="vk-copy-btn" onclick="copyText('${staff.phone}', this)"><i class="far fa-copy"></i></button>
+                            </p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            sickList.innerHTML = html;
+        }
 
         // Функция определения статуса по графику - с поддержкой ночных смен
         function getShiftStatus(schedule) {
@@ -2033,17 +2163,22 @@
             return 'offline';
         }
 
-        // Функция обновления виджета "Сейчас на смене"
+        // Функция обновления виджета "Сейчас на смене" (исключая ночных дежурных и больных)
         function updateOnlineWidget() {
             const allStaff = [
-                ...dbaPgData.map(d => ({ name: d[0], schedule: d[2], dept: 'ДБА' })),
-                ...dbaMsData.map(d => ({ name: d[0], schedule: d[2], dept: 'ДБА' })),
-                ...oeirData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР' })),
-                ...vitrinaData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР' }))
+                ...dbaPgData.map(d => ({ name: d[0], schedule: d[2], dept: 'ДБА', phone: d[1] })),
+                ...dbaMsData.map(d => ({ name: d[0], schedule: d[2], dept: 'ДБА', phone: d[1] })),
+                ...oeirData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР', phone: d[1] })),
+                ...vitrinaData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР', phone: d[1] }))
             ];
             
-            const onlineStaff = allStaff.filter(staff => getShiftStatus(staff.schedule) === 'online');
-            const soonStaff = allStaff.filter(staff => getShiftStatus(staff.schedule) === 'soon');
+            // Фильтруем только тех, кто не в списке ночных дежурных и не на больничном
+            const regularStaff = allStaff.filter(staff => 
+                !isStaffSelected(staff.name, staff.phone) && !isStaffSick(staff.name, staff.phone)
+            );
+            
+            const onlineStaff = regularStaff.filter(staff => getShiftStatus(staff.schedule) === 'online');
+            const soonStaff = regularStaff.filter(staff => getShiftStatus(staff.schedule) === 'soon');
             
             const onlineList = document.getElementById('onlineList');
             
@@ -2058,7 +2193,10 @@
                             <div class="user-avatar">${initials}</div>
                             <div class="user-info">
                                 <h5>${staff.name}</h5>
-                                <p>${staff.dept} · ${staff.schedule}</p>
+                                <p>
+                                    ${staff.dept} · ${staff.schedule}
+                                    <button class="vk-copy-btn" onclick="copyText('${staff.phone}', this)"><i class="far fa-copy"></i></button>
+                                </p>
                             </div>
                             <div class="online-dot"></div>
                         </div>
@@ -2075,7 +2213,10 @@
                             <div class="user-avatar">${initials}</div>
                             <div class="user-info">
                                 <h5>${staff.name}</h5>
-                                <p>${staff.dept} · ${staff.schedule}</p>
+                                <p>
+                                    ${staff.dept} · ${staff.schedule}
+                                    <button class="vk-copy-btn" onclick="copyText('${staff.phone}', this)"><i class="far fa-copy"></i></button>
+                                </p>
                             </div>
                             <div class="soon-dot"></div>
                         </div>
@@ -2167,100 +2308,6 @@
             upcomingList.innerHTML = html;
         }
 
-        // Функция обновления таблицы ночных дежурных
-        function updateNightTable() {
-            const nightTableBody = document.getElementById('nightTableBody');
-            if (!nightTableBody) return;
-            
-            if (nightShiftsData.length === 0) {
-                nightTableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 30px; color: #888;">Нет ночных дежурных</td></tr>';
-                return;
-            }
-            
-            nightTableBody.innerHTML = nightShiftsData.map((staff, index) => `
-                <tr>
-                    <td>${staff.name}</td>
-                    <td>${staff.dept}</td>
-                    <td>${staff.phone}</td>
-                    <td>
-                        <button class="vk-copy-btn" onclick="copyText('${staff.phone}', this)"><i class="far fa-copy"></i></button>
-                    </td>
-                </tr>
-            `).join('');
-        }
-
-        // Функция обновления краткого виджета ночных дежурных
-        function updateNightShortWidget() {
-            const nightShortList = document.getElementById('nightShortList');
-            if (!nightShortList) return;
-            
-            if (nightShiftsData.length === 0) {
-                nightShortList.innerHTML = '<div class="night-empty">Нет ночных дежурных</div>';
-                return;
-            }
-            
-            let html = '';
-            nightShiftsData.forEach((staff, index) => {
-                const initials = staff.name.split(' ').map(n => n[0]).join('');
-                html += `
-                    <div class="night-short-item">
-                        <div class="night-avatar">${initials}</div>
-                        <div class="night-info">
-                            <h5>${staff.name}</h5>
-                            <p>${staff.dept} · ${staff.phone}</p>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            nightShortList.innerHTML = html;
-        }
-
-        // Функция добавления ночного дежурного
-        function addNightShift() {
-            const nameInput = document.getElementById('nightNameInput');
-            const deptInput = document.getElementById('nightDeptInput');
-            const phoneInput = document.getElementById('nightPhoneInput');
-            
-            const name = nameInput.value.trim();
-            const dept = deptInput.value.trim();
-            const phone = phoneInput.value.trim();
-            
-            if (!name || !phone) {
-                alert('Пожалуйста, заполните ФИО и телефон');
-                return;
-            }
-            
-            nightShiftsData.push({
-                name: name,
-                dept: dept || 'Ночной дежурный',
-                phone: phone
-            });
-            
-            // Очищаем поля
-            nameInput.value = '';
-            deptInput.value = '';
-            phoneInput.value = '';
-            
-            // Закрываем модалку
-            closeNightModal();
-            
-            // Обновляем таблицу и виджет
-            updateNightTable();
-            updateNightShortWidget();
-        }
-
-        // Функции для модального окна
-        function openNightModal() {
-            document.getElementById('nightModalOverlay').classList.add('active');
-            document.getElementById('nightModal').classList.add('active');
-        }
-
-        function closeNightModal() {
-            document.getElementById('nightModalOverlay').classList.remove('active');
-            document.getElementById('nightModal').classList.remove('active');
-        }
-
         // Функция обновления московского времени
         function updateMoscowTime() {
             const timeEl = document.getElementById('moscowTime');
@@ -2339,7 +2386,6 @@
         const totalPages = 6;
 
         function showPage(page) {
-            // Преобразуем порядок: страница 6 (ночные дежурные) должна быть между 4 и 5
             let actualPage = page;
             
             menuItems.forEach(item => {
@@ -2492,17 +2538,13 @@
         importantPopup.addEventListener('click', (e) => e.stopPropagation());
         schedulePopup.addEventListener('click', (e) => e.stopPropagation());
 
-        // Инициализация модального окна для ночных дежурных
-        document.getElementById('saveNightShiftBtn').addEventListener('click', addNightShift);
-        document.getElementById('closeNightModalBtn').addEventListener('click', closeNightModal);
-        document.getElementById('nightModalOverlay').addEventListener('click', closeNightModal);
-
         // Инициализация
         showPage(1);
         updateOnlineWidget();
         updateUpcomingWidget();
-        updateNightTable();
+        updateNightTables();
         updateNightShortWidget();
+        updateSickWidget();
     </script>
 </body>
 </html>
