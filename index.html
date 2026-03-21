@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- FullCalendar CDN для профессионального календаря -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     <style>
         * {
             margin: 0;
@@ -26,7 +29,6 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* Светлая тема */
         body.light-theme {
             background: #edeef0;
             color: #000;
@@ -158,7 +160,6 @@
             color: white;
         }
 
-        /* Исправление для светлой темы - кнопки в разделе "Графики Дежурных" */
         body.light-theme .links-grid a div {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
             color: white !important;
@@ -176,7 +177,6 @@
             color: rgba(255, 255, 255, 0.8) !important;
         }
 
-        /* Темная тема */
         body.dark-theme {
             background: #0a0a0a;
             color: #e0e0e0;
@@ -332,7 +332,6 @@
             color: white;
         }
 
-        /* Переключатель тем - справа сверху */
         .theme-switcher {
             position: fixed;
             top: 20px;
@@ -393,7 +392,6 @@
             position: relative;
         }
 
-        /* Левый сайдбар */
         .vk-sidebar {
             width: 240px;
             flex-shrink: 0;
@@ -429,7 +427,6 @@
             color: #0077ff;
         }
 
-        /* Кнопка график отдельно слева (красивая) */
         .schedule-side-btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -488,13 +485,11 @@
             background: #e1e3e6;
         }
 
-        /* Основной контент */
         .vk-content {
             flex: 1;
             min-width: 0;
         }
 
-        /* Шапка профиля */
         .vk-profile-header {
             border-radius: 16px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -556,7 +551,6 @@
             color: #888;
         }
 
-        /* Пост-карточка */
         .vk-post {
             border-radius: 16px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -610,7 +604,6 @@
             margin-bottom: 8px;
         }
 
-        /* Выделенные заголовки */
         .section-title {
             font-size: 1.2rem;
             font-weight: 700;
@@ -630,12 +623,6 @@
             font-size: 1.1rem;
         }
 
-        body.light-theme .section-title {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        /* Таблица в стиле VK */
         .vk-table {
             width: 100%;
             border-collapse: collapse;
@@ -655,7 +642,6 @@
             padding: 10px 12px;
         }
 
-        /* Кнопки выбора */
         .night-select-btn {
             background: transparent;
             border: none;
@@ -699,7 +685,6 @@
             cursor: not-allowed;
         }
 
-        /* Кнопка копирования */
         .vk-copy-btn {
             background: transparent;
             border: none;
@@ -713,7 +698,6 @@
             gap: 4px;
         }
 
-        /* Кнопка "Показать еще" для виджета */
         .widget-show-more-btn {
             background: transparent;
             border: none;
@@ -739,10 +723,6 @@
             color: #88c0ff;
         }
 
-        body.light-theme .widget-show-more-btn:hover {
-            color: #005bb5;
-        }
-
         .widget-show-more-btn i {
             font-size: 14px;
             transition: transform 0.3s;
@@ -752,7 +732,6 @@
             transform: rotate(180deg);
         }
 
-        /* Сворачиваемый виджет */
         .widget-collapsible-content {
             max-height: 200px;
             overflow: hidden;
@@ -763,7 +742,6 @@
             max-height: 2000px;
         }
 
-        /* Кнопка "Показать еще" */
         .vk-show-more-btn {
             background: transparent;
             border: none;
@@ -787,10 +765,6 @@
             color: #88c0ff;
         }
 
-        body.light-theme .vk-show-more-btn:hover {
-            color: #005bb5;
-        }
-
         .vk-show-more-btn i {
             font-size: 14px;
             transition: transform 0.3s;
@@ -800,7 +774,6 @@
             transform: rotate(180deg);
         }
 
-        /* Сворачиваемые секции - видно только 2 строки */
         .collapsible-content {
             max-height: 100px;
             overflow: hidden;
@@ -811,36 +784,6 @@
             max-height: 2000px;
         }
 
-        /* Подразделы внутри поста */
-        .vk-subsection {
-            margin: 16px 0;
-            border-top: 1px solid #333;
-            padding-top: 16px;
-        }
-
-        .vk-subsection:first-child {
-            border-top: none;
-            padding-top: 0;
-        }
-
-        body.light-theme .vk-subsection {
-            border-top-color: #e1e3e6;
-        }
-
-        .vk-subsection-title {
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        body.light-theme .vk-subsection-title {
-            color: #2c3e50;
-        }
-
-        body.dark-theme .vk-subsection-title {
-            color: #ccc;
-        }
-
-        /* Нижняя панель поста */
         .vk-post-actions {
             display: flex;
             gap: 20px;
@@ -862,7 +805,6 @@
             font-size: 18px;
         }
 
-        /* Кнопка "Показать ещё" (большая) */
         .vk-show-more-large {
             border: none;
             width: 100%;
@@ -888,7 +830,6 @@
             border-color: rgba(255, 255, 255, 0.4);
         }
 
-        /* Пагинация */
         .vk-pagination {
             display: flex;
             justify-content: center;
@@ -917,7 +858,6 @@
             color: white;
         }
 
-        /* Правая колонка */
         .vk-right-sidebar {
             width: 280px;
             flex-shrink: 0;
@@ -942,7 +882,6 @@
             justify-content: space-between;
         }
 
-        /* Виджет времени */
         .time-widget {
             text-align: center;
             padding: 16px;
@@ -953,11 +892,22 @@
             font-weight: 700;
             font-family: 'Inter', monospace;
             line-height: 1.2;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        #currentDate {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #888;
+        }
+
+        body.light-theme #currentDate {
+            color: #818c99;
         }
 
         .time-label {
@@ -966,11 +916,6 @@
             letter-spacing: 1px;
         }
 
-        body.light-theme .time-label {
-            color: #818c99;
-        }
-
-        /* Стили для виджета онлайн */
         .online-user-item {
             display: flex;
             align-items: center;
@@ -1040,7 +985,6 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Стили для виджета ближайших смен */
         .upcoming-shift-item {
             display: flex;
             align-items: center;
@@ -1088,7 +1032,6 @@
             width: 100%;
         }
 
-        /* Стили для виджета ночных дежурных */
         .night-short-item {
             display: flex;
             align-items: center;
@@ -1133,14 +1076,13 @@
             flex-wrap: wrap;
         }
 
-        .night-empty {
+        .night-empty, .sick-empty {
             text-align: center;
             padding: 20px;
             color: #888;
             font-style: italic;
         }
 
-        /* Стили для виджета больничных и отпусков */
         .sick-item {
             display: flex;
             align-items: center;
@@ -1185,52 +1127,6 @@
             flex-wrap: wrap;
         }
 
-        .sick-empty {
-            text-align: center;
-            padding: 20px;
-            color: #888;
-            font-style: italic;
-        }
-
-        .vk-widget-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 0;
-            cursor: pointer;
-            transition: background 0.2s;
-            border-radius: 8px;
-        }
-
-        .vk-widget-item:hover {
-            background: #333;
-        }
-
-        body.light-theme .vk-widget-item:hover {
-            background: #f0f2f5;
-        }
-
-        .vk-widget-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .vk-widget-info h5 {
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .vk-widget-info p {
-            font-size: 12px;
-        }
-
-        /* Попап VK */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -1343,7 +1239,6 @@
             background: #1e1e1e;
         }
 
-        /* Уведомление */
         .copy-notification {
             position: fixed;
             bottom: 30px;
@@ -1366,12 +1261,6 @@
             opacity: 1;
         }
 
-        .copy-notification span {
-            color: white;
-            font-weight: 600;
-        }
-
-        /* Страницы */
         .page {
             display: none;
         }
@@ -1386,67 +1275,37 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Стили для мобильного блокировщика */
-        .mobile-blocker {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-sizing: border-box;
+        .fc-day-sat a, .fc-day-sun a {
+            color: #ff4444 !important;
+            font-weight: bold !important;
+        }
+        
+        .fc-day-sat, .fc-day-sun {
+            background-color: rgba(255, 68, 68, 0.1) !important;
+        }
+        
+        body.dark-theme .fc-day-sat, 
+        body.dark-theme .fc-day-sun {
+            background-color: rgba(255, 68, 68, 0.2) !important;
+        }
+        
+        .fc-day-sat .fc-daygrid-day-number,
+        .fc-day-sun .fc-daygrid-day-number {
+            color: #ff4444 !important;
+            font-weight: bold !important;
+        }
+        
+        .fc-day-today {
+            background: rgba(102, 126, 234, 0.3) !important;
+            border: 2px solid #667eea !important;
+            border-radius: 8px !important;
+        }
+        
+        body.dark-theme .fc-day-today {
+            background: rgba(102, 126, 234, 0.4) !important;
+            border: 2px solid #88c0ff !important;
         }
 
-        .mobile-blocker-content {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
-            padding: 40px 30px;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            color: white;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .mobile-blocker-content i {
-            font-size: 80px;
-            color: #ffaa00;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .mobile-blocker-content h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #fff, #ffaa00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .mobile-blocker-content p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-
-        .mobile-blocker-content .warning-icon {
-            color: #ffaa00;
-            font-size: 24px;
-            margin: 20px 0;
-            animation: pulse 2s infinite;
-        }
-
-        /* Адаптация */
         @media (max-width: 1024px) {
             .vk-right-sidebar {
                 display: none;
@@ -1474,20 +1333,17 @@
     </style>
 </head>
 <body class="dark-theme">
-    <!-- Переключатель тем - справа сверху -->
     <div class="theme-switcher">
         <button class="theme-btn" id="lightThemeBtn" title="Светлая тема"><i class="fas fa-sun"></i></button>
         <button class="theme-btn active" id="darkThemeBtn" title="Темная тема"><i class="fas fa-moon"></i></button>
     </div>
 
     <div class="vk-container" id="mainContent">
-        <!-- Левый сайдбар -->
         <div class="vk-sidebar">
             <div class="vk-logo">
                 <i class="fas fa-chart-line"></i>
                 <span>РТ МИС</span>
             </div>
-
             <div class="vk-menu-item active" data-page="1">
                 <i class="fas fa-newspaper"></i>
                 <span>Контакты</span>
@@ -1504,7 +1360,6 @@
                 <i class="fas fa-file-alt"></i>
                 <span>Документы</span>
             </div>
-            <!-- НОВЫЙ РАЗДЕЛ: Ночные дежурные -->
             <div class="vk-menu-item" data-page="6">
                 <i class="fas fa-moon"></i>
                 <span>Ночные дежурные</span>
@@ -1513,16 +1368,11 @@
                 <i class="fas fa-cog"></i>
                 <span>Настройки</span>
             </div>
-
             <div class="vk-menu-divider"></div>
-
-            <!-- Кнопка "Важное" -->
             <div class="vk-menu-item" id="openImportantBtn">
                 <i class="fas fa-exclamation-circle"></i>
                 <span>Важное</span>
             </div>
-
-            <!-- Кнопка "График" отдельно слева -->
             <button class="schedule-side-btn" id="openScheduleBtn">
                 <i class="fas fa-calendar-alt"></i>
                 <span>График</span>
@@ -1530,9 +1380,7 @@
             </button>
         </div>
 
-        <!-- Основной контент -->
         <div class="vk-content">
-            <!-- Шапка профиля -->
             <div class="vk-profile-header">
                 <div class="vk-avatar">РТ</div>
                 <div class="vk-profile-info">
@@ -1551,9 +1399,7 @@
                 </div>
             </div>
 
-            <!-- Страницы -->
             <div class="page active" id="page1">
-                <!-- Пост ДБА -->
                 <div class="vk-post">
                     <div class="vk-post-header">
                         <div class="vk-post-avatar">⚡</div>
@@ -1565,8 +1411,6 @@
                     </div>
                     <div class="vk-post-content">
                         <div class="vk-post-title">Состав смены</div>
-                        
-                        <!-- ДБА PG с выделенным заголовком -->
                         <div style="margin: 20px 0 10px 0;">
                             <div class="section-title">
                                 <i class="fas fa-database"></i> ДБА PG
@@ -1574,9 +1418,7 @@
                         </div>
                         <div class="collapsible-content" id="dbaPgContent">
                             <table class="vk-table">
-                                <thead>
-                                    <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
-                                </thead>
+                                <thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead>
                                 <tbody id="dbaPgTableBody"></tbody>
                             </table>
                         </div>
@@ -1584,8 +1426,6 @@
                             <span>Показать еще...</span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
-
-                        <!-- ДБА МС с выделенным заголовком -->
                         <div style="margin: 30px 0 10px 0;">
                             <div class="section-title">
                                 <i class="fas fa-users"></i> ДБА МС
@@ -1593,9 +1433,7 @@
                         </div>
                         <div class="collapsible-content" id="dbaMsContent">
                             <table class="vk-table">
-                                <thead>
-                                    <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
-                                </thead>
+                                <thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead>
                                 <tbody id="dbaMsTableBody"></tbody>
                             </table>
                         </div>
@@ -1611,7 +1449,6 @@
                     </div>
                 </div>
 
-                <!-- Пост ОЭИР -->
                 <div class="vk-post">
                     <div class="vk-post-header">
                         <div class="vk-post-avatar">📊</div>
@@ -1623,8 +1460,6 @@
                     </div>
                     <div class="vk-post-content">
                         <div class="vk-post-title">Состав смены</div>
-                        
-                        <!-- ОЭИР с выделенным заголовком -->
                         <div style="margin: 20px 0 10px 0;">
                             <div class="section-title">
                                 <i class="fas fa-microchip"></i> ОЭИР
@@ -1632,9 +1467,7 @@
                         </div>
                         <div class="collapsible-content" id="oeirMainContent">
                             <table class="vk-table">
-                                <thead>
-                                    <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
-                                </thead>
+                                <thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead>
                                 <tbody id="oeirTableBody"></tbody>
                             </table>
                         </div>
@@ -1642,8 +1475,6 @@
                             <span>Показать еще...</span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
-
-                        <!-- ОЭИР Витрина с выделенным заголовком -->
                         <div style="margin: 30px 0 10px 0;">
                             <div class="section-title">
                                 <i class="fas fa-window-restore"></i> ОЭИР Витрина
@@ -1651,9 +1482,7 @@
                         </div>
                         <div class="collapsible-content" id="oeirVitrinaContent">
                             <table class="vk-table">
-                                <thead>
-                                    <tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr>
-                                </thead>
+                                <thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead>
                                 <tbody id="oeirVitrinaTableBody"></tbody>
                             </table>
                         </div>
@@ -1669,7 +1498,6 @@
                     </div>
                 </div>
 
-                <!-- Пост СМ (Сервис Менеджер) -->
                 <div class="vk-post">
                     <div class="vk-post-header">
                         <div class="vk-post-avatar">👑</div>
@@ -1681,8 +1509,6 @@
                     </div>
                     <div class="vk-post-content">
                         <div class="vk-post-title">Распределение по регионам</div>
-                        
-                        <!-- СМ с выделенным заголовком -->
                         <div style="margin: 20px 0 10px 0;">
                             <div class="section-title">
                                 <i class="fas fa-crown"></i> Сервис Менеджер
@@ -1690,9 +1516,7 @@
                         </div>
                         <div class="collapsible-content" id="smContent">
                             <table class="vk-table">
-                                <thead>
-                                    <tr><th>ФИО</th><th>Телефон</th><th>Регион</th><th></th></tr>
-                                </thead>
+                                <thead><tr><th>ФИО</th><th>Телефон</th><th>Регион</th><th></th></tr></thead>
                                 <tbody id="smTableBody"></tbody>
                             </table>
                         </div>
@@ -1707,12 +1531,8 @@
                         <div class="vk-post-action"><i class="far fa-share-square"></i> 5</div>
                     </div>
                 </div>
-
-                <!-- Кнопка под таблицей -->
                 <a href="https://confluence.rtmis.ru/pages/viewpage.action?pageId=252876542" target="_blank" class="vk-show-more-large">
-                    <i class="fas fa-globe"></i>
-                    Назначенные сотрудники по регионам
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fas fa-globe"></i> Назначенные сотрудники по регионам <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
@@ -1729,57 +1549,32 @@
                         <div class="links-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
                             <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" target="_blank">
                                 <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;">
-                                        <i class="fas fa-laptop" style="color:white;"></i>
-                                    </div>
-                                    <div>
-                                        <h4 style="font-size: 14px; font-weight: 600; color: white;">Дежурные</h4>
-                                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">ДБА, ОЭИР, 1,5ДБА</p>
-                                    </div>
+                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;"><i class="fas fa-laptop" style="color:white;"></i></div>
+                                    <div><h4 style="font-size: 14px; font-weight: 600; color: white;">Дежурные</h4><p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">ДБА, ОЭИР, 1,5ДБА</p></div>
                                 </div>
                             </a>
                             <a href="https://confluence.rtmis.ru/calendar/spacecalendar.action?spaceKey=RMISOEIR" target="_blank">
                                 <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;">
-                                        <i class="fas fa-calendar" style="color:white;"></i>
-                                    </div>
-                                    <div>
-                                        <h4 style="font-size: 14px; font-weight: 600; color: white;">Календарь</h4>
-                                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">График дежурных</p>
-                                    </div>
+                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;"><i class="fas fa-calendar" style="color:white;"></i></div>
+                                    <div><h4 style="font-size: 14px; font-weight: 600; color: white;">Календарь</h4><p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">График дежурных</p></div>
                                 </div>
                             </a>
                             <a href="https://confluence.is-mis.ru/calendar/calendarPage.action?spaceKey=RMISOEIR&calendarId=c3cdb4f6-7805-4d8d-baeb-07e75f0c19fd" target="_blank">
                                 <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;">
-                                        <i class="fas fa-clock" style="color:white;"></i>
-                                    </div>
-                                    <div>
-                                        <h4 style="font-size: 14px; font-weight: 600; color: white;">Витрина</h4>
-                                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">Ночной дежурный</p>
-                                    </div>
+                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;"><i class="fas fa-clock" style="color:white;"></i></div>
+                                    <div><h4 style="font-size: 14px; font-weight: 600; color: white;">Витрина</h4><p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">Ночной дежурный</p></div>
                                 </div>
                             </a>
                             <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=337625078" target="_blank">
                                 <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;">
-                                        <i class="fas fa-server" style="color:white;"></i>
-                                    </div>
-                                    <div>
-                                        <h4 style="font-size: 14px; font-weight: 600; color: white;">РМ</h4>
-                                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">Дежурный РМ</p>
-                                    </div>
+                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;"><i class="fas fa-server" style="color:white;"></i></div>
+                                    <div><h4 style="font-size: 14px; font-weight: 600; color: white;">РМ</h4><p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">Дежурный РМ</p></div>
                                 </div>
                             </a>
                             <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506" target="_blank">
                                 <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;">
-                                        <i class="fas fa-moon" style="color:white;"></i>
-                                    </div>
-                                    <div>
-                                        <h4 style="font-size: 14px; font-weight: 600; color: white;">Ночные</h4>
-                                        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">График дежурных</p>
-                                    </div>
+                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;"><i class="fas fa-moon" style="color:white;"></i></div>
+                                    <div><h4 style="font-size: 14px; font-weight: 600; color: white;">Ночные</h4><p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">График дежурных</p></div>
                                 </div>
                             </a>
                         </div>
@@ -1792,13 +1587,12 @@
                     <div class="vk-post-header">
                         <div class="vk-post-avatar">📅</div>
                         <div class="vk-post-author">
-                            <h4>Календарь</h4>
-                            <p>Март 2026</p>
+                            <h4>Календарь дежурств</h4>
+                            <p>Суббота и воскресенье — выходные дни</p>
                         </div>
                     </div>
-                    <div class="vk-post-content" style="min-height: 200px; display: flex; align-items: center; justify-content: center; color:#888;">
-                        <i class="fas fa-calendar-alt" style="font-size: 48px;"></i>
-                        <span style="margin-left: 16px;">Календарь дежурств</span>
+                    <div class="vk-post-content">
+                        <div class="calendar-container" id="calendar"></div>
                     </div>
                 </div>
             </div>
@@ -1819,7 +1613,6 @@
                 </div>
             </div>
 
-            <!-- НОВАЯ СТРАНИЦА: Ночные дежурные -->
             <div class="page" id="page6">
                 <div class="vk-post">
                     <div class="vk-post-header">
@@ -1831,36 +1624,9 @@
                     </div>
                     <div class="vk-post-content">
                         <div class="vk-post-title">ДБА (ночные дежурные)</div>
-                        <div class="table-wrapper">
-                            <table class="vk-table">
-                                <thead>
-                                    <tr>
-                                        <th>ФИО</th>
-                                        <th>Телефон</th>
-                                        <th>График</th>
-                                        <th>Действия</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dbaNightTableBody"></tbody>
-                            </table>
-                        </div>
-                        
-                        <div style="margin-top: 30px;">
-                            <div class="vk-post-title">ОЭИР (ночные дежурные)</div>
-                            <div class="table-wrapper">
-                                <table class="vk-table">
-                                    <thead>
-                                        <tr>
-                                            <th>ФИО</th>
-                                            <th>Телефон</th>
-                                            <th>График</th>
-                                            <th>Действия</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="oeirNightTableBody"></tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th>Действия</th></tr></thead><tbody id="dbaNightTableBody"></tbody></table>
+                        <div style="margin-top: 30px;"><div class="vk-post-title">ОЭИР (ночные дежурные)</div>
+                        <table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th>Действия</th></tr></thead><tbody id="oeirNightTableBody"></tbody></table></div>
                     </div>
                 </div>
             </div>
@@ -1881,7 +1647,6 @@
                 </div>
             </div>
 
-            <!-- Пагинация (обновлена для 6 страниц) -->
             <div class="vk-pagination">
                 <button class="vk-page-btn" id="prevPage" disabled><i class="fas fa-chevron-left"></i></button>
                 <button class="vk-page-btn active" data-page="1">1</button>
@@ -1894,43 +1659,25 @@
             </div>
         </div>
 
-        <!-- Правая колонка -->
         <div class="vk-right-sidebar">
-            <!-- Виджет времени -->
             <div class="vk-widget time-widget">
                 <div id="moscowTime">--:--:--</div>
+                <div id="currentDate"></div>
                 <div class="time-label">МОСКОВСКОЕ ВРЕМЯ</div>
             </div>
-
-            <!-- Виджет "Сейчас на смене" -->
             <div class="vk-widget" id="onlineWidget">
                 <div class="vk-widget-title">Сейчас на смене</div>
-                <div class="widget-collapsible-content" id="onlineCollapsible">
-                    <div id="onlineList"></div>
-                </div>
-                <button class="widget-show-more-btn" onclick="toggleWidgetCollapsible('onlineCollapsible', this)">
-                    <span>Показать еще...</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
+                <div class="widget-collapsible-content" id="onlineCollapsible"><div id="onlineList"></div></div>
+                <button class="widget-show-more-btn" onclick="toggleWidgetCollapsible('onlineCollapsible', this)"><span>Показать еще...</span><i class="fas fa-chevron-down"></i></button>
             </div>
-
-            <!-- Виджет "Ночные дежурные" -->
             <div class="vk-widget" id="nightShortWidget">
-                <div class="vk-widget-title">
-                    <span>🌙 Ночные дежурные</span>
-                </div>
+                <div class="vk-widget-title"><span>🌙 Ночные дежурные</span></div>
                 <div id="nightShortList"></div>
             </div>
-
-            <!-- НОВЫЙ ВИДЖЕТ: Больничные и отпуска -->
             <div class="vk-widget" id="sickWidget">
-                <div class="vk-widget-title">
-                    <span>🏥 Больничные и отпуска</span>
-                </div>
+                <div class="vk-widget-title"><span>🏥 Больничные и отпуска</span></div>
                 <div id="sickList"></div>
             </div>
-
-            <!-- Виджет "Ближайшие смены (7 часов)" -->
             <div class="vk-widget" id="upcomingWidget">
                 <div class="vk-widget-title">Ближайшие смены (7ч)</div>
                 <div id="upcomingList"></div>
@@ -1938,435 +1685,151 @@
         </div>
     </div>
 
-    <!-- Мобильный блокировщик (изначально скрыт) -->
     <div id="mobileBlocker" class="mobile-blocker" style="display: none;">
         <div class="mobile-blocker-content">
             <i class="fas fa-mobile-alt"></i>
             <h2>Только для ПК</h2>
             <p>Данный сервис оптимизирован для работы на стационарных компьютерах и ноутбуках.</p>
             <p>Пожалуйста, зайдите с рабочего ПК для корректного отображения всех функций.</p>
-            <div class="warning-icon">
-                <i class="fas fa-exclamation-triangle"></i>
-            </div>
+            <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
             <p style="font-size: 14px; opacity: 0.7;">Спасибо за понимание! 🙏</p>
         </div>
     </div>
 
-    <!-- Попапы -->
     <div class="popup-overlay" id="popupOverlay"></div>
-    
-    <!-- Окно Важное -->
     <div class="popup-window" id="importantPopup">
         <div class="popup-header" id="importantPopupHeader">
-            <div class="popup-title">
-                <span>📌</span>
-                <span>ВАЖНАЯ ИНФОРМАЦИЯ</span>
-            </div>
-            <div class="popup-controls">
-                <button class="popup-btn" id="minimizeImportantPopup" title="Свернуть">🗕</button>
-                <button class="popup-btn" id="closeImportantPopup" title="Закрыть">✕</button>
-            </div>
+            <div class="popup-title"><span>📌</span><span>ВАЖНАЯ ИНФОРМАЦИЯ</span></div>
+            <div class="popup-controls"><button class="popup-btn" id="minimizeImportantPopup">🗕</button><button class="popup-btn" id="closeImportantPopup">✕</button></div>
         </div>
-        <div class="popup-content">
-            <iframe 
-                src="https://docs.google.com/spreadsheets/d/1dXTrCwA8eVBdmHGmX5H9qeIsWJaVE_zAmjlSgs9rH9Y/edit?pli=1&gid=138149952#gid=138149952" 
-                allowfullscreen>
-            </iframe>
-        </div>
+        <div class="popup-content"><iframe src="https://docs.google.com/spreadsheets/d/1dXTrCwA8eVBdmHGmX5H9qeIsWJaVE_zAmjlSgs9rH9Y/edit?pli=1&gid=138149952#gid=138149952" allowfullscreen></iframe></div>
     </div>
-
-    <!-- Окно График -->
     <div class="popup-window" id="schedulePopup">
         <div class="popup-header" id="schedulePopupHeader">
-            <div class="popup-title">
-                <span>📅</span>
-                <span>ГРАФИК</span>
-            </div>
-            <div class="popup-controls">
-                <button class="popup-btn" id="minimizeSchedulePopup" title="Свернуть">🗕</button>
-                <button class="popup-btn" id="closeSchedulePopup" title="Закрыть">✕</button>
-            </div>
+            <div class="popup-title"><span>📅</span><span>ГРАФИК</span></div>
+            <div class="popup-controls"><button class="popup-btn" id="minimizeSchedulePopup">🗕</button><button class="popup-btn" id="closeSchedulePopup">✕</button></div>
         </div>
-        <div class="popup-content">
-            <iframe 
-                src="https://docs.google.com/spreadsheets/d/1q7wDVIIuT1DvKhebvDCzKMeiuuTVnrvdC9jBC8qjHiU/edit?pli=1&gid=1736109383#gid=1736109383" 
-                allowfullscreen>
-            </iframe>
-        </div>
+        <div class="popup-content"><iframe src="https://docs.google.com/spreadsheets/d/1q7wDVIIuT1DvKhebvDCzKMeiuuTVnrvdC9jBC8qjHiU/edit?pli=1&gid=1736109383#gid=1736109383" allowfullscreen></iframe></div>
     </div>
 
-    <!-- Уведомление о копировании -->
-    <div class="copy-notification" id="copyNotification">
-        Номер <span id="copiedNumber"></span> скопирован!
-    </div>
+    <div class="copy-notification" id="copyNotification">Номер <span id="copiedNumber"></span> скопирован!</div>
 
     <script>
-        // Детектор мобильных устройств
         function isMobileDevice() {
-            // Проверка по ширине экрана
-            if (window.innerWidth <= 768) {
-                return true;
-            }
-            
-            // Проверка по user agent
+            if (window.innerWidth <= 768) return true;
             const ua = navigator.userAgent.toLowerCase();
-            const mobileKeywords = [
-                'android', 'webos', 'iphone', 'ipad', 'ipod', 'blackberry', 
-                'windows phone', 'opera mini', 'iemobile', 'mobile'
-            ];
-            
-            for (let keyword of mobileKeywords) {
-                if (ua.indexOf(keyword) !== -1) {
-                    return true;
-                }
-            }
-            
-            return false;
+            const mobileKeywords = ['android', 'webos', 'iphone', 'ipad', 'ipod', 'blackberry', 'windows phone', 'opera mini', 'iemobile', 'mobile'];
+            return mobileKeywords.some(keyword => ua.indexOf(keyword) !== -1);
         }
 
-        // Показываем мобильный блокировщик, если нужно
         if (isMobileDevice()) {
             document.getElementById('mobileBlocker').style.display = 'flex';
             document.getElementById('mainContent').style.display = 'none';
         }
 
-        // Данные для таблиц
-        const dbaPgData = [
-            ["Кулигин Павел", "8 950 586-14-34", "09:00-18:00"],
-            ["Волчихин Данила", "8 903 903-63-63", "06:00-15:00"],
-            ["Шилов Алексей", "8 950 466-80-35", "05:30-14:30"],
-            ["Сакенко Олег", "8 913 614-49-96", "10:00-19:00"],
-            ["Ефремов Дмитрий", "8 923 738-78-39", "06:00-15:00"]
-        ];
+        function isWeekend(date) {
+            const day = date.getDay();
+            return day === 0 || day === 6;
+        }
 
-        const dbaMsData = [
-            ["Веселков Андрей", "8 909 104-63-77", "05:30-14:30"],
-            ["Попов Юрий", "8 951 705-47-81", "07:00-16:00"],
-            ["Митюшин Роман", "8 963 015-82-27", "07:00-16:00"]
-        ];
+        function formatDate(date) {
+            const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+            const days = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+            return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]}`;
+        }
 
-        const oeirData = [
-            ["Астафьев Андрей", "89030225078", "07:00-16:00"],
-            ["Вильданов Александр", "89220461325", "08:00-17:00"],
-            ["Власенко Матвей", "89226400123", "07:00-16:00"],
-            ["Зверев Владислав", "89194992682", "07:00-16:00"],
-            ["Литвин Василий", "89963773310", "05:00-14:00"],
-            ["Невидимов Иван", "89514516369", "07:00-16:00"],
-            ["Сапожников Кирилл", "89247181699", "05:00-14:00"],
-            ["Чемерик Дмитрий", "89024727716", "07:00-16:00"],
-            ["Шевырин Михаил", "89026409856", "07:00-16:00"],
-            ["Юденков Алексей", "89134806213", "05:00-14:00"]
-        ];
+        const dbaPgData = [["Кулигин Павел","8 950 586-14-34","09:00-18:00"],["Волчихин Данила","8 903 903-63-63","06:00-15:00"],["Шилов Алексей","8 950 466-80-35","05:30-14:30"],["Сакенко Олег","8 913 614-49-96","10:00-19:00"],["Ефремов Дмитрий","8 923 738-78-39","06:00-15:00"]];
+        const dbaMsData = [["Веселков Андрей","8 909 104-63-77","05:30-14:30"],["Попов Юрий","8 951 705-47-81","07:00-16:00"],["Митюшин Роман","8 963 015-82-27","07:00-16:00"]];
+        const oeirData = [["Астафьев Андрей","89030225078","07:00-16:00"],["Вильданов Александр","89220461325","08:00-17:00"],["Власенко Матвей","89226400123","07:00-16:00"],["Зверев Владислав","89194992682","07:00-16:00"],["Литвин Василий","89963773310","05:00-14:00"],["Невидимов Иван","89514516369","07:00-16:00"],["Сапожников Кирилл","89247181699","05:00-14:00"],["Чемерик Дмитрий","89024727716","07:00-16:00"],["Шевырин Михаил","89026409856","07:00-16:00"],["Юденков Алексей","89134806213","05:00-14:00"]];
+        const vitrinaData = [["Евстигнеев Дмитрий","89066512345","09:00-18:00"],["Курбатов Роман","89206329639","08:00-17:00"],["Юрин Юрий","89225554871","08:00-17:00"],["Куриков Артем","89200425796","08:00-17:00"]];
+        const smData = [["Бушуева Александра","89045544130","Астрахань, Марий Эл, Рязань"],["Матвеев Алексей","89956882318","Владимир, Оренбург"],["Карпов Антон","89056557113","Вологода, ЯНАО"],["Трефилова Ольга","89138517790","ЕАО, Красноярск, Саха"],["Олейник Илья","89994765880","Иркутск, Хакасия"],["Большаков Иоанн","89215505040","КБР, Дагестан"],["Волчик Виктор","89995283589","Карелия, Москва, Пенза"],["Лубнин Андрей","89097759422","Коми, НиНо"],["Карпечин Павел","89121752698","Крым, Калуга"],["Волков Илья","89217622389","Киров, ФМБА"],["Шкляев Дмитрий","89520679933","Свердловск, Курган"],["Астанкулова Марина","89520679933","Омск, Удмуртия"],["Михайлов Дмитрий","89523311790","Пермь, Алтай"],["Дегтярь Константин","89232409634","Башкирия"],["Кожевина Евгения","89118371989","Мордовия"]];
 
-        const vitrinaData = [
-            ["Евстигнеев Дмитрий", "89066512345", "09:00-18:00"],
-            ["Курбатов Роман", "89206329639", "08:00-17:00"],
-            ["Юрин Юрий", "89225554871", "08:00-17:00"],
-            ["Куриков Артем", "89200425796", "08:00-17:00"]
-        ];
+        const STORAGE_KEYS = { NIGHT_SHIFTS: 'rtmis_night_shifts', SICK_STAFF: 'rtmis_sick_staff', THEME: 'rtmis_theme' };
+        let selectedNightShifts = [], sickStaff = [];
 
-        const smData = [
-            ["Бушуева Александра", "89045544130", "Астрахань, Марий Эл, Рязань"],
-            ["Матвеев Алексей", "89956882318", "Владимир, Оренбург"],
-            ["Карпов Антон", "89056557113", "Вологода, ЯНАО"],
-            ["Трефилова Ольга", "89138517790", "ЕАО, Красноярск, Саха"],
-            ["Олейник Илья", "89994765880", "Иркутск, Хакасия"],
-            ["Большаков Иоанн", "89215505040", "КБР, Дагестан"],
-            ["Волчик Виктор", "89995283589", "Карелия, Москва, Пенза"],
-            ["Лубнин Андрей", "89097759422", "Коми, НиНо"],
-            ["Карпечин Павел", "89121752698", "Крым, Калуга"],
-            ["Волков Илья", "89217622389", "Киров, ФМБА"],
-            ["Шкляев Дмитрий", "89520679933", "Свердловск, Курган"],
-            ["Астанкулова Марина", "89520679933", "Омск, Удмуртия"],
-            ["Михайлов Дмитрий", "89523311790", "Пермь, Алтай"],
-            ["Дегтярь Константин", "89232409634", "Башкирия"],
-            ["Кожевина Евгения", "89118371989", "Мордовия"]
-        ];
-
-        // Ключи для localStorage
-        const STORAGE_KEYS = {
-            NIGHT_SHIFTS: 'rtmis_night_shifts',
-            SICK_STAFF: 'rtmis_sick_staff',
-            THEME: 'rtmis_theme'
-        };
-
-        // Загрузка данных из localStorage
         function loadFromStorage() {
-            // Загружаем ночные дежурные
             const savedNight = localStorage.getItem(STORAGE_KEYS.NIGHT_SHIFTS);
-            if (savedNight) {
-                try {
-                    selectedNightShifts = JSON.parse(savedNight);
-                } catch (e) {
-                    console.error('Ошибка загрузки ночных дежурных:', e);
-                    selectedNightShifts = [];
-                }
-            } else {
-                selectedNightShifts = [];
-            }
-            
-            // Загружаем больничные
+            if (savedNight) selectedNightShifts = JSON.parse(savedNight);
             const savedSick = localStorage.getItem(STORAGE_KEYS.SICK_STAFF);
-            if (savedSick) {
-                try {
-                    sickStaff = JSON.parse(savedSick);
-                } catch (e) {
-                    console.error('Ошибка загрузки больничных:', e);
-                    sickStaff = [];
-                }
-            } else {
-                sickStaff = [];
-            }
-            
-            // Загружаем тему
-            const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
-            if (savedTheme) {
-                return savedTheme;
-            }
-            return 'dark-theme'; // тема по умолчанию
+            if (savedSick) sickStaff = JSON.parse(savedSick);
+            return localStorage.getItem(STORAGE_KEYS.THEME) || 'dark-theme';
         }
 
-        // Сохранение данных в localStorage
-        function saveToStorage() {
-            localStorage.setItem(STORAGE_KEYS.NIGHT_SHIFTS, JSON.stringify(selectedNightShifts));
-            localStorage.setItem(STORAGE_KEYS.SICK_STAFF, JSON.stringify(sickStaff));
-        }
-        
-        // Сохранение темы
-        function saveTheme(theme) {
-            localStorage.setItem(STORAGE_KEYS.THEME, theme);
-        }
+        function saveToStorage() { localStorage.setItem(STORAGE_KEYS.NIGHT_SHIFTS, JSON.stringify(selectedNightShifts)); localStorage.setItem(STORAGE_KEYS.SICK_STAFF, JSON.stringify(sickStaff)); }
+        function saveTheme(theme) { localStorage.setItem(STORAGE_KEYS.THEME, theme); }
 
-        // Данные для выбранных ночных дежурных и больничных (будут загружены из localStorage)
-        let selectedNightShifts = [];
-        let sickStaff = [];
-
-        // Загружаем сохраненные данные и устанавливаем тему
         const savedTheme = loadFromStorage();
         document.body.className = savedTheme;
-        
-        // Устанавливаем активную кнопку темы
-        const lightThemeBtn = document.getElementById('lightThemeBtn');
-        const darkThemeBtn = document.getElementById('darkThemeBtn');
-        
-        if (savedTheme === 'light-theme') {
-            lightThemeBtn.classList.add('active');
-            darkThemeBtn.classList.remove('active');
-        } else {
-            darkThemeBtn.classList.add('active');
-            lightThemeBtn.classList.remove('active');
-        }
+        const lightThemeBtn = document.getElementById('lightThemeBtn'), darkThemeBtn = document.getElementById('darkThemeBtn');
+        if (savedTheme === 'light-theme') { lightThemeBtn.classList.add('active'); darkThemeBtn.classList.remove('active'); } 
+        else { darkThemeBtn.classList.add('active'); lightThemeBtn.classList.remove('active'); }
 
-        // Заполнение основных таблиц
         function fillTable(elementId, data) {
             const tbody = document.getElementById(elementId);
             if (!tbody) return;
-            
-            tbody.innerHTML = data.map(row => {
-                if (elementId === 'smTableBody') {
-                    return `
-                        <tr>
-                            <td>${row[0]}</td>
-                            <td>${row[1]}</td>
-                            <td>${row[2]}</td>
-                            <td><button class="vk-copy-btn" onclick="copyText('${row[1]}', this)"><i class="far fa-copy"></i></button></td>
-                        </tr>
-                    `;
-                } else {
-                    return `
-                        <tr>
-                            <td>${row[0]}</td>
-                            <td>${row[1]}</td>
-                            <td>${row[2]}</td>
-                            <td><button class="vk-copy-btn" onclick="copyText('${row[1]}', this)"><i class="far fa-copy"></i></button></td>
-                        </tr>
-                    `;
-                }
-            }).join('');
+            tbody.innerHTML = data.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td><button class="vk-copy-btn" onclick="copyText('${row[1]}', this)"><i class="far fa-copy"></i></button></td></tr>`).join('');
         }
+        fillTable('dbaPgTableBody', dbaPgData); fillTable('dbaMsTableBody', dbaMsData); fillTable('oeirTableBody', oeirData); fillTable('oeirVitrinaTableBody', vitrinaData); fillTable('smTableBody', smData);
 
-        fillTable('dbaPgTableBody', dbaPgData);
-        fillTable('dbaMsTableBody', dbaMsData);
-        fillTable('oeirTableBody', oeirData);
-        fillTable('oeirVitrinaTableBody', vitrinaData);
-        fillTable('smTableBody', smData);
+        function isStaffSelected(name, phone) { return selectedNightShifts.some(s => s.name === name && s.phone === phone); }
+        function isStaffSick(name, phone) { return sickStaff.some(s => s.name === name && s.phone === phone); }
 
-        // Функция для проверки, выбран ли сотрудник
-        function isStaffSelected(name, phone) {
-            return selectedNightShifts.some(s => s.name === name && s.phone === phone);
-        }
-        
-        // Функция для проверки, на больничном ли сотрудник
-        function isStaffSick(name, phone) {
-            return sickStaff.some(s => s.name === name && s.phone === phone);
-        }
-
-        // Функция для добавления/удаления из выбранных
         function toggleNightStaff(staff, add) {
-            if (add) {
-                if (!isStaffSelected(staff.name, staff.phone)) {
-                    selectedNightShifts.push(staff);
-                }
-            } else {
-                selectedNightShifts = selectedNightShifts.filter(s => !(s.name === staff.name && s.phone === staff.phone));
-            }
-            saveToStorage(); // Сохраняем в localStorage
-            updateNightTables();
-            updateNightShortWidget();
-            updateOnlineWidget(); // Обновляем виджет онлайн, чтобы убрать выбранных
+            if (add) { if (!isStaffSelected(staff.name, staff.phone)) selectedNightShifts.push(staff); }
+            else { selectedNightShifts = selectedNightShifts.filter(s => !(s.name === staff.name && s.phone === staff.phone)); }
+            saveToStorage(); updateNightTables(); updateNightShortWidget(); updateOnlineWidget();
         }
-        
-        // Функция для добавления/удаления из больничных
         function toggleSickStaff(staff, add) {
-            if (add) {
-                if (!isStaffSick(staff.name, staff.phone)) {
-                    sickStaff.push(staff);
-                }
-            } else {
-                sickStaff = sickStaff.filter(s => !(s.name === staff.name && s.phone === staff.phone));
-            }
-            saveToStorage(); // Сохраняем в localStorage
-            updateNightTables();
-            updateSickWidget();
-            updateOnlineWidget(); // Обновляем виджет онлайн, чтобы убрать больных
+            if (add) { if (!isStaffSick(staff.name, staff.phone)) sickStaff.push(staff); }
+            else { sickStaff = sickStaff.filter(s => !(s.name === staff.name && s.phone === staff.phone)); }
+            saveToStorage(); updateNightTables(); updateSickWidget(); updateOnlineWidget();
         }
 
-        // Заполнение таблиц ночных дежурных
         function fillNightTable(elementId, data, dept) {
             const tbody = document.getElementById(elementId);
             if (!tbody) return;
-            
             tbody.innerHTML = data.map(row => {
-                const isSelected = isStaffSelected(row[0], row[1]);
-                const isSick = isStaffSick(row[0], row[1]);
-                return `
-                    <tr>
-                        <td>${row[0]}</td>
-                        <td>${row[1]}</td>
-                        <td>${row[2]}</td>
-                        <td>
-                            <button class="night-select-btn green" onclick="toggleNightStaff({name: '${row[0]}', phone: '${row[1]}', dept: '${dept}'}, true)" ${isSelected ? 'disabled' : ''} title="Добавить в ночные">
-                                <i class="fas fa-check"></i>
-                            </button>
-                            <button class="night-select-btn red" onclick="toggleNightStaff({name: '${row[0]}', phone: '${row[1]}', dept: '${dept}'}, false)" ${!isSelected ? 'disabled' : ''} title="Убрать из ночных">
-                                <i class="fas fa-times"></i>
-                            </button>
-                            <button class="night-select-btn yellow" onclick="toggleSickStaff({name: '${row[0]}', phone: '${row[1]}', dept: '${dept}'}, !${isSick})" title="${isSick ? 'Убрать с больничного' : 'Отправить на больничный'}">
-                                <i class="fas fa-${isSick ? 'times' : 'plus'}"></i>
-                            </button>
-                        </td>
-                    </tr>
+                const isSelected = isStaffSelected(row[0], row[1]), isSick = isStaffSick(row[0], row[1]);
+                return `\(html
+                    <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>
+                        <button class="night-select-btn green" onclick="toggleNightStaff({name:'${row[0]}',phone:'${row[1]}',dept:'${dept}'}, true)" ${isSelected ? 'disabled' : ''}><i class="fas fa-check"></i></button>
+                        <button class="night-select-btn red" onclick="toggleNightStaff({name:'${row[0]}',phone:'${row[1]}',dept:'${dept}'}, false)" ${!isSelected ? 'disabled' : ''}><i class="fas fa-times"></i></button>
+                        <button class="night-select-btn yellow" onclick="toggleSickStaff({name:'${row[0]}',phone:'${row[1]}',dept:'${dept}'}, !${isSick})"><i class="fas fa-${isSick ? 'times' : 'plus'}"></i></button>
+                    </td></tr>
                 `;
             }).join('');
         }
 
-        // Обновление всех таблиц ночных дежурных
-        function updateNightTables() {
-            fillNightTable('dbaNightTableBody', [...dbaPgData, ...dbaMsData], 'ДБА');
-            fillNightTable('oeirNightTableBody', oeirData, 'ОЭИР');
-        }
-
-        // Функция обновления краткого виджета ночных дежурных
+        function updateNightTables() { fillNightTable('dbaNightTableBody', [...dbaPgData, ...dbaMsData], 'ДБА'); fillNightTable('oeirNightTableBody', oeirData, 'ОЭИР'); }
         function updateNightShortWidget() {
-            const nightShortList = document.getElementById('nightShortList');
-            if (!nightShortList) return;
-            
-            if (selectedNightShifts.length === 0) {
-                nightShortList.innerHTML = '<div class="night-empty">Нет выбранных ночных дежурных</div>';
-                return;
-            }
-            
-            let html = '';
-            selectedNightShifts.forEach((staff, index) => {
-                const initials = staff.name.split(' ').map(n => n[0]).join('');
-                html += `
-                    <div class="night-short-item">
-                        <div class="night-avatar">${initials}</div>
-                        <div class="night-info">
-                            <h5>${staff.name}</h5>
-                            <p>
-                                ${staff.dept} · ${staff.phone}
-                                <button class="vk-copy-btn" onclick="copyText('${staff.phone}', this)"><i class="far fa-copy"></i></button>
-                            </p>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            nightShortList.innerHTML = html;
+            const el = document.getElementById('nightShortList');
+            if (!el) return;
+            if (!selectedNightShifts.length) { el.innerHTML = '<div class="night-empty">Нет выбранных ночных дежурных</div>'; return; }
+            el.innerHTML = selectedNightShifts.map(s => `<div class="night-short-item"><div class="night-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="night-info"><h5>${s.name}</h5><p>${s.dept} · ${s.phone}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div></div>`).join('');
         }
-        
-        // Функция обновления виджета больничных и отпусков
         function updateSickWidget() {
-            const sickList = document.getElementById('sickList');
-            if (!sickList) return;
-            
-            if (sickStaff.length === 0) {
-                sickList.innerHTML = '<div class="sick-empty">Нет сотрудников на больничном или в отпуске</div>';
-                return;
-            }
-            
-            let html = '';
-            sickStaff.forEach((staff, index) => {
-                const initials = staff.name.split(' ').map(n => n[0]).join('');
-                html += `
-                    <div class="sick-item">
-                        <div class="sick-avatar">${initials}</div>
-                        <div class="sick-info">
-                            <h5>${staff.name}</h5>
-                            <p>
-                                ${staff.dept} · ${staff.phone}
-                                <button class="vk-copy-btn" onclick="copyText('${staff.phone}', this)"><i class="far fa-copy"></i></button>
-                            </p>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            sickList.innerHTML = html;
+            const el = document.getElementById('sickList');
+            if (!el) return;
+            if (!sickStaff.length) { el.innerHTML = '<div class="sick-empty">Нет сотрудников на больничном или в отпуске</div>'; return; }
+            el.innerHTML = sickStaff.map(s => `<div class="sick-item"><div class="sick-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="sick-info"><h5>${s.name}</h5><p>${s.dept} · ${s.phone}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div></div>`).join('');
         }
 
-        // Функция определения статуса по графику - с поддержкой ночных смен
-        function getShiftStatus(schedule) {
-            const now = new Date();
-            const moscowTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
-            const currentHour = moscowTime.getHours();
-            const currentMinutes = moscowTime.getMinutes();
-            const currentTotalMinutes = currentHour * 60 + currentMinutes;
-            
+        function getShiftStatus(schedule, currentDate) {
+            if (isWeekend(currentDate)) return 'weekend';
+            const currentTotal = currentDate.getHours() * 60 + currentDate.getMinutes();
             const [start, end] = schedule.split('-');
-            const [startHour, startMinute] = start.split(':').map(Number);
-            const [endHour, endMinute] = end.split(':').map(Number);
-            
-            const startTotalMinutes = startHour * 60 + startMinute;
-            const endTotalMinutes = endHour * 60 + endMinute;
-            
-            // Проверяем, является ли смена ночной (переход через полночь)
-            if (endTotalMinutes < startTotalMinutes) {
-                // Ночная смена (например, 22:00-05:00)
-                if (currentTotalMinutes >= startTotalMinutes || currentTotalMinutes <= endTotalMinutes) {
-                    return 'online';
-                }
-                
-                // Проверяем, скоро ли начнется ночная смена
-                if (currentTotalMinutes < startTotalMinutes && startTotalMinutes - currentTotalMinutes <= 60) {
-                    return 'soon';
-                }
+            const startTotal = start.split(':').map(Number)[0]*60 + start.split(':').map(Number)[1];
+            const endTotal = end.split(':').map(Number)[0]*60 + end.split(':').map(Number)[1];
+            if (endTotal < startTotal) {
+                if (currentTotal >= startTotal || currentTotal <= endTotal) return 'online';
+                if (currentTotal < startTotal && startTotal - currentTotal <= 60) return 'soon';
             } else {
-                // Обычная дневная смена
-                if (currentTotalMinutes >= startTotalMinutes && currentTotalMinutes <= endTotalMinutes) {
-                    return 'online';
-                }
-                
-                if (currentTotalMinutes < startTotalMinutes && startTotalMinutes - currentTotalMinutes <= 60) {
-                    return 'soon';
-                }
+                if (currentTotal >= startTotal && currentTotal <= endTotal) return 'online';
+                if (currentTotal < startTotal && startTotal - currentTotal <= 60) return 'soon';
             }
-            
             return 'offline';
         }
 
-        // Функция обновления виджета "Сейчас на смене" (исключая ночных дежурных и больных)
         function updateOnlineWidget() {
             const allStaff = [
                 ...dbaPgData.map(d => ({ name: d[0], schedule: d[2], dept: 'ДБА', phone: d[1] })),
@@ -2374,67 +1837,19 @@
                 ...oeirData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР', phone: d[1] })),
                 ...vitrinaData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР', phone: d[1] }))
             ];
-            
-            // Фильтруем только тех, кто не в списке ночных дежурных и не на больничном
-            const regularStaff = allStaff.filter(staff => 
-                !isStaffSelected(staff.name, staff.phone) && !isStaffSick(staff.name, staff.phone)
-            );
-            
-            const onlineStaff = regularStaff.filter(staff => getShiftStatus(staff.schedule) === 'online');
-            const soonStaff = regularStaff.filter(staff => getShiftStatus(staff.schedule) === 'soon');
-            
+            const now = new Date(), currentDate = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
             const onlineList = document.getElementById('onlineList');
-            
+            if (isWeekend(currentDate)) { onlineList.innerHTML = '<div style="text-align:center;padding:20px;"><i class="fas fa-calendar-week"></i><br/>Сегодня выходной день</div>'; return; }
+            const regularStaff = allStaff.filter(s => !isStaffSelected(s.name, s.phone) && !isStaffSick(s.name, s.phone));
+            const onlineStaff = regularStaff.filter(s => getShiftStatus(s.schedule, currentDate) === 'online');
+            const soonStaff = regularStaff.filter(s => getShiftStatus(s.schedule, currentDate) === 'soon');
             let html = '';
-            
-            if (onlineStaff.length > 0) {
-                html += '<div style="margin-bottom: 12px;"><strong style="color: #4caf50;">Сейчас на смене:</strong></div>';
-                onlineStaff.forEach(staff => {
-                    const initials = staff.name.split(' ').map(n => n[0]).join('');
-                    html += `
-                        <div class="online-user-item">
-                            <div class="user-avatar">${initials}</div>
-                            <div class="user-info">
-                                <h5>${staff.name}</h5>
-                                <p>
-                                    ${staff.dept} · ${staff.schedule}
-                                    <button class="vk-copy-btn" onclick="copyText('${staff.phone}', this)"><i class="far fa-copy"></i></button>
-                                </p>
-                            </div>
-                            <div class="online-dot"></div>
-                        </div>
-                    `;
-                });
-            }
-            
-            if (soonStaff.length > 0) {
-                html += '<div style="margin: 12px 0 8px;"><strong style="color: #ff9800;">Скоро заступят:</strong></div>';
-                soonStaff.forEach(staff => {
-                    const initials = staff.name.split(' ').map(n => n[0]).join('');
-                    html += `
-                        <div class="online-user-item">
-                            <div class="user-avatar">${initials}</div>
-                            <div class="user-info">
-                                <h5>${staff.name}</h5>
-                                <p>
-                                    ${staff.dept} · ${staff.schedule}
-                                    <button class="vk-copy-btn" onclick="copyText('${staff.phone}', this)"><i class="far fa-copy"></i></button>
-                                </p>
-                            </div>
-                            <div class="soon-dot"></div>
-                        </div>
-                    `;
-                });
-            }
-            
-            if (onlineStaff.length === 0 && soonStaff.length === 0) {
-                html = '<div style="text-align: center; padding: 20px; color: #888;">Нет активных смен</div>';
-            }
-            
+            if (onlineStaff.length) html += '<div style="margin-bottom:12px;"><strong style="color:#4caf50;">Сейчас на смене:</strong></div>' + onlineStaff.map(s => `<div class="online-user-item"><div class="user-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="user-info"><h5>${s.name}</h5><p>${s.dept} · ${s.schedule}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div><div class="online-dot"></div></div>`).join('');
+            if (soonStaff.length) html += '<div style="margin:12px 0 8px;"><strong style="color:#ff9800;">Скоро заступят:</strong></div>' + soonStaff.map(s => `<div class="online-user-item"><div class="user-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="user-info"><h5>${s.name}</h5><p>${s.dept} · ${s.schedule}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div><div class="soon-dot"></div></div>`).join('');
+            if (!onlineStaff.length && !soonStaff.length) html = '<div style="text-align:center;padding:20px;">Нет активных смен</div>';
             onlineList.innerHTML = html;
         }
 
-        // Функция получения ближайших смен (в течение 7 часов)
         function getUpcomingShifts() {
             const allStaff = [
                 ...dbaPgData.map(d => ({ name: d[0], schedule: d[2], dept: 'ДБА' })),
@@ -2442,325 +1857,138 @@
                 ...oeirData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР' })),
                 ...vitrinaData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР' }))
             ];
-            
-            const now = new Date();
-            const moscowTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
-            const currentHour = moscowTime.getHours();
-            const currentMinutes = moscowTime.getMinutes();
-            const currentTotalMinutes = currentHour * 60 + currentMinutes;
-            
-            const upcomingShifts = [];
-            
-            allStaff.forEach(staff => {
-                const [start] = staff.schedule.split('-');
-                const [startHour, startMinute] = start.split(':').map(Number);
-                let startTotalMinutes = startHour * 60 + startMinute;
-                
-                // Для ночных смен, которые начинаются сегодня и заканчиваются завтра
-                if (startTotalMinutes < currentTotalMinutes) {
-                    startTotalMinutes += 24 * 60; // Добавляем 24 часа для корректного сравнения
-                }
-                
-                const diffMinutes = startTotalMinutes - currentTotalMinutes;
-                
-                // Проверяем, что смена начнется в ближайшие 7 часов (420 минут)
-                if (diffMinutes > 0 && diffMinutes <= 420) {
-                    const hours = Math.floor(diffMinutes / 60);
-                    const minutes = diffMinutes % 60;
-                    
-                    upcomingShifts.push({
-                        ...staff,
-                        startsIn: diffMinutes,
-                        startsInText: `Через ${hours} ч ${minutes} мин`
-                    });
-                }
+            const now = new Date(), currentDate = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
+            const currentTotal = currentDate.getHours() * 60 + currentDate.getMinutes();
+            if (isWeekend(currentDate)) return [];
+            const upcoming = [];
+            allStaff.forEach(s => {
+                const [start] = s.schedule.split('-');
+                let startTotal = start.split(':').map(Number)[0]*60 + start.split(':').map(Number)[1];
+                if (startTotal < currentTotal) startTotal += 1440;
+                const diff = startTotal - currentTotal;
+                if (diff > 0 && diff <= 420) upcoming.push({...s, startsIn: diff, startsInText: `Через ${Math.floor(diff/60)} ч ${diff%60} мин`});
             });
-            
-            // Сортируем по времени до начала
-            upcomingShifts.sort((a, b) => a.startsIn - b.startsIn);
-            
-            return upcomingShifts;
+            return upcoming.sort((a,b)=>a.startsIn-b.startsIn);
         }
 
-        // Функция обновления виджета "Ближайшие смены"
         function updateUpcomingWidget() {
-            const upcomingShifts = getUpcomingShifts();
-            const upcomingList = document.getElementById('upcomingList');
-            
-            let html = '';
-            
-            if (upcomingShifts.length > 0) {
-                upcomingShifts.forEach(shift => {
-                    html += `
-                        <div class="upcoming-shift-item">
-                            <div class="upcoming-shift-wrapper">
-                                <div class="shift-dot"></div>
-                                <div class="shift-info">
-                                    <h5>${shift.name}</h5>
-                                    <p>${shift.dept} · ${shift.schedule}</p>
-                                </div>
-                                <div class="shift-time">${shift.startsInText}</div>
-                            </div>
-                        </div>
-                    `;
-                });
-            } else {
-                html = '<div style="text-align: center; padding: 20px; color: #888;">Нет смен в ближайшие 7 часов</div>';
-            }
-            
-            upcomingList.innerHTML = html;
+            const list = getUpcomingShifts();
+            const el = document.getElementById('upcomingList');
+            if (!el) return;
+            const now = new Date(), currentDate = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
+            if (isWeekend(currentDate)) { el.innerHTML = '<div style="text-align:center;padding:20px;"><i class="fas fa-calendar-week"></i><br/>Выходной день</div>'; return; }
+            if (!list.length) { el.innerHTML = '<div style="text-align:center;padding:20px;">Нет смен в ближайшие 7 часов</div>'; return; }
+            el.innerHTML = list.map(s => `<div class="upcoming-shift-item"><div class="upcoming-shift-wrapper"><div class="shift-dot"></div><div class="shift-info"><h5>${s.name}</h5><p>${s.dept} · ${s.schedule}</p></div><div class="shift-time">${s.startsInText}</div></div></div>`).join('');
         }
 
-        // Функция обновления московского времени
-        function updateMoscowTime() {
-            const timeEl = document.getElementById('moscowTime');
-            if (!timeEl) return;
-            
-            const now = new Date();
-            const timeString = now.toLocaleString('ru-RU', {
-                timeZone: 'Europe/Moscow',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
+        let calendar;
+        function initCalendar() {
+            const el = document.getElementById('calendar');
+            if (calendar) calendar.destroy();
+            calendar = new FullCalendar.Calendar(el, {
+                initialView: 'dayGridMonth', locale: 'ru',
+                headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek' },
+                events: [
+                    { title: 'Дежурство ДБА: Кулигин П.', start: '2026-03-25', color: '#667eea' },
+                    { title: 'Ночная смена: Веселков А.', start: '2026-03-26', color: '#764ba2' },
+                    { title: 'Дежурство ОЭИР: Астафьев А.', start: '2026-03-27', color: '#667eea' }
+                ],
+                dayCellDidMount: function(info) {
+                    if (info.date.getDay() === 0 || info.date.getDay() === 6) {
+                        info.el.style.backgroundColor = 'rgba(255,68,68,0.15)';
+                        const num = info.el.querySelector('.fc-daygrid-day-number');
+                        if (num) { num.style.color = '#ff4444'; num.style.fontWeight = 'bold'; }
+                    }
+                }
             });
-            timeEl.textContent = timeString;
-            
-            // Обновляем виджеты
-            updateOnlineWidget();
-            updateUpcomingWidget();
+            calendar.render();
         }
 
-        // Запускаем часы
-        updateMoscowTime();
-        setInterval(updateMoscowTime, 1000);
+        function updateDateTime() {
+            const now = new Date(), moscow = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
+            const timeEl = document.getElementById('moscowTime'), dateEl = document.getElementById('currentDate');
+            if (timeEl) timeEl.textContent = moscow.toLocaleTimeString('ru-RU', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+            if (dateEl) dateEl.textContent = formatDate(moscow);
+            updateOnlineWidget(); updateUpcomingWidget();
+        }
 
-        // Функция для сворачивания/разворачивания виджета
+        updateDateTime(); setInterval(updateDateTime, 1000);
+
         function toggleWidgetCollapsible(contentId, btn) {
-            const content = document.getElementById(contentId);
-            if (content.classList.contains('expanded')) {
-                content.classList.remove('expanded');
-                btn.querySelector('span').textContent = 'Показать еще...';
-            } else {
-                content.classList.add('expanded');
-                btn.querySelector('span').textContent = 'Скрыть';
-            }
+            const c = document.getElementById(contentId);
+            if (c.classList.contains('expanded')) { c.classList.remove('expanded'); btn.querySelector('span').textContent = 'Показать еще...'; }
+            else { c.classList.add('expanded'); btn.querySelector('span').textContent = 'Скрыть'; }
         }
 
-        // Копирование
-        function copyText(text, btn) {
-            navigator.clipboard.writeText(text).then(() => {
-                const notification = document.getElementById('copyNotification');
-                const numberSpan = document.getElementById('copiedNumber');
-                numberSpan.textContent = text;
-                notification.classList.add('show');
-                
-                btn.innerHTML = '<i class="fas fa-check"></i>';
-                btn.classList.add('copied');
-                
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                    btn.innerHTML = '<i class="far fa-copy"></i>';
-                    btn.classList.remove('copied');
-                }, 2000);
-            });
-        }
+        window.copyText = function(text, btn) {
+            navigator.clipboard.writeText(text);
+            const n = document.getElementById('copyNotification');
+            document.getElementById('copiedNumber').textContent = text;
+            n.classList.add('show');
+            btn.innerHTML = '<i class="fas fa-check"></i>'; btn.classList.add('copied');
+            setTimeout(() => { n.classList.remove('show'); btn.innerHTML = '<i class="far fa-copy"></i>'; btn.classList.remove('copied'); }, 2000);
+        };
+        window.toggleCollapsible = function(id, btn) {
+            const c = document.getElementById(id);
+            if (c.classList.contains('expanded')) { c.classList.remove('expanded'); btn.querySelector('span').textContent = 'Показать еще...'; }
+            else { c.classList.add('expanded'); btn.querySelector('span').textContent = 'Скрыть'; }
+        };
 
-        // Сворачивание/разворачивание секций
-        function toggleCollapsible(contentId, btn) {
-            const content = document.getElementById(contentId);
-            if (content.classList.contains('expanded')) {
-                content.classList.remove('expanded');
-                btn.querySelector('span').textContent = 'Показать еще...';
-            } else {
-                content.classList.add('expanded');
-                btn.querySelector('span').textContent = 'Скрыть';
-            }
-        }
+        const menuItems = document.querySelectorAll('.vk-menu-item[data-page]'), pages = document.querySelectorAll('.page');
+        menuItems.forEach(i => i.addEventListener('click', function() {
+            const p = this.dataset.page;
+            menuItems.forEach(m => m.classList.remove('active'));
+            this.classList.add('active');
+            pages.forEach(pg => pg.classList.remove('active'));
+            document.getElementById(`page${p}`).classList.add('active');
+            if (p === '3') initCalendar();
+        }));
 
-        // Переключение страниц (левое меню)
-        const menuItems = document.querySelectorAll('.vk-menu-item[data-page]');
-        const pages = document.querySelectorAll('.page');
-        
-        menuItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const pageNum = this.dataset.page;
-                
-                menuItems.forEach(m => m.classList.remove('active'));
-                this.classList.add('active');
-                
-                pages.forEach(p => p.classList.remove('active'));
-                document.getElementById(`page${pageNum}`).classList.add('active');
-            });
-        });
-
-        // Пагинация (обновлена для 6 страниц)
-        const pageBtns = document.querySelectorAll('.vk-page-btn[data-page]');
-        const prevBtn = document.getElementById('prevPage');
-        const nextBtn = document.getElementById('nextPage');
+        const pageBtns = document.querySelectorAll('.vk-page-btn[data-page]'), prevBtn = document.getElementById('prevPage'), nextBtn = document.getElementById('nextPage');
         let currentPage = 1;
         const totalPages = 6;
-
         function showPage(page) {
-            let actualPage = page;
-            
-            menuItems.forEach(item => {
-                if (item.dataset.page == actualPage) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-            
+            let actual = page;
+            menuItems.forEach(i => { if (i.dataset.page == actual) i.classList.add('active'); else i.classList.remove('active'); });
             pages.forEach(p => p.classList.remove('active'));
-            document.getElementById(`page${actualPage}`).classList.add('active');
-            
-            pageBtns.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.page == actualPage) btn.classList.add('active');
-            });
-            
-            prevBtn.disabled = actualPage === 1;
-            nextBtn.disabled = actualPage === totalPages;
-            currentPage = actualPage;
+            document.getElementById(`page${actual}`).classList.add('active');
+            pageBtns.forEach(b => { b.classList.remove('active'); if (b.dataset.page == actual) b.classList.add('active'); });
+            prevBtn.disabled = actual === 1; nextBtn.disabled = actual === totalPages;
+            currentPage = actual;
+            if (actual === 3) initCalendar();
         }
+        pageBtns.forEach(b => b.addEventListener('click', () => showPage(parseInt(b.dataset.page))));
+        prevBtn.addEventListener('click', () => { if (currentPage > 1) showPage(currentPage - 1); });
+        nextBtn.addEventListener('click', () => { if (currentPage < totalPages) showPage(currentPage + 1); });
 
-        pageBtns.forEach(btn => {
-            btn.addEventListener('click', () => showPage(parseInt(btn.dataset.page)));
-        });
+        lightThemeBtn.addEventListener('click', () => { document.body.classList.remove('dark-theme'); document.body.classList.add('light-theme'); lightThemeBtn.classList.add('active'); darkThemeBtn.classList.remove('active'); saveTheme('light-theme'); });
+        darkThemeBtn.addEventListener('click', () => { document.body.classList.remove('light-theme'); document.body.classList.add('dark-theme'); darkThemeBtn.classList.add('active'); lightThemeBtn.classList.remove('active'); saveTheme('dark-theme'); });
 
-        prevBtn.addEventListener('click', () => {
-            if (currentPage > 1) showPage(currentPage - 1);
-        });
+        const openImportant = document.getElementById('openImportantBtn'), openSchedule = document.getElementById('openScheduleBtn');
+        const popupOverlay = document.getElementById('popupOverlay'), importantPopup = document.getElementById('importantPopup'), schedulePopup = document.getElementById('schedulePopup');
+        const closeImportant = document.getElementById('closeImportantPopup'), minImportant = document.getElementById('minimizeImportantPopup');
+        const closeSchedule = document.getElementById('closeSchedulePopup'), minSchedule = document.getElementById('minimizeSchedulePopup');
+        const importantHeader = document.getElementById('importantPopupHeader'), scheduleHeader = document.getElementById('schedulePopupHeader');
+        let isDragging = false, offsetX, offsetY, currentPopup = null;
+        function openPopup(p) { popupOverlay.classList.add('active'); p.classList.add('active'); currentPopup = p; }
+        function closePopup(p) { popupOverlay.classList.remove('active'); p.classList.remove('active'); currentPopup = null; }
+        function minimizePopup(p) { p.classList.remove('active'); }
+        openImportant.addEventListener('click', () => openPopup(importantPopup));
+        openSchedule.addEventListener('click', () => openPopup(schedulePopup));
+        closeImportant.addEventListener('click', () => closePopup(importantPopup));
+        closeSchedule.addEventListener('click', () => closePopup(schedulePopup));
+        minImportant.addEventListener('click', () => minimizePopup(importantPopup));
+        minSchedule.addEventListener('click', () => minimizePopup(schedulePopup));
+        popupOverlay.addEventListener('click', () => { if (currentPopup) closePopup(currentPopup); });
+        importantHeader.addEventListener('mousedown', (e) => { isDragging = true; const r = importantPopup.getBoundingClientRect(); offsetX = e.clientX - r.left; offsetY = e.clientY - r.top; importantPopup.style.transition = 'none'; currentPopup = importantPopup; });
+        scheduleHeader.addEventListener('mousedown', (e) => { isDragging = true; const r = schedulePopup.getBoundingClientRect(); offsetX = e.clientX - r.left; offsetY = e.clientY - r.top; schedulePopup.style.transition = 'none'; currentPopup = schedulePopup; });
+        document.addEventListener('mousemove', (e) => { if (!isDragging || !currentPopup) return; e.preventDefault(); const newX = e.clientX - offsetX, newY = e.clientY - offsetY; const maxX = window.innerWidth - currentPopup.offsetWidth, maxY = window.innerHeight - currentPopup.offsetHeight; currentPopup.style.left = Math.max(0, Math.min(newX, maxX)) + 'px'; currentPopup.style.top = Math.max(0, Math.min(newY, maxY)) + 'px'; currentPopup.style.transform = 'none'; });
+        document.addEventListener('mouseup', () => { isDragging = false; if (currentPopup) currentPopup.style.transition = 'all 0.3s ease'; currentPopup = null; });
+        importantPopup.addEventListener('click', e => e.stopPropagation());
+        schedulePopup.addEventListener('click', e => e.stopPropagation());
 
-        nextBtn.addEventListener('click', () => {
-            if (currentPage < totalPages) showPage(currentPage + 1);
-        });
-
-        // Переключение тем
-        lightThemeBtn.addEventListener('click', function() {
-            document.body.classList.remove('dark-theme');
-            document.body.classList.add('light-theme');
-            lightThemeBtn.classList.add('active');
-            darkThemeBtn.classList.remove('active');
-            saveTheme('light-theme');
-        });
-        
-        darkThemeBtn.addEventListener('click', function() {
-            document.body.classList.remove('light-theme');
-            document.body.classList.add('dark-theme');
-            darkThemeBtn.classList.add('active');
-            lightThemeBtn.classList.remove('active');
-            saveTheme('dark-theme');
-        });
-
-        // Попапы
-        const openImportantBtn = document.getElementById('openImportantBtn');
-        const openScheduleBtn = document.getElementById('openScheduleBtn');
-        const popupOverlay = document.getElementById('popupOverlay');
-        const importantPopup = document.getElementById('importantPopup');
-        const schedulePopup = document.getElementById('schedulePopup');
-        
-        const closeImportantPopup = document.getElementById('closeImportantPopup');
-        const minimizeImportantPopup = document.getElementById('minimizeImportantPopup');
-        const importantPopupHeader = document.getElementById('importantPopupHeader');
-        const closeSchedulePopup = document.getElementById('closeSchedulePopup');
-        const minimizeSchedulePopup = document.getElementById('minimizeSchedulePopup');
-        const schedulePopupHeader = document.getElementById('schedulePopupHeader');
-
-        let isDragging = false;
-        let offsetX, offsetY;
-        let currentPopup = null;
-
-        function openPopup(popup) {
-            popupOverlay.classList.add('active');
-            popup.classList.add('active');
-            currentPopup = popup;
-        }
-
-        function closePopup(popup) {
-            popupOverlay.classList.remove('active');
-            popup.classList.remove('active');
-            currentPopup = null;
-        }
-
-        function minimizePopup(popup) {
-            popup.classList.remove('active');
-        }
-
-        openImportantBtn.addEventListener('click', () => openPopup(importantPopup));
-        openScheduleBtn.addEventListener('click', () => openPopup(schedulePopup));
-
-        closeImportantPopup.addEventListener('click', () => closePopup(importantPopup));
-        closeSchedulePopup.addEventListener('click', () => closePopup(schedulePopup));
-        minimizeImportantPopup.addEventListener('click', () => minimizePopup(importantPopup));
-        minimizeSchedulePopup.addEventListener('click', () => minimizePopup(schedulePopup));
-
-        popupOverlay.addEventListener('click', () => {
-            if (currentPopup) {
-                closePopup(currentPopup);
-            }
-        });
-
-        importantPopupHeader.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            const rect = importantPopup.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
-            importantPopup.style.transition = 'none';
-            currentPopup = importantPopup;
-        });
-
-        schedulePopupHeader.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            const rect = schedulePopup.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
-            schedulePopup.style.transition = 'none';
-            currentPopup = schedulePopup;
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging || !currentPopup) return;
-            e.preventDefault();
-            
-            const newX = e.clientX - offsetX;
-            const newY = e.clientY - offsetY;
-            
-            const maxX = window.innerWidth - currentPopup.offsetWidth;
-            const maxY = window.innerHeight - currentPopup.offsetHeight;
-            
-            const limitedX = Math.max(0, Math.min(newX, maxX));
-            const limitedY = Math.max(0, Math.min(newY, maxY));
-            
-            currentPopup.style.left = limitedX + 'px';
-            currentPopup.style.top = limitedY + 'px';
-            currentPopup.style.transform = 'none';
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            if (currentPopup) {
-                currentPopup.style.transition = 'all 0.3s ease';
-            }
-            currentPopup = null;
-        });
-
-        importantPopup.addEventListener('click', (e) => e.stopPropagation());
-        schedulePopup.addEventListener('click', (e) => e.stopPropagation());
-
-        // Инициализация
         showPage(1);
-        updateOnlineWidget();
-        updateUpcomingWidget();
-        updateNightTables();
-        updateNightShortWidget();
-        updateSickWidget();
-        
-        // Инициализируем виджет как свернутый
-        setTimeout(() => {
-            const onlineCollapsible = document.getElementById('onlineCollapsible');
-            onlineCollapsible.classList.add('collapsed');
-        }, 100);
+        updateOnlineWidget(); updateUpcomingWidget(); updateNightTables(); updateNightShortWidget(); updateSickWidget();
     </script>
 </body>
 </html>
