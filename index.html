@@ -104,6 +104,130 @@
             animation-play-state: paused;
         }
         
+        /* Стили для кнопки СМЭВ */
+        .smev-button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(245,87,108,0.4);
+            border: 2px solid rgba(255,255,255,0.2);
+            margin: 20px 0;
+            width: auto;
+        }
+        .smev-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245,87,108,0.6);
+        }
+        .smev-button i {
+            font-size: 20px;
+        }
+        .smev-helper-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .smev-helper-btn {
+            background: rgba(102,126,234,0.2);
+            border: 1px solid rgba(102,126,234,0.5);
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        body.dark-theme .smev-helper-btn {
+            background: rgba(102,126,234,0.15);
+            color: #88aaff;
+        }
+        .smev-helper-btn:hover {
+            background: rgba(102,126,234,0.4);
+            transform: scale(1.02);
+        }
+        .template-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .template-modal.active {
+            display: flex;
+        }
+        .template-modal-content {
+            background: #1e1e1e;
+            border-radius: 24px;
+            padding: 24px;
+            max-width: 600px;
+            width: 90%;
+            border: 1px solid #667eea;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        body.light-theme .template-modal-content {
+            background: white;
+        }
+        .template-modal-content h3 {
+            margin-bottom: 16px;
+            color: #667eea;
+        }
+        .template-modal-content textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            background: #2a2a2a;
+            color: #e0e0e0;
+            font-family: monospace;
+            font-size: 13px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        body.light-theme .template-modal-content textarea {
+            background: #f5f5f5;
+            color: #333;
+            border-color: #ddd;
+        }
+        .template-modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+        .template-modal-buttons button {
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .template-modal-buttons .copy-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .template-modal-buttons .close-btn {
+            background: transparent;
+            border: 1px solid #667eea;
+            color: #667eea;
+        }
+        
         .vk-sidebar { width: 240px; flex-shrink: 0; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); padding: 16px 8px; height: fit-content; position: sticky; top: 20px; }
         .vk-logo { display: flex; align-items: center; gap: 10px; padding: 8px 12px; margin-bottom: 16px; }
         .vk-logo i { font-size: 28px; color: #66b0ff; }
@@ -181,7 +305,6 @@
         .online-user-item .user-info p { font-size: 12px; color: #888; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
         .online-user-item .online-dot { width: 10px; height: 10px; border-radius: 50%; background: #4caf50; margin-left: auto; animation: pulse 2s infinite; }
         .online-user-item .soon-dot { width: 10px; height: 10px; border-radius: 50%; background: #ff9800; margin-left: auto; }
-        @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
         .upcoming-shift-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #333; }
         .upcoming-shift-item .shift-info { flex: 1; }
         .upcoming-shift-item .shift-info h5 { font-size: 14px; font-weight: 500; }
@@ -270,7 +393,7 @@
                     <div class="vk-post-content">
                         <div class="vk-post-title">Состав смены</div>
                         <div style="margin:20px 0 10px 0;"><div class="section-title"><i class="fas fa-database"></i> ДБА PG</div></div>
-                        <div class="collapsible-content" id="dbaPgContent"><table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead><tbody id="dbaPgTableBody"></tbody></table></div>
+                        <div class="collapsible-content" id="dbaPgContent"><table class="vk-table"><thead>tr<th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead><tbody id="dbaPgTableBody"></tbody></table></div>
                         <button class="vk-show-more-btn" onclick="toggleCollapsible('dbaPgContent', this)"><span>Показать еще...</span><i class="fas fa-chevron-down"></i></button>
                         <div style="margin:30px 0 10px 0;"><div class="section-title"><i class="fas fa-users"></i> ДБА МС</div></div>
                         <div class="collapsible-content" id="dbaMsContent"><table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead><tbody id="dbaMsTableBody"></tbody></table></div>
@@ -284,7 +407,7 @@
                     <div class="vk-post-content">
                         <div class="vk-post-title">Состав смены</div>
                         <div style="margin:20px 0 10px 0;"><div class="section-title"><i class="fas fa-microchip"></i> ОЭИР</div></div>
-                        <div class="collapsible-content" id="oeirMainContent"><table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th> </tr></thead><tbody id="oeirTableBody"></tbody> </table></div>
+                        <div class="collapsible-content" id="oeirMainContent"><table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead><tbody id="oeirTableBody"></tbody></table></div>
                         <button class="vk-show-more-btn" onclick="toggleCollapsible('oeirMainContent', this)"><span>Показать еще...</span><i class="fas fa-chevron-down"></i></button>
                         <div style="margin:30px 0 10px 0;"><div class="section-title"><i class="fas fa-window-restore"></i> ОЭИР Витрина</div></div>
                         <div class="collapsible-content" id="oeirVitrinaContent"><table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead><tbody id="oeirVitrinaTableBody"></tbody></table></div>
@@ -331,7 +454,26 @@
             <div class="page" id="page4">
                 <div class="vk-post">
                     <div class="vk-post-header"><div class="vk-post-avatar">📄</div><div class="vk-post-author"><h4>Документы</h4><p>Файлы и инструкции</p></div></div>
-                    <div class="vk-post-content" style="min-height:200px;display:flex;align-items:center;justify-content:center;color:#888;"><i class="fas fa-file-alt" style="font-size:48px;"></i><span style="margin-left:16px;">Нет документов</span></div>
+                    <div class="vk-post-content">
+                        <!-- Кнопка для СМЭВ -->
+                        <button class="smev-button" id="smevButton">
+                            <i class="fas fa-envelope"></i>
+                            При проблемах с СМЭВ
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <div class="smev-helper-buttons">
+                            <button class="smev-helper-btn" id="openMailRuBtn">
+                                <i class="fas fa-external-link-alt"></i> Открыть Mail.ru
+                            </button>
+                            <button class="smev-helper-btn" id="copyTemplateBtn">
+                                <i class="fas fa-copy"></i> Скопировать шаблон письма
+                            </button>
+                        </div>
+                        <p style="font-size:12px; color:#888; margin-top:12px;">
+                            <i class="fas fa-info-circle"></i> Нажмите на кнопку, чтобы скопировать шаблон письма с автоматически подставленной датой и временем.
+                            Затем откройте почту и вставьте текст. Заполните поля: Сервис, Регион, Номер инцидента.
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -388,16 +530,83 @@
     <div class="popup-window" id="schedulePopup"><div class="popup-header" id="schedulePopupHeader"><div class="popup-title"><span>📅</span><span>ГРАФИК</span></div><div class="popup-controls"><button class="popup-btn" id="minimizeSchedulePopup">🗕</button><button class="popup-btn" id="closeSchedulePopup">✕</button></div></div><div class="popup-content"><iframe src="https://docs.google.com/spreadsheets/d/1q7wDVIIuT1DvKhebvDCzKMeiuuTVnrvdC9jBC8qjHiU/edit?pli=1&gid=1736109383#gid=1736109383" allowfullscreen></iframe></div></div>
 
     <div class="copy-notification" id="copyNotification">Номер <span id="copiedNumber"></span> скопирован!</div>
+    
+    <!-- Модальное окно для предпросмотра шаблона -->
+    <div class="template-modal" id="templateModal">
+        <div class="template-modal-content">
+            <h3><i class="fas fa-file-alt"></i> Шаблон письма по СМЭВ</h3>
+            <textarea id="templateText" rows="12" readonly></textarea>
+            <div class="template-modal-buttons">
+                <button class="copy-btn" id="modalCopyBtn"><i class="fas fa-copy"></i> Скопировать</button>
+                <button class="close-btn" id="modalCloseBtn"><i class="fas fa-times"></i> Закрыть</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Проверка на сегодняшний день - вторник (день недели 2 = вторник)
+        // Функция для получения текущей даты и времени по МСК
+        function getCurrentDateTime() {
+            const now = new Date();
+            const msk = new Date(now.toLocaleString('en-US', {timeZone: 'Europe/Moscow'}));
+            const year = msk.getFullYear();
+            const month = String(msk.getMonth() + 1).padStart(2, '0');
+            const day = String(msk.getDate()).padStart(2, '0');
+            const hours = String(msk.getHours()).padStart(2, '0');
+            const minutes = String(msk.getMinutes()).padStart(2, '0');
+            return {
+                date: `${year}-${month}-${day}`,
+                time: `${hours}:${minutes}`,
+                full: `${year}-${month}-${day} ${hours}:${minutes}`
+            };
+        }
+        
+        // Функция для генерации шаблона письма
+        function generateEmailTemplate() {
+            const { date, time } = getCurrentDateTime();
+            return `Добрый день.\n\nСегодня ${date} c ${time} (мск) зафиксировано недоступность {Сервис Регион}.\nЗарегистрирован инцидент {Номер зарегистрированного инцидента}.\n\nПросим восстановить доступность сервиса и предоставить информацию о причинах его прерывания.\n\nСпасибо.`;
+        }
+        
+        // Копирование текста в буфер обмена
+        function copyToClipboard(text, successMessage = 'Шаблон скопирован!') {
+            navigator.clipboard.writeText(text).then(() => {
+                const notification = document.getElementById('copyNotification');
+                document.getElementById('copiedNumber').textContent = successMessage;
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Ошибка копирования:', err);
+                alert('Не удалось скопировать текст. Попробуйте вручную.');
+            });
+        }
+        
+        // Открыть модальное окно с шаблоном
+        function showTemplateModal() {
+            const modal = document.getElementById('templateModal');
+            const textarea = document.getElementById('templateText');
+            textarea.value = generateEmailTemplate();
+            modal.classList.add('active');
+        }
+        
+        // Закрыть модальное окно
+        function closeTemplateModal() {
+            const modal = document.getElementById('templateModal');
+            modal.classList.remove('active');
+        }
+        
+        // Открыть Mail.ru в новой вкладке
+        function openMailRu() {
+            window.open('https://e.mail.ru/inbox/', '_blank');
+        }
+        
+        // Проверка на сегодняшний день - вторник
         function checkTuesdayAndShowTicker() {
             const now = new Date();
             const moscowNow = new Date(now.toLocaleString('en-US', {timeZone: 'Europe/Moscow'}));
-            const dayOfWeek = moscowNow.getDay(); // 0 - воскресенье, 1 - понедельник, 2 - вторник, ... 6 - суббота
+            const dayOfWeek = moscowNow.getDay();
             const tickerElement = document.getElementById('tickerContainer');
             
-            // Если сегодня вторник (dayOfWeek === 2) - показываем бегущую строку
             if (dayOfWeek === 2) {
                 tickerElement.style.display = 'block';
             } else {
@@ -460,8 +669,45 @@
         document.addEventListener('mousemove',(e)=>{ if(!drag||!curPop) return; e.preventDefault(); const nx=e.clientX-offX,ny=e.clientY-offY; const mx=window.innerWidth-curPop.offsetWidth,my=window.innerHeight-curPop.offsetHeight; curPop.style.left=Math.max(0,Math.min(nx,mx))+'px'; curPop.style.top=Math.max(0,Math.min(ny,my))+'px'; curPop.style.transform='none'; });
         document.addEventListener('mouseup',()=>{ drag=false; if(curPop) curPop.style.transition='all 0.3s ease'; curPop=null; });
         impPop.addEventListener('click',e=>e.stopPropagation()); schPop.addEventListener('click',e=>e.stopPropagation());
+        
+        // Инициализация кнопок СМЭВ
+        const smevButton = document.getElementById('smevButton');
+        const openMailRuBtn = document.getElementById('openMailRuBtn');
+        const copyTemplateBtn = document.getElementById('copyTemplateBtn');
+        const modalCopyBtn = document.getElementById('modalCopyBtn');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        
+        if (smevButton) {
+            smevButton.addEventListener('click', showTemplateModal);
+        }
+        if (openMailRuBtn) {
+            openMailRuBtn.addEventListener('click', openMailRu);
+        }
+        if (copyTemplateBtn) {
+            copyTemplateBtn.addEventListener('click', () => {
+                const template = generateEmailTemplate();
+                copyToClipboard(template, 'Шаблон скопирован!');
+            });
+        }
+        if (modalCopyBtn) {
+            modalCopyBtn.addEventListener('click', () => {
+                const textarea = document.getElementById('templateText');
+                copyToClipboard(textarea.value, 'Шаблон скопирован!');
+                closeTemplateModal();
+            });
+        }
+        if (modalCloseBtn) {
+            modalCloseBtn.addEventListener('click', closeTemplateModal);
+        }
+        // Закрытие модалки по клику вне
+        document.getElementById('templateModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('templateModal')) {
+                closeTemplateModal();
+            }
+        });
+        
         showPage(1); updateOnlineWidget(); updateUpcomingWidget(); updateNightTables(); updateNightShortWidget(); updateSickWidget();
-        checkTuesdayAndShowTicker(); // Вызов при загрузке страницы
+        checkTuesdayAndShowTicker();
     </script>
 </body>
 </html>
