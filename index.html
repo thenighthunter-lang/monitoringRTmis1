@@ -4,1332 +4,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>РТ МИС · VK Style</title>
-    <!-- Иконка в стиле VK с буквами RT -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230077ff'/><text x='50' y='70' font-size='50' font-family='Arial, sans-serif' font-weight='bold' fill='white' text-anchor='middle'>RT</text></svg>">
-    <!-- VK Font (VK Sans) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- FullCalendar CDN для профессионального календаря -->
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css' rel='stylesheet' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            padding: 0;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        body.light-theme {
-            background: #edeef0;
-            color: #000;
-        }
-
-        body.light-theme .vk-sidebar,
-        body.light-theme .vk-profile-header,
-        body.light-theme .vk-post,
-        body.light-theme .vk-widget,
-        body.light-theme .vk-page-btn,
-        body.light-theme .vk-show-more-large {
-            background: white;
-            color: #000;
-        }
-
-        body.light-theme .vk-menu-item {
-            color: #2c3e50;
-        }
-
-        body.light-theme .vk-menu-item i {
-            color: #818c99;
-        }
-
-        body.light-theme .vk-menu-item.active {
-            background: #e5ebf5;
-            color: #0077ff;
-        }
-
-        body.light-theme .vk-menu-item.active i {
-            color: #0077ff;
-        }
-
-        body.light-theme .vk-table {
-            background: #f5f7fa;
-        }
-
-        body.light-theme .vk-table th {
-            background: #e5ebf5;
-            color: #2c3e50;
-        }
-
-        body.light-theme .vk-table td {
-            border-bottom: 1px solid #e1e3e6;
-        }
-
-        body.light-theme .vk-table tr:hover td {
-            background: #f0f2f5;
-        }
-
-        body.light-theme .vk-copy-btn {
-            color: #818c99;
-        }
-
-        body.light-theme .vk-copy-btn:hover {
-            background: #e5ebf5;
-            color: #0077ff;
-        }
-
-        body.light-theme .vk-post-actions {
-            border-top-color: #e1e3e6;
-        }
-
-        body.light-theme .vk-post-action {
-            color: #818c99;
-        }
-
-        body.light-theme .vk-post-action:hover {
-            color: #0077ff;
-        }
-
-        body.light-theme .vk-widget-title {
-            color: #2c3e50;
-        }
-
-        body.light-theme .vk-widget-item:hover {
-            background: #f0f2f5;
-        }
-
-        body.light-theme .vk-widget-icon {
-            background: #e5ebf5;
-            color: #0077ff;
-        }
-
-        body.light-theme .vk-widget-info p {
-            color: #818c99;
-        }
-
-        body.light-theme .vk-page-btn {
-            color: #2c3e50;
-        }
-
-        body.light-theme .vk-page-btn:hover {
-            background: #f0f2f5;
-        }
-
-        body.light-theme .vk-page-btn.active {
-            background: #0077ff;
-            color: white;
-        }
-
-        body.light-theme .vk-show-more-large {
-            color: #0077ff;
-        }
-
-        body.light-theme .vk-show-more-large:hover {
-            background: #f0f2f5;
-        }
-
-        body.light-theme .vk-popup {
-            background: white;
-        }
-
-        body.light-theme .vk-popup-header {
-            background: #f5f7fa;
-            border-bottom-color: #e1e3e6;
-        }
-
-        body.light-theme .vk-popup-btn {
-            color: #818c99;
-        }
-
-        body.light-theme .vk-popup-btn:hover {
-            background: #e1e3e6;
-            color: #0077ff;
-        }
-
-        body.light-theme .vk-toast {
-            background: #2c3e50;
-            color: white;
-        }
-
-        body.light-theme .links-grid a div {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-            color: white !important;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-height: 100vh; display: flex; justify-content: center; padding: 0; transition: background 0.3s ease, color 0.3s ease; }
+        body.light-theme { background: #edeef0; color: #000; }
+        body.light-theme .vk-sidebar, body.light-theme .vk-profile-header, body.light-theme .vk-post, body.light-theme .vk-widget, body.light-theme .vk-page-btn, body.light-theme .vk-show-more-large { background: white; color: #000; }
+        body.light-theme .vk-menu-item { color: #2c3e50; }
+        body.light-theme .vk-menu-item i { color: #818c99; }
+        body.light-theme .vk-menu-item.active { background: #e5ebf5; color: #0077ff; }
+        body.light-theme .vk-menu-item.active i { color: #0077ff; }
+        body.light-theme .vk-table { background: #f5f7fa; }
+        body.light-theme .vk-table th { background: #e5ebf5; color: #2c3e50; }
+        body.light-theme .vk-table td { border-bottom: 1px solid #e1e3e6; }
+        body.light-theme .vk-copy-btn { color: #818c99; }
+        body.light-theme .vk-copy-btn:hover { background: #e5ebf5; color: #0077ff; }
+        body.light-theme .vk-post-actions { border-top-color: #e1e3e6; }
+        body.light-theme .vk-post-action { color: #818c99; }
+        body.light-theme .vk-post-action:hover { color: #0077ff; }
+        body.light-theme .vk-widget-title { color: #2c3e50; }
+        body.light-theme .vk-page-btn { color: #2c3e50; }
+        body.light-theme .vk-page-btn.active { background: #0077ff; color: white; }
+        body.light-theme .links-grid a div { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; color: white !important; }
+        body.dark-theme { background: #0a0a0a; color: #e0e0e0; }
+        body.dark-theme .vk-sidebar, body.dark-theme .vk-profile-header, body.dark-theme .vk-post, body.dark-theme .vk-widget, body.dark-theme .vk-page-btn, body.dark-theme .vk-show-more-large { background: #1e1e1e; color: #e0e0e0; border-color: #333; }
+        body.dark-theme .vk-menu-item { color: #b0b0b0; }
+        body.dark-theme .vk-menu-item i { color: #666; }
+        body.dark-theme .vk-menu-item:hover { background: #333; }
+        body.dark-theme .vk-menu-item.active { background: #2a2a2a; color: #66b0ff; }
+        body.dark-theme .vk-menu-item.active i { color: #66b0ff; }
+        body.dark-theme .vk-table { background: #2a2a2a; }
+        body.dark-theme .vk-table th { background: #333; color: #ccc; }
+        body.dark-theme .vk-table td { border-bottom: 1px solid #444; color: #ccc; }
+        body.dark-theme .vk-copy-btn { color: #888; }
+        body.dark-theme .vk-copy-btn:hover { background: #444; color: #66b0ff; }
+        body.dark-theme .vk-post-actions { border-top-color: #333; }
+        body.dark-theme .vk-post-action { color: #888; }
+        body.dark-theme .vk-post-action:hover { color: #66b0ff; }
+        body.dark-theme .vk-widget-title { color: #ccc; }
+        body.dark-theme .vk-page-btn { color: #ccc; }
+        body.dark-theme .vk-page-btn.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .theme-switcher { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; background: rgba(0,0,0,0.3); backdrop-filter: blur(10px); padding: 8px; border-radius: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); }
+        .theme-btn { width: 40px; height: 40px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.3s; background: transparent; color: #66b0ff; }
+        .theme-btn:hover { transform: scale(1.15); background: rgba(255,255,255,0.1); }
+        .theme-btn.active { background: #66b0ff; color: black; box-shadow: 0 0 20px #66b0ff; }
+        body.light-theme .theme-btn { color: #0077ff; }
+        body.light-theme .theme-btn.active { background: #0077ff; color: white; }
+        .vk-container { max-width: 1400px; width: 100%; display: flex; gap: 20px; padding: 20px; position: relative; }
         
-        body.light-theme .links-grid a div i {
-            color: white !important;
+        /* Бегущая строка - информационное сообщение по вторникам */
+        .ticker-container {
+            display: none;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff8c00 0%, #ff2e00 100%);
+            box-shadow: 0 4px 15px rgba(255, 68, 0, 0.3);
+            border: 1px solid rgba(255,255,255,0.3);
         }
-        
-        body.light-theme .links-grid a div h4 {
-            color: white !important;
-        }
-        
-        body.light-theme .links-grid a div p {
-            color: rgba(255, 255, 255, 0.8) !important;
-        }
-
-        body.dark-theme {
-            background: #0a0a0a;
-            color: #e0e0e0;
-        }
-
-        body.dark-theme .vk-sidebar,
-        body.dark-theme .vk-profile-header,
-        body.dark-theme .vk-post,
-        body.dark-theme .vk-widget,
-        body.dark-theme .vk-page-btn,
-        body.dark-theme .vk-show-more-large {
-            background: #1e1e1e;
-            color: #e0e0e0;
-            border-color: #333;
-        }
-
-        body.dark-theme .vk-menu-item {
-            color: #b0b0b0;
-        }
-
-        body.dark-theme .vk-menu-item i {
-            color: #666;
-        }
-
-        body.dark-theme .vk-menu-item:hover {
-            background: #333;
-        }
-
-        body.dark-theme .vk-menu-item.active {
-            background: #2a2a2a;
-            color: #66b0ff;
-        }
-
-        body.dark-theme .vk-menu-item.active i {
-            color: #66b0ff;
-        }
-
-        body.dark-theme .vk-profile-info p,
-        body.dark-theme .vk-post-date,
-        body.dark-theme .vk-post-author p {
-            color: #888;
-        }
-
-        body.dark-theme .vk-table {
-            background: #2a2a2a;
-        }
-
-        body.dark-theme .vk-table th {
-            background: #333;
-            color: #ccc;
-        }
-
-        body.dark-theme .vk-table td {
-            border-bottom: 1px solid #444;
-            color: #ccc;
-        }
-
-        body.dark-theme .vk-table tr:hover td {
-            background: #3a3a3a;
-        }
-
-        body.dark-theme .vk-copy-btn {
-            color: #888;
-        }
-
-        body.dark-theme .vk-copy-btn:hover {
-            background: #444;
-            color: #66b0ff;
-        }
-
-        body.dark-theme .vk-copy-btn.copied {
-            color: #4caf50;
-        }
-
-        body.dark-theme .vk-post-actions {
-            border-top-color: #333;
-        }
-
-        body.dark-theme .vk-post-action {
-            color: #888;
-        }
-
-        body.dark-theme .vk-post-action:hover {
-            color: #66b0ff;
-        }
-
-        body.dark-theme .vk-widget-title {
-            color: #ccc;
-        }
-
-        body.dark-theme .vk-widget-item:hover {
-            background: #333;
-        }
-
-        body.dark-theme .vk-widget-icon {
-            background: #333;
-            color: #66b0ff;
-        }
-
-        body.dark-theme .vk-widget-info h5 {
-            color: #ccc;
-        }
-
-        body.dark-theme .vk-widget-info p {
-            color: #888;
-        }
-
-        body.dark-theme .vk-page-btn {
-            color: #ccc;
-        }
-
-        body.dark-theme .vk-page-btn:hover {
-            background: #333;
-        }
-
-        body.dark-theme .vk-page-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        body.dark-theme .vk-show-more-large {
-            color: #66b0ff;
-        }
-
-        body.dark-theme .vk-show-more-large:hover {
-            background: #333;
-        }
-
-        body.dark-theme .vk-popup {
-            background: #1e1e1e;
-        }
-
-        body.dark-theme .vk-popup-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        body.dark-theme .vk-popup-title i {
-            color: white;
-        }
-
-        body.dark-theme .vk-popup-btn {
-            color: rgba(255,255,255,0.8);
-        }
-
-        body.dark-theme .vk-popup-btn:hover {
-            background: rgba(255,255,255,0.2);
-            color: white;
-        }
-
-        body.dark-theme .vk-toast {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .theme-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 8px;
-            border-radius: 40px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .theme-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            background: transparent;
-            color: #66b0ff;
-        }
-
-        .theme-btn:hover {
-            transform: scale(1.15);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .theme-btn.active {
-            background: #66b0ff;
-            color: black;
-            box-shadow: 0 0 20px #66b0ff;
-        }
-
-        body.light-theme .theme-btn {
-            color: #0077ff;
-        }
-
-        body.light-theme .theme-btn.active {
-            background: #0077ff;
-            color: white;
-            box-shadow: 0 0 20px #0077ff;
-        }
-
-        .vk-container {
-            max-width: 1400px;
-            width: 100%;
-            display: flex;
-            gap: 20px;
-            padding: 20px;
+        .ticker-wrapper {
+            background: linear-gradient(135deg, #ff8c00 0%, #ff2e00 100%);
+            padding: 12px 0;
             position: relative;
+            overflow: hidden;
         }
-
-        .vk-sidebar {
-            width: 240px;
-            flex-shrink: 0;
-            border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            padding: 16px 8px;
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-
-        .vk-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 12px;
-            margin-bottom: 16px;
-        }
-
-        .vk-logo i {
-            font-size: 28px;
-            color: #66b0ff;
-        }
-
-        .vk-logo span {
-            font-size: 18px;
-            font-weight: 600;
-            color: #66b0ff;
-        }
-
-        body.light-theme .vk-logo i,
-        body.light-theme .vk-logo span {
-            color: #0077ff;
-        }
-
-        .schedule-side-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 16px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 15px;
-            cursor: pointer;
-            margin: 16px 8px;
-            width: calc(100% - 16px);
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .schedule-side-btn i {
-            font-size: 1.2rem;
-        }
-
-        .schedule-side-btn:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .vk-menu-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 12px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s;
-            margin-bottom: 4px;
-        }
-
-        .vk-menu-item i {
-            font-size: 20px;
-            width: 24px;
-            text-align: center;
-        }
-
-        .vk-menu-divider {
-            height: 1px;
-            background: #333;
-            margin: 12px 0;
-        }
-
-        body.light-theme .vk-menu-divider {
-            background: #e1e3e6;
-        }
-
-        .vk-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .vk-profile-header {
-            border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            padding: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .vk-avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .vk-profile-info h1 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .vk-profile-info p {
-            font-size: 14px;
-        }
-
-        .vk-profile-stats {
-            margin-left: auto;
-            display: flex;
-            gap: 30px;
-        }
-
-        .vk-stat-item {
-            text-align: center;
-        }
-
-        .vk-stat-item .count {
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .vk-stat-item .label {
-            font-size: 13px;
-        }
-
-        body.light-theme .vk-stat-item .label {
-            color: #818c99;
-        }
-
-        body.dark-theme .vk-stat-item .label {
-            color: #888;
-        }
-
-        .vk-post {
-            border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .vk-post-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .vk-post-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 18px;
-            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
-        }
-
-        .vk-post-author h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .vk-post-author p {
-            font-size: 13px;
-        }
-
-        .vk-post-date {
-            margin-left: auto;
-            font-size: 13px;
-        }
-
-        .vk-post-content {
-            margin-bottom: 16px;
-        }
-
-        .vk-post-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .section-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 16px 0 12px 0;
-            padding: 8px 16px;
-            border-radius: 30px;
+        .ticker {
+            white-space: nowrap;
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .section-title i {
-            margin-right: 8px;
-            font-size: 1.1rem;
-        }
-
-        .vk-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 12px 0;
-            font-size: 14px;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .vk-table th {
-            padding: 10px 12px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .vk-table td {
-            padding: 10px 12px;
-        }
-
-        .night-select-btn {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 6px;
-            transition: all 0.2s;
-            font-size: 1rem;
-            margin: 0 2px;
-        }
-
-        .night-select-btn.green {
-            color: #4caf50;
-        }
-
-        .night-select-btn.green:hover {
-            background: rgba(76, 175, 80, 0.2);
-            transform: scale(1.1);
-        }
-
-        .night-select-btn.red {
-            color: #f44336;
-        }
-
-        .night-select-btn.red:hover {
-            background: rgba(244, 67, 54, 0.2);
-            transform: scale(1.1);
-        }
-
-        .night-select-btn.yellow {
-            color: #ffaa00;
-        }
-
-        .night-select-btn.yellow:hover {
-            background: rgba(255, 170, 0, 0.2);
-            transform: scale(1.1);
-        }
-
-        .night-select-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .vk-copy-btn {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 6px;
-            transition: all 0.2s;
-            font-size: 13px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .widget-show-more-btn {
-            background: transparent;
-            border: none;
-            color: #66b0ff;
-            font-size: 13px;
-            font-weight: 500;
-            padding: 8px 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-            margin-top: 8px;
-            width: 100%;
-            justify-content: center;
-        }
-
-        body.light-theme .widget-show-more-btn {
-            color: #0077ff;
-        }
-
-        .widget-show-more-btn:hover {
-            color: #88c0ff;
-        }
-
-        .widget-show-more-btn i {
-            font-size: 14px;
-            transition: transform 0.3s;
-        }
-
-        .widget-show-more-btn.expanded i {
-            transform: rotate(180deg);
-        }
-
-        .widget-collapsible-content {
-            max-height: 200px;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-        }
-
-        .widget-collapsible-content.expanded {
-            max-height: 2000px;
-        }
-
-        .vk-show-more-btn {
-            background: transparent;
-            border: none;
-            color: #66b0ff;
-            font-size: 13px;
-            font-weight: 500;
-            padding: 8px 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-            margin-top: 8px;
-        }
-
-        body.light-theme .vk-show-more-btn {
-            color: #0077ff;
-        }
-
-        .vk-show-more-btn:hover {
-            color: #88c0ff;
-        }
-
-        .vk-show-more-btn i {
-            font-size: 14px;
-            transition: transform 0.3s;
-        }
-
-        .vk-show-more-btn.expanded i {
-            transform: rotate(180deg);
-        }
-
-        .collapsible-content {
-            max-height: 100px;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-        }
-
-        .collapsible-content.expanded {
-            max-height: 2000px;
-        }
-
-        .vk-post-actions {
-            display: flex;
-            gap: 20px;
-            padding-top: 16px;
-            border-top: 1px solid;
-            margin-top: 16px;
-        }
-
-        .vk-post-action {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .vk-post-action i {
-            font-size: 18px;
-        }
-
-        .vk-show-more-large {
-            border: none;
-            width: 100%;
-            padding: 14px;
-            border-radius: 16px;
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            margin-bottom: 20px;
-            text-align: center;
-            display: inline-block;
-            text-decoration: none;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .vk-show-more-large:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .vk-pagination {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin: 24px 0;
-        }
-
-        .vk-page-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            border: none;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        .vk-page-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .vk-page-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .vk-right-sidebar {
-            width: 280px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 20px;
-            height: fit-content;
-        }
-
-        .vk-widget {
-            border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            padding: 16px;
-            margin-bottom: 20px;
-        }
-
-        .vk-widget-title {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .time-widget {
-            text-align: center;
-            padding: 16px;
-        }
-
-        #moscowTime {
-            font-size: 48px;
+            animation: tickerScroll 20s linear infinite;
             font-weight: 700;
-            font-family: 'Inter', monospace;
-            line-height: 1.2;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        #currentDate {
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 4px;
-            color: #888;
-        }
-
-        body.light-theme #currentDate {
-            color: #818c99;
-        }
-
-        .time-label {
-            font-size: 14px;
-            color: #888;
+            font-size: 1.2rem;
             letter-spacing: 1px;
         }
-
-        .online-user-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .online-user-item:last-child {
-            border-bottom: none;
-        }
-
-        .online-user-item .user-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .ticker span {
+            display: inline-block;
+            padding: 0 40px;
             color: white;
-            font-size: 16px;
-            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
-
-        .online-user-item .user-info {
-            flex: 1;
+        .ticker i {
+            margin-right: 12px;
+            font-size: 1.3rem;
+            animation: pulse 1s infinite;
         }
-
-        .online-user-item .user-info h5 {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 2px;
+        @keyframes tickerScroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
-
-        .online-user-item .user-info p {
-            font-size: 12px;
-            color: #888;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .online-user-item .online-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #4caf50;
-            margin-left: auto;
-            box-shadow: 0 0 10px #4caf50;
-            animation: pulse 2s infinite;
-        }
-
-        .online-user-item .soon-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ff9800;
-            margin-left: auto;
-            box-shadow: 0 0 10px #ff9800;
-        }
-
         @keyframes pulse {
             0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
+            50% { opacity: 0.7; transform: scale(1.1); }
             100% { opacity: 1; transform: scale(1); }
         }
-
-        .upcoming-shift-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .upcoming-shift-item:last-child {
-            border-bottom: none;
-        }
-
-        .upcoming-shift-item .shift-info {
-            flex: 1;
-        }
-
-        .upcoming-shift-item .shift-info h5 {
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .upcoming-shift-item .shift-info p {
-            font-size: 12px;
-            color: #888;
-        }
-
-        .upcoming-shift-item .shift-time {
-            font-size: 12px;
-            color: #888;
-            white-space: nowrap;
-        }
-
-        .upcoming-shift-item .shift-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ffaa00;
-            margin-right: 8px;
-            box-shadow: 0 0 10px #ffaa00;
-        }
-
-        .upcoming-shift-wrapper {
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-
-        .night-short-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .night-short-item:last-child {
-            border-bottom: none;
-        }
-
-        .night-short-item .night-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #5f2b8c 0%, #8e44ad 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .night-short-item .night-info {
-            flex: 1;
-        }
-
-        .night-short-item .night-info h5 {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 2px;
-        }
-
-        .night-short-item .night-info p {
-            font-size: 12px;
-            color: #888;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .night-empty, .sick-empty {
-            text-align: center;
-            padding: 20px;
-            color: #888;
-            font-style: italic;
-        }
-
-        .sick-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .sick-item:last-child {
-            border-bottom: none;
-        }
-
-        .sick-item .sick-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .sick-item .sick-info {
-            flex: 1;
-        }
-
-        .sick-item .sick-info h5 {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 2px;
-        }
-
-        .sick-item .sick-info p {
-            font-size: 12px;
-            color: #888;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .popup-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .popup-window {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            width: 90vw;
-            height: 90vh;
-            max-width: 1400px;
-            max-height: 900px;
-            background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(102, 126, 234, 0.3);
-            border-radius: 20px;
-            box-shadow: 0 0 50px rgba(102, 126, 234, 0.3);
-            z-index: 1001;
-            display: none;
-            opacity: 0;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .popup-window.active {
-            display: block;
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .popup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: move;
-        }
-
-        .popup-title {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: white;
-            font-size: 1.3rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-        }
-
-        .popup-title span {
-            font-size: 1.5rem;
-        }
-
-        .popup-controls {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .popup-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .popup-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: scale(1.1);
-        }
-
-        .popup-content {
-            width: 100%;
-            height: calc(100% - 70px);
-            background: white;
-        }
-
-        .popup-content iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        body.dark-theme .popup-content {
-            background: #1e1e1e;
-        }
-
-        .copy-notification {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-size: 14px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            z-index: 2000;
-            opacity: 0;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .copy-notification.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fc-day-sat a, .fc-day-sun a {
-            color: #ff4444 !important;
-            font-weight: bold !important;
+        .ticker-wrapper:hover .ticker {
+            animation-play-state: paused;
         }
         
-        .fc-day-sat, .fc-day-sun {
-            background-color: rgba(255, 68, 68, 0.1) !important;
-        }
-        
-        body.dark-theme .fc-day-sat, 
-        body.dark-theme .fc-day-sun {
-            background-color: rgba(255, 68, 68, 0.2) !important;
-        }
-        
-        .fc-day-sat .fc-daygrid-day-number,
-        .fc-day-sun .fc-daygrid-day-number {
-            color: #ff4444 !important;
-            font-weight: bold !important;
-        }
-        
-        .fc-day-today {
-            background: rgba(102, 126, 234, 0.3) !important;
-            border: 2px solid #667eea !important;
-            border-radius: 8px !important;
-        }
-        
-        body.dark-theme .fc-day-today {
-            background: rgba(102, 126, 234, 0.4) !important;
-            border: 2px solid #88c0ff !important;
-        }
-
-        @media (max-width: 1024px) {
-            .vk-right-sidebar {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .vk-container {
-                flex-direction: column;
-            }
-            .vk-sidebar {
-                width: 100%;
-                position: static;
-            }
-            .theme-switcher {
-                top: 10px;
-                right: 10px;
-            }
-        }
-
-        .links-grid a {
-            text-decoration: none;
-            color: inherit;
-        }
+        .vk-sidebar { width: 240px; flex-shrink: 0; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); padding: 16px 8px; height: fit-content; position: sticky; top: 20px; }
+        .vk-logo { display: flex; align-items: center; gap: 10px; padding: 8px 12px; margin-bottom: 16px; }
+        .vk-logo i { font-size: 28px; color: #66b0ff; }
+        .vk-logo span { font-size: 18px; font-weight: 600; color: #66b0ff; }
+        body.light-theme .vk-logo i, body.light-theme .vk-logo span { color: #0077ff; }
+        .schedule-side-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 16px; border-radius: 40px; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; cursor: pointer; margin: 16px 8px; width: calc(100% - 16px); transition: all 0.3s; box-shadow: 0 4px 15px rgba(102,126,234,0.4); border: 2px solid rgba(255,255,255,0.2); }
+        .schedule-side-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.6); }
+        .vk-menu-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.2s; margin-bottom: 4px; }
+        .vk-menu-item i { font-size: 20px; width: 24px; text-align: center; }
+        .vk-menu-divider { height: 1px; background: #333; margin: 12px 0; }
+        body.light-theme .vk-menu-divider { background: #e1e3e6; }
+        .vk-content { flex: 1; min-width: 0; }
+        .vk-profile-header { border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); padding: 20px; margin-bottom: 20px; display: flex; align-items: center; gap: 20px; }
+        .vk-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; font-weight: 600; }
+        .vk-profile-info h1 { font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+        .vk-profile-info p { font-size: 14px; }
+        .vk-profile-stats { margin-left: auto; display: flex; gap: 30px; }
+        .vk-stat-item { text-align: center; }
+        .vk-stat-item .count { font-weight: 600; font-size: 18px; }
+        .vk-stat-item .label { font-size: 13px; }
+        body.light-theme .vk-stat-item .label { color: #818c99; }
+        body.dark-theme .vk-stat-item .label { color: #888; }
+        .vk-post { border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); padding: 20px; margin-bottom: 20px; }
+        .vk-post-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .vk-post-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 18px; }
+        .vk-post-author h4 { font-size: 16px; font-weight: 600; margin-bottom: 2px; }
+        .vk-post-author p { font-size: 13px; }
+        .vk-post-date { margin-left: auto; font-size: 13px; }
+        .vk-post-content { margin-bottom: 16px; }
+        .vk-post-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .section-title { font-size: 1.2rem; font-weight: 700; margin: 16px 0 12px 0; padding: 8px 16px; border-radius: 30px; display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 4px 15px rgba(102,126,234,0.3); border: 1px solid rgba(255,255,255,0.2); }
+        .section-title i { margin-right: 8px; }
+        .vk-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; border-radius: 12px; overflow: hidden; }
+        .vk-table th { padding: 10px 12px; text-align: left; font-weight: 600; }
+        .vk-table td { padding: 10px 12px; }
+        .night-select-btn { background: transparent; border: none; cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: all 0.2s; font-size: 1rem; margin: 0 2px; }
+        .night-select-btn.green { color: #4caf50; }
+        .night-select-btn.green:hover { background: rgba(76,175,80,0.2); transform: scale(1.1); }
+        .night-select-btn.red { color: #f44336; }
+        .night-select-btn.red:hover { background: rgba(244,67,54,0.2); transform: scale(1.1); }
+        .night-select-btn.yellow { color: #ffaa00; }
+        .night-select-btn.yellow:hover { background: rgba(255,170,0,0.2); transform: scale(1.1); }
+        .night-select-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .vk-copy-btn { background: transparent; border: none; cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: all 0.2s; font-size: 13px; display: inline-flex; align-items: center; gap: 4px; }
+        .widget-show-more-btn { background: transparent; border: none; color: #66b0ff; font-size: 13px; font-weight: 500; padding: 8px 0; cursor: pointer; display: flex; align-items: center; gap: 6px; margin-top: 8px; width: 100%; justify-content: center; }
+        body.light-theme .widget-show-more-btn { color: #0077ff; }
+        .widget-show-more-btn i { font-size: 14px; transition: transform 0.3s; }
+        .widget-collapsible-content { max-height: 200px; overflow: hidden; transition: max-height 0.5s ease; }
+        .widget-collapsible-content.expanded { max-height: 2000px; }
+        .vk-show-more-btn { background: transparent; border: none; color: #66b0ff; font-size: 13px; font-weight: 500; padding: 8px 0; cursor: pointer; display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+        body.light-theme .vk-show-more-btn { color: #0077ff; }
+        .vk-show-more-btn i { font-size: 14px; transition: transform 0.3s; }
+        .collapsible-content { max-height: 100px; overflow: hidden; transition: max-height 0.5s ease; }
+        .collapsible-content.expanded { max-height: 2000px; }
+        .vk-post-actions { display: flex; gap: 20px; padding-top: 16px; border-top: 1px solid; margin-top: 16px; }
+        .vk-post-action { display: flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer; }
+        .vk-post-action i { font-size: 18px; }
+        .vk-show-more-large { border: none; width: 100%; padding: 14px; border-radius: 16px; font-weight: 500; font-size: 14px; cursor: pointer; text-align: center; display: inline-block; text-decoration: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: 2px solid rgba(255,255,255,0.2); margin-bottom: 20px; }
+        .vk-show-more-large:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.5); }
+        .vk-pagination { display: flex; justify-content: center; gap: 8px; margin: 24px 0; }
+        .vk-page-btn { width: 40px; height: 40px; border-radius: 12px; border: none; font-weight: 500; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .vk-page-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .vk-page-btn.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .vk-right-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 20px; height: fit-content; }
+        .vk-widget { border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); padding: 16px; margin-bottom: 20px; }
+        .vk-widget-title { font-size: 15px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+        .time-widget { text-align: center; padding: 16px; }
+        #moscowTime { font-size: 48px; font-weight: 700; font-family: 'Inter', monospace; line-height: 1.2; margin-bottom: 8px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        #currentDate { font-size: 16px; font-weight: 500; margin-bottom: 4px; color: #888; }
+        .time-label { font-size: 14px; color: #888; letter-spacing: 1px; }
+        .online-user-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #333; }
+        .online-user-item .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: 600; }
+        .online-user-item .user-info { flex: 1; }
+        .online-user-item .user-info h5 { font-size: 14px; font-weight: 500; }
+        .online-user-item .user-info p { font-size: 12px; color: #888; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        .online-user-item .online-dot { width: 10px; height: 10px; border-radius: 50%; background: #4caf50; margin-left: auto; animation: pulse 2s infinite; }
+        .online-user-item .soon-dot { width: 10px; height: 10px; border-radius: 50%; background: #ff9800; margin-left: auto; }
+        @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+        .upcoming-shift-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #333; }
+        .upcoming-shift-item .shift-info { flex: 1; }
+        .upcoming-shift-item .shift-info h5 { font-size: 14px; font-weight: 500; }
+        .upcoming-shift-item .shift-info p { font-size: 12px; color: #888; }
+        .upcoming-shift-item .shift-time { font-size: 12px; color: #888; white-space: nowrap; }
+        .upcoming-shift-item .shift-dot { width: 10px; height: 10px; border-radius: 50%; background: #ffaa00; margin-right: 8px; }
+        .upcoming-shift-wrapper { display: flex; align-items: center; width: 100%; }
+        .night-short-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #333; }
+        .night-short-item .night-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #5f2b8c 0%, #8e44ad 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: 600; }
+        .night-short-item .night-info { flex: 1; }
+        .night-short-item .night-info h5 { font-size: 14px; font-weight: 500; }
+        .night-short-item .night-info p { font-size: 12px; color: #888; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        .night-empty, .sick-empty { text-align: center; padding: 20px; color: #888; font-style: italic; }
+        .sick-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #333; }
+        .sick-item .sick-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: 600; }
+        .sick-item .sick-info { flex: 1; }
+        .sick-item .sick-info h5 { font-size: 14px; font-weight: 500; }
+        .sick-item .sick-info p { font-size: 12px; color: #888; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 1000; display: none; opacity: 0; transition: opacity 0.3s ease; }
+        .popup-overlay.active { display: block; opacity: 1; }
+        .popup-window { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); width: 90vw; height: 90vh; max-width: 1400px; max-height: 900px; background: rgba(30,30,30,0.95); backdrop-filter: blur(20px); border: 2px solid rgba(102,126,234,0.3); border-radius: 20px; z-index: 1001; display: none; opacity: 0; transition: all 0.3s ease; overflow: hidden; }
+        .popup-window.active { display: block; opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        .popup-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-bottom: 1px solid rgba(255,255,255,0.1); cursor: move; }
+        .popup-title { display: flex; align-items: center; gap: 0.8rem; color: white; font-size: 1.3rem; font-weight: 500; }
+        .popup-title span { font-size: 1.5rem; }
+        .popup-controls { display: flex; gap: 0.5rem; }
+        .popup-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease; }
+        .popup-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
+        .popup-content { width: 100%; height: calc(100% - 70px); background: white; }
+        .popup-content iframe { width: 100%; height: 100%; border: none; }
+        body.dark-theme .popup-content { background: #1e1e1e; }
+        .copy-notification { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 24px; border-radius: 30px; font-size: 14px; z-index: 2000; opacity: 0; transition: all 0.3s ease; border: 2px solid rgba(255,255,255,0.2); }
+        .copy-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .page { display: none; }
+        .page.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fc-day-sat a, .fc-day-sun a { color: #ff4444 !important; font-weight: bold !important; }
+        .fc-day-sat, .fc-day-sun { background-color: rgba(255,68,68,0.1) !important; }
+        body.dark-theme .fc-day-sat, body.dark-theme .fc-day-sun { background-color: rgba(255,68,68,0.2) !important; }
+        .fc-day-today { background: rgba(102,126,234,0.3) !important; border: 2px solid #667eea !important; border-radius: 8px !important; }
+        body.dark-theme .fc-day-today { background: rgba(102,126,234,0.4) !important; border: 2px solid #88c0ff !important; }
+        @media (max-width: 1024px) { .vk-right-sidebar { display: none; } }
+        @media (max-width: 768px) { .vk-container { flex-direction: column; } .vk-sidebar { width: 100%; position: static; } .theme-switcher { top: 10px; right: 10px; } }
+        .links-grid a { text-decoration: none; color: inherit; }
     </style>
 </head>
 <body class="dark-theme">
@@ -1340,243 +236,86 @@
 
     <div class="vk-container" id="mainContent">
         <div class="vk-sidebar">
-            <div class="vk-logo">
-                <i class="fas fa-chart-line"></i>
-                <span>РТ МИС</span>
-            </div>
-            <div class="vk-menu-item active" data-page="1">
-                <i class="fas fa-newspaper"></i>
-                <span>Контакты</span>
-            </div>
-            <div class="vk-menu-item" data-page="2">
-                <i class="fas fa-users"></i>
-                <span>Графики Дежурных</span>
-            </div>
-            <div class="vk-menu-item" data-page="3">
-                <i class="fas fa-calendar"></i>
-                <span>Календарь</span>
-            </div>
-            <div class="vk-menu-item" data-page="4">
-                <i class="fas fa-file-alt"></i>
-                <span>Документы</span>
-            </div>
-            <div class="vk-menu-item" data-page="6">
-                <i class="fas fa-moon"></i>
-                <span>Ночные дежурные</span>
-            </div>
-            <div class="vk-menu-item" data-page="5">
-                <i class="fas fa-cog"></i>
-                <span>Настройки</span>
-            </div>
+            <div class="vk-logo"><i class="fas fa-chart-line"></i><span>РТ МИС</span></div>
+            <div class="vk-menu-item active" data-page="1"><i class="fas fa-newspaper"></i><span>Контакты</span></div>
+            <div class="vk-menu-item" data-page="2"><i class="fas fa-users"></i><span>Графики Дежурных</span></div>
+            <div class="vk-menu-item" data-page="3"><i class="fas fa-calendar"></i><span>Календарь</span></div>
+            <div class="vk-menu-item" data-page="4"><i class="fas fa-file-alt"></i><span>Документы</span></div>
+            <div class="vk-menu-item" data-page="6"><i class="fas fa-moon"></i><span>Ночные дежурные</span></div>
+            <div class="vk-menu-item" data-page="5"><i class="fas fa-cog"></i><span>Настройки</span></div>
             <div class="vk-menu-divider"></div>
-            <div class="vk-menu-item" id="openImportantBtn">
-                <i class="fas fa-exclamation-circle"></i>
-                <span>Важное</span>
-            </div>
-            <button class="schedule-side-btn" id="openScheduleBtn">
-                <i class="fas fa-calendar-alt"></i>
-                <span>График</span>
-                <i class="fas fa-arrow-right" style="margin-left: auto;"></i>
-            </button>
+            <div class="vk-menu-item" id="openImportantBtn"><i class="fas fa-exclamation-circle"></i><span>Важное</span></div>
+            <button class="schedule-side-btn" id="openScheduleBtn"><i class="fas fa-calendar-alt"></i><span>График</span><i class="fas fa-arrow-right" style="margin-left: auto;"></i></button>
         </div>
 
         <div class="vk-content">
+            <!-- Бегущая строка - появляется только по вторникам -->
+            <div class="ticker-container" id="tickerContainer">
+                <div class="ticker-wrapper">
+                    <div class="ticker">
+                        <span><i class="fas fa-clock"></i> ⚠️ ВНИМАНИЕ! КАЖДЫЙ ВТОРНИК — ДЕНЬ СПИСАНИЯ ВРЕМЕНИ! ⚠️ <i class="fas fa-hourglass-half"></i> Не забудьте списать время в табеле до 18:00! <i class="fas fa-calendar-check"></i> Спиши время вовремя!</span>
+                    </div>
+                </div>
+            </div>
+            
             <div class="vk-profile-header">
                 <div class="vk-avatar">РТ</div>
-                <div class="vk-profile-info">
-                    <h1>РТ МИС</h1>
-                    <p>Дежурная смена · онлайн</p>
-                </div>
-                <div class="vk-profile-stats">
-                    <div class="vk-stat-item">
-                        <div class="count">128</div>
-                        <div class="label">постов</div>
-                    </div>
-                    <div class="vk-stat-item">
-                        <div class="count">2.5K</div>
-                        <div class="label">подписчиков</div>
-                    </div>
-                </div>
+                <div class="vk-profile-info"><h1>РТ МИС</h1><p>Дежурная смена · онлайн</p></div>
+                <div class="vk-profile-stats"><div class="vk-stat-item"><div class="count">128</div><div class="label">постов</div></div><div class="vk-stat-item"><div class="count">2.5K</div><div class="label">подписчиков</div></div></div>
             </div>
 
             <div class="page active" id="page1">
                 <div class="vk-post">
-                    <div class="vk-post-header">
-                        <div class="vk-post-avatar">⚡</div>
-                        <div class="vk-post-author">
-                            <h4>ДБА</h4>
-                            <p>Дежурные базы данных</p>
-                        </div>
-                        <div class="vk-post-date">19 мар в 10:00</div>
-                    </div>
+                    <div class="vk-post-header"><div class="vk-post-avatar">⚡</div><div class="vk-post-author"><h4>ДБА</h4><p>Дежурные базы данных</p></div><div class="vk-post-date">19 мар в 10:00</div></div>
                     <div class="vk-post-content">
                         <div class="vk-post-title">Состав смены</div>
-                        <div style="margin: 20px 0 10px 0;">
-                            <div class="section-title">
-                                <i class="fas fa-database"></i> ДБА PG
-                            </div>
-                        </div>
-                        <div class="collapsible-content" id="dbaPgContent">
-                            <table class="vk-table">
-                                <thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead>
-                                <tbody id="dbaPgTableBody"></tbody>
-                            </table>
-                        </div>
-                        <button class="vk-show-more-btn" onclick="toggleCollapsible('dbaPgContent', this)">
-                            <span>Показать еще...</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div style="margin: 30px 0 10px 0;">
-                            <div class="section-title">
-                                <i class="fas fa-users"></i> ДБА МС
-                            </div>
-                        </div>
-                        <div class="collapsible-content" id="dbaMsContent">
-                            <table class="vk-table">
-                                <thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead>
-                                <tbody id="dbaMsTableBody"></tbody>
-                            </table>
-                        </div>
-                        <button class="vk-show-more-btn" onclick="toggleCollapsible('dbaMsContent', this)">
-                            <span>Показать еще...</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
+                        <div style="margin:20px 0 10px 0;"><div class="section-title"><i class="fas fa-database"></i> ДБА PG</div></div>
+                        <div class="collapsible-content" id="dbaPgContent"><table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead><tbody id="dbaPgTableBody"></tbody></table></div>
+                        <button class="vk-show-more-btn" onclick="toggleCollapsible('dbaPgContent', this)"><span>Показать еще...</span><i class="fas fa-chevron-down"></i></button>
+                        <div style="margin:30px 0 10px 0;"><div class="section-title"><i class="fas fa-users"></i> ДБА МС</div></div>
+                        <div class="collapsible-content" id="dbaMsContent"><table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead><tbody id="dbaMsTableBody"></tbody></table></div>
+                        <button class="vk-show-more-btn" onclick="toggleCollapsible('dbaMsContent', this)"><span>Показать еще...</span><i class="fas fa-chevron-down"></i></button>
                     </div>
-                    <div class="vk-post-actions">
-                        <div class="vk-post-action"><i class="far fa-heart"></i> 24</div>
-                        <div class="vk-post-action"><i class="far fa-comment"></i> 7</div>
-                        <div class="vk-post-action"><i class="far fa-share-square"></i> 3</div>
-                    </div>
+                    <div class="vk-post-actions"><div class="vk-post-action"><i class="far fa-heart"></i> 24</div><div class="vk-post-action"><i class="far fa-comment"></i> 7</div><div class="vk-post-action"><i class="far fa-share-square"></i> 3</div></div>
                 </div>
 
                 <div class="vk-post">
-                    <div class="vk-post-header">
-                        <div class="vk-post-avatar">📊</div>
-                        <div class="vk-post-author">
-                            <h4>ОЭИР</h4>
-                            <p>Отдел эксплуатации</p>
-                        </div>
-                        <div class="vk-post-date">19 мар в 11:30</div>
-                    </div>
+                    <div class="vk-post-header"><div class="vk-post-avatar">📊</div><div class="vk-post-author"><h4>ОЭИР</h4><p>Отдел эксплуатации</p></div><div class="vk-post-date">19 мар в 11:30</div></div>
                     <div class="vk-post-content">
                         <div class="vk-post-title">Состав смены</div>
-                        <div style="margin: 20px 0 10px 0;">
-                            <div class="section-title">
-                                <i class="fas fa-microchip"></i> ОЭИР
-                            </div>
-                        </div>
-                        <div class="collapsible-content" id="oeirMainContent">
-                            <table class="vk-table">
-                                <thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead>
-                                <tbody id="oeirTableBody"></tbody>
-                            </table>
-                        </div>
-                        <button class="vk-show-more-btn" onclick="toggleCollapsible('oeirMainContent', this)">
-                            <span>Показать еще...</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div style="margin: 30px 0 10px 0;">
-                            <div class="section-title">
-                                <i class="fas fa-window-restore"></i> ОЭИР Витрина
-                            </div>
-                        </div>
-                        <div class="collapsible-content" id="oeirVitrinaContent">
-                            <table class="vk-table">
-                                <thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead>
-                                <tbody id="oeirVitrinaTableBody"></tbody>
-                            </table>
-                        </div>
-                        <button class="vk-show-more-btn" onclick="toggleCollapsible('oeirVitrinaContent', this)">
-                            <span>Показать еще...</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
+                        <div style="margin:20px 0 10px 0;"><div class="section-title"><i class="fas fa-microchip"></i> ОЭИР</div></div>
+                        <div class="collapsible-content" id="oeirMainContent"><table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th> </tr></thead><tbody id="oeirTableBody"></tbody> </table></div>
+                        <button class="vk-show-more-btn" onclick="toggleCollapsible('oeirMainContent', this)"><span>Показать еще...</span><i class="fas fa-chevron-down"></i></button>
+                        <div style="margin:30px 0 10px 0;"><div class="section-title"><i class="fas fa-window-restore"></i> ОЭИР Витрина</div></div>
+                        <div class="collapsible-content" id="oeirVitrinaContent"><table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th></th></tr></thead><tbody id="oeirVitrinaTableBody"></tbody></table></div>
+                        <button class="vk-show-more-btn" onclick="toggleCollapsible('oeirVitrinaContent', this)"><span>Показать еще...</span><i class="fas fa-chevron-down"></i></button>
                     </div>
-                    <div class="vk-post-actions">
-                        <div class="vk-post-action"><i class="far fa-heart"></i> 18</div>
-                        <div class="vk-post-action"><i class="far fa-comment"></i> 5</div>
-                        <div class="vk-post-action"><i class="far fa-share-square"></i> 2</div>
-                    </div>
+                    <div class="vk-post-actions"><div class="vk-post-action"><i class="far fa-heart"></i> 18</div><div class="vk-post-action"><i class="far fa-comment"></i> 5</div><div class="vk-post-action"><i class="far fa-share-square"></i> 2</div></div>
                 </div>
 
                 <div class="vk-post">
-                    <div class="vk-post-header">
-                        <div class="vk-post-avatar">👑</div>
-                        <div class="vk-post-author">
-                            <h4>Сервис Менеджер</h4>
-                            <p>Руководство сменами</p>
-                        </div>
-                        <div class="vk-post-date">19 мар в 12:15</div>
-                    </div>
+                    <div class="vk-post-header"><div class="vk-post-avatar">👑</div><div class="vk-post-author"><h4>Сервис Менеджер</h4><p>Руководство сменами</p></div><div class="vk-post-date">19 мар в 12:15</div></div>
                     <div class="vk-post-content">
                         <div class="vk-post-title">Распределение по регионам</div>
-                        <div style="margin: 20px 0 10px 0;">
-                            <div class="section-title">
-                                <i class="fas fa-crown"></i> Сервис Менеджер
-                            </div>
-                        </div>
-                        <div class="collapsible-content" id="smContent">
-                            <table class="vk-table">
-                                <thead><tr><th>ФИО</th><th>Телефон</th><th>Регион</th><th></th></tr></thead>
-                                <tbody id="smTableBody"></tbody>
-                            </table>
-                        </div>
-                        <button class="vk-show-more-btn" onclick="toggleCollapsible('smContent', this)">
-                            <span>Показать еще...</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
+                        <div style="margin:20px 0 10px 0;"><div class="section-title"><i class="fas fa-crown"></i> Сервис Менеджер</div></div>
+                        <div class="collapsible-content" id="smContent"><table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>Регион</th><th></th></tr></thead><tbody id="smTableBody"></tbody></table></div>
+                        <button class="vk-show-more-btn" onclick="toggleCollapsible('smContent', this)"><span>Показать еще...</span><i class="fas fa-chevron-down"></i></button>
                     </div>
-                    <div class="vk-post-actions">
-                        <div class="vk-post-action"><i class="far fa-heart"></i> 32</div>
-                        <div class="vk-post-action"><i class="far fa-comment"></i> 11</div>
-                        <div class="vk-post-action"><i class="far fa-share-square"></i> 5</div>
-                    </div>
+                    <div class="vk-post-actions"><div class="vk-post-action"><i class="far fa-heart"></i> 32</div><div class="vk-post-action"><i class="far fa-comment"></i> 11</div><div class="vk-post-action"><i class="far fa-share-square"></i> 5</div></div>
                 </div>
-                <a href="https://confluence.rtmis.ru/pages/viewpage.action?pageId=252876542" target="_blank" class="vk-show-more-large">
-                    <i class="fas fa-globe"></i> Назначенные сотрудники по регионам <i class="fas fa-arrow-right"></i>
-                </a>
+                <a href="https://confluence.rtmis.ru/pages/viewpage.action?pageId=252876542" target="_blank" class="vk-show-more-large"><i class="fas fa-globe"></i> Назначенные сотрудники по регионам <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="page" id="page2">
                 <div class="vk-post">
-                    <div class="vk-post-header">
-                        <div class="vk-post-avatar">👥</div>
-                        <div class="vk-post-author">
-                            <h4>Графики Дежурных</h4>
-                            <p>Ссылки на графики</p>
-                        </div>
-                    </div>
+                    <div class="vk-post-header"><div class="vk-post-avatar">👥</div><div class="vk-post-author"><h4>Графики Дежурных</h4><p>Ссылки на графики</p></div></div>
                     <div class="vk-post-content">
-                        <div class="links-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-                            <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" target="_blank">
-                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;"><i class="fas fa-laptop" style="color:white;"></i></div>
-                                    <div><h4 style="font-size: 14px; font-weight: 600; color: white;">Дежурные</h4><p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">ДБА, ОЭИР, 1,5ДБА</p></div>
-                                </div>
-                            </a>
-                            <a href="https://confluence.rtmis.ru/calendar/spacecalendar.action?spaceKey=RMISOEIR" target="_blank">
-                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;"><i class="fas fa-calendar" style="color:white;"></i></div>
-                                    <div><h4 style="font-size: 14px; font-weight: 600; color: white;">Календарь</h4><p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">График дежурных</p></div>
-                                </div>
-                            </a>
-                            <a href="https://confluence.is-mis.ru/calendar/calendarPage.action?spaceKey=RMISOEIR&calendarId=c3cdb4f6-7805-4d8d-baeb-07e75f0c19fd" target="_blank">
-                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;"><i class="fas fa-clock" style="color:white;"></i></div>
-                                    <div><h4 style="font-size: 14px; font-weight: 600; color: white;">Витрина</h4><p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">Ночной дежурный</p></div>
-                                </div>
-                            </a>
-                            <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=337625078" target="_blank">
-                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;"><i class="fas fa-server" style="color:white;"></i></div>
-                                    <div><h4 style="font-size: 14px; font-weight: 600; color: white;">РМ</h4><p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">Дежурный РМ</p></div>
-                                </div>
-                            </a>
-                            <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506" target="_blank">
-                                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center;"><i class="fas fa-moon" style="color:white;"></i></div>
-                                    <div><h4 style="font-size: 14px; font-weight: 600; color: white;">Ночные</h4><p style="font-size: 12px; color: rgba(255, 255, 255, 0.8);">График дежурных</p></div>
-                                </div>
-                            </a>
+                        <div class="links-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+                            <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=294261463" target="_blank"><div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);"><div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;"><i class="fas fa-laptop" style="color:white;"></i></div><div><h4 style="font-size:14px;font-weight:600;color:white;">Дежурные</h4><p style="font-size:12px;color:rgba(255,255,255,0.8);">ДБА, ОЭИР, 1,5ДБА</p></div></div></a>
+                            <a href="https://confluence.rtmis.ru/calendar/spacecalendar.action?spaceKey=RMISOEIR" target="_blank"><div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);"><div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;"><i class="fas fa-calendar" style="color:white;"></i></div><div><h4 style="font-size:14px;font-weight:600;color:white;">Календарь</h4><p style="font-size:12px;color:rgba(255,255,255,0.8);">График дежурных</p></div></div></a>
+                            <a href="https://confluence.is-mis.ru/calendar/calendarPage.action?spaceKey=RMISOEIR&calendarId=c3cdb4f6-7805-4d8d-baeb-07e75f0c19fd" target="_blank"><div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);"><div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;"><i class="fas fa-clock" style="color:white;"></i></div><div><h4 style="font-size:14px;font-weight:600;color:white;">Витрина</h4><p style="font-size:12px;color:rgba(255,255,255,0.8);">Ночной дежурный</p></div></div></a>
+                            <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=337625078" target="_blank"><div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);"><div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;"><i class="fas fa-server" style="color:white;"></i></div><div><h4 style="font-size:14px;font-weight:600;color:white;">РМ</h4><p style="font-size:12px;color:rgba(255,255,255,0.8);">Дежурный РМ</p></div></div></a>
+                            <a href="https://confluence.is-mis.ru/pages/viewpage.action?pageId=98501506" target="_blank"><div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);"><div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;"><i class="fas fa-moon" style="color:white;"></i></div><div><h4 style="font-size:14px;font-weight:600;color:white;">Ночные</h4><p style="font-size:12px;color:rgba(255,255,255,0.8);">График дежурных</p></div></div></a>
                         </div>
                     </div>
                 </div>
@@ -1584,66 +323,40 @@
 
             <div class="page" id="page3">
                 <div class="vk-post">
-                    <div class="vk-post-header">
-                        <div class="vk-post-avatar">📅</div>
-                        <div class="vk-post-author">
-                            <h4>Календарь дежурств</h4>
-                            <p>Суббота и воскресенье — выходные дни</p>
-                        </div>
-                    </div>
-                    <div class="vk-post-content">
-                        <div class="calendar-container" id="calendar"></div>
-                    </div>
+                    <div class="vk-post-header"><div class="vk-post-avatar">📅</div><div class="vk-post-author"><h4>Календарь дежурств</h4><p>Суббота и воскресенье — выходные дни</p></div></div>
+                    <div class="vk-post-content"><div class="calendar-container" id="calendar"></div></div>
                 </div>
             </div>
 
             <div class="page" id="page4">
                 <div class="vk-post">
-                    <div class="vk-post-header">
-                        <div class="vk-post-avatar">📄</div>
-                        <div class="vk-post-author">
-                            <h4>Документы</h4>
-                            <p>Файлы и инструкции</p>
-                        </div>
-                    </div>
-                    <div class="vk-post-content" style="min-height: 200px; display: flex; align-items: center; justify-content: center; color:#888;">
-                        <i class="fas fa-file-alt" style="font-size: 48px;"></i>
-                        <span style="margin-left: 16px;">Нет документов</span>
-                    </div>
+                    <div class="vk-post-header"><div class="vk-post-avatar">📄</div><div class="vk-post-author"><h4>Документы</h4><p>Файлы и инструкции</p></div></div>
+                    <div class="vk-post-content" style="min-height:200px;display:flex;align-items:center;justify-content:center;color:#888;"><i class="fas fa-file-alt" style="font-size:48px;"></i><span style="margin-left:16px;">Нет документов</span></div>
                 </div>
             </div>
 
             <div class="page" id="page6">
                 <div class="vk-post">
-                    <div class="vk-post-header">
-                        <div class="vk-post-avatar">🌙</div>
-                        <div class="vk-post-author">
-                            <h4>Ночные дежурные</h4>
-                            <p>Выберите сотрудников для ночных дежурств</p>
-                        </div>
-                    </div>
+                    <div class="vk-post-header"><div class="vk-post-avatar">🌙</div><div class="vk-post-author"><h4>Ночные дежурные</h4><p>Выберите сотрудников для ночных дежурств</p></div></div>
                     <div class="vk-post-content">
                         <div class="vk-post-title">ДБА (ночные дежурные)</div>
-                        <table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th>Действия</th></tr></thead><tbody id="dbaNightTableBody"></tbody></table>
-                        <div style="margin-top: 30px;"><div class="vk-post-title">ОЭИР (ночные дежурные)</div>
-                        <table class="vk-table"><thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th>Действия</th></tr></thead><tbody id="oeirNightTableBody"></tbody></table></div>
+                        <table class="vk-table">
+                            <thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th>Действия</th></tr></thead>
+                            <tbody id="dbaNightTableBody"></tbody>
+                        </table>
+                        <div style="margin-top:30px;"><div class="vk-post-title">ОЭИР (ночные дежурные)</div>
+                        <table class="vk-table">
+                            <thead><tr><th>ФИО</th><th>Телефон</th><th>График</th><th>Действия</th></tr></thead>
+                            <tbody id="oeirNightTableBody"></tbody>
+                        </table></div>
                     </div>
                 </div>
             </div>
 
             <div class="page" id="page5">
                 <div class="vk-post">
-                    <div class="vk-post-header">
-                        <div class="vk-post-avatar">⚙️</div>
-                        <div class="vk-post-author">
-                            <h4>Настройки</h4>
-                            <p>Параметры страницы</p>
-                        </div>
-                    </div>
-                    <div class="vk-post-content" style="min-height: 200px; display: flex; align-items: center; justify-content: center; color:#888;">
-                        <i class="fas fa-cog" style="font-size: 48px;"></i>
-                        <span style="margin-left: 16px;">Раздел в разработке</span>
-                    </div>
+                    <div class="vk-post-header"><div class="vk-post-avatar">⚙️</div><div class="vk-post-author"><h4>Настройки</h4><p>Параметры страницы</p></div></div>
+                    <div class="vk-post-content" style="min-height:200px;display:flex;align-items:center;justify-content:center;color:#888;"><i class="fas fa-cog" style="font-size:48px;"></i><span style="margin-left:16px;">Раздел в разработке</span></div>
                 </div>
             </div>
 
@@ -1660,335 +373,95 @@
         </div>
 
         <div class="vk-right-sidebar">
-            <div class="vk-widget time-widget">
-                <div id="moscowTime">--:--:--</div>
-                <div id="currentDate"></div>
-                <div class="time-label">МОСКОВСКОЕ ВРЕМЯ</div>
-            </div>
-            <div class="vk-widget" id="onlineWidget">
-                <div class="vk-widget-title">Сейчас на смене</div>
-                <div class="widget-collapsible-content" id="onlineCollapsible"><div id="onlineList"></div></div>
-                <button class="widget-show-more-btn" onclick="toggleWidgetCollapsible('onlineCollapsible', this)"><span>Показать еще...</span><i class="fas fa-chevron-down"></i></button>
-            </div>
-            <div class="vk-widget" id="nightShortWidget">
-                <div class="vk-widget-title"><span>🌙 Ночные дежурные</span></div>
-                <div id="nightShortList"></div>
-            </div>
-            <div class="vk-widget" id="sickWidget">
-                <div class="vk-widget-title"><span>🏥 Больничные и отпуска</span></div>
-                <div id="sickList"></div>
-            </div>
-            <div class="vk-widget" id="upcomingWidget">
-                <div class="vk-widget-title">Ближайшие смены (7ч)</div>
-                <div id="upcomingList"></div>
-            </div>
+            <div class="vk-widget time-widget"><div id="moscowTime">--:--:--</div><div id="currentDate"></div><div class="time-label">МОСКОВСКОЕ ВРЕМЯ</div></div>
+            <div class="vk-widget" id="onlineWidget"><div class="vk-widget-title">Сейчас на смене</div><div class="widget-collapsible-content" id="onlineCollapsible"><div id="onlineList"></div></div><button class="widget-show-more-btn" onclick="toggleWidgetCollapsible('onlineCollapsible', this)"><span>Показать еще...</span><i class="fas fa-chevron-down"></i></button></div>
+            <div class="vk-widget" id="nightShortWidget"><div class="vk-widget-title"><span>🌙 Ночные дежурные</span></div><div id="nightShortList"></div></div>
+            <div class="vk-widget" id="sickWidget"><div class="vk-widget-title"><span>🏥 Больничные и отпуска</span></div><div id="sickList"></div></div>
+            <div class="vk-widget" id="upcomingWidget"><div class="vk-widget-title">Ближайшие смены (7ч)</div><div id="upcomingList"></div></div>
         </div>
     </div>
 
-    <div id="mobileBlocker" class="mobile-blocker" style="display: none;">
-        <div class="mobile-blocker-content">
-            <i class="fas fa-mobile-alt"></i>
-            <h2>Только для ПК</h2>
-            <p>Данный сервис оптимизирован для работы на стационарных компьютерах и ноутбуках.</p>
-            <p>Пожалуйста, зайдите с рабочего ПК для корректного отображения всех функций.</p>
-            <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
-            <p style="font-size: 14px; opacity: 0.7;">Спасибо за понимание! 🙏</p>
-        </div>
-    </div>
+    <div id="mobileBlocker" class="mobile-blocker" style="display:none;"><div class="mobile-blocker-content"><i class="fas fa-mobile-alt"></i><h2>Только для ПК</h2><p>Данный сервис оптимизирован для работы на стационарных компьютерах и ноутбуках.</p><p>Пожалуйста, зайдите с рабочего ПК для корректного отображения всех функций.</p><div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div><p style="font-size:14px;opacity:0.7;">Спасибо за понимание! 🙏</p></div></div>
 
     <div class="popup-overlay" id="popupOverlay"></div>
-    <div class="popup-window" id="importantPopup">
-        <div class="popup-header" id="importantPopupHeader">
-            <div class="popup-title"><span>📌</span><span>ВАЖНАЯ ИНФОРМАЦИЯ</span></div>
-            <div class="popup-controls"><button class="popup-btn" id="minimizeImportantPopup">🗕</button><button class="popup-btn" id="closeImportantPopup">✕</button></div>
-        </div>
-        <div class="popup-content"><iframe src="https://docs.google.com/spreadsheets/d/1dXTrCwA8eVBdmHGmX5H9qeIsWJaVE_zAmjlSgs9rH9Y/edit?pli=1&gid=138149952#gid=138149952" allowfullscreen></iframe></div>
-    </div>
-    <div class="popup-window" id="schedulePopup">
-        <div class="popup-header" id="schedulePopupHeader">
-            <div class="popup-title"><span>📅</span><span>ГРАФИК</span></div>
-            <div class="popup-controls"><button class="popup-btn" id="minimizeSchedulePopup">🗕</button><button class="popup-btn" id="closeSchedulePopup">✕</button></div>
-        </div>
-        <div class="popup-content"><iframe src="https://docs.google.com/spreadsheets/d/1q7wDVIIuT1DvKhebvDCzKMeiuuTVnrvdC9jBC8qjHiU/edit?pli=1&gid=1736109383#gid=1736109383" allowfullscreen></iframe></div>
-    </div>
+    <div class="popup-window" id="importantPopup"><div class="popup-header" id="importantPopupHeader"><div class="popup-title"><span>📌</span><span>ВАЖНАЯ ИНФОРМАЦИЯ</span></div><div class="popup-controls"><button class="popup-btn" id="minimizeImportantPopup">🗕</button><button class="popup-btn" id="closeImportantPopup">✕</button></div></div><div class="popup-content"><iframe src="https://docs.google.com/spreadsheets/d/1dXTrCwA8eVBdmHGmX5H9qeIsWJaVE_zAmjlSgs9rH9Y/edit?pli=1&gid=138149952#gid=138149952" allowfullscreen></iframe></div></div>
+    <div class="popup-window" id="schedulePopup"><div class="popup-header" id="schedulePopupHeader"><div class="popup-title"><span>📅</span><span>ГРАФИК</span></div><div class="popup-controls"><button class="popup-btn" id="minimizeSchedulePopup">🗕</button><button class="popup-btn" id="closeSchedulePopup">✕</button></div></div><div class="popup-content"><iframe src="https://docs.google.com/spreadsheets/d/1q7wDVIIuT1DvKhebvDCzKMeiuuTVnrvdC9jBC8qjHiU/edit?pli=1&gid=1736109383#gid=1736109383" allowfullscreen></iframe></div></div>
 
     <div class="copy-notification" id="copyNotification">Номер <span id="copiedNumber"></span> скопирован!</div>
 
     <script>
-        function isMobileDevice() {
-            if (window.innerWidth <= 768) return true;
-            const ua = navigator.userAgent.toLowerCase();
-            const mobileKeywords = ['android', 'webos', 'iphone', 'ipad', 'ipod', 'blackberry', 'windows phone', 'opera mini', 'iemobile', 'mobile'];
-            return mobileKeywords.some(keyword => ua.indexOf(keyword) !== -1);
-        }
-
-        if (isMobileDevice()) {
-            document.getElementById('mobileBlocker').style.display = 'flex';
-            document.getElementById('mainContent').style.display = 'none';
-        }
-
-        function isWeekend(date) {
-            const day = date.getDay();
-            return day === 0 || day === 6;
-        }
-
-        function formatDate(date) {
-            const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-            const days = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
-            return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}, ${days[date.getDay()]}`;
-        }
-
-        const dbaPgData = [["Кулигин Павел","8 950 586-14-34","09:00-18:00"],["Волчихин Данила","8 903 903-63-63","06:00-15:00"],["Шилов Алексей","8 950 466-80-35","05:30-14:30"],["Сакенко Олег","8 913 614-49-96","10:00-19:00"],["Ефремов Дмитрий","8 923 738-78-39","06:00-15:00"]];
-        const dbaMsData = [["Веселков Андрей","8 909 104-63-77","05:30-14:30"],["Попов Юрий","8 951 705-47-81","07:00-16:00"],["Митюшин Роман","8 963 015-82-27","07:00-16:00"]];
-        const oeirData = [["Астафьев Андрей","89030225078","07:00-16:00"],["Вильданов Александр","89220461325","08:00-17:00"],["Власенко Матвей","89226400123","07:00-16:00"],["Зверев Владислав","89194992682","07:00-16:00"],["Литвин Василий","89963773310","05:00-14:00"],["Невидимов Иван","89514516369","07:00-16:00"],["Сапожников Кирилл","89247181699","05:00-14:00"],["Чемерик Дмитрий","89024727716","07:00-16:00"],["Шевырин Михаил","89026409856","07:00-16:00"],["Юденков Алексей","89134806213","05:00-14:00"]];
-        const vitrinaData = [["Евстигнеев Дмитрий","89066512345","09:00-18:00"],["Курбатов Роман","89206329639","08:00-17:00"],["Юрин Юрий","89225554871","08:00-17:00"],["Куриков Артем","89200425796","08:00-17:00"]];
-        const smData = [["Бушуева Александра","89045544130","Астрахань, Марий Эл, Рязань"],["Матвеев Алексей","89956882318","Владимир, Оренбург"],["Карпов Антон","89056557113","Вологода, ЯНАО"],["Трефилова Ольга","89138517790","ЕАО, Красноярск, Саха"],["Олейник Илья","89994765880","Иркутск, Хакасия"],["Большаков Иоанн","89215505040","КБР, Дагестан"],["Волчик Виктор","89995283589","Карелия, Москва, Пенза"],["Лубнин Андрей","89097759422","Коми, НиНо"],["Карпечин Павел","89121752698","Крым, Калуга"],["Волков Илья","89217622389","Киров, ФМБА"],["Шкляев Дмитрий","89520679933","Свердловск, Курган"],["Астанкулова Марина","89520679933","Омск, Удмуртия"],["Михайлов Дмитрий","89523311790","Пермь, Алтай"],["Дегтярь Константин","89232409634","Башкирия"],["Кожевина Евгения","89118371989","Мордовия"]];
-
-        const STORAGE_KEYS = { NIGHT_SHIFTS: 'rtmis_night_shifts', SICK_STAFF: 'rtmis_sick_staff', THEME: 'rtmis_theme' };
-        let selectedNightShifts = [], sickStaff = [];
-
-        function loadFromStorage() {
-            const savedNight = localStorage.getItem(STORAGE_KEYS.NIGHT_SHIFTS);
-            if (savedNight) selectedNightShifts = JSON.parse(savedNight);
-            const savedSick = localStorage.getItem(STORAGE_KEYS.SICK_STAFF);
-            if (savedSick) sickStaff = JSON.parse(savedSick);
-            return localStorage.getItem(STORAGE_KEYS.THEME) || 'dark-theme';
-        }
-
-        function saveToStorage() { localStorage.setItem(STORAGE_KEYS.NIGHT_SHIFTS, JSON.stringify(selectedNightShifts)); localStorage.setItem(STORAGE_KEYS.SICK_STAFF, JSON.stringify(sickStaff)); }
-        function saveTheme(theme) { localStorage.setItem(STORAGE_KEYS.THEME, theme); }
-
-        const savedTheme = loadFromStorage();
-        document.body.className = savedTheme;
-        const lightThemeBtn = document.getElementById('lightThemeBtn'), darkThemeBtn = document.getElementById('darkThemeBtn');
-        if (savedTheme === 'light-theme') { lightThemeBtn.classList.add('active'); darkThemeBtn.classList.remove('active'); } 
-        else { darkThemeBtn.classList.add('active'); lightThemeBtn.classList.remove('active'); }
-
-        function fillTable(elementId, data) {
-            const tbody = document.getElementById(elementId);
-            if (!tbody) return;
-            tbody.innerHTML = data.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td><button class="vk-copy-btn" onclick="copyText('${row[1]}', this)"><i class="far fa-copy"></i></button></td></tr>`).join('');
-        }
-        fillTable('dbaPgTableBody', dbaPgData); fillTable('dbaMsTableBody', dbaMsData); fillTable('oeirTableBody', oeirData); fillTable('oeirVitrinaTableBody', vitrinaData); fillTable('smTableBody', smData);
-
-        function isStaffSelected(name, phone) { return selectedNightShifts.some(s => s.name === name && s.phone === phone); }
-        function isStaffSick(name, phone) { return sickStaff.some(s => s.name === name && s.phone === phone); }
-
-        function toggleNightStaff(staff, add) {
-            if (add) { if (!isStaffSelected(staff.name, staff.phone)) selectedNightShifts.push(staff); }
-            else { selectedNightShifts = selectedNightShifts.filter(s => !(s.name === staff.name && s.phone === staff.phone)); }
-            saveToStorage(); updateNightTables(); updateNightShortWidget(); updateOnlineWidget();
-        }
-        function toggleSickStaff(staff, add) {
-            if (add) { if (!isStaffSick(staff.name, staff.phone)) sickStaff.push(staff); }
-            else { sickStaff = sickStaff.filter(s => !(s.name === staff.name && s.phone === staff.phone)); }
-            saveToStorage(); updateNightTables(); updateSickWidget(); updateOnlineWidget();
-        }
-
-        function fillNightTable(elementId, data, dept) {
-            const tbody = document.getElementById(elementId);
-            if (!tbody) return;
-            tbody.innerHTML = data.map(row => {
-                const isSelected = isStaffSelected(row[0], row[1]), isSick = isStaffSick(row[0], row[1]);
-                return `\(html
-                    <tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>
-                        <button class="night-select-btn green" onclick="toggleNightStaff({name:'${row[0]}',phone:'${row[1]}',dept:'${dept}'}, true)" ${isSelected ? 'disabled' : ''}><i class="fas fa-check"></i></button>
-                        <button class="night-select-btn red" onclick="toggleNightStaff({name:'${row[0]}',phone:'${row[1]}',dept:'${dept}'}, false)" ${!isSelected ? 'disabled' : ''}><i class="fas fa-times"></i></button>
-                        <button class="night-select-btn yellow" onclick="toggleSickStaff({name:'${row[0]}',phone:'${row[1]}',dept:'${dept}'}, !${isSick})"><i class="fas fa-${isSick ? 'times' : 'plus'}"></i></button>
-                    </td></tr>
-                `;
-            }).join('');
-        }
-
-        function updateNightTables() { fillNightTable('dbaNightTableBody', [...dbaPgData, ...dbaMsData], 'ДБА'); fillNightTable('oeirNightTableBody', oeirData, 'ОЭИР'); }
-        function updateNightShortWidget() {
-            const el = document.getElementById('nightShortList');
-            if (!el) return;
-            if (!selectedNightShifts.length) { el.innerHTML = '<div class="night-empty">Нет выбранных ночных дежурных</div>'; return; }
-            el.innerHTML = selectedNightShifts.map(s => `<div class="night-short-item"><div class="night-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="night-info"><h5>${s.name}</h5><p>${s.dept} · ${s.phone}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div></div>`).join('');
-        }
-        function updateSickWidget() {
-            const el = document.getElementById('sickList');
-            if (!el) return;
-            if (!sickStaff.length) { el.innerHTML = '<div class="sick-empty">Нет сотрудников на больничном или в отпуске</div>'; return; }
-            el.innerHTML = sickStaff.map(s => `<div class="sick-item"><div class="sick-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="sick-info"><h5>${s.name}</h5><p>${s.dept} · ${s.phone}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div></div>`).join('');
-        }
-
-        function getShiftStatus(schedule, currentDate) {
-            if (isWeekend(currentDate)) return 'weekend';
-            const currentTotal = currentDate.getHours() * 60 + currentDate.getMinutes();
-            const [start, end] = schedule.split('-');
-            const startTotal = start.split(':').map(Number)[0]*60 + start.split(':').map(Number)[1];
-            const endTotal = end.split(':').map(Number)[0]*60 + end.split(':').map(Number)[1];
-            if (endTotal < startTotal) {
-                if (currentTotal >= startTotal || currentTotal <= endTotal) return 'online';
-                if (currentTotal < startTotal && startTotal - currentTotal <= 60) return 'soon';
+        // Проверка на сегодняшний день - вторник (день недели 2 = вторник)
+        function checkTuesdayAndShowTicker() {
+            const now = new Date();
+            const moscowNow = new Date(now.toLocaleString('en-US', {timeZone: 'Europe/Moscow'}));
+            const dayOfWeek = moscowNow.getDay(); // 0 - воскресенье, 1 - понедельник, 2 - вторник, ... 6 - суббота
+            const tickerElement = document.getElementById('tickerContainer');
+            
+            // Если сегодня вторник (dayOfWeek === 2) - показываем бегущую строку
+            if (dayOfWeek === 2) {
+                tickerElement.style.display = 'block';
             } else {
-                if (currentTotal >= startTotal && currentTotal <= endTotal) return 'online';
-                if (currentTotal < startTotal && startTotal - currentTotal <= 60) return 'soon';
+                tickerElement.style.display = 'none';
             }
-            return 'offline';
         }
-
-        function updateOnlineWidget() {
-            const allStaff = [
-                ...dbaPgData.map(d => ({ name: d[0], schedule: d[2], dept: 'ДБА', phone: d[1] })),
-                ...dbaMsData.map(d => ({ name: d[0], schedule: d[2], dept: 'ДБА', phone: d[1] })),
-                ...oeirData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР', phone: d[1] })),
-                ...vitrinaData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР', phone: d[1] }))
-            ];
-            const now = new Date(), currentDate = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
-            const onlineList = document.getElementById('onlineList');
-            if (isWeekend(currentDate)) { onlineList.innerHTML = '<div style="text-align:center;padding:20px;"><i class="fas fa-calendar-week"></i><br/>Сегодня выходной день</div>'; return; }
-            const regularStaff = allStaff.filter(s => !isStaffSelected(s.name, s.phone) && !isStaffSick(s.name, s.phone));
-            const onlineStaff = regularStaff.filter(s => getShiftStatus(s.schedule, currentDate) === 'online');
-            const soonStaff = regularStaff.filter(s => getShiftStatus(s.schedule, currentDate) === 'soon');
-            let html = '';
-            if (onlineStaff.length) html += '<div style="margin-bottom:12px;"><strong style="color:#4caf50;">Сейчас на смене:</strong></div>' + onlineStaff.map(s => `<div class="online-user-item"><div class="user-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="user-info"><h5>${s.name}</h5><p>${s.dept} · ${s.schedule}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div><div class="online-dot"></div></div>`).join('');
-            if (soonStaff.length) html += '<div style="margin:12px 0 8px;"><strong style="color:#ff9800;">Скоро заступят:</strong></div>' + soonStaff.map(s => `<div class="online-user-item"><div class="user-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="user-info"><h5>${s.name}</h5><p>${s.dept} · ${s.schedule}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div><div class="soon-dot"></div></div>`).join('');
-            if (!onlineStaff.length && !soonStaff.length) html = '<div style="text-align:center;padding:20px;">Нет активных смен</div>';
-            onlineList.innerHTML = html;
-        }
-
-        function getUpcomingShifts() {
-            const allStaff = [
-                ...dbaPgData.map(d => ({ name: d[0], schedule: d[2], dept: 'ДБА' })),
-                ...dbaMsData.map(d => ({ name: d[0], schedule: d[2], dept: 'ДБА' })),
-                ...oeirData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР' })),
-                ...vitrinaData.map(d => ({ name: d[0], schedule: d[2], dept: 'ОЭИР' }))
-            ];
-            const now = new Date(), currentDate = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
-            const currentTotal = currentDate.getHours() * 60 + currentDate.getMinutes();
-            if (isWeekend(currentDate)) return [];
-            const upcoming = [];
-            allStaff.forEach(s => {
-                const [start] = s.schedule.split('-');
-                let startTotal = start.split(':').map(Number)[0]*60 + start.split(':').map(Number)[1];
-                if (startTotal < currentTotal) startTotal += 1440;
-                const diff = startTotal - currentTotal;
-                if (diff > 0 && diff <= 420) upcoming.push({...s, startsIn: diff, startsInText: `Через ${Math.floor(diff/60)} ч ${diff%60} мин`});
-            });
-            return upcoming.sort((a,b)=>a.startsIn-b.startsIn);
-        }
-
-        function updateUpcomingWidget() {
-            const list = getUpcomingShifts();
-            const el = document.getElementById('upcomingList');
-            if (!el) return;
-            const now = new Date(), currentDate = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
-            if (isWeekend(currentDate)) { el.innerHTML = '<div style="text-align:center;padding:20px;"><i class="fas fa-calendar-week"></i><br/>Выходной день</div>'; return; }
-            if (!list.length) { el.innerHTML = '<div style="text-align:center;padding:20px;">Нет смен в ближайшие 7 часов</div>'; return; }
-            el.innerHTML = list.map(s => `<div class="upcoming-shift-item"><div class="upcoming-shift-wrapper"><div class="shift-dot"></div><div class="shift-info"><h5>${s.name}</h5><p>${s.dept} · ${s.schedule}</p></div><div class="shift-time">${s.startsInText}</div></div></div>`).join('');
-        }
-
+        
+        function isMobileDevice() { if(window.innerWidth<=768) return true; const ua=navigator.userAgent.toLowerCase(); return ['android','webos','iphone','ipad','ipod','blackberry','windows phone','opera mini','iemobile','mobile'].some(k=>ua.indexOf(k)!==-1); }
+        if(isMobileDevice()){ document.getElementById('mobileBlocker').style.display='flex'; document.getElementById('mainContent').style.display='none'; }
+        function isWeekend(date){ const d=date.getDay(); return d===0||d===6; }
+        function formatDate(date){ const m=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'], d=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота']; return `${date.getDate()} ${m[date.getMonth()]} ${date.getFullYear()}, ${d[date.getDay()]}`; }
+        const dbaPgData=[["Кулигин Павел","8 950 586-14-34","09:00-18:00"],["Волчихин Данила","8 903 903-63-63","06:00-15:00"],["Шилов Алексей","8 950 466-80-35","05:30-14:30"],["Сакенко Олег","8 913 614-49-96","10:00-19:00"],["Ефремов Дмитрий","8 923 738-78-39","06:00-15:00"]];
+        const dbaMsData=[["Веселков Андрей","8 909 104-63-77","05:30-14:30"],["Попов Юрий","8 951 705-47-81","07:00-16:00"],["Митюшин Роман","8 963 015-82-27","07:00-16:00"]];
+        const oeirData=[["Астафьев Андрей","89030225078","07:00-16:00"],["Вильданов Александр","89220461325","08:00-17:00"],["Власенко Матвей","89226400123","07:00-16:00"],["Зверев Владислав","89194992682","07:00-16:00"],["Литвин Василий","89963773310","05:00-14:00"],["Невидимов Иван","89514516369","07:00-16:00"],["Сапожников Кирилл","89247181699","05:00-14:00"],["Чемерик Дмитрий","89024727716","07:00-16:00"],["Шевырин Михаил","89026409856","07:00-16:00"],["Юденков Алексей","89134806213","05:00-14:00"]];
+        const vitrinaData=[["Евстигнеев Дмитрий","89066512345","09:00-18:00"],["Курбатов Роман","89206329639","08:00-17:00"],["Юрин Юрий","89225554871","08:00-17:00"],["Куриков Артем","89200425796","08:00-17:00"]];
+        const smData=[["Бушуева Александра","89045544130","Астрахань, Марий Эл, Рязань"],["Матвеев Алексей","89956882318","Владимир, Оренбург"],["Карпов Антон","89056557113","Вологода, ЯНАО"],["Трефилова Ольга","89138517790","ЕАО, Красноярск, Саха"],["Олейник Илья","89994765880","Иркутск, Хакасия"],["Большаков Иоанн","89215505040","КБР, Дагестан"],["Волчик Виктор","89995283589","Карелия, Москва, Пенза"],["Лубнин Андрей","89097759422","Коми, НиНо"],["Карпечин Павел","89121752698","Крым, Калуга"],["Волков Илья","89217622389","Киров, ФМБА"],["Шкляев Дмитрий","89520679933","Свердловск, Курган"],["Астанкулова Марина","89520679933","Омск, Удмуртия"],["Михайлов Дмитрий","89523311790","Пермь, Алтай"],["Дегтярь Константин","89232409634","Башкирия"],["Кожевина Евгения","89118371989","Мордовия"]];
+        const STORAGE_KEYS={NIGHT_SHIFTS:'rtmis_night_shifts',SICK_STAFF:'rtmis_sick_staff',THEME:'rtmis_theme'};
+        let selectedNightShifts=[],sickStaff=[];
+        function loadFromStorage(){ const n=localStorage.getItem(STORAGE_KEYS.NIGHT_SHIFTS); if(n) selectedNightShifts=JSON.parse(n); const s=localStorage.getItem(STORAGE_KEYS.SICK_STAFF); if(s) sickStaff=JSON.parse(s); return localStorage.getItem(STORAGE_KEYS.THEME)||'dark-theme'; }
+        function saveToStorage(){ localStorage.setItem(STORAGE_KEYS.NIGHT_SHIFTS,JSON.stringify(selectedNightShifts)); localStorage.setItem(STORAGE_KEYS.SICK_STAFF,JSON.stringify(sickStaff)); }
+        function saveTheme(t){ localStorage.setItem(STORAGE_KEYS.THEME,t); }
+        const savedTheme=loadFromStorage(); document.body.className=savedTheme;
+        const lt=document.getElementById('lightThemeBtn'),dt=document.getElementById('darkThemeBtn');
+        if(savedTheme==='light-theme'){ lt.classList.add('active'); dt.classList.remove('active'); } else { dt.classList.add('active'); lt.classList.remove('active'); }
+        function fillTable(id,data){ const t=document.getElementById(id); if(!t) return; t.innerHTML=data.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><button class="vk-copy-btn" onclick="copyText('${r[1]}', this)"><i class="far fa-copy"></i></button></td></tr>`).join(''); }
+        fillTable('dbaPgTableBody',dbaPgData); fillTable('dbaMsTableBody',dbaMsData); fillTable('oeirTableBody',oeirData); fillTable('oeirVitrinaTableBody',vitrinaData); fillTable('smTableBody',smData);
+        function isStaffSelected(n,p){ return selectedNightShifts.some(s=>s.name===n&&s.phone===p); }
+        function isStaffSick(n,p){ return sickStaff.some(s=>s.name===n&&s.phone===p); }
+        function toggleNightStaff(s,a){ if(a){ if(!isStaffSelected(s.name,s.phone)) selectedNightShifts.push(s); } else { selectedNightShifts=selectedNightShifts.filter(x=>!(x.name===s.name&&x.phone===s.phone)); } saveToStorage(); updateNightTables(); updateNightShortWidget(); updateOnlineWidget(); }
+        function toggleSickStaff(s,a){ if(a){ if(!isStaffSick(s.name,s.phone)) sickStaff.push(s); } else { sickStaff=sickStaff.filter(x=>!(x.name===s.name&&x.phone===s.phone)); } saveToStorage(); updateNightTables(); updateSickWidget(); updateOnlineWidget(); }
+        function fillNightTable(id,data,dept){ const t=document.getElementById(id); if(!t) return; t.innerHTML=data.map(r=>{ const sel=isStaffSelected(r[0],r[1]),sick=isStaffSick(r[0],r[1]); return `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><button class="night-select-btn green" onclick="toggleNightStaff({name:'${r[0]}',phone:'${r[1]}',dept:'${dept}'}, true)" ${sel?'disabled':''}><i class="fas fa-check"></i></button><button class="night-select-btn red" onclick="toggleNightStaff({name:'${r[0]}',phone:'${r[1]}',dept:'${dept}'}, false)" ${!sel?'disabled':''}><i class="fas fa-times"></i></button><button class="night-select-btn yellow" onclick="toggleSickStaff({name:'${r[0]}',phone:'${r[1]}',dept:'${dept}'}, !${sick})"><i class="fas fa-${sick?'times':'plus'}"></i></button></td></tr>`; }).join(''); }
+        function updateNightTables(){ fillNightTable('dbaNightTableBody',[...dbaPgData,...dbaMsData],'ДБА'); fillNightTable('oeirNightTableBody',oeirData,'ОЭИР'); }
+        function updateNightShortWidget(){ const el=document.getElementById('nightShortList'); if(!el) return; if(!selectedNightShifts.length){ el.innerHTML='<div class="night-empty">Нет выбранных ночных дежурных</div>'; return; } el.innerHTML=selectedNightShifts.map(s=>`<div class="night-short-item"><div class="night-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="night-info"><h5>${s.name}</h5><p>${s.dept} · ${s.phone}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div></div>`).join(''); }
+        function updateSickWidget(){ const el=document.getElementById('sickList'); if(!el) return; if(!sickStaff.length){ el.innerHTML='<div class="sick-empty">Нет сотрудников на больничном или в отпуске</div>'; return; } el.innerHTML=sickStaff.map(s=>`<div class="sick-item"><div class="sick-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="sick-info"><h5>${s.name}</h5><p>${s.dept} · ${s.phone}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div></div>`).join(''); }
+        function getShiftStatus(sch,date){ if(isWeekend(date)) return 'weekend'; const cur=date.getHours()*60+date.getMinutes(); const [st,en]=sch.split('-'); const stT=st.split(':').map(Number)[0]*60+st.split(':').map(Number)[1]; const enT=en.split(':').map(Number)[0]*60+en.split(':').map(Number)[1]; if(enT<stT){ if(cur>=stT||cur<=enT) return 'online'; if(cur<stT&&stT-cur<=60) return 'soon'; } else { if(cur>=stT&&cur<=enT) return 'online'; if(cur<stT&&stT-cur<=60) return 'soon'; } return 'offline'; }
+        function updateOnlineWidget(){ const all=[...dbaPgData.map(d=>({name:d[0],schedule:d[2],dept:'ДБА',phone:d[1]})),...dbaMsData.map(d=>({name:d[0],schedule:d[2],dept:'ДБА',phone:d[1]})),...oeirData.map(d=>({name:d[0],schedule:d[2],dept:'ОЭИР',phone:d[1]})),...vitrinaData.map(d=>({name:d[0],schedule:d[2],dept:'ОЭИР',phone:d[1]}))]; const now=new Date(),cur=new Date(now.toLocaleString('en-US',{timeZone:'Europe/Moscow'})); const ol=document.getElementById('onlineList'); if(isWeekend(cur)){ ol.innerHTML='<div style="text-align:center;padding:20px;"><i class="fas fa-calendar-week"></i><br/>Сегодня выходной день</div>'; return; } const reg=all.filter(s=>!isStaffSelected(s.name,s.phone)&&!isStaffSick(s.name,s.phone)); const on=reg.filter(s=>getShiftStatus(s.schedule,cur)==='online'); const soon=reg.filter(s=>getShiftStatus(s.schedule,cur)==='soon'); let html=''; if(on.length) html+='<div style="margin-bottom:12px;"><strong style="color:#4caf50;">Сейчас на смене:</strong></div>'+on.map(s=>`<div class="online-user-item"><div class="user-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="user-info"><h5>${s.name}</h5><p>${s.dept} · ${s.schedule}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div><div class="online-dot"></div></div>`).join(''); if(soon.length) html+='<div style="margin:12px 0 8px;"><strong style="color:#ff9800;">Скоро заступят:</strong></div>'+soon.map(s=>`<div class="online-user-item"><div class="user-avatar">${s.name.split(' ').map(n=>n[0]).join('')}</div><div class="user-info"><h5>${s.name}</h5><p>${s.dept} · ${s.schedule}<button class="vk-copy-btn" onclick="copyText('${s.phone}', this)"><i class="far fa-copy"></i></button></p></div><div class="soon-dot"></div></div>`).join(''); if(!on.length&&!soon.length) html='<div style="text-align:center;padding:20px;">Нет активных смен</div>'; ol.innerHTML=html; }
+        function getUpcomingShifts(){ const all=[...dbaPgData.map(d=>({name:d[0],schedule:d[2],dept:'ДБА'})),...dbaMsData.map(d=>({name:d[0],schedule:d[2],dept:'ДБА'})),...oeirData.map(d=>({name:d[0],schedule:d[2],dept:'ОЭИР'})),...vitrinaData.map(d=>({name:d[0],schedule:d[2],dept:'ОЭИР'}))]; const now=new Date(),cur=new Date(now.toLocaleString('en-US',{timeZone:'Europe/Moscow'})); const curT=cur.getHours()*60+cur.getMinutes(); if(isWeekend(cur)) return []; const up=[]; all.forEach(s=>{ const st=s.schedule.split('-')[0]; let stT=st.split(':').map(Number)[0]*60+st.split(':').map(Number)[1]; if(stT<curT) stT+=1440; const diff=stT-curT; if(diff>0&&diff<=420) up.push({...s,startsIn:diff,startsInText:`Через ${Math.floor(diff/60)} ч ${diff%60} мин`}); }); return up.sort((a,b)=>a.startsIn-b.startsIn); }
+        function updateUpcomingWidget(){ const list=getUpcomingShifts(); const el=document.getElementById('upcomingList'); if(!el) return; const now=new Date(),cur=new Date(now.toLocaleString('en-US',{timeZone:'Europe/Moscow'})); if(isWeekend(cur)){ el.innerHTML='<div style="text-align:center;padding:20px;"><i class="fas fa-calendar-week"></i><br/>Выходной день</div>'; return; } if(!list.length){ el.innerHTML='<div style="text-align:center;padding:20px;">Нет смен в ближайшие 7 часов</div>'; return; } el.innerHTML=list.map(s=>`<div class="upcoming-shift-item"><div class="upcoming-shift-wrapper"><div class="shift-dot"></div><div class="shift-info"><h5>${s.name}</h5><p>${s.dept} · ${s.schedule}</p></div><div class="shift-time">${s.startsInText}</div></div></div>`).join(''); }
         let calendar;
-        function initCalendar() {
-            const el = document.getElementById('calendar');
-            if (calendar) calendar.destroy();
-            calendar = new FullCalendar.Calendar(el, {
-                initialView: 'dayGridMonth', locale: 'ru',
-                headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek' },
-                events: [
-                    { title: 'Дежурство ДБА: Кулигин П.', start: '2026-03-25', color: '#667eea' },
-                    { title: 'Ночная смена: Веселков А.', start: '2026-03-26', color: '#764ba2' },
-                    { title: 'Дежурство ОЭИР: Астафьев А.', start: '2026-03-27', color: '#667eea' }
-                ],
-                dayCellDidMount: function(info) {
-                    if (info.date.getDay() === 0 || info.date.getDay() === 6) {
-                        info.el.style.backgroundColor = 'rgba(255,68,68,0.15)';
-                        const num = info.el.querySelector('.fc-daygrid-day-number');
-                        if (num) { num.style.color = '#ff4444'; num.style.fontWeight = 'bold'; }
-                    }
-                }
-            });
-            calendar.render();
-        }
-
-        function updateDateTime() {
-            const now = new Date(), moscow = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
-            const timeEl = document.getElementById('moscowTime'), dateEl = document.getElementById('currentDate');
-            if (timeEl) timeEl.textContent = moscow.toLocaleTimeString('ru-RU', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
-            if (dateEl) dateEl.textContent = formatDate(moscow);
-            updateOnlineWidget(); updateUpcomingWidget();
-        }
-
-        updateDateTime(); setInterval(updateDateTime, 1000);
-
-        function toggleWidgetCollapsible(contentId, btn) {
-            const c = document.getElementById(contentId);
-            if (c.classList.contains('expanded')) { c.classList.remove('expanded'); btn.querySelector('span').textContent = 'Показать еще...'; }
-            else { c.classList.add('expanded'); btn.querySelector('span').textContent = 'Скрыть'; }
-        }
-
-        window.copyText = function(text, btn) {
-            navigator.clipboard.writeText(text);
-            const n = document.getElementById('copyNotification');
-            document.getElementById('copiedNumber').textContent = text;
-            n.classList.add('show');
-            btn.innerHTML = '<i class="fas fa-check"></i>'; btn.classList.add('copied');
-            setTimeout(() => { n.classList.remove('show'); btn.innerHTML = '<i class="far fa-copy"></i>'; btn.classList.remove('copied'); }, 2000);
-        };
-        window.toggleCollapsible = function(id, btn) {
-            const c = document.getElementById(id);
-            if (c.classList.contains('expanded')) { c.classList.remove('expanded'); btn.querySelector('span').textContent = 'Показать еще...'; }
-            else { c.classList.add('expanded'); btn.querySelector('span').textContent = 'Скрыть'; }
-        };
-
-        const menuItems = document.querySelectorAll('.vk-menu-item[data-page]'), pages = document.querySelectorAll('.page');
-        menuItems.forEach(i => i.addEventListener('click', function() {
-            const p = this.dataset.page;
-            menuItems.forEach(m => m.classList.remove('active'));
-            this.classList.add('active');
-            pages.forEach(pg => pg.classList.remove('active'));
-            document.getElementById(`page${p}`).classList.add('active');
-            if (p === '3') initCalendar();
-        }));
-
-        const pageBtns = document.querySelectorAll('.vk-page-btn[data-page]'), prevBtn = document.getElementById('prevPage'), nextBtn = document.getElementById('nextPage');
-        let currentPage = 1;
-        const totalPages = 6;
-        function showPage(page) {
-            let actual = page;
-            menuItems.forEach(i => { if (i.dataset.page == actual) i.classList.add('active'); else i.classList.remove('active'); });
-            pages.forEach(p => p.classList.remove('active'));
-            document.getElementById(`page${actual}`).classList.add('active');
-            pageBtns.forEach(b => { b.classList.remove('active'); if (b.dataset.page == actual) b.classList.add('active'); });
-            prevBtn.disabled = actual === 1; nextBtn.disabled = actual === totalPages;
-            currentPage = actual;
-            if (actual === 3) initCalendar();
-        }
-        pageBtns.forEach(b => b.addEventListener('click', () => showPage(parseInt(b.dataset.page))));
-        prevBtn.addEventListener('click', () => { if (currentPage > 1) showPage(currentPage - 1); });
-        nextBtn.addEventListener('click', () => { if (currentPage < totalPages) showPage(currentPage + 1); });
-
-        lightThemeBtn.addEventListener('click', () => { document.body.classList.remove('dark-theme'); document.body.classList.add('light-theme'); lightThemeBtn.classList.add('active'); darkThemeBtn.classList.remove('active'); saveTheme('light-theme'); });
-        darkThemeBtn.addEventListener('click', () => { document.body.classList.remove('light-theme'); document.body.classList.add('dark-theme'); darkThemeBtn.classList.add('active'); lightThemeBtn.classList.remove('active'); saveTheme('dark-theme'); });
-
-        const openImportant = document.getElementById('openImportantBtn'), openSchedule = document.getElementById('openScheduleBtn');
-        const popupOverlay = document.getElementById('popupOverlay'), importantPopup = document.getElementById('importantPopup'), schedulePopup = document.getElementById('schedulePopup');
-        const closeImportant = document.getElementById('closeImportantPopup'), minImportant = document.getElementById('minimizeImportantPopup');
-        const closeSchedule = document.getElementById('closeSchedulePopup'), minSchedule = document.getElementById('minimizeSchedulePopup');
-        const importantHeader = document.getElementById('importantPopupHeader'), scheduleHeader = document.getElementById('schedulePopupHeader');
-        let isDragging = false, offsetX, offsetY, currentPopup = null;
-        function openPopup(p) { popupOverlay.classList.add('active'); p.classList.add('active'); currentPopup = p; }
-        function closePopup(p) { popupOverlay.classList.remove('active'); p.classList.remove('active'); currentPopup = null; }
-        function minimizePopup(p) { p.classList.remove('active'); }
-        openImportant.addEventListener('click', () => openPopup(importantPopup));
-        openSchedule.addEventListener('click', () => openPopup(schedulePopup));
-        closeImportant.addEventListener('click', () => closePopup(importantPopup));
-        closeSchedule.addEventListener('click', () => closePopup(schedulePopup));
-        minImportant.addEventListener('click', () => minimizePopup(importantPopup));
-        minSchedule.addEventListener('click', () => minimizePopup(schedulePopup));
-        popupOverlay.addEventListener('click', () => { if (currentPopup) closePopup(currentPopup); });
-        importantHeader.addEventListener('mousedown', (e) => { isDragging = true; const r = importantPopup.getBoundingClientRect(); offsetX = e.clientX - r.left; offsetY = e.clientY - r.top; importantPopup.style.transition = 'none'; currentPopup = importantPopup; });
-        scheduleHeader.addEventListener('mousedown', (e) => { isDragging = true; const r = schedulePopup.getBoundingClientRect(); offsetX = e.clientX - r.left; offsetY = e.clientY - r.top; schedulePopup.style.transition = 'none'; currentPopup = schedulePopup; });
-        document.addEventListener('mousemove', (e) => { if (!isDragging || !currentPopup) return; e.preventDefault(); const newX = e.clientX - offsetX, newY = e.clientY - offsetY; const maxX = window.innerWidth - currentPopup.offsetWidth, maxY = window.innerHeight - currentPopup.offsetHeight; currentPopup.style.left = Math.max(0, Math.min(newX, maxX)) + 'px'; currentPopup.style.top = Math.max(0, Math.min(newY, maxY)) + 'px'; currentPopup.style.transform = 'none'; });
-        document.addEventListener('mouseup', () => { isDragging = false; if (currentPopup) currentPopup.style.transition = 'all 0.3s ease'; currentPopup = null; });
-        importantPopup.addEventListener('click', e => e.stopPropagation());
-        schedulePopup.addEventListener('click', e => e.stopPropagation());
-
-        showPage(1);
-        updateOnlineWidget(); updateUpcomingWidget(); updateNightTables(); updateNightShortWidget(); updateSickWidget();
+        function initCalendar(){ const el=document.getElementById('calendar'); if(calendar) calendar.destroy(); calendar=new FullCalendar.Calendar(el,{initialView:'dayGridMonth',locale:'ru',headerToolbar:{left:'prev,next today',center:'title',right:'dayGridMonth,timeGridWeek'},events:[{title:'Дежурство ДБА: Кулигин П.',start:'2026-03-25',color:'#667eea'},{title:'Ночная смена: Веселков А.',start:'2026-03-26',color:'#764ba2'},{title:'Дежурство ОЭИР: Астафьев А.',start:'2026-03-27',color:'#667eea'}],dayCellDidMount:function(i){ if(i.date.getDay()===0||i.date.getDay()===6){ i.el.style.backgroundColor='rgba(255,68,68,0.15)'; const n=i.el.querySelector('.fc-daygrid-day-number'); if(n){ n.style.color='#ff4444'; n.style.fontWeight='bold'; } } }}); calendar.render(); }
+        function updateDateTime(){ const now=new Date(),m=new Date(now.toLocaleString('en-US',{timeZone:'Europe/Moscow'})); const t=document.getElementById('moscowTime'),d=document.getElementById('currentDate'); if(t) t.textContent=m.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); if(d) d.textContent=formatDate(m); updateOnlineWidget(); updateUpcomingWidget(); checkTuesdayAndShowTicker(); }
+        updateDateTime(); setInterval(updateDateTime,1000);
+        function toggleWidgetCollapsible(id,btn){ const c=document.getElementById(id); if(c.classList.contains('expanded')){ c.classList.remove('expanded'); btn.querySelector('span').textContent='Показать еще...'; } else { c.classList.add('expanded'); btn.querySelector('span').textContent='Скрыть'; } }
+        window.copyText=function(t,btn){ navigator.clipboard.writeText(t); const n=document.getElementById('copyNotification'); document.getElementById('copiedNumber').textContent=t; n.classList.add('show'); btn.innerHTML='<i class="fas fa-check"></i>'; btn.classList.add('copied'); setTimeout(()=>{ n.classList.remove('show'); btn.innerHTML='<i class="far fa-copy"></i>'; btn.classList.remove('copied'); },2000); };
+        window.toggleCollapsible=function(id,btn){ const c=document.getElementById(id); if(c.classList.contains('expanded')){ c.classList.remove('expanded'); btn.querySelector('span').textContent='Показать еще...'; } else { c.classList.add('expanded'); btn.querySelector('span').textContent='Скрыть'; } };
+        const menuItems=document.querySelectorAll('.vk-menu-item[data-page]'),pages=document.querySelectorAll('.page');
+        menuItems.forEach(i=>i.addEventListener('click',function(){ const p=this.dataset.page; menuItems.forEach(m=>m.classList.remove('active')); this.classList.add('active'); pages.forEach(pg=>pg.classList.remove('active')); document.getElementById(`page${p}`).classList.add('active'); if(p==='3') initCalendar(); }));
+        const pageBtns=document.querySelectorAll('.vk-page-btn[data-page]'),prevB=document.getElementById('prevPage'),nextB=document.getElementById('nextPage'); let curPage=1; const total=6;
+        function showPage(p){ let a=p; menuItems.forEach(i=>{ if(i.dataset.page==a) i.classList.add('active'); else i.classList.remove('active'); }); pages.forEach(pg=>pg.classList.remove('active')); document.getElementById(`page${a}`).classList.add('active'); pageBtns.forEach(b=>{ b.classList.remove('active'); if(b.dataset.page==a) b.classList.add('active'); }); prevB.disabled=a===1; nextB.disabled=a===total; curPage=a; if(a===3) initCalendar(); }
+        pageBtns.forEach(b=>b.addEventListener('click',()=>showPage(parseInt(b.dataset.page)))); prevB.addEventListener('click',()=>{ if(curPage>1) showPage(curPage-1); }); nextB.addEventListener('click',()=>{ if(curPage<total) showPage(curPage+1); });
+        lt.addEventListener('click',()=>{ document.body.classList.remove('dark-theme'); document.body.classList.add('light-theme'); lt.classList.add('active'); dt.classList.remove('active'); saveTheme('light-theme'); });
+        dt.addEventListener('click',()=>{ document.body.classList.remove('light-theme'); document.body.classList.add('dark-theme'); dt.classList.add('active'); lt.classList.remove('active'); saveTheme('dark-theme'); });
+        const openImp=document.getElementById('openImportantBtn'),openSch=document.getElementById('openScheduleBtn'),popOver=document.getElementById('popupOverlay'),impPop=document.getElementById('importantPopup'),schPop=document.getElementById('schedulePopup'),closeImp=document.getElementById('closeImportantPopup'),minImp=document.getElementById('minimizeImportantPopup'),closeSch=document.getElementById('closeSchedulePopup'),minSch=document.getElementById('minimizeSchedulePopup'),impHead=document.getElementById('importantPopupHeader'),schHead=document.getElementById('schedulePopupHeader'); let drag=false,offX,offY,curPop=null;
+        function openPop(p){ popOver.classList.add('active'); p.classList.add('active'); curPop=p; }
+        function closePop(p){ popOver.classList.remove('active'); p.classList.remove('active'); curPop=null; }
+        function minPop(p){ p.classList.remove('active'); }
+        openImp.addEventListener('click',()=>openPop(impPop)); openSch.addEventListener('click',()=>openPop(schPop)); closeImp.addEventListener('click',()=>closePop(impPop)); closeSch.addEventListener('click',()=>closePop(schPop)); minImp.addEventListener('click',()=>minPop(impPop)); minSch.addEventListener('click',()=>minPop(schPop)); popOver.addEventListener('click',()=>{ if(curPop) closePop(curPop); });
+        impHead.addEventListener('mousedown',(e)=>{ drag=true; const r=impPop.getBoundingClientRect(); offX=e.clientX-r.left; offY=e.clientY-r.top; impPop.style.transition='none'; curPop=impPop; });
+        schHead.addEventListener('mousedown',(e)=>{ drag=true; const r=schPop.getBoundingClientRect(); offX=e.clientX-r.left; offY=e.clientY-r.top; schPop.style.transition='none'; curPop=schPop; });
+        document.addEventListener('mousemove',(e)=>{ if(!drag||!curPop) return; e.preventDefault(); const nx=e.clientX-offX,ny=e.clientY-offY; const mx=window.innerWidth-curPop.offsetWidth,my=window.innerHeight-curPop.offsetHeight; curPop.style.left=Math.max(0,Math.min(nx,mx))+'px'; curPop.style.top=Math.max(0,Math.min(ny,my))+'px'; curPop.style.transform='none'; });
+        document.addEventListener('mouseup',()=>{ drag=false; if(curPop) curPop.style.transition='all 0.3s ease'; curPop=null; });
+        impPop.addEventListener('click',e=>e.stopPropagation()); schPop.addEventListener('click',e=>e.stopPropagation());
+        showPage(1); updateOnlineWidget(); updateUpcomingWidget(); updateNightTables(); updateNightShortWidget(); updateSickWidget();
+        checkTuesdayAndShowTicker(); // Вызов при загрузке страницы
     </script>
 </body>
 </html>
